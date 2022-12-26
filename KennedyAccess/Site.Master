@@ -1,0 +1,107 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="KennedyAccess.Sapphire" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <title><%: Page.Title %> - Kennedy Access Group</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/bootstrap-navbar.css" rel="stylesheet" />
+</head>
+<body>
+    <form runat="server">
+
+        <asp:ScriptManager runat="server" EnablePageMethods="true">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+            </Scripts>
+        </asp:ScriptManager>
+
+        <div class="d-flex" id="wrapper" >
+            <div class="border-light" id ="sidebar-wrapper" style="position:fixed; padding-left:15px;padding-right:10px;background-color:dimgray;width:265px">
+                <div class="sidebar-heading" style="background-color:dimgray" ></div>
+                <div id="divMenu" runat="server" class="list-group list-group-flush" style="background-color:dimgray; word-wrap:inherit"><br /><br />
+                    <div id="divHome" runat="server" style="height:50px"><asp:ImageButton ID="ibHome" runat="server" CssClass="align-bottom" ImageUrl="~/images/gen001.svg" Width="30px" CausesValidation="false" PostBackUrl="~/home.aspx"></asp:ImageButton>&nbsp;&nbsp;<asp:HyperLink runat="server" NavigateUrl="~/home.aspx" Text="Home" Font-Bold="true" ForeColor="White" Font-Underline="false" Font-Size="22px"></asp:HyperLink></div>
+                    <div id="divEmployers" runat="server" style="height:50px"><asp:ImageButton ID="ibEmployers" runat="server" CssClass="align-bottom" ImageUrl="~/images/map009.svg" Width="30px" CausesValidation="false" PostBackUrl="~/Employers.aspx"></asp:ImageButton>&nbsp;&nbsp;<asp:HyperLink runat="server" NavigateUrl="~/Employers.aspx" Text="Employers" Font-Bold="true" ForeColor="White" Font-Underline="false" Font-Size="22px"></asp:HyperLink></div>
+
+                    <div id="divAgents" runat="server" style="height:50px"><asp:ImageButton ID="ibAgents" runat="server" CssClass="align-bottom" ImageUrl="~/images/com005.svg" Width="30px" CausesValidation="false" PostBackUrl="~/Agents.aspx"></asp:ImageButton>&nbsp;&nbsp;<asp:HyperLink runat="server" NavigateUrl="~/Agents.aspx" Text="Agents" Font-Bold="true" ForeColor="White" Font-Underline="false" Font-Size="22px"></asp:HyperLink></div>
+                    <div id="divAttorneys" runat="server" style="height:50px"><asp:ImageButton ID="ibAttorneys" runat="server" CssClass="align-bottom" ImageUrl="~/images/fin001.svg" Width="30px" CausesValidation="false" PostBackUrl="~/Attorneys.aspx"></asp:ImageButton>&nbsp;&nbsp;<asp:HyperLink runat="server" NavigateUrl="~/Attorneys.aspx" Text="Attorneys" Font-Bold="true" ForeColor="White" Font-Underline="false" Font-Size="22px"></asp:HyperLink></div>
+                    <div id="divPrevailingWages" runat="server" style="height:50px"><asp:ImageButton ID="ibPrevailingWages" runat="server" CssClass="align-bottom" ImageUrl="~/images/fin010.svg" Width="30px" CausesValidation="false" PostBackUrl="~/PrevailingWages.aspx"></asp:ImageButton>&nbsp;&nbsp;<asp:HyperLink runat="server" NavigateUrl="~/PrevailingWages.aspx" Text="Prevailing Wages" Font-Bold="true" ForeColor="White" Font-Underline="false" Font-Size="22px"></asp:HyperLink></div>
+                    <div id="divApplicants" runat="server" style="height:50px"><asp:ImageButton ID="ibApplicants" runat="server" CssClass="align-bottom" ImageUrl="~/images/com006.svg" Width="30px" CausesValidation="false" PostBackUrl="~/Applicants.aspx"></asp:ImageButton>&nbsp;&nbsp;<asp:HyperLink runat="server" NavigateUrl="~/Applicants.aspx" Text="Applicants" Font-Bold="true" ForeColor="White" Font-Underline="false" Font-Size="22px"></asp:HyperLink></div>
+
+                    <div id="divCampaigns" runat="server" style="height:50px"><asp:ImageButton ID="ibCampaigns" runat="server" CssClass="align-bottom" ImageUrl="~/images/teh001.svg" Width="30px" CausesValidation="false" PostBackUrl="~/Campaigns.aspx"></asp:ImageButton>&nbsp;&nbsp;<asp:HyperLink runat="server" NavigateUrl="~/Campaigns.aspx" Text="Campaigns" Font-Bold="true" ForeColor="White" Font-Underline="false" Font-Size="22px"></asp:HyperLink></div>
+                    <div id="divJobListings" runat="server" style="height:50px"><asp:ImageButton ID="ibJobListings" runat="server" CssClass="align-bottom" ImageUrl="~/images/cod002.svg" Width="30px" CausesValidation="false" PostBackUrl="~/JobListings.aspx"></asp:ImageButton>&nbsp;&nbsp;<asp:HyperLink runat="server" NavigateUrl="~/JobListings.aspx" Text="Job Listings" Font-Bold="true" ForeColor="White" Font-Underline="false" Font-Size="22px"></asp:HyperLink></div>
+                    <div id="divApplications" runat="server" style="height:50px"><asp:ImageButton ID="ibApplications" runat="server" CssClass="align-bottom" ImageUrl="~/images/ecm008.svg" Width="30px" CausesValidation="false" PostBackUrl="~/Applications.aspx"></asp:ImageButton>&nbsp;&nbsp;<asp:HyperLink runat="server" NavigateUrl="~/Applications.aspx" Text="Applications" Font-Bold="true" ForeColor="White" Font-Underline="false" Font-Size="22px"></asp:HyperLink></div>
+
+                    <div id="divUsers" runat="server" style="height:50px"><asp:ImageButton ID="ibUsers" runat="server" CssClass="align-bottom" ImageUrl="~/images/com013.svg" Width="30px" CausesValidation="false" PostBackUrl="~/Admin/Users.aspx"></asp:ImageButton>&nbsp;&nbsp;<asp:HyperLink runat="server" NavigateUrl="~/Admin/Users.aspx" Text="Users" Font-Bold="true" ForeColor="White" Font-Underline="false" Font-Size="22px"></asp:HyperLink></div>
+
+                    <div id="divRoles" runat="server" style="height:50px"><asp:ImageButton ID="ibRoles" runat="server" CssClass="align-bottom" ImageUrl="~/images/gen009.svg" Width="30px" CausesValidation="false" PostBackUrl="~/Admin/Roles.aspx"></asp:ImageButton>&nbsp;&nbsp;<asp:HyperLink runat="server" NavigateUrl="~/Admin/Roles.aspx" Text="Roles" Font-Bold="true" ForeColor="White" Font-Underline="false" Font-Size="22px"></asp:HyperLink></div>
+                    <div id="divRoleSets" runat="server" style="height:50px"><asp:ImageButton ID="ibRoleSets" runat="server" CssClass="align-bottom" ImageUrl="~/images/gen019.svg" Width="30px" CausesValidation="false" PostBackUrl="~/Admin/RoleSets.aspx"></asp:ImageButton>&nbsp;&nbsp;<asp:HyperLink runat="server" NavigateUrl="~/Admin/RoleSets.aspx" Text="Role Sets" Font-Bold="true" ForeColor="White" Font-Underline="false" Font-Size="22px"></asp:HyperLink></div>
+                    <div id="divProfiles" runat="server" style="height:50px"><asp:ImageButton ID="ibProfiles" runat="server" CssClass="align-bottom" ImageUrl="~/images/lay001.svg" Width="30px" CausesValidation="false" PostBackUrl="~/Admin/Profiles.aspx"></asp:ImageButton>&nbsp;&nbsp;<asp:HyperLink runat="server" NavigateUrl="~/Admin/Profiles.aspx" Text="Profiles" Font-Bold="true" ForeColor="White" Font-Underline="false" Font-Size="22px"></asp:HyperLink></div>
+                    <div id="divQuestionnaires" runat="server" style="height:50px"><asp:ImageButton ID="ibQuestionnaires" runat="server" CssClass="align-bottom" ImageUrl="~/images/com007.svg" Width="30px" CausesValidation="false" PostBackUrl="~/Admin/Questionnaires.aspx"></asp:ImageButton>&nbsp;&nbsp;<asp:HyperLink runat="server" NavigateUrl="~/Admin/Questionnaires.aspx" Text="Questionnaires" Font-Bold="true" ForeColor="White" Font-Underline="false" Font-Size="22px"></asp:HyperLink></div>
+
+                    <div id="divSettings" runat="server" style="height:50px"><asp:ImageButton ID="ibSettings" runat="server" CssClass="align-bottom" ImageUrl="~/images/cod001.svg" Width="30px" CausesValidation="false" PostBackUrl="~/Admin/Settings.aspx"></asp:ImageButton>&nbsp;&nbsp;<asp:HyperLink runat="server" NavigateUrl="~/Admin/Settings.aspx" Text="Settings" Font-Bold="true" ForeColor="White" Font-Underline="false" Font-Size="22px"></asp:HyperLink></div>
+                    <div id="divProfile" runat="server" style="height:50px"><asp:ImageButton ID="ibProfile" runat="server" ImageUrl="images/com006.svg" Width="30px" OnClick="btnProfile_Click" Text="Profile"/>&nbsp;&nbsp;<asp:Button ID="btnProfile" runat="server" ForeColor="White" Font-Bold="true" BackColor="Transparent" Font-Size="22px" BorderStyle="None" OnClick="btnProfile_Click1" Text="Profile"></asp:Button></div>
+                    <div id="divLogOut" runat="server" style="height:40px; vertical-align:middle"><asp:ImageButton ID="ibLogOut" runat="server" style="background-color:dimgray; vertical-align:bottom" ImageUrl="images/arr021.svg" Width="30px" CausesValidation="false" PostBackUrl="~/Default.aspx" />&nbsp;&nbsp;<asp:HyperLink runat="server" NavigateUrl="~/Default.aspx" Text="Log Out" Font-Bold="true" ForeColor="White" Font-Underline="false" Font-Size="22px"></asp:HyperLink></div>
+                </div>
+            </div>
+
+            <div id="page-content-wrapper" >
+                <nav class="navbar navbar-expand-lg navbar-light" style="position:fixed; background-color:#edf2f2;width:265px">
+                    <button type="button" id="menu-toggle" style="border:hidden">
+                        <img src="../images/logo.png" />
+                    </button>                    
+                </nav>
+
+            </div>
+
+
+            <div class="container body-content;" style="position:absolute; left:300px; top:40px">
+                <table>
+                    <tr>
+                        <td>
+                            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                            </asp:ContentPlaceHolder>
+                        </td>
+                        <td style="vertical-align:top;border:hidden;width:100%">
+                            <ajaxToolkit:TabContainer ID="TabContainer1" runat="server">
+                                <ajaxToolkit:TabPanel>
+
+                                </ajaxToolkit:TabPanel>
+                            </ajaxToolkit:TabContainer>
+                            <asp:GridView ID="gvInfo" runat="server" class="table table-hover" GridLines="None">
+                                <HeaderStyle BackColor="dimgray" ForeColor="White"/>
+                            </asp:GridView>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+
+        </div>
+
+        <script src="Scripts/bootstrap.bundle.min.js"></script>
+        <script src="Scripts/jquery-3.6.1.min.js"></script>
+
+
+
+    </form>
+</body>
+</html>
