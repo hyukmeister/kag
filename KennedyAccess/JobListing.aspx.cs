@@ -65,7 +65,7 @@ namespace KennedyAccess
                         ProfilePicture.bShowButtons= false;
 
                         // apply button
-                        btnApply.Visible = (user.AppliedJobidID == 0 || user.AppliedJobidID == null);
+                        btnApply.Visible = (user.AppliedJobidID == 0 || user.AppliedJobidID == 0);
 
                         // offer letter
                         string sStatusText = dr["StatusText"].ToString();

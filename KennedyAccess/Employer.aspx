@@ -17,7 +17,11 @@
                 <asp:TableCell>
                     <asp:Table ID="tabEmployer" runat="server" class="table table-responsive table-hover">
                         <asp:TableRow>
-                            <asp:TableCell ColumnSpan="4" HorizontalAlign="Right">
+                            <asp:TableCell ColumnSpan="2" HorizontalAlign="Left">
+                                 <asp:Label ID="Label1" runat="server" Text="User Name"></asp:Label>
+                                <asp:DropDownList ID="ddlUserName" class="form-select" runat="server" Width="300px" Enabled="false"></asp:DropDownList>
+                            </asp:TableCell>
+                            <asp:TableCell ColumnSpan="2" HorizontalAlign="Right">
                                 <asp:Button ID="btnEditEmployer" runat="server" class="btn btn-primary" Text="Edit" CausesValidation="false" UseSubmitBehavior="false" OnClick="btnEditEmployer_Click" />
                                 <asp:Button ID="btnSaveEmployer" runat="server" class="btn btn-primary" Text="Save" OnClick="btnSaveEmployer_Click" Visible="false" />&nbsp;
                                 <asp:Button ID="btnCancel" runat="server" class="btn btn-default" Text="Cancel" CausesValidation="false" UseSubmitBehavior="false" OnClick="btnCancel_Click" Visible="false" />

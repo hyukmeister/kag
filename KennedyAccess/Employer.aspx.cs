@@ -114,14 +114,18 @@ namespace KennedyAccess
                         {
                             labPrevWage.Text += ")";
                         }
-                            
-
 
                         // profile picture control
                         ProfilePicture.sObject = "Employer";
                         ProfilePicture.sObjectID = txtEmployerID.Text;
                         ProfilePicture.bShowButtons = true;
 
+                        // populate user name ddl
+                        ddlUserName.DataSource = bd.GetEmpUserList(user);
+                        ddlUserName.DataTextField = "UserName";
+                        ddlUserName.DataValueField = "UserID";
+                        ddlUserName.DataBind();
+                        ddlUserName.SelectedValue = dr["UserId"].ToString();
                     }
 
                     // employer
@@ -157,7 +161,7 @@ namespace KennedyAccess
         protected void btnSaveEmployer_Click(object sender, EventArgs e)
         {
             int empID = (txtEmployerID.Text == "") ? 0 : int.Parse(txtEmployerID.Text);
-            //int userID = (txtUser.Text=="") ? 0 : int.Parse(txtUser.Text);
+            bool bAlienOwnership = (rblAlienOwnership.SelectedValue == "1") ? true : false;
             int nubEmp = int.Parse(txtNumEmployee.Text);
             int yearBusiness = int.Parse(txtYearBusiness.Text);
 
@@ -171,7 +175,7 @@ namespace KennedyAccess
                     new SqlParameter("@YearBusiness", yearBusiness),
                     new SqlParameter("@FEIN", txtFEIN.Text),
                     new SqlParameter("@NAICSCode", txtNAICSCode.Text),
-                    new SqlParameter("@AlienOwnership", rblAlienOwnership.SelectedValue),
+                    new SqlParameter("@AlienOwnership", bAlienOwnership),
                     new SqlParameter("@Description", txtEmployerDesc.Text),
                     new SqlParameter("@WebsiteInfo", txtWebsiteInfo.Text)
                     );
@@ -191,7 +195,7 @@ namespace KennedyAccess
                     Global.dbcnn, "UpdateEmployer",
                     new SqlParameter("@FranchiseID", user.FranchiseID),
                     new SqlParameter("@EmployerID", empID),
-                    new SqlParameter("@UserID", user.UserID),
+                    new SqlParameter("@UserID", ddlUserName.SelectedValue),
                     new SqlParameter("@NumEmployees", nubEmp),
                     new SqlParameter("@YearBusiness", yearBusiness),
                     new SqlParameter("@FEIN", txtFEIN.Text),
@@ -280,6 +284,11 @@ namespace KennedyAccess
             txtEmployerDesc.BorderStyle = sBorder;
             txtWebsiteInfo.ReadOnly = bLock;
             txtWebsiteInfo.BorderStyle = sBorder;
+
+            if (!bLock && user.HasRole("SystemAdmin"))
+            {
+                ddlUserName.Enabled = true;
+            }
         }
         protected void EmployerChanged(object sender, EventArgs e)
         {

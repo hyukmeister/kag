@@ -1014,6 +1014,18 @@ namespace KennedyAccess.Classes
             }
             return dtDashboard;
         }
+        public DataTable GetEmpUserList(User user)
+        {
+            DataTable dtEmployerList = null;
+            DataSet ds = SqlHelperv2.ExecuteDataset(Global.dbcnn, "GetEmpUserList",
+                new SqlParameter("@FranchiseID", user.FranchiseID),
+                new SqlParameter("@UserID", user.UserID));
 
+            if (ds != null && ds.Tables.Count > 0)
+            {
+                dtEmployerList = ds.Tables[0];
+            }
+            return dtEmployerList;
+        }
     }
 }
