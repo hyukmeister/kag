@@ -280,7 +280,7 @@ namespace KennedyAccess.Classes
             return dtQuestionnaire;
         }
         public void InsertUpdateQuestionnaire(User user, int iQuestionnaireID, int iEmployerID,
-            string iCampaignID, bool bGeneral, int iSort, string sQUestion, string sQuestionType)
+            string iCampaignID, bool bGeneral, int iSort, string sQUestion, string sQuestionType, bool active)
         {
             SqlHelper.ExecuteNonQuery(Global.dbcnn, "InsertUpdateQuestionnaire",
                 new SqlParameter("@FranchiseID", user.FranchiseID),
@@ -291,7 +291,8 @@ namespace KennedyAccess.Classes
                 new SqlParameter("@General", bGeneral),
                 new SqlParameter("@Sort", iSort),
                 new SqlParameter("@Question", sQUestion),
-                new SqlParameter("@QuestionType", sQuestionType)
+                new SqlParameter("@QuestionType", sQuestionType),
+                new SqlParameter("@Active", active)
             );
         }
 
@@ -1027,6 +1028,23 @@ namespace KennedyAccess.Classes
                 dtEmployerList = ds.Tables[0];
             }
             return dtEmployerList;
+        }
+
+        public DataTable GetUsrMain(User user, string UsrMainID, string Search)
+        {
+            DataTable dtUsers = null;
+            DataSet ds = (SqlHelper.ExecuteDataset(Global.dbcnn, "GetUsrMain",
+                new SqlParameter("@FranchiseID", user.FranchiseID),
+                new SqlParameter("@UserID", user.UserID),
+                new SqlParameter("@UsrMainID", UsrMainID),
+                new SqlParameter("@Search", Search));
+
+            if (ds != null && ds.Tables.Count > 0)
+            {
+                dtUsers = ds.Tables[0];
+            }
+            return dtUsers;
+
         }
     }
 }

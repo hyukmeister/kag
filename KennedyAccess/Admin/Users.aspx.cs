@@ -6,12 +6,15 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using KennedyAccess.Classes;
 
 namespace KennedyAccess
 {
     public partial class Users : System.Web.UI.Page
     {
         private User user;
+        BaseData bd = new BaseData();
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -21,10 +24,12 @@ namespace KennedyAccess
 
             if (!Page.IsPostBack)
             {
-                DataTable dtUsers = (SqlHelper.ExecuteDataset(Global.dbcnn, "GetUsrMain",
-                        new SqlParameter("@FranchiseID", user.FranchiseID),
-                        new SqlParameter("@UserID", user.UserID),
-                        new SqlParameter("@UsrMainID", "0"))).Tables[0];
+                //DataTable dtUsers = (SqlHelper.ExecuteDataset(Global.dbcnn, "GetUsrMain",
+                //        new SqlParameter("@FranchiseID", user.FranchiseID),
+                //        new SqlParameter("@UserID", user.UserID),
+                //        new SqlParameter("@UsrMainID", "0"),
+                //        new SqlParameter("@Search", txtSearch.Text))).Tables[0];
+                DataTable dtUsers = bd.GetUsrMain(user, "0", "");
                 gvUsers.DataSource = dtUsers;
                 gvUsers.DataBind();
 
@@ -33,11 +38,12 @@ namespace KennedyAccess
         }
         protected void btnSearchUser_Click(object sender, EventArgs e)
         {
-            DataTable dt = (SqlHelper.ExecuteDataset(Global.dbcnn, "GetUsrMain",
-                        new SqlParameter("@UsrMainID", "0"),
-                        new SqlParameter("@FranchiseID", user.FranchiseID),
-                        new SqlParameter("@UserID", user.UserID),
-                        new SqlParameter("@Search", txtSearch.Text))).Tables[0];
+            //DataTable dt = (SqlHelper.ExecuteDataset(Global.dbcnn, "GetUsrMain",
+            //            new SqlParameter("@UsrMainID", "0"),
+            //            new SqlParameter("@FranchiseID", user.FranchiseID),
+            //            new SqlParameter("@UserID", user.UserID),
+            //            new SqlParameter("@Search", txtSearch.Text))).Tables[0];
+            DataTable dt = bd.GetUsrMain(user, "0", txtSearch.Text);
             gvUsers.DataSource = dt;
             gvUsers.DataBind();
         }

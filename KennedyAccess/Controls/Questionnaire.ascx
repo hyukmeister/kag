@@ -39,7 +39,8 @@
         </asp:TemplateField>
         <asp:TemplateField HeaderText="" HeaderStyle-BorderStyle="None" ItemStyle-BorderStyle="None" ItemStyle-HorizontalAlign="Center">
             <ItemTemplate>
-                <asp:LinkButton ID="lnkBtnUpdate" runat="server" Text="Update" class="btn btn-primary" OnClick="lnkBtnUpdate_OnClik"></asp:LinkButton>
+                <asp:ImageButton ID="lnkBtnUpdate" runat="server" OnClick="lnkBtnUpdate_OnClik" AlternateText="Save" ImageUrl="~/images/cod003.svg"/>
+                <asp:ImageButton ID="lnkBtnDelete" runat="server" OnClick="lnkBtnDelete_Click" AlternateText="Delete" ImageUrl="~/images/gen027.svg"/>
             </ItemTemplate>
         </asp:TemplateField>
     </Columns>
@@ -54,12 +55,12 @@
         <td Width="30px"></td>
         <td Width="170px"><br />
             <asp:RadioButtonList ID="rblNewQustionType" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow">
-                <asp:ListItem Enabled="True" Text="Yes/No" Value="0" style="margin-right: 20px;" />
+                <asp:ListItem Enabled="True" Text="Yes/No" Value="0" style="margin-right: 20px;" Selected="True" />
                 <asp:ListItem Enabled="True" Text="Text" Value="1" style="margin-right: 20px;" />
             </asp:RadioButtonList>
-            <asp:RequiredFieldValidator ID="rfvQType" runat="server" ValidationGroup="QuestionnaireGroup" ControlToValidate="rblNewQustionType" ErrorMessage="Type is required" ForeColor="Red"></asp:RequiredFieldValidator>        </td>
+            <asp:RequiredFieldValidator ID="rfvQType" runat="server" ValidationGroup="QuestionnaireGroup" ControlToValidate="rblNewQustionType" ErrorMessage="Type is required" ForeColor="Red"></asp:RequiredFieldValidator></td>
         <td style="align-content:end">
-            <asp:LinkButton ID="lnkBtnAddNew" runat="server" ValidationGroup="QuestionnaireGroup" Text="Add" class="btn btn-primary" Width="80px" OnClick="lnkBtnAddNew_OnClik"></asp:LinkButton>
+            <asp:ImageButton ID="lnkBtnAddNew" runat="server" OnClick="lnkBtnAddNew_OnClik" Alt="Add" ImageUrl="~/images/arr017.svg"/>            
         <td>
     </tr>
 </table>

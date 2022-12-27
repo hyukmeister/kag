@@ -74,16 +74,31 @@ namespace KennedyAccess.Controls
             string sQuestionnaire = txtQ.Text;
             string sQuestionType = rblQt.SelectedValue;
 
-            bd.InsertUpdateQuestionnaire(user, iQuestionnaireID, iEmployerID, labCampaignID.Text, false, 0, sQuestionnaire, sQuestionType);
+            bd.InsertUpdateQuestionnaire(user, iQuestionnaireID, iEmployerID, labCampaignID.Text, false, 0, sQuestionnaire, sQuestionType, true);
 
         }
         protected void lnkBtnAddNew_OnClik(object sender, EventArgs e)
         {            
             bd.InsertUpdateQuestionnaire(user, 0, int.Parse(labEmployerID.Text), 
-                labCampaignID.Text, false, 0, txtNewQuestion.Text, rblNewQustionType.SelectedValue);
+                labCampaignID.Text, false, 0, txtNewQuestion.Text, rblNewQustionType.SelectedValue, true);
 
             txtNewQuestion.Text = "";
             rblNewQustionType.SelectedIndex = -1;
+
+            PopulateQuestionnaireGrid();
+        }
+
+        protected void lnkBtnDelete_Click(object sender, EventArgs e)
+        {
+            Control gridRow = ((System.Web.UI.Control)sender).DataItemContainer;
+            Label labQID = (Label)gridRow.FindControl("labQuestionnaireID");
+            TextBox txtQ = (TextBox)gridRow.FindControl("txtQuestion");
+            RadioButtonList rblQt = (RadioButtonList)gridRow.FindControl("rblQustionType");
+            int iQuestionnaireID = int.Parse(labQID.Text);
+            string sQuestionnaire = txtQ.Text;
+            string sQuestionType = rblQt.SelectedValue;
+
+            bd.InsertUpdateQuestionnaire(user, iQuestionnaireID, iEmployerID, labCampaignID.Text, false, 0, sQuestionnaire, sQuestionType, false);
 
             PopulateQuestionnaireGrid();
         }

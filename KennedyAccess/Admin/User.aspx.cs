@@ -41,12 +41,13 @@ namespace KennedyAccess
                     }
                     else
                     {
-                        int UserID = int.Parse(Session["UserID"].ToString());
+                        string UserID = Session["UserID"].ToString();
 
-                        DataTable dtUsr = (SqlHelper.ExecuteDataset(Global.dbcnn, "GetUsrMain",
-                        new SqlParameter("@FranchiseID", user.FranchiseID),
-                        new SqlParameter("@UserID", user.UserID),
-                        new SqlParameter("@UsrMainID", UserID))).Tables[0];
+                        //DataTable dtUsr = (SqlHelper.ExecuteDataset(Global.dbcnn, "GetUsrMain",
+                        //new SqlParameter("@FranchiseID", user.FranchiseID),
+                        //new SqlParameter("@UserID", user.UserID),
+                        //new SqlParameter("@UsrMainID", UserID))).Tables[0];
+                        DataTable dtUsr = bd.GetUsrMain(user, "0", UserID);
 
                         if (dtUsr.Rows.Count == 1)
                         {
