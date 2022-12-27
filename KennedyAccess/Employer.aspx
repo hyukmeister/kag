@@ -89,7 +89,7 @@
                             <asp:TableCell HorizontalAlign="Center" Style="width: 25%"><br />
                                 <asp:RadioButtonList ID="rblAlienOwnership" runat="server" RepeatLayout="Flow" Enabled="false" BorderStyle="None" Style="width: 100%" OnCheckedChanged="EmployerChanged">
                                     <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
-                                    <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
+                                    <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" Selected="True" />
                                 </asp:RadioButtonList><br />
                             </asp:TableCell>
                         </asp:TableRow>

@@ -121,7 +121,7 @@ namespace KennedyAccess
                         ProfilePicture.bShowButtons = true;
 
                         // populate user name ddl
-                        ddlUserName.DataSource = bd.GetEmpUserList(user);
+                        ddlUserName.DataSource = bd.GetEmpUserList(user, dr["UserId"].ToString());
                         ddlUserName.DataTextField = "UserName";
                         ddlUserName.DataValueField = "UserID";
                         ddlUserName.DataBind();
@@ -190,17 +190,18 @@ namespace KennedyAccess
                 panStep2.Visible = true;
             }
             else
-            {
+            {                
                 SqlHelper.ExecuteNonQuery(
                     Global.dbcnn, "UpdateEmployer",
                     new SqlParameter("@FranchiseID", user.FranchiseID),
+                    new SqlParameter("@UserID", user.UserID),
                     new SqlParameter("@EmployerID", empID),
-                    new SqlParameter("@UserID", ddlUserName.SelectedValue),
                     new SqlParameter("@NumEmployees", nubEmp),
                     new SqlParameter("@YearBusiness", yearBusiness),
                     new SqlParameter("@FEIN", txtFEIN.Text),
                     new SqlParameter("@NAICSCode", txtNAICSCode.Text),
-                    new SqlParameter("@AlienOwnership", rblAlienOwnership.SelectedValue),
+                    new SqlParameter("@AlienOwnership", bAlienOwnership),
+                    new SqlParameter("@ManualUserID", ddlUserName.SelectedValue),
                     new SqlParameter("@Description", txtEmployerDesc.Text),
                     new SqlParameter("@WebsiteInfo", txtWebsiteInfo.Text));
             }
@@ -285,10 +286,7 @@ namespace KennedyAccess
             txtWebsiteInfo.ReadOnly = bLock;
             txtWebsiteInfo.BorderStyle = sBorder;
 
-            if (!bLock && user.HasRole("SystemAdmin"))
-            {
-                ddlUserName.Enabled = true;
-            }
+            ddlUserName.Enabled = !bLock && user.HasRole("SystemAdmin");
         }
         protected void EmployerChanged(object sender, EventArgs e)
         {

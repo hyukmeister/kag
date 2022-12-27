@@ -1014,12 +1014,13 @@ namespace KennedyAccess.Classes
             }
             return dtDashboard;
         }
-        public DataTable GetEmpUserList(User user)
+        public DataTable GetEmpUserList(User user, string ManualUserID)
         {
             DataTable dtEmployerList = null;
             DataSet ds = SqlHelperv2.ExecuteDataset(Global.dbcnn, "GetEmpUserList",
                 new SqlParameter("@FranchiseID", user.FranchiseID),
-                new SqlParameter("@UserID", user.UserID));
+                new SqlParameter("@UserID", user.UserID),
+                new SqlParameter("@ManualUserID", ManualUserID));
 
             if (ds != null && ds.Tables.Count > 0)
             {
