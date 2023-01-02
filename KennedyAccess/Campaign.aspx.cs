@@ -195,27 +195,39 @@ namespace KennedyAccess
         }
         protected void btnSaveCampaign_Click(object sender, EventArgs e)
         {
-            int iCampaignID = (labCampaignID.Text == "") ? 0 : int.Parse(labCampaignID.Text);
-            int iRecordTypeID = bd.GetRecordTypeID((DataTable)Application["RecordType"], user.FranchiseID, "Object", "Campaign");
+            if (cbkCampaignChanged.Checked)
+            {
 
-            string sCampaignID = bd.InsertUpdateCampaign(user,
-                    int.Parse(labEmployerID.Text), iCampaignID, -1, iRecordTypeID, 
-                    bd.EmptyToNull(txtCampaignStartDate.Text), txtCampaignEndDate.Text, 
-                    txtCampaignDesc.Text, int.Parse(ddlPrevailingWages.SelectedValue),
-                    bd.StringToDouble(txtOfferWageFrom.Text), bd.StringToDouble(txtOfferWageTo.Text),
-                    rblOfferWagePeriod.SelectedValue
-                );
-            Session["CampaignID"] = contAttachments.ReferenceID = labCampaignID.Text = sCampaignID;
-            Questionnaire.iCampaignID = int.Parse(sCampaignID);
-            ((Label)Questionnaire.FindControl("labCampaignID")).Text = sCampaignID;
-            Questionnaire.PopulateQuestionnaireGrid();
+                    int iCampaignID = (labCampaignID.Text == "") ? 0 : int.Parse(labCampaignID.Text);
+                int iRecordTypeID = bd.GetRecordTypeID((DataTable)Application["RecordType"], user.FranchiseID, "Object", "Campaign");
 
+                string sCampaignID = bd.InsertUpdateCampaign(user,
+                        int.Parse(labEmployerID.Text), iCampaignID, -1, iRecordTypeID, 
+                        bd.EmptyToNull(txtCampaignStartDate.Text), txtCampaignEndDate.Text, 
+                        txtCampaignDesc.Text, int.Parse(ddlPrevailingWages.SelectedValue),
+                        bd.StringToDouble(txtOfferWageFrom.Text), bd.StringToDouble(txtOfferWageTo.Text),
+                        rblOfferWagePeriod.SelectedValue
+                    );
+                Session["CampaignID"] = contAttachments.ReferenceID = labCampaignID.Text = sCampaignID;
+                Questionnaire.iCampaignID = int.Parse(sCampaignID);
+                ((Label)Questionnaire.FindControl("labCampaignID")).Text = sCampaignID;
+                Questionnaire.PopulateQuestionnaireGrid();
+
+                SetEditVisibilityCampaign(true);
+                contPrevWage.SetEditVisibility(true);
+
+                //panStep2.Visible = true;
+                divOL.Visible = accordionFlushCampaign.Visible = true;
+                cbkCampaignChanged.Checked = false;
+            }
             SetEditVisibilityCampaign(true);
-            contPrevWage.SetEditVisibility(true);
 
-            //panStep2.Visible = true;
-            divOL.Visible = accordionFlushCampaign.Visible = true;
         }
+        protected void CampaignChanged(object sender, EventArgs e)
+        {
+            cbkCampaignChanged.Checked = true;
+        }
+
         protected void btnCancel_Click(object sender, EventArgs e)
         {
             if(labCampaignID.Text == "0")
@@ -347,13 +359,10 @@ namespace KennedyAccess
                 txtI_33_NameOfSecondSatNewspaper.Text,
                 (rblI_34_ListJob.SelectedValue == "1") ? true : false
                 );
+            cbkJobOpportunityChanged.Checked = false;
             Session["JobListingID"] = lblJobListingID.Text = sJobOpportunityID;
         }
-        protected void JobOpportunityChanged(object sender, EventArgs e)
-        {
-            cbkJobOpportunityChanged.Checked = true;
-        }
-
+       
         protected void btnEditJobOpportunity_Click(object sender, EventArgs e)
         {
             SetEditVisibilityJobOpportunity(false);
@@ -371,6 +380,10 @@ namespace KennedyAccess
 
             SetEditVisibilityJobOpportunity(true);
         }
+        protected void JobOpportunityChanged(object sender, EventArgs e)
+        {
+            cbkJobOpportunityChanged.Checked = true;
+        }
         protected void btnCancelJobOpportunity_Click(object sender, EventArgs e)
         {
             SetEditVisibilityJobOpportunity(true);
@@ -380,8 +393,9 @@ namespace KennedyAccess
         {
             PopulatePrevailingWageDDL("0");
 
-
             JobOpportunityChanged(sender, e);
+
+            CampaignChanged(sender, e);
         }
 
         protected void ddlEmployerList_SelectedIndexChanged(object sender, EventArgs e)

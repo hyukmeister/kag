@@ -317,6 +317,8 @@ namespace KennedyAccess
         }
         protected void btnSaveApplicant_Click(object sender, EventArgs e)
         {
+            if (cbkApplicantChanged.Checked)
+            { 
             //iApplicantID = int.Parse(labApplicantID.Text);
             // save data
             iApplicantID = (labApplicantID.Text == "") ? 0 : int.Parse(labApplicantID.Text);
@@ -344,11 +346,15 @@ namespace KennedyAccess
 
             // save applicant oversea contact
             contApplicantOversea.btnSave_Click(sender, e);
-
+            }
             // go to read only mode
             SetEditVisibility(true);
-
+            cbkApplicantChanged.Checked = false;
             panStep2.Visible = true;
+        }
+        protected void ApplicantChanged(object sender, EventArgs e)
+        {
+            cbkApplicantChanged.Checked = true;
         }
         protected void btnCancel_Click(object sender, EventArgs e)
         {
@@ -360,10 +366,6 @@ namespace KennedyAccess
             {
                 SetEditVisibility(true);
             }
-        }
-        protected void ApplicantInfoChanged(object sender, EventArgs e)
-        {
-            cbkApplicantInfoChanged.Checked = true;
         }
 
         bool bFirstPayButton = false;

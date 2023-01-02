@@ -72,14 +72,14 @@
                             <asp:TableCell Width="10%"><asp:DropDownList ID="ddlRole" runat="server"></asp:DropDownList></asp:TableCell>
                             <asp:TableCell Width="185px">
                                 <asp:TextBox ID="txtValidFrom" runat="server" TextMode="Date"></asp:TextBox><br />
-                                <asp:RequiredFieldValidator ID="rfvtxtValidFrom" runat="server" ControlToValidate="txtValidFrom" ErrorMessage="Valid From Date is required" ForeColor="Red"></asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator ID="rfvtxtValidFrom" runat="server" ControlToValidate="txtValidFrom" ValidationGroup="NewRole" ErrorMessage="Valid From Date is required" ForeColor="Red"></asp:RequiredFieldValidator>
                             </asp:TableCell>
                             
                             <asp:TableCell Width="300px">
                                 <asp:TextBox ID="txtValidThru" runat="server" TextMode="Date"></asp:TextBox><br />
-                                <asp:RequiredFieldValidator ID="rfvlabValidThru" runat="server" ControlToValidate="txtValidThru" ErrorMessage="Valid Thru Date is required" ForeColor="Red"></asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator ID="rfvlabValidThru" runat="server" ControlToValidate="txtValidThru" ValidationGroup="NewRole" ErrorMessage="Valid Thru Date is required" ForeColor="Red"></asp:RequiredFieldValidator>
                             </asp:TableCell>
-                            <asp:TableCell Width="80px"><asp:Button ID="btnSaveRoleSet" runat="server" class="btn btn-primary" Text="Save" OnClick="btnSaveRoleSet_Click"/></asp:TableCell>
+                            <asp:TableCell Width="80px"><asp:Button ID="btnSaveRoleSet" runat="server" class="btn btn-primary" Text="Save" ValidationGroup="NewRole" OnClick="btnSaveRoleSet_Click"/></asp:TableCell>
                         </asp:TableRow>
                     </asp:Table>
                 </asp:TableCell>

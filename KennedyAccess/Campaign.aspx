@@ -10,6 +10,8 @@
     <div style="background-image:url('images/kagimg10.jpg'); filter:blur(3px);height: 100px;width:900px;background-size:cover;background-position:center;position:relative; opacity:55%; top:20px">&nbsp;</div>
 
     <asp:CheckBox ID="cbkJobOpportunityChanged" runat="server" Checked="false" Visible="false" />
+    <asp:CheckBox ID="cbkCampaignChanged" runat="server" Checked="false" Visible="false" />
+
     <h2>
         <asp:Label ID="labTitle" runat="server" Text="Campaign & Job Information"></asp:Label></h2>
     <div class="jumbotron" style="width: 900px;">
@@ -55,7 +57,7 @@
             <asp:TableRow>
                 <asp:TableCell ColumnSpan="4">
                     <div class="form-floating mb-3;">
-                        <asp:TextBox ID="txtCampaignDesc" class="form-control" runat="server" TextMode="MultiLine" Rows="5" placeholder="Campaign Description" Width="100%" ValidationGroup="CampaginGroup" BorderStyle="None"></asp:TextBox>
+                        <asp:TextBox ID="txtCampaignDesc" class="form-control" runat="server" TextMode="MultiLine" Rows="5" placeholder="Campaign Description" Width="100%" ValidationGroup="CampaginGroup" BorderStyle="None" OnTextChanged="CampaignChanged"></asp:TextBox>
                         <label for="txtCampaignDesc">Campaign Description</label>
                         <asp:RequiredFieldValidator ID="rfvCampaignDesc" runat="server" ErrorMessage="Campaign Description is rquired" ForeColor="Red" ControlToValidate="txtCampaignDesc" ValidationGroup="CampaginGroup"></asp:RequiredFieldValidator>
                     </div>
@@ -73,7 +75,7 @@
                 <asp:TableCell ColumnSpan="2">
                     <div class="form-floating mb-3;" Width="450px">
                         <asp:TextBox ID="txtCampaignEndDate" class="form-control" runat="server" placeholder="Campaign End Date" BorderStyle="None" TextMode="Date" 
-                            ValidationGroup="CampaginGroup" ></asp:TextBox>
+                            ValidationGroup="CampaginGroup" OnTextChanged="txtCampaignStartDate_TextChanged" ></asp:TextBox>
                         <label for="txtCampaignEndDate">Campaign End Date</label>
                         <asp:RequiredFieldValidator ID="rfvCampaignEndDate" runat="server" ErrorMessage="Campaign End Date is rquired" ForeColor="Red" ControlToValidate="txtCampaignEndDate" ValidationGroup="CampaginGroup"></asp:RequiredFieldValidator>
                     </div>
@@ -84,14 +86,14 @@
                 <asp:TableCell ColumnSpan="2">
                     <div class="form-floating mb-3;">
                         <asp:TextBox ID="txtOfferWageFrom" class="form-control" runat="server" placeholder="Offer Wage From" BorderStyle="None"
-                            TextMode="Number" step="0.01" OnTextChanged="JobOpportunityChanged">0</asp:TextBox>
+                            TextMode="Number" step="0.01" OnTextChanged="CampaignChanged">0</asp:TextBox>
                         <label for="txtOfferWageFrom">Offer Wage From</label>
                     </div>
                 </asp:TableCell>
                 <asp:TableCell ColumnSpan="2">
                     <div class="form-floating mb-3;" >
                         <asp:TextBox ID="txtOfferWageTo" class="form-control" runat="server" placeholder="Offer Wage To (Optional)" BorderStyle="None"
-                            TextMode="Number" step="0.01" OnTextChanged="JobOpportunityChanged">0</asp:TextBox>
+                            TextMode="Number" step="0.01" OnTextChanged="CampaignChanged">0</asp:TextBox>
                         <label for="txtOfferWageTo">Offer Wage To (Optional)</label>
                     </div>
                 </asp:TableCell>
@@ -100,7 +102,7 @@
                 <asp:TableCell ColumnSpan="4">
                     <asp:Label runat="server" Text="&nbsp;&nbsp;Per: &nbsp; "></asp:Label>
                     <asp:RadioButtonList ID="rblOfferWagePeriod" runat="server" RepeatDirection="Horizontal"
-                        RepeatLayout="Flow" OnSelectedIndexChanged="JobOpportunityChanged" Enabled="false" BorderStyle="None">
+                        RepeatLayout="Flow" OnSelectedIndexChanged="CampaignChanged" Enabled="false" BorderStyle="None">
                         <asp:ListItem Enabled="True" Text="Hour" Value="h" style="margin-right: 20px;" />
                         <asp:ListItem Enabled="True" Text="Week" Value="w" style="margin-right: 20px;" />
                         <asp:ListItem Enabled="True" Text="Bi-Week" Value="b" style="margin-right: 20px;" />
@@ -138,7 +140,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="accordion-item">
                 <h2 class="accordion-header" id="flush-headingThree">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">

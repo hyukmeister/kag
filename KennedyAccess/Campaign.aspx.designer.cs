@@ -24,6 +24,15 @@ namespace KennedyAccess
         protected global::System.Web.UI.WebControls.CheckBox cbkJobOpportunityChanged;
 
         /// <summary>
+        /// cbkCampaignChanged control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbkCampaignChanged;
+
+        /// <summary>
         /// labTitle control.
         /// </summary>
         /// <remarks>

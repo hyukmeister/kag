@@ -27,7 +27,7 @@ namespace KennedyAccess
             {
                 if (user.HasRole("PrevailingWageCreate") && user.UserType != "Employer")
                 {
-                    labEmpList.Visible = ddlEmployerList.Enabled = ddlEmployerList.Visible = true;
+                    labEmpList.Visible = ddlEmployerList.Visible = true;
                     ddlEmployerList.DataSource = bd.GetEmployerList(user);
                     ddlEmployerList.DataValueField = "EmployerID";
                     ddlEmployerList.DataTextField = "EmployerName";
@@ -40,6 +40,8 @@ namespace KennedyAccess
                     labEmpList.Visible = ddlEmployerList.Visible = false;
                     contPrevWage.EmployerID = user.ObjectID.ToString();
                 }
+
+                btnEditPrevailingWage.Visible = user.HasRole("PrevailingWageEdit");
 
                 if (sPrevailingWageID != null && sPrevailingWageID == "-1")
                 {
@@ -76,7 +78,7 @@ namespace KennedyAccess
             //ddlEmployerList.Enabled = true;
             contPrevWage.SetEditVisibility(false);
             btnEditPrevailingWage.Visible=false;
-            btnSavePrevailingWage.Visible = btnCancel.Visible = true;
+            ddlEmployerList.Enabled = btnSavePrevailingWage.Visible = btnCancel.Visible = true;
         }
 
 
@@ -84,7 +86,7 @@ namespace KennedyAccess
         {
             Response.Redirect("PrevailingWages.aspx");
             btnEditPrevailingWage.Visible = true;
-            btnSavePrevailingWage.Visible = btnCancel.Visible = false;
+            ddlEmployerList.Enabled = btnSavePrevailingWage.Visible = btnCancel.Visible = false;
         }
         protected void btnSavePrevailingWage_Click(object sender, EventArgs e)
         {
@@ -102,7 +104,7 @@ namespace KennedyAccess
             trAttachementControl.Visible = trAttachementHeader.Visible = true;
 
             btnEditPrevailingWage.Visible = true;
-            btnSavePrevailingWage.Visible = btnCancel.Visible = false;
+            ddlEmployerList.Enabled = btnSavePrevailingWage.Visible = btnCancel.Visible = false;
         }
 
         protected void ddlEmployerList_SelectedIndexChanged(object sender, EventArgs e)

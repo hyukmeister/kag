@@ -101,7 +101,8 @@ namespace KennedyAccess.Admin
             sRoleSetRoleRelID = bd.InsertUpdateRoleSetRoleRel(user, sRoleSetRoleRelID,"0", "0",
                 cbkActive.Checked, txtValidFrom.Text,txtValidThru.Text);
 
-            gvRoleSets_RowCancelingEdit(sender, null);
+            //reload rolesetroles data
+            LoadRoleSetRoles("", true);
         }
     }
 }

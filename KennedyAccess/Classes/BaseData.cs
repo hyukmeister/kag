@@ -1037,7 +1037,7 @@ namespace KennedyAccess.Classes
                 new SqlParameter("@FranchiseID", user.FranchiseID),
                 new SqlParameter("@UserID", user.UserID),
                 new SqlParameter("@UsrMainID", UsrMainID),
-                new SqlParameter("@Search", Search));
+                new SqlParameter("@Search", Search)));
 
             if (ds != null && ds.Tables.Count > 0)
             {

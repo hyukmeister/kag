@@ -108,7 +108,7 @@ namespace KennedyAccess.Controls
                     Global.dbcnn, "[InsertContact]",
                     new SqlParameter("@FranchiseID", user.FranchiseID),
                     new SqlParameter("@RecordTypeID", iRecordTypeID),
-                    new SqlParameter("@ReferenceID", intReferencerID),
+                    new SqlParameter("@ReferenceID", labObjectID.Text),
                     new SqlParameter("@UserID", user.UserID),
                     new SqlParameter("@EmployerName", txtEmployerName.Text),
                     new SqlParameter("@FirstName", txtFirstName.Text),

@@ -29,7 +29,7 @@
                         ControlToValidate="ddlEmployerList" MinimumValue="10000" MaximumValue="zzzzz"><br /></asp:RangeValidator>
                 </asp:TableCell>
                 <asp:TableCell  HorizontalAlign="Right"><br />  
-                    <asp:Button ID="btnEditPrevailingWage" runat="server" class="btn btn-default" CausesValidation="false" ValidationGroup="ValidatePrefWage" Text="Edit" OnClick="btnEditPrevailingWage_Click" />
+                    <asp:Button ID="btnEditPrevailingWage" runat="server" class="btn btn-default" CausesValidation="false" ValidationGroup="ValidatePrefWage" Visible="false" Text="Edit" OnClick="btnEditPrevailingWage_Click" />
                     <asp:Button ID="btnSavePrevailingWage" runat="server" class="btn btn-default" Text="Save" OnClick="btnSavePrevailingWage_Click" Visible="false" />&nbsp;
                     <asp:Button ID="btnCancel" runat="server" class="btn btn-default" Text="Cancel" OnClick="btnCancel_Click" CausesValidation="false" Visible="false" />
                 </asp:TableCell>
