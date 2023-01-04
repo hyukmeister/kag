@@ -47,7 +47,7 @@ namespace KennedyAccess
                         //new SqlParameter("@FranchiseID", user.FranchiseID),
                         //new SqlParameter("@UserID", user.UserID),
                         //new SqlParameter("@UsrMainID", UserID))).Tables[0];
-                        DataTable dtUsr = bd.GetUsrMain(user, "0", UserID);
+                        DataTable dtUsr = bd.GetUsrMain(user, UserID, "");
 
                         if (dtUsr.Rows.Count == 1)
                         {

@@ -246,6 +246,8 @@ namespace KennedyAccess
             //PopulatePrevailingWageInfo(iPrevWage.ToString());
             contPrevWage.PrevailingWageID = ddlPrevailingWages.SelectedValue;
             contPrevWage.PopulatePrevailingWageInfo(user, ddlPrevailingWages.SelectedValue);
+
+            CampaignChanged(sender, e);
         }
         private void SetEditVisibilityCampaign(bool bLock)
         {

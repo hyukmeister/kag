@@ -26,6 +26,11 @@ namespace KennedyAccess.Controls
         {
             user = (User)Session["User"];
 
+            if(intReferencerID > 0)
+            {
+                labObjectID.Text = intReferencerID.ToString();
+            }
+
             // if first load and contact type is defined
             if ((!Page.IsPostBack && ContactType != null) || (ContactType=="WorkExperience" && labObjectID.Text == "")) 
             {
@@ -100,7 +105,10 @@ namespace KennedyAccess.Controls
             sContactID = (labContactID.Text == "") ? "-1" : labContactID.Text;
 
             iRecordTypeID = bd.GetRecordTypeID((DataTable)Application["RecordType"], user.FranchiseID, "Contact", ContactType);
-
+            if (intReferencerID > 0)
+            {
+                labObjectID.Text = intReferencerID.ToString();
+            }
             if (sContactID == "-1")
             {
                 // insert new contact
