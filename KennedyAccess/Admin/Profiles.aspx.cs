@@ -21,6 +21,10 @@ namespace KennedyAccess.Admin
             user = (User)Session["User"];
             if (user == null || !user.HasRole("Profiles"))
                 Response.Redirect("Default.aspx");
+
+            if (user.HasRole("ProfilesCreate"))
+                tabNewRole.Visible = true;
+
             if (!IsPostBack)
             {
                 LoadProfiles(true);

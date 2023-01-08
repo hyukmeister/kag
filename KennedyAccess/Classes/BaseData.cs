@@ -549,7 +549,7 @@ namespace KennedyAccess.Classes
         }
 
         public string InserUpdatetUser(int FranchiseID, int UserID, int UserUsrMainID, string UserName,
-            string Password, string UserFirstName, string UserLastName, string Email, string RoleSetName,
+            string Password, string UserFirstName, string UserLastName, string Email, string RoleSetID,
             bool Active, string ValidFrom, string ValidThru, bool Authenticated, string Mobilephone, string note)
         {
             string sResult;
@@ -563,7 +563,7 @@ namespace KennedyAccess.Classes
                 new SqlParameter("@UserFirstName", UserFirstName),
                 new SqlParameter("@UserLastName", UserLastName),
                 new SqlParameter("@Email", Email),
-                new SqlParameter("@RoleSetName", RoleSetName),
+                new SqlParameter("@RoleSetID", RoleSetID),
                 new SqlParameter("@Active", Active),
                 new SqlParameter("@ValidFrom", ValidFrom),
                 new SqlParameter("@ValidThru", ValidThru),
@@ -1000,14 +1000,15 @@ namespace KennedyAccess.Classes
             return obj.ToString();
         }
 
-        public DataTable ResetUserRoleSets(User user)
+        public DataTable ResetUserRoleSets(User user, string ManualUserID)
         {
             DataTable dtDashboard = null;
 
             DataSet ds = SqlHelperv2.ExecuteDataset(Global.dbcnn,
                 "ResetUserRoleSets",
                 new SqlParameter("@FranchiseID", user.FranchiseID),
-                new SqlParameter("@UserID", user.UserID)
+                new SqlParameter("@UserID", user.UserID),
+                new SqlParameter("@ManualUserID", ManualUserID)
             );
             if (ds != null && ds.Tables.Count > 0)
             {

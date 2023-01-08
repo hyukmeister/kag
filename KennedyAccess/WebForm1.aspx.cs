@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
+using System.IO;
 using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace KennedyAccess
@@ -12,30 +9,81 @@ namespace KennedyAccess
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            ddlDropDownTest.DataSource = (DataTable) Application["Country"];
-            ddlDropDownTest.DataTextField = "CountryName";
-            ddlDropDownTest.DataValueField = "CountryID";
-            ddlDropDownTest.DataBind();
+            if (!this.IsPostBack)
+            {
+                DirectoryInfo rootInfo = new DirectoryInfo(Server.MapPath("~/UserFiles/hyuk/"));
+                this.PopulateTreeView(rootInfo, null);
+                PopulateFiles(rootInfo, null);
 
+            }
+            else
+            {
+                string folderName = "~/UserFiles/hyuk/" + tvUserFiles.SelectedNode.Text;
+                foreach (string s in Request.Files)
+                {
+                    HttpPostedFile file = Request.Files[s];
+
+                    int fileSizeInBytes = file.ContentLength;
+                    string fileName = Request.Headers["X-File-Name"];
+                    string fileExtension = "";
+
+                    if (!string.IsNullOrEmpty(fileName))
+                        fileExtension = Path.GetExtension(fileName);
+
+                    // IMPORTANT! Make sure to validate uploaded file contents, size, etc. to prevent scripts being uploaded into your web app directory
+                    string savedFileName = Path.Combine(Server.MapPath(folderName), file.FileName + fileExtension);
+                    file.SaveAs(savedFileName);
+                }
+            }
         }
 
-        protected void ddlDropDownTest_SelectedIndexChanged(object sender, EventArgs e)
+        private void PopulateTreeView(DirectoryInfo dirInfo, TreeNode treeNode)
         {
-            System.Console.WriteLine(ddlDropDownTest.SelectedValue);
-            DataTable dtState = ((DataTable)Application["Country"]).Clone();
-            dtState.Rows.Clear();
-            DataRow drState= dtState.NewRow();
-            drState[0] = 0;
-            drState[1] = ddlDropDownTest.SelectedItem.ToString();
-            dtState.Rows.Add(drState);
+            foreach (DirectoryInfo directory in dirInfo.GetDirectories())
+            {
+                TreeNode directoryNode = new TreeNode
+                {
+                    Text = directory.Name,
+                    Value = directory.FullName,
+                    ImageUrl = "/images/fil012.svg"
+                };
 
-            ddlState.DataSource= dtState;
-            ddlState.DataTextField = "CountryName";
-            ddlState.DataValueField = "CountryID";
-            ddlState.DataBind();
+                if (treeNode == null)
+                {
+                    //If Root Node, add to TreeView.
+                    tvUserFiles.Nodes.Add(directoryNode);
+                }
+                else
+                {
+                    //If Child Node, add to Parent Node.
+                    treeNode.ChildNodes.Add(directoryNode);
+                }
 
-            ddlState.Enabled = true;
+                PopulateFiles(directory, directoryNode);
 
+                PopulateTreeView(directory, directoryNode);
+            }
+        }
+        private void PopulateFiles(DirectoryInfo directory, TreeNode directoryNode)
+        {
+            //Get all files in the Directory.
+            foreach (FileInfo file in directory.GetFiles())
+            {
+                if (file.Name != "desktop.ini")
+                {
+                    //Add each file as Child Node.
+                    TreeNode fileNode = new TreeNode
+                    {
+                        Text = file.Name,
+                        Value = file.FullName,
+                        ImageUrl = "/images/cod002.svg"
+                    };
+                    if(directoryNode==null)
+                        tvUserFiles.Nodes.Add(fileNode);
+                    else
+                        directoryNode.ChildNodes.Add(fileNode);
+                }
+            }
         }
     }
 }

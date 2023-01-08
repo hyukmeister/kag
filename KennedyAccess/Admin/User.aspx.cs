@@ -43,10 +43,6 @@ namespace KennedyAccess
                     {
                         string UserID = Session["UserID"].ToString();
 
-                        //DataTable dtUsr = (SqlHelper.ExecuteDataset(Global.dbcnn, "GetUsrMain",
-                        //new SqlParameter("@FranchiseID", user.FranchiseID),
-                        //new SqlParameter("@UserID", user.UserID),
-                        //new SqlParameter("@UsrMainID", UserID))).Tables[0];
                         DataTable dtUsr = bd.GetUsrMain(user, UserID, "");
 
                         if (dtUsr.Rows.Count == 1)
@@ -79,6 +75,8 @@ namespace KennedyAccess
                             fRoleName.DataTextField = "RoleName";
                             fRoleName.DataValueField = "RoleID";
                             fRoleName.DataBind();
+
+                            gvRoleSets.Columns[6].Visible = btnEditUser.Visible = user.HasRole("UserEdit");
                         }
 
                         SetEditVisibility(true);
@@ -158,7 +156,7 @@ namespace KennedyAccess
             txtNote.BorderStyle = sBorder;
 
             btnCancel.Visible = btnSaveUser.Visible = !bLock;
-            btnEditUser.Visible = bLock;
+            btnEditUser.Visible = bLock && user.HasRole("UserEdit");
         }
 
         protected void btnSaveUser_Click(object sender, EventArgs e)
@@ -166,9 +164,13 @@ namespace KennedyAccess
             try
             {
                 lblUserID.Text = bd.InserUpdatetUser(user.FranchiseID, user.UserID, int.Parse(lblUserID.Text), txtUserName.Text, "",
-                txtFirstName.Text, txtLastName.Text, txtEmail.Text, ddlUserType.SelectedItem.Text,
+                txtFirstName.Text, txtLastName.Text, txtEmail.Text, ddlUserType.SelectedValue,
                 cbkActive.Checked, txtValidFrom.Text, txtValidThru.Text,
                 rblAuthenticated.SelectedValue == "True", txtMobilephone.Text, txtNote.Text);
+
+                bd.ResetUserRoleSets(user, lblUserID.Text);
+
+                LoadUserRoleSetRoles(true);
             }
             catch (Exception ex)
             {
@@ -215,7 +217,7 @@ namespace KennedyAccess
             RoleRelID = bd.InsertUpdateUserRoleSets(user, lblUserID.Text, RoleRelID, 
                 LabRoleID.Text, cbkActive.Checked, txtValidFrom.Text, txtValidThru.Text);
 
-            gvRoleSets_RowCancelingEdit(sender, null);
+            LoadUserRoleSetRoles(true);
         }
 
         protected void NewRole_Click(object sender, EventArgs e)
@@ -231,7 +233,7 @@ namespace KennedyAccess
                 bd.InsertUpdateUserRoleSets(user, lblUserID.Text, "0",
                     ddlRole.SelectedValue, cbkActive.Checked, txtValidFrom.Text, txtValidThru.Text);
 
-                gvRoleSets_RowCancelingEdit(sender, null);
+                LoadUserRoleSetRoles(true);
             }
             catch (Exception ex)
             {

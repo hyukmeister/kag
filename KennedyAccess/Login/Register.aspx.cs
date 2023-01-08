@@ -63,7 +63,7 @@ namespace KennedyAccess.users
             {
                 bool bActive = ddlUserType.SelectedItem.Text != "System Admin";
                 sUserID = bd.InserUpdatetUser(1000, -1, -1, txtUserName.Text, hashpass,
-                    txtFirstName.Text, txtLastName.Text, txtEmail.Text, ddlUserType.SelectedItem.Text,
+                    txtFirstName.Text, txtLastName.Text, txtEmail.Text, ddlUserType.SelectedValue,
                     bActive, DateTime.Today.AddDays(-1).ToShortDateString(), "9999-12-31",
                     false, sInternationalCode+txtMobilephone.Text, "");
 

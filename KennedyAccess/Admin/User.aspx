@@ -117,9 +117,7 @@
                     <asp:Label runat="server" Text="Authentication Code"></asp:Label>
                 </asp:TableCell>
                 <asp:TableCell>
-                <asp:TableCell>
                     <asp:TextBox ID="txtAuthenticationCode" ReadOnly="true" Style="text-align: Left" runat="server" BorderStyle="None"></asp:TextBox>
-                </asp:TableCell>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>
@@ -194,7 +192,7 @@
                         <asp:TextBox ID="fDateFrom" runat="server" TextMode="Date"></asp:TextBox>
                     </FooterTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Valid Thru">
+                <asp:TemplateField HeaderText="Valid Thru" FooterStyle-Width="180px">
                     <ItemTemplate>
                         <asp:Label ID="labValidThru" runat="server" Text='<%# Eval("ValidThru") %>'></asp:Label>
                     </ItemTemplate>
@@ -202,12 +200,12 @@
                         <asp:TextBox ID="txtValidThru" Runat="server" Width="100px" Text='<%# Eval("ValidThru") %>' TextMode="Date"></asp:TextBox>
                     </EditItemTemplate>
                     <FooterTemplate>
-                        <asp:TextBox ID="fDateThru" runat="server" TextMode="Date"></asp:TextBox>
-                        <asp:Button ID="NewRole" runat="server" Text="Save" OnClick="NewRole_Click" />
+                        <asp:TextBox ID="fDateThru" runat="server" TextMode="Date" Width="120px"></asp:TextBox>&nbsp;
+                        <asp:ImageButton ID="NewRole" runat="server" OnClick="NewRole_Click" AlternateText="Save" ImageAlign="Top" Height="25px" ImageUrl="~/images/save_icon.png"/>
                     </FooterTemplate>
                 </asp:TemplateField>
 
-                <asp:CommandField ShowEditButton="True" ItemStyle-Width="80px"/>
+                <asp:CommandField ShowEditButton="True" ItemStyle-Width="80px" />
             </Columns>
         </asp:GridView>
 

@@ -37,7 +37,7 @@ namespace KennedyAccess
                 if(dt.Rows[0]["Authenticated"].ToString()=="True")
                 {
                     // create user rolesets
-                    bd.ResetUserRoleSets(user);
+                    bd.ResetUserRoleSets(user, user.UserID.ToString());
 
                     // verified
                     Console.WriteLine("Success");

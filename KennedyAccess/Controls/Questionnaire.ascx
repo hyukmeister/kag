@@ -39,8 +39,8 @@
         </asp:TemplateField>
         <asp:TemplateField HeaderText="" HeaderStyle-BorderStyle="None" ItemStyle-BorderStyle="None" ItemStyle-HorizontalAlign="Center">
             <ItemTemplate>
-                <asp:ImageButton ID="lnkBtnUpdate" runat="server" OnClick="lnkBtnUpdate_OnClik" AlternateText="Save" ImageUrl="~/images/cod003.svg"/>
-                <asp:ImageButton ID="lnkBtnDelete" runat="server" OnClick="lnkBtnDelete_Click" AlternateText="Delete" ImageUrl="~/images/gen027.svg"/>
+                <asp:ImageButton ID="lnkBtnUpdate" runat="server" OnClick="lnkBtnUpdate_OnClik" AlternateText="Save" ImageAlign="Top" Height="20px" ImageUrl="~/images/save_icon.png"/>
+                <asp:ImageButton ID="lnkBtnDelete" runat="server" OnClick="lnkBtnDelete_Click" AlternateText="Delete" ImageAlign="Top" Height="20px" ImageUrl="~/images/gen027.svg"/>
             </ItemTemplate>
         </asp:TemplateField>
     </Columns>

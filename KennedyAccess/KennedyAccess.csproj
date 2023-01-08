@@ -195,6 +195,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\dropzone.min.css" />
     <Content Include="Controls\Attachments.ascx" />
     <Content Include="Controls\Contact.ascx" />
     <Content Include="Controls\PrevWage.ascx" />
@@ -221,6 +222,7 @@
     <Content Include="images\com013.svg" />
     <Content Include="images\ecm008.svg" />
     <Content Include="images\fil007.svg" />
+    <Content Include="images\fil012.svg" />
     <Content Include="images\fin001.svg" />
     <Content Include="images\fin010.svg" />
     <Content Include="images\gen001.svg" />
@@ -242,6 +244,7 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\dropzone.min.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -255,7 +258,6 @@
     <Content Include="WebForm1.aspx" />
     <Content Include="WebForm2.aspx" />
     <Content Include="Site.Master" />
-    <Content Include="libman.json" />
     <Content Include="Scripts\bootstrap.min.js.map" />
     <Content Include="Scripts\bootstrap.js.map" />
     <Content Include="Scripts\bootstrap.esm.min.js.map" />

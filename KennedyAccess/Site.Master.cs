@@ -19,6 +19,14 @@ namespace KennedyAccess
 
                 if (user != null && user.Authenticated)
                 {
+                    bool users = user.HasRole("Users");
+                    bool settings = user.HasRole("Settings");
+                    bool roles = user.HasRole("Roles");
+                    bool rolesets = user.HasRole("RoleSets");
+                    bool questionnaires = user.HasRole("Questionnaires");
+                    bool employers = user.HasRole("Employers");
+                    bool profiles = user.HasRole("Profiles");
+
                     divEmployers.Visible = user.HasRole("Employers");
                     divAgents.Visible = user.HasRole("Agents");
                     divAttorneys.Visible = user.HasRole("Attorneys");
@@ -27,13 +35,15 @@ namespace KennedyAccess
                     divCampaigns.Visible = user.HasRole("Campaigns") && (user.ObjectID != 0 || user.UserType != "Employer");
                     divJobListings.Visible = user.HasRole("JobListings") && (user.ObjectID != 0 || user.UserType != "Applicant");
                     divApplications.Visible = user.HasRole("Applications") && (user.ObjectID != 0 || user.UserType != "Employer");
-                    divUsers.Visible = user.HasRole("Users");
-                    divSettings.Visible = user.HasRole("Settings");
-                    divRoles.Visible = user.HasRole("Roles");
-                    divRoleSets.Visible = user.HasRole("RoleSets");
-                    divQuestionnaires.Visible = user.HasRole("Questionnaires");
-                    divLogOut.Visible = user.HasRole("Employers");
-                    divProfiles.Visible = user.HasRole("Profiles");
+
+                    //accordionMenu.Visible = users || settings || roles || rolesets || roles || questionnaires || employers || profiles;
+                    divUsers.Visible = users;
+                    divSettings.Visible = settings;
+                    divRoles.Visible = roles;
+                    divRoleSets.Visible = rolesets;
+                    divQuestionnaires.Visible = questionnaires;
+                    divLogOut.Visible = employers;
+                    divProfiles.Visible = profiles;
 
                     divProfile.Visible = user.UserType != "System Admin";
                     divLogOut.Visible = true;
