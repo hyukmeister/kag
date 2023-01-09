@@ -186,7 +186,7 @@
                         <asp:Label ID="Label1" runat="server" Text='<%# Eval("ValidFrom") %>'></asp:Label>
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:TextBox ID="txtValidFrom" Runat="server" Width="100px" Text='<%# Eval("ValidFrom") %>' TextMode="Date"></asp:TextBox>
+                        <asp:TextBox ID="txtValidFrom" Runat="server" Width="140px" Text='<%# Eval("ValidFrom") %>' TextMode="Date"></asp:TextBox>
                     </EditItemTemplate>
                     <FooterTemplate>
                         <asp:TextBox ID="fDateFrom" runat="server" TextMode="Date"></asp:TextBox>
@@ -197,7 +197,7 @@
                         <asp:Label ID="labValidThru" runat="server" Text='<%# Eval("ValidThru") %>'></asp:Label>
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:TextBox ID="txtValidThru" Runat="server" Width="100px" Text='<%# Eval("ValidThru") %>' TextMode="Date"></asp:TextBox>
+                        <asp:TextBox ID="txtValidThru" Runat="server" Width="140px" Text='<%# Eval("ValidThru") %>' TextMode="Date"></asp:TextBox>
                     </EditItemTemplate>
                     <FooterTemplate>
                         <asp:TextBox ID="fDateThru" runat="server" TextMode="Date" Width="120px"></asp:TextBox>&nbsp;

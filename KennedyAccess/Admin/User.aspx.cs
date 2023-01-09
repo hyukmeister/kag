@@ -42,6 +42,7 @@ namespace KennedyAccess
                     else
                     {
                         string UserID = Session["UserID"].ToString();
+                        ViewState["dtRoles"] = bd.GetRole(user, "0", "");
 
                         DataTable dtUsr = bd.GetUsrMain(user, UserID, "");
 
@@ -69,12 +70,6 @@ namespace KennedyAccess
                             txtNote.Text = drUser["Note"].ToString();
 
                             LoadUserRoleSetRoles(true);
-
-                            DropDownList fRoleName = (DropDownList)gvRoleSets.FooterRow.FindControl("fRoleName");
-                            fRoleName.DataSource = bd.GetRole(user, "0", "");
-                            fRoleName.DataTextField = "RoleName";
-                            fRoleName.DataValueField = "RoleID";
-                            fRoleName.DataBind();
 
                             gvRoleSets.Columns[6].Visible = btnEditUser.Visible = user.HasRole("UserEdit");
                         }
@@ -108,6 +103,12 @@ namespace KennedyAccess
 
             gvRoleSets.DataSource = dt;
             gvRoleSets.DataBind();
+
+            DropDownList fRoleName = (DropDownList)gvRoleSets.FooterRow.FindControl("fRoleName");
+            fRoleName.DataSource = (DataTable)ViewState["dtRoles"];
+            fRoleName.DataTextField = "RoleName";
+            fRoleName.DataValueField = "RoleID";
+            fRoleName.DataBind();
         }
 
         protected void btnEditUser_Click(object sender, EventArgs e)
@@ -211,6 +212,7 @@ namespace KennedyAccess
         protected void gvRoleSets_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             gvRoleSets.EditIndex = -1;
+
             LoadUserRoleSetRoles(false);
         }
 
@@ -224,6 +226,8 @@ namespace KennedyAccess
             TextBox txtValidThru = (TextBox)gvRoleSets.Rows[idx].Cells[5].Controls[1];
             RoleRelID = bd.InsertUpdateUserRoleSets(user, lblUserID.Text, RoleRelID, 
                 LabRoleID.Text, cbkActive.Checked, txtValidFrom.Text, txtValidThru.Text);
+
+            gvRoleSets.EditIndex = -1;
 
             LoadUserRoleSetRoles(true);
         }
