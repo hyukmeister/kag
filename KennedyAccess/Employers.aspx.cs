@@ -23,10 +23,6 @@ namespace KennedyAccess.users
 
             if (!Page.IsPostBack)
             {
-                //DataTable dt = (SqlHelper.ExecuteDataset(Global.dbcnn, "GetEmployer",
-                //        new SqlParameter("@FranchiseID", user.FranchiseID),
-                //        new SqlParameter("@UserID", user.UserID),
-                //        new SqlParameter("@EmployerID", 0))).Tables[0];
                 DataTable dtEmployers = bd.GetEmployer(user, "0","");
                 gvEmployers.DataSource = dtEmployers;
                 gvEmployers.DataBind();
@@ -57,11 +53,6 @@ namespace KennedyAccess.users
         }
         protected void btnSearchEmployer_Click(object sender, EventArgs e)
         {
-            //DataTable dt = (SqlHelper.ExecuteDataset(Global.dbcnn, "GetEmployer",
-            //            new SqlParameter("@FranchiseID", user.FranchiseID),
-            //            new SqlParameter("@UserID", user.UserID),
-            //            new SqlParameter("@EmployerID", 0),
-            //            new SqlParameter("@Search", txtSearch.Text))).Tables[0];
             DataTable dt = bd.GetEmployer(user, "0", txtSearch.Text);
             gvEmployers.DataSource = dt;
             gvEmployers.DataBind();

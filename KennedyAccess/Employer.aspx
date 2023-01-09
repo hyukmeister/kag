@@ -4,7 +4,7 @@
 <%@ Register Src="~/Controls/Questionnaire.ascx" TagPrefix="uc2" TagName="Questionnaire" %>
 <%@ Register Src="~/Controls/Attachments.ascx" TagPrefix="uc3" TagName="Attachments" %>
 <%@ Register Src="~/Controls/ProfilePicture.ascx" TagPrefix="uc4" TagName="ProfilePicture" %>
-
+<%@ Register Src="~/Controls/UserFiles.ascx" TagPrefix="uc5" TagName="UserFiles" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <asp:CheckBox ID="cbkEmployerChanged" runat="server" Checked="false" Visible="false" />
@@ -276,6 +276,20 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingFive">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+                            <h5>Files</h5>
+                        </button>
+                    </h2>
+                    <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <uc5:UserFiles runat="server" ID="ucUserFiles" />
+                        </div>
+                    </div>
+                </div>
+
             </asp:Panel>
         </div>
     </div>

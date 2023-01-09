@@ -1,14 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Web;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace KennedyAccess
+namespace KennedyAccess.Controls
 {
-    public partial class WebForm1 : System.Web.UI.Page
+    public partial class UserFiles : System.Web.UI.UserControl
     {
         private string userName;
         private string rootFolder;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             userName = "hyuk";
@@ -28,24 +32,25 @@ namespace KennedyAccess
             }
             else
             {
-                string folderName = tvUserFolders.SelectedValue;
                 foreach (string s in Request.Files)
                 {
+                    string folderName = tvUserFolders.SelectedValue;
                     HttpPostedFile file = Request.Files[s];
 
                     int fileSizeInBytes = file.ContentLength;
-                    string fileName = file.FileName;
-                    string fileExtension = "";
+                    if(fileSizeInBytes > 0)
+                    {
+                        string fileName = Request.Headers["X-File-Name"];
+                        string fileExtension = "";
 
-                    if (!string.IsNullOrEmpty(fileName))
-                        fileExtension = Path.GetExtension(fileName);
+                        if (!string.IsNullOrEmpty(fileName))
+                            fileExtension = Path.GetExtension(fileName);
 
-                    // IMPORTANT! Make sure to validate uploaded file contents, size, etc. to prevent scripts being uploaded into your web app directory
-                    string savedFileName = Path.Combine(folderName, file.FileName + fileExtension);
-                    file.SaveAs(savedFileName);
+                        // IMPORTANT! Make sure to validate uploaded file contents, size, etc. to prevent scripts being uploaded into your web app directory
+                        string savedFileName = Path.Combine(folderName, file.FileName + fileExtension);
+                        file.SaveAs(savedFileName);
+                    }
                 }
-                DirectoryInfo rootInfo = new DirectoryInfo(tvUserFolders.SelectedValue);
-                PopulateFiles(rootInfo);
             }
         }
 

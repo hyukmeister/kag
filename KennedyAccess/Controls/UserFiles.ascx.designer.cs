@@ -7,21 +7,30 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KennedyAccess
+namespace KennedyAccess.Controls
 {
 
 
-    public partial class WebForm1
+    public partial class UserFiles
     {
 
         /// <summary>
-        /// form1 control.
+        /// LabReferenceID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.Label LabReferenceID;
+
+        /// <summary>
+        /// labRecordTypeID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label labRecordTypeID;
 
         /// <summary>
         /// tblAttachment control.
