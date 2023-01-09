@@ -73,6 +73,7 @@ namespace KennedyAccess
                     string roles = "";
                     foreach(DataRow drRole in dtRoles.Rows)
                     {
+                        if (drRole["Active"].ToString()=="True")
                         roles += drRole["RoleName"].ToString() + ",";
                     }
                     user.UserRoles = roles;
