@@ -549,7 +549,7 @@ namespace KennedyAccess.Classes
         }
 
         public string InserUpdatetUser(int FranchiseID, int UserID, int UserUsrMainID, string UserName,
-            string Password, string UserFirstName, string UserLastName, string Email, string RoleSetID,
+            string Password, string UserFirstName, string UserLastName, string Email, string RecordTypeID, string RoleSetID,
             bool Active, string ValidFrom, string ValidThru, bool Authenticated, string Mobilephone, string note)
         {
             string sResult;
@@ -563,6 +563,7 @@ namespace KennedyAccess.Classes
                 new SqlParameter("@UserFirstName", UserFirstName),
                 new SqlParameter("@UserLastName", UserLastName),
                 new SqlParameter("@Email", Email),
+                new SqlParameter("@RecordTypeID", RecordTypeID),
                 new SqlParameter("@RoleSetID", RoleSetID),
                 new SqlParameter("@Active", Active),
                 new SqlParameter("@ValidFrom", ValidFrom),

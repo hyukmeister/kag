@@ -258,7 +258,6 @@
     <Content Include="Scripts\esm\popper-utils.js.map" />
     <Content Include="Scripts\mychart.js" />
     <Content Include="UserFiles\hyuk\logo.png" />
-    <Content Include="UserFiles\hyuk\Pictures\Hpbd.name_163ade5b985264.jpg" />
     <Content Include="WebForm1.aspx" />
     <Content Include="WebForm2.aspx" />
     <Content Include="Site.Master" />
@@ -769,6 +768,8 @@
     <Folder Include="App_Data\" />
     <Folder Include="Documents\" />
     <Folder Include="UserFiles\hyuk\Downloads\" />
+    <Folder Include="UserFiles\hyuk\Music\" />
+    <Folder Include="UserFiles\hyuk\Pictures\" />
     <Folder Include="UserFiles\hyuk\Videos\" />
   </ItemGroup>
   <ItemGroup>
@@ -785,12 +786,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Scripts\jquery-3.6.0.min.map" />
     <Content Include="Scripts\jquery-3.6.0.slim.min.map" />
-    <Content Include="UserFiles\hyuk\2c07830d-da57-4e1f-b205-845309b69570" />
-    <Content Include="UserFiles\hyuk\a6afdbc1-062c-42be-b921-141c8e830246" />
     <Content Include="UserFiles\hyuk\Documents\AdobeGCInfo\ConsentRecord" />
-    <Content Include="UserFiles\hyuk\Documents\G 211214 Linear TV Channel Origination - Amendment OTT - Solution engineering description.docx" />
-    <Content Include="UserFiles\hyuk\Music\4e7eb04d-c8b8-4b1f-8dc0-d0f4a276607b" />
-    <Content Include="UserFiles\hyuk\Pictures\James-Webb-telescope-appears-to-picture-wormhole-in-Phantom-Galaxy.webp" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

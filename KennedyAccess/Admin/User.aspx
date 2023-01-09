@@ -16,20 +16,6 @@
             </asp:TableRow>
             <asp:TableRow>
                 <asp:TableCell>
-                    <asp:Label runat="server" Text="User ID"></asp:Label>
-                </asp:TableCell>
-                <asp:TableCell>
-                    <asp:Label ID="lblUserID" runat="server"></asp:Label>
-                </asp:TableCell>
-                <asp:TableCell>
-                    <asp:Label runat="server" Text="Active"></asp:Label>
-                </asp:TableCell>
-                <asp:TableCell HorizontalAlign="left">
-                    <asp:CheckBox ID="cbkActive" runat="server"></asp:CheckBox>
-                </asp:TableCell>
-            </asp:TableRow>
-            <asp:TableRow>
-                <asp:TableCell>
                     <asp:Label runat="server" Text="Record Type" Visible="false"></asp:Label>
                 </asp:TableCell>
                 <asp:TableCell>
@@ -43,8 +29,22 @@
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>
-                <asp:TableCell ColumnSpan="4" HorizontalAlign="Left" BackColor="dimgray" ForeColor="#66FFFF">
-                    <asp:Label runat="server" Text="User Information"></asp:Label>
+                <asp:TableCell ColumnSpan="4" HorizontalAlign="Left" BackColor="dimgray" ForeColor="white">
+                    <h4><asp:Label ID="Label3" runat="server" Text="User Information"></asp:Label></h4>
+                </asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow>
+                <asp:TableCell>
+                    <asp:Label runat="server" Text="User ID"></asp:Label>
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:Label ID="lblUserID" runat="server"></asp:Label>
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:Label runat="server" Text="Active"></asp:Label>
+                </asp:TableCell>
+                <asp:TableCell HorizontalAlign="left">
+                    <asp:CheckBox ID="cbkActive" runat="server"></asp:CheckBox>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>
@@ -143,7 +143,7 @@
                 </asp:TableCell>
             </asp:TableRow>
         </asp:Table><br /><br />
-        <h2><asp:Label ID="Label2" runat="server" Text="User Roles"></asp:Label></h2>
+        <h3><asp:Label ID="Label2" runat="server" Text="User Roles"></asp:Label></h3>
         <asp:GridView ID="gvRoleSets" runat="server" AutoGenerateColumns="False" class="table table-hover"  
             GridLines="None" CellPadding="4" OnRowEditing="gvRoleSets_RowEditing" ShowFooter="True" 
             OnRowCancelingEdit="gvRoleSets_RowCancelingEdit" OnRowUpdating="gvRoleSets_RowUpdating">

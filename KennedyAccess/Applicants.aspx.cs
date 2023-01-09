@@ -73,12 +73,6 @@ namespace KennedyAccess.users
 
                 AcroFields pdfFormFields = pdfStamper.AcroFields;
 
-                //// populate form
-                //pdfFormFields.SetField("Pt1Line1a_FamilyName[0]", lastName);
-                //pdfFormFields.SetField("Pt1Line1b_GivenName[0]", firstName);
-                //pdfFormFields.SetField("Line2_CompanyName[0]", "company");
-                //pdfStamper.FormFlattening = true;
-
                 // close the pdf
                 pdfStamper.Close();
                 pdfReader.Close();

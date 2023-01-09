@@ -163,14 +163,22 @@ namespace KennedyAccess
         {
             try
             {
-                lblUserID.Text = bd.InserUpdatetUser(user.FranchiseID, user.UserID, int.Parse(lblUserID.Text), txtUserName.Text, "",
-                txtFirstName.Text, txtLastName.Text, txtEmail.Text, ddlUserType.SelectedValue,
-                cbkActive.Checked, txtValidFrom.Text, txtValidThru.Text,
-                rblAuthenticated.SelectedValue == "True", txtMobilephone.Text, txtNote.Text);
+                string sRoleSetID;
+                // get rolesetid from ddlusertype
+                DataTable dtRoleSet = (DataTable)Application["RoleSet"];
+                DataRow[] drRoleSet = dtRoleSet.Select("RoleSetName='" + ddlUserType.SelectedItem.Text + "'");
+                if (drRoleSet.Length == 1)
+                {
+                    sRoleSetID = drRoleSet[0]["RoleSetID"].ToString();
+                    lblUserID.Text = bd.InserUpdatetUser(user.FranchiseID, user.UserID, int.Parse(lblUserID.Text), txtUserName.Text, "",
+                        txtFirstName.Text, txtLastName.Text, txtEmail.Text, ddlUserType.SelectedValue,
+                        sRoleSetID, cbkActive.Checked, txtValidFrom.Text, txtValidThru.Text,
+                        rblAuthenticated.SelectedValue == "True", txtMobilephone.Text, txtNote.Text);
 
-                bd.ResetUserRoleSets(user, lblUserID.Text);
+                        bd.ResetUserRoleSets(user, lblUserID.Text);
 
-                LoadUserRoleSetRoles(true);
+                        LoadUserRoleSetRoles(true);
+                }
             }
             catch (Exception ex)
             {
