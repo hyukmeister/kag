@@ -130,6 +130,8 @@ namespace KennedyAccess
                         ddlUserName.SelectedValue = dr["UserId"].ToString();
 
                         panFiles.Visible = user.HasRole("EmployerFiles");
+
+                        UserFiles.UserName = labEmployer.Text;
                     }
 
                     // employer

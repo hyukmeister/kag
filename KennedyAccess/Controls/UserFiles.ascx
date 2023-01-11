@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UserFiles.ascx.cs" Inherits="KennedyAccess.Controls.UserFiles" %>
 <script src="../Scripts/dropzone.min.js" type="text/javascript"></script>
     
-    <asp:Label ID="LabReferenceID" runat="server" Visible="false"></asp:Label>
+    <asp:Label ID="labUserName" runat="server" Visible="false"></asp:Label>
     <asp:Label runat="server" ID="labRecordTypeID" Visible="false"></asp:Label>
 
     <asp:Table ID="tblAttachment" runat="server" class="table" Width="850px">

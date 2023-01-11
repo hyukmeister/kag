@@ -15,13 +15,13 @@ namespace KennedyAccess.Controls
     {
 
         /// <summary>
-        /// LabReferenceID control.
+        /// labUserName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabReferenceID;
+        protected global::System.Web.UI.WebControls.Label labUserName;
 
         /// <summary>
         /// labRecordTypeID control.

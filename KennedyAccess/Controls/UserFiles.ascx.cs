@@ -11,16 +11,16 @@ namespace KennedyAccess.Controls
     public partial class UserFiles : System.Web.UI.UserControl
     {
         private User user;
-        private string userName;
+        public string UserName;
         private string rootFolder;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            userName = "hyuk";
-            rootFolder = "~/UserFiles/" + userName + "/ ";
             if (!this.IsPostBack)
             {
+                labUserName.Text = UserName;
                 user = (User)Session["User"];
+                rootFolder = "~/UserFiles/" + labUserName.Text + "/ ";
 
                 // create the root folder if necessary
                 CreateFolder(Server.MapPath(rootFolder));
@@ -33,10 +33,12 @@ namespace KennedyAccess.Controls
                 //labDirectory.Text = "/" + tvUserFolders.SelectedNode.Text;
                 PopulateFiles(rootInfo);
 
-                btnNewFolder.Visible = user.HasRole("");
+                btnNewFolder.Visible = user.HasRole("EmployerFileAdd");
             }
             else
             {
+                rootFolder = "~/UserFiles/" + labUserName.Text + "/ ";
+
                 foreach (string s in Request.Files)
                 {
                     string folderName = tvUserFolders.SelectedValue;
@@ -57,6 +59,8 @@ namespace KennedyAccess.Controls
                     }
                 }
             }
+
+            
         }
 
         private void LoadFolders()
@@ -66,7 +70,7 @@ namespace KennedyAccess.Controls
 
             TreeNode directoryNode = new TreeNode
             {
-                Text = userName,
+                Text = labUserName.Text,
                 Value = rootInfo.FullName,
                 ImageUrl = "/images/home.png"
             };
