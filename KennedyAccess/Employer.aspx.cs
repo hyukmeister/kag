@@ -21,6 +21,8 @@ namespace KennedyAccess
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Page.MaintainScrollPositionOnPostBack = true;
+
             user = (User)Session["User"];
             if (user == null || !user.HasRole("Employer"))
                 Response.Redirect("Default.aspx");
@@ -126,6 +128,8 @@ namespace KennedyAccess
                         ddlUserName.DataValueField = "UserID";
                         ddlUserName.DataBind();
                         ddlUserName.SelectedValue = dr["UserId"].ToString();
+
+                        panFiles.Visible = user.HasRole("EmployerFiles");
                     }
 
                     // employer
@@ -140,10 +144,6 @@ namespace KennedyAccess
                     btnEditEmployer.Visible = user.HasRole("EmployerEdit");
                 }
             }
-
-            // to pass ApplicantID to controls: attachment 
-            contAttachments.RecordTypeID = bd.GetRecordTypeID((DataTable)Application["RecordType"], user.FranchiseID, "Object", "Employer").ToString();
-            contAttachments.ReferenceID = Session["EmployerID"].ToString();
         }
 
         protected void btnEditEmployer_Click(object sender, EventArgs e)

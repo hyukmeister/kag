@@ -6,6 +6,7 @@
 <%@ Register Src="~/Controls/ProfilePicture.ascx" TagPrefix="uc4" TagName="ProfilePicture" %>
 <%@ Register Src="~/Controls/UserFiles.ascx" TagPrefix="uc5" TagName="UserFiles" %>
 
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <asp:CheckBox ID="cbkEmployerChanged" runat="server" Checked="false" Visible="false" />
     <h2>
@@ -264,19 +265,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingThree">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                            <h5>Attachments</h5>
-                        </button>
-                    </h2>
-                    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">
-                            <uc3:Attachments runat="server" ID="contAttachments" />
-                        </div>
-                    </div>
-                </div>
 
+                <asp:Panel ID="panFiles" runat="server">
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="flush-headingFive">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
@@ -285,11 +275,12 @@
                     </h2>
                     <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
-                            <uc5:UserFiles runat="server" ID="ucUserFiles" />
+                            <uc5:UserFiles runat="server" ID="UserFiles" />
+
                         </div>
                     </div>
                 </div>
-
+                </asp:Panel>
             </asp:Panel>
         </div>
     </div>

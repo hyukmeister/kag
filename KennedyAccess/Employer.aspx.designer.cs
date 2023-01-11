@@ -285,21 +285,21 @@ namespace KennedyAccess
         protected global::KennedyAccess.Controls.Questionnaire Questionnaire;
 
         /// <summary>
-        /// contAttachments control.
+        /// panFiles control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::KennedyAccess.Controls.Attachments contAttachments;
+        protected global::System.Web.UI.WebControls.Panel panFiles;
 
         /// <summary>
-        /// ucUserFiles control.
+        /// UserFiles control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::KennedyAccess.Controls.UserFiles ucUserFiles;
+        protected global::KennedyAccess.Controls.UserFiles UserFiles;
     }
 }

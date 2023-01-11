@@ -640,7 +640,10 @@ progress {
   margin-right: auto;
   margin-left: auto;
 }
-
+.container .dropzone {
+    border:2px dashed blue;
+    height:120px;
+}
 @media (min-width: 576px) {
   .container-sm, .container {
     max-width: 540px;

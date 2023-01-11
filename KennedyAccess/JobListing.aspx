@@ -178,9 +178,9 @@
                 </div>
             </div>
         </div>
-   </div>
+    </div>
 
-        <div style="width:750px">
+    <div style="width:750px">
         <div class="modal fade" id="myOfferLetterModal">
             <div class="modal-dialog">
                 <!-- Modal content-->
@@ -190,7 +190,7 @@
                             <asp:table runat="server">
                                 <asp:TableFooterRow>
                                     <asp:TableCell >
-                                       <h3 class="modal-title">Offer Letter</h3><br />
+                                        <h3 class="modal-title">Offer Letter</h3><br />
                                     </asp:TableCell>
                                     <asp:TableCell HorizontalAlign="Right">
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -211,10 +211,10 @@
                                         <asp:Button ID="btnAccept" runat="server" class="btn btn-primary" 
                                             ValidationGroup="OfferLetterResponse" Text="I Accept" OnClick="btnAccept_Click"/>
                                         <button type="button" class="btn btn-primary" data-bs-dismiss="modal" value="Close">Close</button>
-                                     </asp:TableCell>
+                                        </asp:TableCell>
                                 </asp:TableRow>
                             </asp:table>
-                       </div>
+                        </div>
                     </div>
                 </div>
             </div>

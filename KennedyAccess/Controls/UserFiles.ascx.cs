@@ -10,6 +10,7 @@ namespace KennedyAccess.Controls
 {
     public partial class UserFiles : System.Web.UI.UserControl
     {
+        private User user;
         private string userName;
         private string rootFolder;
 
@@ -19,8 +20,10 @@ namespace KennedyAccess.Controls
             rootFolder = "~/UserFiles/" + userName + "/ ";
             if (!this.IsPostBack)
             {
+                user = (User)Session["User"];
+
                 // create the root folder if necessary
-                CreateFolder(rootFolder);
+                CreateFolder(Server.MapPath(rootFolder));
 
                 DirectoryInfo rootInfo = new DirectoryInfo(Server.MapPath(rootFolder));
 
@@ -29,6 +32,8 @@ namespace KennedyAccess.Controls
                 tvUserFolders.Nodes[0].Selected = true;
                 //labDirectory.Text = "/" + tvUserFolders.SelectedNode.Text;
                 PopulateFiles(rootInfo);
+
+                btnNewFolder.Visible = user.HasRole("");
             }
             else
             {
@@ -56,6 +61,7 @@ namespace KennedyAccess.Controls
 
         private void LoadFolders()
         {
+            tvUserFolders.Nodes.Clear();
             DirectoryInfo rootInfo = new DirectoryInfo(Server.MapPath(rootFolder));
 
             TreeNode directoryNode = new TreeNode
@@ -73,10 +79,25 @@ namespace KennedyAccess.Controls
         private void CreateFolder(string rootFolder)
         {
             // create the root folder if necessary
-            bool exists = System.IO.Directory.Exists(Server.MapPath(rootFolder));
+            bool exists = System.IO.Directory.Exists(rootFolder);
 
             if (!exists)
-                System.IO.Directory.CreateDirectory(Server.MapPath(rootFolder));
+                System.IO.Directory.CreateDirectory(rootFolder);
+
+            // reload folders
+            LoadFolders();
+        }
+
+        private void RenameFolder(string oldFoldePath, string newFoldePath)
+        {
+            // create the root folder if necessary
+            bool exists = System.IO.Directory.Exists(oldFoldePath);
+
+            if (exists)
+                System.IO.Directory.Move(oldFoldePath, newFoldePath);
+
+            // reload folders
+            LoadFolders();
         }
 
         private void PopulateTreeView(DirectoryInfo dirInfo, TreeNode treeNode)
@@ -148,10 +169,24 @@ namespace KennedyAccess.Controls
             LoadFolders();
         }
 
-        protected void lnkBtnCreate_Click(object sender, System.Web.UI.ImageClickEventArgs e)
+        protected void btnCreate_Click(object sender, EventArgs e)
         {
             string folderName = tvUserFolders.SelectedValue;
+            CreateFolder(folderName + "\\" + txtFolderNmae.Text);
+        }
+        protected void btnRename_Click(object sender, EventArgs e)
+        {
+            string oldFoldePath = tvUserFolders.SelectedValue;
+            string newFoldePath = oldFoldePath;
 
+            string oldName = tvUserFolders.SelectedNode.Text;
+            string newName = txtRenameFolder.Text;
+
+            int i = newFoldePath.LastIndexOf(oldName);
+            if (i >= 0)
+                newFoldePath = newFoldePath.Substring(0, i) + newName;
+
+            RenameFolder(oldFoldePath, newFoldePath);
         }
     }
 }

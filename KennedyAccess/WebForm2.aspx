@@ -1,5 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/site.Master" AutoEventWireup="true" CodeBehind="WebForm2.aspx.cs" Inherits="KennedyAccess.WebForm2" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/site1.Master" AutoEventWireup="true" CodeBehind="WebForm2.aspx.cs" Inherits="KennedyAccess.WebForm2" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+<script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
 
 <div class="form-floating mb-3;" style="width:300px">
     <div class="bd-example">
@@ -163,6 +165,40 @@
     <asp:DropDownList ID="ddlDropDownTest" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlDropDownTest_SelectedIndexChanged"></asp:DropDownList><br /><br />
     <asp:DropDownList ID="ddlState" runat="server" Enabled="false"></asp:DropDownList>
              
+        <asp:Table ID="tblAttachment" runat="server" class="table table-hover" Width="800px">
+            <asp:TableRow BackColor="#B5B5B5" Height="30px">
+                <asp:TableCell Width="300px" HorizontalAlign="Right">
+                    <asp:ImageButton ID="lnkBtnCreate" runat="server" OnClick="lnkBtnCreate_Click" AlternateText="Delete" ImageAlign="Top" Height="20px" ImageUrl="~/images/arr017.svg" Visible="false"/>&nbsp;
+                    <asp:ImageButton ID="lnkBtnDelete" runat="server" OnClick="lnkBtnDelete_Click" AlternateText="Delete" ImageAlign="Top" Height="20px" ImageUrl="~/images/gen027.svg" Visible="false"/>
+                </asp:TableCell>
+                <asp:TableCell Width="500px">
+                    &nbsp;<asp:Label ID="labDirectory" runat="server" Text=""></asp:Label>
+                </asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow VerticalAlign="Top" BackColor="#edf2f2">
+                <asp:TableCell Width="300px">
+                    <asp:TreeView ID="tvUserFolders" runat="server" ImageSet="XPFileExplorer" NodeIndent="15" 
+                        Height="100%" OnSelectedNodeChanged="tvUserFolders_SelectedNodeChanged">
+                        <HoverNodeStyle Font-Underline="True" ForeColor="#6666AA" />
+                        <NodeStyle Font-Names="Tahoma" Font-Size="8pt" ForeColor="Black" HorizontalPadding="2px"
+                            NodeSpacing="0px" VerticalPadding="2px"></NodeStyle>
+                        <ParentNodeStyle Font-Bold="False" />
+                        <SelectedNodeStyle BackColor="#B5B5B5" Font-Underline="False" HorizontalPadding="0px"
+                            VerticalPadding="0px" />
+                    </asp:TreeView>
+                </asp:TableCell>
+                <asp:TableCell VerticalAlign="Top" Width="500px">
+                    <asp:TreeView ID="tvUserFiles" runat="server" ImageSet="XPFileExplorer" NodeIndent="15" >
+                        <NodeStyle Font-Names="Tahoma" Font-Size="8pt" ForeColor="Black" HorizontalPadding="2px"
+                            NodeSpacing="0px" VerticalPadding="2px"></NodeStyle>
+                    </asp:TreeView>
+                    <div id="dZUpload" class="dropzone">
+                        <div class="dz-default dz-message"></div>
+                    </div>
+                </asp:TableCell>
+            </asp:TableRow>
+        </asp:Table>
+<link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
 
 </asp:Content>
 

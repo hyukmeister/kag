@@ -17,6 +17,7 @@ namespace KennedyAccess.Admin
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Page.MaintainScrollPositionOnPostBack = true;
             user = (User)Session["User"];
             if (user == null || !user.HasRole("Roles"))
                 Response.Redirect("../Default.aspx");

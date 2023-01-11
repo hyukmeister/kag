@@ -5,8 +5,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Chart & File Drag Drop</title>
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
     <link href="~/Content/dropzone.min.css" rel="stylesheet" />
-    <script src="Scripts/mychart.js" rel="stylesheet"></script>
     <script src="Scripts/dropzone.min.js" type="text/javascript"></script>
 </head>
 <body>
@@ -44,7 +44,7 @@
         <asp:Table ID="tblAttachment" runat="server" class="table table-hover" Width="800px">
             <asp:TableRow BackColor="#B5B5B5" Height="30px">
                 <asp:TableCell Width="300px" HorizontalAlign="Right">
-                    <asp:ImageButton ID="lnkBtnCreate" runat="server" OnClick="lnkBtnCreate_Click" AlternateText="Delete" ImageAlign="Top" Height="20px" ImageUrl="~/images/arr017.svg" Visible="false"/>&nbsp;
+                    <asp:ImageButton ID="lnkBtnCreate" runat="server" OnClick="lnkBtnCreate_Click" AlternateText="Delete" ImageAlign="Top" Height="20px" ImageUrl="~/images/arr017.svg" Visible="true"/>&nbsp;
                     <asp:ImageButton ID="lnkBtnDelete" runat="server" OnClick="lnkBtnDelete_Click" AlternateText="Delete" ImageAlign="Top" Height="20px" ImageUrl="~/images/gen027.svg" Visible="false"/>
                 </asp:TableCell>
                 <asp:TableCell Width="500px">
@@ -68,8 +68,8 @@
                         <NodeStyle Font-Names="Tahoma" Font-Size="8pt" ForeColor="Black" HorizontalPadding="2px"
                             NodeSpacing="0px" VerticalPadding="2px"></NodeStyle>
                     </asp:TreeView>
-                    <div id="dZUpload" class="dropzone">
-                        <div class="dz-default dz-message"></div>
+                    <div id="dZUpload" class="container dropzone" >
+                        <div class="dz-default dz-message" ><span style="font-family:Calibri">Drag and Drop Files Here</span></div>
                     </div>
                 </asp:TableCell>
             </asp:TableRow>

@@ -9,10 +9,11 @@ using System.Web.UI.WebControls;
 
 namespace KennedyAccess
 {
-    public partial class WebForm2 : System.Web.UI.Page
+    public partial class WebForm3 : System.Web.UI.Page
     {
         private string userName;
         private string rootFolder;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             Page.MaintainScrollPositionOnPostBack = true;
@@ -22,11 +23,6 @@ namespace KennedyAccess
 
             if (!Page.IsPostBack)
             {
-
-                ddlDropDownTest.DataSource = (DataTable)Application["Country"];
-                ddlDropDownTest.DataTextField = "CountryName";
-                ddlDropDownTest.DataValueField = "CountryID";
-                ddlDropDownTest.DataBind();
 
                 // create the root folder if necessary
                 CreateFolder(rootFolder);
@@ -61,9 +57,9 @@ namespace KennedyAccess
                 DirectoryInfo rootInfo = new DirectoryInfo(tvUserFolders.SelectedValue);
                 PopulateFiles(rootInfo);
             }
-
         }
-        private void CreateFolder(string rootFolder)
+
+            private void CreateFolder(string rootFolder)
         {
             // create the root folder if necessary
             bool exists = System.IO.Directory.Exists(Server.MapPath(rootFolder));
@@ -134,41 +130,13 @@ namespace KennedyAccess
             }
         }
 
-        protected void btnSave_Click(object sender, EventArgs e)
+
+        protected void tvUserFolders_SelectedNodeChanged(object sender, EventArgs e)
         {
-                string sText = txtLastName.Text;
-        }
-
-        protected void btnSave1_Click(object sender, EventArgs e)
-        {
-            string sText = TextBox3.Text;
-        }
-
-        protected void Button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void Button4_Click(object sender, EventArgs e)
-        {
-            cbkI_34_ListJob.Enabled = !cbkI_34_ListJob.Enabled;
-        }
-
-        protected void ddlDropDownTest_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if(ddlDropDownTest.SelectedItem.Text == "United States") 
-            {
-                //System.Console.WriteLine(ddlDropDownTest.SelectedValue);
-                DataTable dtState = ((DataTable)Application["State"]);
-
-                ddlState.DataSource = dtState;
-                ddlState.DataTextField = "StateFull";
-                ddlState.DataValueField = "StateID";
-                ddlState.DataBind();
-
-                ddlState.Enabled = true;
-            }
-
+            string folderName = tvUserFolders.SelectedValue;
+            DirectoryInfo rootInfo = new DirectoryInfo(folderName);
+            PopulateFiles(rootInfo);
+            //labDirectory.Text = "/" + tvUserFolders.SelectedNode.Text;
         }
 
         protected void lnkBtnCreate_Click(object sender, ImageClickEventArgs e)
@@ -180,15 +148,6 @@ namespace KennedyAccess
         {
 
         }
-        protected void tvUserFolders_SelectedNodeChanged(object sender, EventArgs e)
-        {
-            string folderName = tvUserFolders.SelectedValue;
-            DirectoryInfo rootInfo = new DirectoryInfo(folderName);
-            PopulateFiles(rootInfo);
-            //labDirectory.Text = "/" + tvUserFolders.SelectedNode.Text;
-        }
 
     }
-
-
 }

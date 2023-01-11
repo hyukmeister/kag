@@ -11,6 +11,8 @@ namespace KennedyAccess
         private string rootFolder;
         protected void Page_Load(object sender, EventArgs e)
         {
+            Page.MaintainScrollPositionOnPostBack = true;
+
             userName = "hyuk";
             rootFolder = "~/UserFiles/" + userName + "/ ";
             if (!this.IsPostBack)
