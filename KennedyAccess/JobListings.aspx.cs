@@ -45,6 +45,9 @@ namespace KennedyAccess
                     gvJobListings.Columns[5].Visible = false;
                 }
             }
+
+            gvJobListings.Columns[6].Visible = user.HasRole("JobListing");
+
         }
         protected void btnSearchJobListing_Click(object sender, EventArgs e)
         {

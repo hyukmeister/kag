@@ -26,6 +26,8 @@ namespace KennedyAccess
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Page.MaintainScrollPositionOnPostBack = true;
+
             user = (User)Session["User"];
             if (user == null || !user.HasRole("Applicant"))
                 Response.Redirect("Default.aspx");
@@ -284,6 +286,9 @@ namespace KennedyAccess
         {
             BorderStyle sBorder = (bLock) ? BorderStyle.None : BorderStyle.NotSet;
 
+            btnEditApplicant.Visible = bLock && user.HasRole("ApplicantEdit");
+            btnCancel.Visible = btnSaveApplicant.Visible = !bLock;
+
             txtDateOfBirth.ReadOnly = bLock;
             txtDateOfBirth.BorderStyle = sBorder;
             txtAdmissionClass.ReadOnly = bLock;
@@ -306,8 +311,6 @@ namespace KennedyAccess
             // applicant oversea Edit & Visibility
             contApplicantOversea.SetEditability(bLock);
 
-            btnCancel.Visible = btnSaveApplicant.Visible = !bLock;
-            btnEditApplicant.Visible = bLock;
         }
 
         protected void btnEditApplicant_Click(object sender, EventArgs e)

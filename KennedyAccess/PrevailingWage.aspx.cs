@@ -17,6 +17,8 @@ namespace KennedyAccess
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Page.MaintainScrollPositionOnPostBack = true;
+
             string sPrevailingWageID = Session["PrevailingWageID"].ToString();
             user = (User)Session["User"];
 

@@ -43,6 +43,7 @@ namespace KennedyAccess.Controls
             //btnEditPrevailingWage.Visible = bLock;
             //btnCancel.Visible = btnSavePrevailingWage.Visible = !bLock;
 
+
             txtWageTrackingNum.ReadOnly = bLock;
             txtWageTrackingNum.BorderStyle = sBorder;
             txtSOCOESCode.ReadOnly = bLock;

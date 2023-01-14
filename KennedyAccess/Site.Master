@@ -37,8 +37,8 @@
 
         <div class="d-flex" id="wrapper" >
             <div class="border-light" id ="sidebar-wrapper" style="position:fixed; padding-left:15px;padding-right:10px;background-color:dimgray;width:265px">
-                <div class="sidebar-heading" style="background-color:dimgray" ></div>
-                <div id="divMenu" runat="server" class="list-group list-group-flush" style="background-color:dimgray; word-wrap:inherit"><br /><br />
+                <div class="sidebar-heading" style="background-color:dimgray; overflow-y: auto;height:100%;" ></div>
+                <div id="divMenu" runat="server" class="list-group list-group-flush" style="background-color:dimgray; word-wrap:inherit; overflow-y: auto;height:100%;"><br /><br />
                     <div id="divHome" runat="server" style="height:50px"><asp:ImageButton ID="ibHome" runat="server" CssClass="align-bottom" ImageUrl="~/images/gen001.svg" Width="30px" CausesValidation="false" PostBackUrl="~/home.aspx"></asp:ImageButton>&nbsp;&nbsp;<asp:HyperLink runat="server" NavigateUrl="~/home.aspx" Text="Home" Font-Bold="true" ForeColor="White" Font-Underline="false" Font-Size="22px"></asp:HyperLink></div>
                     <div id="divEmployers" runat="server" style="height:50px"><asp:ImageButton ID="ibEmployers" runat="server" CssClass="align-bottom" ImageUrl="~/images/map009.svg" Width="30px" CausesValidation="false" PostBackUrl="~/Employers.aspx"></asp:ImageButton>&nbsp;&nbsp;<asp:HyperLink runat="server" NavigateUrl="~/Employers.aspx" Text="Employers" Font-Bold="true" ForeColor="White" Font-Underline="false" Font-Size="22px"></asp:HyperLink></div>
 
@@ -54,7 +54,7 @@
                     <div id="divProfile" runat="server" style="height:50px"><asp:ImageButton ID="ibProfile" runat="server" ImageUrl="images/com006.svg" Width="30px" OnClick="btnProfile_Click" Text="Profile"/>&nbsp;&nbsp;<asp:Button ID="btnProfile" runat="server" ForeColor="White" Font-Bold="true" BackColor="Transparent" Font-Size="22px" BorderStyle="None" OnClick="btnProfile_Click1" Text="Profile"></asp:Button></div>
 
 
-<%--                    <div class="accordion" runat="server" id="accordionMenu">
+                    <div class="accordion" runat="server" id="accordionMenu">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="flush-menuOne">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseMenu" aria-controls="flush-collapseMenu">
@@ -62,7 +62,7 @@
                                 </button>
                             </h2>
                             <div id="flush-collapseMenu" class="accordion-collapse collapse" aria-labelledby="flush-menuOne" data-bs-parent="#accordionMenu">
-                                <div class="accordion-body" style="background-color:dimgray">--%>
+                                <div class="accordion-body" style="background-color:dimgray">
 
                                     <div id="divUsers" runat="server" style="height:50px"><asp:ImageButton ID="ibUsers" runat="server" CssClass="align-bottom" ImageUrl="~/images/com013.svg" Width="30px" CausesValidation="false" PostBackUrl="~/Admin/Users.aspx"></asp:ImageButton>&nbsp;&nbsp;<asp:HyperLink runat="server" NavigateUrl="~/Admin/Users.aspx" Text="Users" Font-Bold="true" ForeColor="White" Font-Underline="false" Font-Size="22px"></asp:HyperLink></div>
                                     <div id="divRoles" runat="server" style="height:50px"><asp:ImageButton ID="ibRoles" runat="server" CssClass="align-bottom" ImageUrl="~/images/gen009.svg" Width="30px" CausesValidation="false" PostBackUrl="~/Admin/Roles.aspx"></asp:ImageButton>&nbsp;&nbsp;<asp:HyperLink runat="server" NavigateUrl="~/Admin/Roles.aspx" Text="Roles" Font-Bold="true" ForeColor="White" Font-Underline="false" Font-Size="22px"></asp:HyperLink></div>
@@ -71,10 +71,10 @@
                                     <div id="divQuestionnaires" runat="server" style="height:50px"><asp:ImageButton ID="ibQuestionnaires" runat="server" CssClass="align-bottom" ImageUrl="~/images/com007.svg" Width="30px" CausesValidation="false" PostBackUrl="~/Admin/Questionnaires.aspx"></asp:ImageButton>&nbsp;&nbsp;<asp:HyperLink runat="server" NavigateUrl="~/Admin/Questionnaires.aspx" Text="Questionnaires" Font-Bold="true" ForeColor="White" Font-Underline="false" Font-Size="22px"></asp:HyperLink></div>
                                     <div id="divSettings" runat="server" style="height:50px"><asp:ImageButton ID="ibSettings" runat="server" CssClass="align-bottom" ImageUrl="~/images/cod001.svg" Width="30px" CausesValidation="false" PostBackUrl="~/Admin/Settings.aspx"></asp:ImageButton>&nbsp;&nbsp;<asp:HyperLink runat="server" NavigateUrl="~/Admin/Settings.aspx" Text="Settings" Font-Bold="true" ForeColor="White" Font-Underline="false" Font-Size="22px"></asp:HyperLink></div>
 
-<%--                                </div>
+                                </div>
                             </div>
                         </div>
-                    </div>--%>
+                    </div>
 
                     <div id="divLogOut" runat="server" style="height:40px; vertical-align:middle"><asp:ImageButton ID="ibLogOut" runat="server" style="background-color:dimgray; vertical-align:bottom" ImageUrl="images/arr021.svg" Width="30px" CausesValidation="false" PostBackUrl="~/Default.aspx" />&nbsp;&nbsp;<asp:HyperLink runat="server" NavigateUrl="~/Default.aspx" Text="Log Out" Font-Bold="true" ForeColor="White" Font-Underline="false" Font-Size="22px"></asp:HyperLink></div>
 

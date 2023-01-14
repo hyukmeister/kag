@@ -45,6 +45,7 @@ namespace KennedyAccess
 
                 ViewState["dtApplicants"] = dtApplicants;
             }
+            gvApplications.Columns[5].Visible = user.HasRole("Application");
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)

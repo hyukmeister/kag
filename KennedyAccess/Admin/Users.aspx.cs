@@ -30,6 +30,8 @@ namespace KennedyAccess
 
                 ViewState["dtUsers"] = dtUsers;
             }
+            gvUsers.Columns[8].Visible = user.HasRole("User");
+
         }
         protected void btnSearchUser_Click(object sender, EventArgs e)
         {

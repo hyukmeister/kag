@@ -29,6 +29,9 @@ namespace KennedyAccess
                 gvAgents.DataSource = dt;
                 gvAgents.DataBind();
             }
+
+            gvAgents.Columns[5].Visible = user.HasRole("Agent");
+            btnNewAgent.Visible = user.HasRole("AgentCreate");
         }
         protected void btnNewAgent_Click(object sender, EventArgs e)
         {

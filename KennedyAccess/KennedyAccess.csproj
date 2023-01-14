@@ -232,6 +232,7 @@
     <Content Include="images\gen009.svg" />
     <Content Include="images\gen019.svg" />
     <Content Include="images\gen027.svg" />
+    <Content Include="images\imgEdit.png" />
     <Content Include="images\kagimg1.jpg" />
     <Content Include="images\kagimg10.jpg" />
     <Content Include="images\kagimg2.jpg" />

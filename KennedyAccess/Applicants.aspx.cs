@@ -33,6 +33,9 @@ namespace KennedyAccess.users
 
                 ViewState["dtApplicants"] = dtApplicants;
             }
+
+            gvApplicants.Columns[5].Visible = user.HasRole("Applicant");
+            btnNewApplicant.Visible = user.HasRole("ApplicantCreate");
         }
 
         protected void ApplicantGridview_RowCommand(object sender, GridViewCommandEventArgs e)

@@ -18,6 +18,7 @@ using TextMagicClient.Model;
 using TextMagicClient.Client;
 using static System.Net.Mime.MediaTypeNames;
 using KennedyAccess.Admin;
+using AjaxControlToolkit.Bundling;
 
 namespace KennedyAccess.Classes
 {
@@ -1047,6 +1048,39 @@ namespace KennedyAccess.Classes
             }
             return dtUsers;
 
+        }
+
+        public DataTable GetSystemSettings(User user, string SystemSettingID)
+        {
+            DataTable dtSettings = null;
+            DataSet ds = (SqlHelper.ExecuteDataset(Global.dbcnn, "GetSystemSettings",
+                new SqlParameter("@FranchiseID", user.FranchiseID),
+                    new SqlParameter("@UserID", user.UserID),
+                    new SqlParameter("@SystemSettingID", SystemSettingID)));
+
+            if (ds != null && ds.Tables.Count > 0)
+            {
+                dtSettings = ds.Tables[0];
+            }
+            return dtSettings;
+        }
+
+        public void UpdateSystemSettings(User user,
+            bool Active, string SettingID,
+            string SettingName, string SettingDate, 
+            string SettingValue, string SettingString)
+        {
+            SqlHelperv2.ExecuteNonQuery(
+                Global.dbcnn, "UpdateSystemSettings",
+                new SqlParameter("@FranchiseID", user.FranchiseID),
+                new SqlParameter("@UserID", user.UserID),
+                new SqlParameter("@Active", Active),
+                new SqlParameter("@SystemSettingID", SettingID),
+                new SqlParameter("@SystemSettingName", SettingName),
+                new SqlParameter("@SystemSettingDate", SettingDate),
+                new SqlParameter("@SystemSettingValue", SettingValue),
+                new SqlParameter("@SystemSettingString", SettingString)
+            );
         }
     }
 }

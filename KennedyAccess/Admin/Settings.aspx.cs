@@ -6,30 +6,49 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using KennedyAccess.Admin;
+using KennedyAccess.Classes;
 
 namespace KennedyAccess
 {
     public partial class SystemSettings : System.Web.UI.Page
     {
         private User user;
+        BaseData bd = new BaseData();
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Page.MaintainScrollPositionOnPostBack = true;
+
             user = (User)Session["User"];
             if (user == null)
                 Response.Redirect("../Default.aspx");
 
             if (!Page.IsPostBack)
             {
-                DataTable dt = (SqlHelper.ExecuteDataset(Global.dbcnn, "GetSystemSettings",
-                        new SqlParameter("@FranchiseID", user.FranchiseID),
-                        new SqlParameter("@UserID", user.UserID),
-                        new SqlParameter("@SystemSettingID", -1))).Tables[0];
-                gvSettings.DataSource = dt;
-                
-                gvSettings.DataBind();
+                LoadSystemSettings(true);
+
+                gvSettings.Columns[6].Visible = user.HasRole("SettingEdit");
             }
         }
+
+        private void LoadSystemSettings(bool bFromDB)
+        {
+            DataTable dt = null;
+            if (bFromDB)
+            {
+                dt = bd.GetSystemSettings(user, "-1");
+                ViewState["dtSystemSettings"] = dt;
+            }
+            else
+            {
+                dt = (DataTable)ViewState["dtSystemSettings"];
+            }
+
+            gvSettings.DataSource = dt;
+            gvSettings.DataBind();
+        }
+
         protected void btnSearchSetting_Click(object sender, EventArgs e)
         {
             DataTable dt = (SqlHelper.ExecuteDataset(Global.dbcnn, "GetSystemSettings",
@@ -41,20 +60,15 @@ namespace KennedyAccess
             gvSettings.DataBind();
         }
 
-        protected void btnNewSetting_Click(object sender, EventArgs e)
-        {
-            int settingid = -1;
-            Session["SettingID"] = settingid;
-            //Response.Redirect("Setting.aspx");
-        }
-
         protected void gvSettings_RowEditing(object sender, GridViewEditEventArgs e)
         {
             gvSettings.EditIndex = e.NewEditIndex;
+            LoadSystemSettings(false);
         }
         protected void gvSettings_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             gvSettings.EditIndex = -1;
+            LoadSystemSettings(false);
         }
         protected void gvSettings_RowUpdated(object sender, GridViewUpdatedEventArgs e)
         {
@@ -62,18 +76,22 @@ namespace KennedyAccess
         }
         protected void gvSettings_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
-            int iSettingID = int.Parse(((Label)(gvSettings.Rows[gvSettings.EditIndex].Cells[0].Controls[1])).Text);
+            TableCellCollection cells = gvSettings.Rows[gvSettings.EditIndex].Cells;
+            string SettingID = ((Label)(cells[0].Controls[1])).Text;
+            string SettingName = ((Label)(cells[0].Controls[1])).Text;
+            string SettingDate = ((Label)(cells[0].Controls[1])).Text;
+            string SettingValue = ((Label)(cells[0].Controls[1])).Text;
+            string SettingString = ((Label)(cells[0].Controls[1])).Text;
 
-            //SqlHelper.ExecuteNonQuery(cnn, "UpdateTrainingHist",
-            //    new SqlParameter("@MemberTrainingID", memberTrainingID),
-            //    new SqlParameter("@TrainingID", TrainingID),
-            //    new SqlParameter("@TrainingDate", TrainingDate),
-            //    new SqlParameter("@TrainingNote", TrainingNote));
+            bd.UpdateSystemSettings(user, true, SettingID, SettingName, SettingDate, SettingValue, SettingString);
 
-            //DataSet ds = SqlHelper.ExecuteDataset(cnn, "GetMemberByID", new SqlParameter("@MemberID ", hdnMemberID.Value));
-            //gvSettings.EditIndex = -1;
-            //gvSettings.DataBind();
+            gvSettings.EditIndex = -1;
+            LoadSystemSettings(false);
         }
 
+        protected void gvSettings_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+
+        }
     }
 }

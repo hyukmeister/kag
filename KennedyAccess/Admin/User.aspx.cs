@@ -19,7 +19,11 @@ namespace KennedyAccess
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Page.MaintainScrollPositionOnPostBack = true;
+
             user = (User)Session["User"];
+            if (user == null)
+                Response.Redirect("../Default.aspx");
 
             if (!IsPostBack)
             {
@@ -122,6 +126,8 @@ namespace KennedyAccess
         {
             BorderStyle sBorder = (bLock) ? BorderStyle.None : BorderStyle.NotSet;
 
+            btnEditUser.Visible = bLock && user.HasRole("UserEdit");
+            btnCancel.Visible = btnSaveUser.Visible = !bLock;
 
             cbkActive.Enabled = !bLock;
             cbkActive.BorderStyle = sBorder;
@@ -254,6 +260,16 @@ namespace KennedyAccess
                 txtRoleError.Visible = true;
                 return;
             }
+        }
+
+        protected void gvRoleSets_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+
+        }
+
+        protected void gvRoleSets_RowDeleted(object sender, GridViewDeletedEventArgs e)
+        {
+
         }
     }
 }

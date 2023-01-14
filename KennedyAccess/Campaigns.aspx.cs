@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using KennedyAccess.Classes;
+using KennedyAccess.Admin;
 
 namespace KennedyAccess
 {
@@ -39,6 +40,7 @@ namespace KennedyAccess
             }
 
             // E & A
+            gvCampaigns.Columns[4].Visible = user.HasRole("Campaign");
             btnNew.Visible = user.HasRole("CampaignCreate");
         }
 

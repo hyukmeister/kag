@@ -29,6 +29,7 @@ namespace KennedyAccess
 
                 ViewState["dtPrevWage"] = dtPrevWage;
             }
+            gvPrevailingWages.Columns[5].Visible = user.HasRole("PrevailingWage");
             btnNew.Visible = user.HasRole("PrevailingWageCreate");
         }
         protected void gvPrevailingWages_RowCommand(object sender, GridViewCommandEventArgs e)

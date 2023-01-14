@@ -2477,7 +2477,7 @@ textarea.form-control-lg {
   pointer-events: none;
   border: 1px solid transparent;
   transform-origin: 0 0;
-  transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
+  transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
   .form-floating > label {

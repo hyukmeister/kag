@@ -1,6 +1,9 @@
-﻿using System;
+﻿using KennedyAccess.Admin;
+using KennedyAccess.Classes;
+using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -11,142 +14,156 @@ namespace KennedyAccess
 {
     public partial class WebForm3 : System.Web.UI.Page
     {
-        private string userName;
-        private string rootFolder;
+        private User user;
+        Label HQContactID;
+        Label EmployerContactID;
+        BaseData bd = new BaseData();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Page.MaintainScrollPositionOnPostBack = true;
+            labTime.Text = DateTime.Now.ToString();
+            user = (User)Session["User"];
 
-            userName = "hyuk";
-            rootFolder = "~/UserFiles/" + userName + "/ ";
-
-            if (!Page.IsPostBack)
+            if (!IsPostBack)
             {
-
-                // create the root folder if necessary
-                CreateFolder(rootFolder);
-
-                DirectoryInfo rootInfo = new DirectoryInfo(Server.MapPath(rootFolder));
-
-                LoadFolders();
-
-                tvUserFolders.Nodes[0].Selected = true;
-                //labDirectory.Text = "/" + tvUserFolders.SelectedNode.Text;
-                PopulateFiles(rootInfo);
-
-            }
-            else
-            {
-                string folderName = tvUserFolders.SelectedValue;
-                foreach (string s in Request.Files)
+                try
                 {
-                    HttpPostedFile file = Request.Files[s];
+                    DataTable dtRoleSet = (DataTable)Application["RoleSet"];
+                    
+                    ddlUserType.DataSource = dtRoleSet;
+                    ddlUserType.DataValueField = "RoleSetID";
+                    ddlUserType.DataTextField = "RoleSetName";
+                    ddlUserType.DataBind();
 
-                    int fileSizeInBytes = file.ContentLength;
-                    string fileName = file.FileName;
-                    string fileExtension = "";
-
-                    if (!string.IsNullOrEmpty(fileName))
-                        fileExtension = Path.GetExtension(fileName);
-
-                    // IMPORTANT! Make sure to validate uploaded file contents, size, etc. to prevent scripts being uploaded into your web app directory
-                    string savedFileName = Path.Combine(folderName, file.FileName + fileExtension);
-                    file.SaveAs(savedFileName);
-                }
-                DirectoryInfo rootInfo = new DirectoryInfo(tvUserFolders.SelectedValue);
-                PopulateFiles(rootInfo);
-            }
-        }
-
-            private void CreateFolder(string rootFolder)
-        {
-            // create the root folder if necessary
-            bool exists = System.IO.Directory.Exists(Server.MapPath(rootFolder));
-
-            if (!exists)
-                System.IO.Directory.CreateDirectory(Server.MapPath(rootFolder));
-        }
-        private void LoadFolders()
-        {
-            DirectoryInfo rootInfo = new DirectoryInfo(Server.MapPath(rootFolder));
-
-            TreeNode directoryNode = new TreeNode
-            {
-                Text = userName,
-                Value = rootInfo.FullName,
-                ImageUrl = "/images/home.png"
-            };
-            tvUserFolders.Nodes.Add(directoryNode);
-
-            this.PopulateTreeView(rootInfo, directoryNode);
-        }
-        private void PopulateTreeView(DirectoryInfo dirInfo, TreeNode treeNode)
-        {
-            foreach (DirectoryInfo directory in dirInfo.GetDirectories())
-            {
-                TreeNode directoryNode = new TreeNode
-                {
-                    Text = directory.Name,
-                    Value = directory.FullName,
-                    ImageUrl = "/images/explorer2.png"
-                };
-
-                if (treeNode == null)
-                {
-                    //If Root Node, add to TreeView.
-                    tvUserFolders.Nodes.Add(directoryNode);
-                }
-                else
-                {
-                    //If Child Node, add to Parent Node.
-                    treeNode.ChildNodes.Add(directoryNode);
-                }
-
-                //PopulateFiles(directory, directoryNode);
-
-                PopulateTreeView(directory, directoryNode);
-            }
-        }
-
-        private void PopulateFiles(DirectoryInfo directory)
-        {
-            tvUserFiles.Nodes.Clear();
-
-            //Get all files in the Directory.
-            foreach (FileInfo file in directory.GetFiles())
-            {
-                if (file.Name != "desktop.ini")
-                {
-                    //Add each file as Child Node.
-                    TreeNode fileNode = new TreeNode
                     {
-                        Text = file.Name,
-                        Value = file.FullName,
-                        ImageUrl = "/images/file1.png"
-                    };
-                    tvUserFiles.Nodes.Add(fileNode);
+                        string UserID = "10000";
+                        
+                        DataTable dtUsr = bd.GetUsrMain(user, UserID, "");
+
+                        if (dtUsr.Rows.Count == 1)
+                        {
+                            DataRow drUser = dtUsr.Rows[0];
+
+                            labUser.Text = Page.Title = drUser["UserName"].ToString();
+                            lblUserID.Text = drUser["UserID"].ToString();
+                            cbkActive.Checked = drUser["Active"].ToString() == "True";
+                            lblRecordType.Text = drUser["RecordTypeID"].ToString();
+                            lblFranchise.Text = drUser["FranchiseID"].ToString();
+                            txtUserName.Text = drUser["UserName"].ToString();
+                            txtAuthenticationCode.Text = drUser["ValidationCode"].ToString();
+                            txtFirstName.Text = drUser["FirstName"].ToString();
+                            txtLastName.Text = drUser["LastName"].ToString();
+                            txtEmail.Text = drUser["Email"].ToString();
+                            txtMobilephone.Text = drUser["Mobilephone"].ToString();
+                            txtValidFrom.Text = DateTime.Parse(drUser["ValidFrom"].ToString()).ToString("yyyy-MM-dd");
+                            txtValidThru.Text = DateTime.Parse(drUser["ValidThru"].ToString()).ToString("yyyy-MM-dd");
+                            ddlUserType.SelectedValue = drUser["RoleSetID"].ToString();
+                            rblAuthenticated.SelectedValue = drUser["Authenticated"].ToString();
+                            txtCreateDate.Text = DateTime.Parse(drUser["CreateDate"].ToString()).ToString("yyyy-MM-dd");
+                            txtModifiedDate.Text = DateTime.Parse(drUser["ModifiedDate"].ToString()).ToString("yyyy-MM-dd");
+                            txtNote.Text = drUser["Note"].ToString();
+
+                        }
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    //Console.WriteLine(ex.Message);
+                    SqlHelperv2.ExecuteNonQuery(Global.dbcnn, "WriteAuditTrail",
+                        user.FranchiseID,
+                        user.UserID,
+                        ex.Message);
                 }
             }
-        }
-
-
-        protected void tvUserFolders_SelectedNodeChanged(object sender, EventArgs e)
-        {
-            string folderName = tvUserFolders.SelectedValue;
-            DirectoryInfo rootInfo = new DirectoryInfo(folderName);
-            PopulateFiles(rootInfo);
-            //labDirectory.Text = "/" + tvUserFolders.SelectedNode.Text;
-        }
-
-        protected void lnkBtnCreate_Click(object sender, ImageClickEventArgs e)
-        {
 
         }
 
-        protected void lnkBtnDelete_Click(object sender, ImageClickEventArgs e)
+        protected void btnEditUser_Click(object sender, EventArgs e)
         {
+            // User
+            SetEditVisibility(false);
+        }
 
+
+        private void SetEditVisibility(bool bLock)
+        {
+            BorderStyle sBorder = (bLock) ? BorderStyle.None : BorderStyle.NotSet;
+
+            btnEditUser.Visible = bLock && user.HasRole("UserEdit");
+            btnCancel.Visible = btnSaveUser.Visible = !bLock;
+
+            cbkActive.Enabled = !bLock;
+            cbkActive.BorderStyle = sBorder;
+            lblRecordType.Enabled = bLock;
+            lblRecordType.BorderStyle = sBorder;
+            lblFranchise.Enabled = bLock;
+            lblFranchise.BorderStyle = sBorder;
+            txtUserName.ReadOnly = bLock;
+            txtUserName.BorderStyle = sBorder;
+            //txtPassword.ReadOnly = bLock;
+            //txtPassword.BorderStyle = sBorder;
+            txtFirstName.ReadOnly = bLock;
+            txtFirstName.BorderStyle = sBorder;
+            txtLastName.ReadOnly = bLock;
+            txtLastName.BorderStyle = sBorder;
+            txtEmail.ReadOnly = bLock;
+            txtEmail.BorderStyle = sBorder;
+            txtMobilephone.ReadOnly = bLock;
+            txtMobilephone.BorderStyle = sBorder;
+            txtValidFrom.ReadOnly = bLock;
+            txtValidFrom.BorderStyle = sBorder;
+            txtValidThru.ReadOnly = bLock;
+            txtValidThru.BorderStyle = sBorder;
+            ddlUserType.Enabled = !bLock;
+            ddlUserType.BorderStyle = sBorder;
+            rblAuthenticated.Enabled = !bLock;
+            rblAuthenticated.BorderStyle = sBorder;
+            txtCreateDate.ReadOnly = bLock;
+            txtCreateDate.BorderStyle = sBorder;
+            txtModifiedDate.ReadOnly = bLock;
+            txtModifiedDate.BorderStyle = sBorder;
+            txtNote.ReadOnly = bLock;
+            txtNote.BorderStyle = sBorder;
+
+            btnCancel.Visible = btnSaveUser.Visible = !bLock;
+            btnEditUser.Visible = bLock && user.HasRole("UserEdit");
+        }
+
+        protected void btnSaveUser_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string sRoleSetID;
+                // get rolesetid from ddlusertype
+                DataTable dtRoleSet = (DataTable)Application["RoleSet"];
+                DataRow[] drRoleSet = dtRoleSet.Select("RoleSetName='" + ddlUserType.SelectedItem.Text + "'");
+                if (drRoleSet.Length == 1)
+                {
+                    sRoleSetID = drRoleSet[0]["RoleSetID"].ToString();
+                    lblUserID.Text = bd.InserUpdatetUser(user.FranchiseID, user.UserID, int.Parse(lblUserID.Text), txtUserName.Text, "",
+                        txtFirstName.Text, txtLastName.Text, txtEmail.Text, ddlUserType.SelectedValue,
+                        sRoleSetID, cbkActive.Checked, txtValidFrom.Text, txtValidThru.Text,
+                        rblAuthenticated.SelectedValue == "True", txtMobilephone.Text, txtNote.Text);
+
+                    bd.ResetUserRoleSets(user, lblUserID.Text);
+
+                    ajaxTime.Text= DateTime.Now.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                txtError.Text = "Invalid or ducplicate data entered. Please correct and try again.<br/>" + ex.Message;
+                txtError.Visible = true;
+                return;
+            }
+
+            SetEditVisibility(true);
+        }
+
+        protected void btnCancel_Click(object sender, EventArgs e)
+        {
+            SetEditVisibility(true);
         }
 
     }

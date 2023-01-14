@@ -56,15 +56,15 @@ namespace KennedyAccess
         private void SetEditVisibility(bool bLock)
         {
             BorderStyle sBorder = (bLock) ? BorderStyle.None : BorderStyle.NotSet;
-                //lblAttorneyID.Enabled = bLock;
-                //lblFranchise.Enabled = bLock;
-                //lblRecordType.Enabled = bLock;
-                txtFEIN.ReadOnly = bLock;
-                btnCancel.Visible = btnSaveAttorney.Visible = !bLock;
-                btnEditAttorney.Visible = bLock;
 
-                // save Attorney Contact Contact
-                AttorneyContact.SetEditability(bLock);
+            btnEditAttorney.Visible = bLock && user.HasRole("AttorneyEdit");
+            btnCancel.Visible = btnSaveAttorney.Visible = !bLock;
+            //lblAttorneyID.Enabled = bLock;
+            //lblFranchise.Enabled = bLock;
+            //lblRecordType.Enabled = bLock;
+            txtFEIN.ReadOnly = bLock;
+            // save Attorney Contact Contact
+            AttorneyContact.SetEditability(bLock);
 
         }
         protected void btnEditAttorney_Click(object sender, EventArgs e)

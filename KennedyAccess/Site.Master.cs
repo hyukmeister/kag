@@ -16,7 +16,7 @@ namespace KennedyAccess
             if (!IsPostBack)
             {
                 user = (User)Session["User"];
-
+                
                 if (user != null && user.Authenticated)
                 {
                     bool users = user.HasRole("Users");
@@ -36,7 +36,7 @@ namespace KennedyAccess
                     divJobListings.Visible = user.HasRole("JobListings") && (user.ObjectID != 0 || user.UserType != "Applicant");
                     divApplications.Visible = user.HasRole("Applications") && (user.ObjectID != 0 || user.UserType != "Employer");
 
-                    //accordionMenu.Visible = users || settings || roles || rolesets || roles || questionnaires || employers || profiles;
+                    accordionMenu.Visible = users || settings || roles || rolesets || roles || questionnaires || employers || profiles;
                     divUsers.Visible = users;
                     divSettings.Visible = settings;
                     divRoles.Visible = roles;

@@ -27,6 +27,9 @@ namespace KennedyAccess
                 gvAttorneys.DataSource = dt;
                 gvAttorneys.DataBind();
             }
+
+            gvAttorneys.Columns[6].Visible = user.HasRole("Attorney");
+            btnNewAttorney.Visible = user.HasRole("AttorneyCreate");
         }
         protected void btnNewAttorney_Click(object sender, EventArgs e)
         {

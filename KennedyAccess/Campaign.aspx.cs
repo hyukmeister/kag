@@ -23,6 +23,8 @@ namespace KennedyAccess
         BaseData bd = new BaseData();
         protected void Page_Load(object sender, EventArgs e)
         {
+            Page.MaintainScrollPositionOnPostBack = true;
+
             user = (User)Session["User"];
             if (user == null || !user.HasRole("Campaign"))
                 Response.Redirect("Default.aspx");

@@ -13,10 +13,13 @@ namespace KennedyAccess.Admin
 {
     public partial class RoleSets : System.Web.UI.Page
     {
+
         private User user;
         BaseData bd = new BaseData();
         protected void Page_Load(object sender, EventArgs e)
         {
+            Page.MaintainScrollPositionOnPostBack = true;
+
             user = (User)Session["User"];
             if (user == null || !user.HasRole("RoleSets"))
                 Response.Redirect("../Default.aspx");

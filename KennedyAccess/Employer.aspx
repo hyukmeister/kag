@@ -265,6 +265,8 @@
                         </div>
                     </div>
                 </div>
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
 
                 <asp:Panel ID="panFiles" runat="server">
                 <div class="accordion-item">
@@ -281,6 +283,8 @@
                     </div>
                 </div>
                 </asp:Panel>
+            </ContentTemplate>
+        </asp:UpdatePanel>
             </asp:Panel>
         </div>
     </div>

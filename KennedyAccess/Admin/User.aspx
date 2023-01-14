@@ -146,6 +146,7 @@
         <h3><asp:Label ID="Label2" runat="server" Text="User Roles"></asp:Label></h3>
         <asp:GridView ID="gvRoleSets" runat="server" AutoGenerateColumns="False" class="table table-hover"  
             GridLines="None" CellPadding="4" OnRowEditing="gvRoleSets_RowEditing" ShowFooter="True" 
+            OnRowDeleting="gvRoleSets_RowDeleting" OnRowDeleted="gvRoleSets_RowDeleted"
             OnRowCancelingEdit="gvRoleSets_RowCancelingEdit" OnRowUpdating="gvRoleSets_RowUpdating">
             <Columns>
                 <asp:TemplateField HeaderText="Active" >

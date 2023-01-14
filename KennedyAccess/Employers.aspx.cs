@@ -29,6 +29,9 @@ namespace KennedyAccess.users
 
                 ViewState["dtEmployers"] = dtEmployers;
             }
+
+            gvEmployers.Columns[6].Visible = user.HasRole("Employer");
+            btnNewEmployer.Visible = user.HasRole("EmployerCreate");
         }
         protected void btnNewEmployer_Click(object sender, EventArgs e)
         {

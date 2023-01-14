@@ -9,6 +9,7 @@ using System.Web.UI.WebControls;
 using static System.Net.Mime.MediaTypeNames;
 using KennedyAccess.Classes;
 using KennedyAccess.Controls;
+using Microsoft.Ajax.Utilities;
 
 namespace KennedyAccess
 {
@@ -270,6 +271,10 @@ namespace KennedyAccess
         private void SetEditVisibility(bool bLock)
         {
             BorderStyle sBorder = (bLock) ? BorderStyle.None : BorderStyle.NotSet;
+
+            btnEditEmployer.Visible = bLock && user.HasRole("EmployerEdit");
+            btnCancel.Visible = btnSaveEmployer.Visible = !bLock;
+
             //txtEmployerName.ReadOnly = bLock;
             txtNumEmployee.ReadOnly = bLock;
             txtNumEmployee.BorderStyle = sBorder;

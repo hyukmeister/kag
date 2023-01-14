@@ -67,13 +67,13 @@ namespace KennedyAccess
         private void SetEditVisibility(bool bLock)
         {
             BorderStyle sBorder = (bLock) ? BorderStyle.None : BorderStyle.NotSet;
+
+            btnEditAgent.Visible = bLock && user.HasRole("AgentEdit");
+            btnCancel.Visible = btnSaveAgent.Visible = !bLock;
+
             //lblAgentID.Enabled = bLock;
             //txtFranchise.Enabled = bLock;
             //lblRecordType.Enabled = bLock;
-
-            btnCancel.Visible = btnSaveAgent.Visible = !bLock;
-            btnEditAgent.Visible = bLock;
-
             // save Agnet Contact Contact
             AgentContact.SetEditability(bLock);
 
