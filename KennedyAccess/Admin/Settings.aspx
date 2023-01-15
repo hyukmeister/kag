@@ -27,7 +27,8 @@
                                 <asp:Label ID="lblSettingName" runat="server" Text='<%# Eval("SystemSettingName") %>'></asp:Label>
                             </ItemTemplate>
                             <FooterTemplate>
-                                <asp:TextBox ID="fSettingName" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="fSettingName" runat="server" Width="140px"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="rfvSettingName" runat="server" ValidationGroup="SettingsGroup" ControlToValidate="fSettingName" ErrorMessage="Setting Name is required" ForeColor="Red"></asp:RequiredFieldValidator>
                             </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Setting (Date)">
@@ -38,7 +39,7 @@
                                 <asp:TextBox ID="txtSystemSettingDate" Runat="server" Width="100px" Text='<%# Eval("SystemSettingValue") %>' TextMode="Date"></asp:TextBox>
                             </EditItemTemplate>
                             <FooterTemplate>
-                                <asp:TextBox ID="fSettingDate" runat="server" TextMode="Date"></asp:TextBox>
+                                <asp:TextBox ID="fSettingDate" runat="server" TextMode="Date" Width="120px"></asp:TextBox>
                             </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Setting (Number)" ItemStyle-HorizontalAlign="Right">
@@ -49,7 +50,7 @@
                                 <asp:TextBox ID="txtSystemSettingValue" Runat="server" Width="100px" Text='<%# Eval("SystemSettingValue") %>' TextMode="Number" step="0.01"></asp:TextBox>
                             </EditItemTemplate>
                             <FooterTemplate>
-                                <asp:TextBox ID="fSettingValue" runat="server" TextMode="Number" step="0.01"></asp:TextBox>
+                                <asp:TextBox ID="fSettingValue" runat="server" Width="140px" TextMode="Number" step="0.01"></asp:TextBox>
                             </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Setting (String)">
@@ -60,7 +61,7 @@
                                 <asp:TextBox ID="txtSystemSettingString" Runat="server" Width="100px" Text='<%# Eval("SystemSettingString") %>' MaxLength="32"></asp:TextBox>
                             </EditItemTemplate>
                             <FooterTemplate>
-                                <asp:TextBox ID="fSettingString" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="fSettingString" runat="server" Width="120px" ></asp:TextBox>
                             </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Setting Description">
@@ -68,10 +69,11 @@
                                 <asp:Label ID="lblSystemSettingDescription" runat="server" Text='<%# Eval("SystemSettingDesc") %>'></asp:Label>
                             </ItemTemplate>
                             <EditItemTemplate>
-                                <asp:TextBox ID="txtSystemSettingDescription" Runat="server" Width="140px" Text='<%# Eval("SystemSettingDesc") %>' MaxLength="250"></asp:TextBox>
+                                <asp:TextBox ID="txtSystemSettingDescription" Runat="server" Width="120px" Text='<%# Eval("SystemSettingDesc") %>' MaxLength="250"></asp:TextBox>
                             </EditItemTemplate>
                             <FooterTemplate>
                                 <asp:TextBox ID="fSettingDesc" runat="server" MaxLength="64"></asp:TextBox>
+                                <asp:ImageButton ID="lnkBtnSave" runat="server" OnClick="lnkBtnSave_Click" AlternateText="Save" ValidationGroup="SettingsGroup" ImageAlign="Top" Height="22px" ImageUrl="~/images/save_icon.png"/>
                             </FooterTemplate>
                         </asp:TemplateField>
                         <asp:CommandField ShowEditButton="True" />

@@ -76,14 +76,7 @@ namespace KennedyAccess
         }
         protected void gvSettings_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
-            TableCellCollection cells = gvSettings.Rows[gvSettings.EditIndex].Cells;
-            string SettingID = ((Label)(cells[0].Controls[1])).Text;
-            string SettingName = ((Label)(cells[0].Controls[1])).Text;
-            string SettingDate = ((Label)(cells[0].Controls[1])).Text;
-            string SettingValue = ((Label)(cells[0].Controls[1])).Text;
-            string SettingString = ((Label)(cells[0].Controls[1])).Text;
-
-            bd.UpdateSystemSettings(user, true, SettingID, SettingName, SettingDate, SettingValue, SettingString);
+            InsertUpdateSetting(gvSettings.Rows[gvSettings.EditIndex].Cells);
 
             gvSettings.EditIndex = -1;
             LoadSystemSettings(false);
@@ -92,6 +85,43 @@ namespace KennedyAccess
         protected void gvSettings_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
 
+        }
+
+        private void InsertUpdateSetting(TableCellCollection cells)
+        {
+            string SettingID;
+            if (cells[0].Controls.Count > 0)
+                SettingID = ((Label)(cells[0].Controls[1])).Text;
+            else
+                SettingID = "0";
+            string SettingName = ((TextBox)(cells[1].Controls[1])).Text;
+            string SettingDate = ((TextBox)(cells[2].Controls[1])).Text;
+            string SettingValue = ((TextBox)(cells[3].Controls[1])).Text;
+            string SettingString = ((TextBox)(cells[4].Controls[1])).Text;
+            string SettingDesc = ((TextBox)(cells[5].Controls[1])).Text;
+
+            if (SettingDate == string.Empty) SettingDate = "1900-01-01";
+
+            bd.InsertUpdateSettings(user, true, SettingID, SettingName, SettingDate, SettingValue, SettingString, SettingDesc);
+
+            LoadSystemSettings(true);
+        }
+
+        protected void lnkBtnSave_Click(object sender, ImageClickEventArgs e)
+        {
+            GridViewRow fRow = gvSettings.FooterRow;
+
+            try
+            {
+                InsertUpdateSetting(fRow.Cells);
+            }
+            catch (Exception ex)
+            {
+                TextBox txtRoleError = (TextBox)fRow.Cells[2].Controls[3];
+                txtRoleError.Text = "Invalid or ducplicate data entered. Please correct and try again.<br/>" + ex.Message;
+                txtRoleError.Visible = true;
+                return;
+            }
         }
     }
 }

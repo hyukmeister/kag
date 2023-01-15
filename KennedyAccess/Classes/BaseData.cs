@@ -1065,13 +1065,14 @@ namespace KennedyAccess.Classes
             return dtSettings;
         }
 
-        public void UpdateSystemSettings(User user,
+        public void InsertUpdateSettings(User user,
             bool Active, string SettingID,
             string SettingName, string SettingDate, 
-            string SettingValue, string SettingString)
-        {
+            string SettingValue, string SettingString,
+            string SettingDesc)
+        {            
             SqlHelperv2.ExecuteNonQuery(
-                Global.dbcnn, "UpdateSystemSettings",
+                Global.dbcnn, "InsertUpdateSettings",
                 new SqlParameter("@FranchiseID", user.FranchiseID),
                 new SqlParameter("@UserID", user.UserID),
                 new SqlParameter("@Active", Active),
@@ -1079,7 +1080,8 @@ namespace KennedyAccess.Classes
                 new SqlParameter("@SystemSettingName", SettingName),
                 new SqlParameter("@SystemSettingDate", SettingDate),
                 new SqlParameter("@SystemSettingValue", SettingValue),
-                new SqlParameter("@SystemSettingString", SettingString)
+                new SqlParameter("@SystemSettingString", SettingString),
+                new SqlParameter("@SystemSettingDesc", SettingDesc)
             );
         }
     }
