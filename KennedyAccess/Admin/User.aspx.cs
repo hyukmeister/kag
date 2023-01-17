@@ -174,7 +174,7 @@ namespace KennedyAccess
                 // get recordtypeid from sRoleSetID
                 string sRecordTypeID = bd.GetRecordTypeID((DataTable)Application["RecordType"], user.FranchiseID, "User", ddlUserType.SelectedItem.Text).ToString();
                 lblUserID.Text = bd.InserUpdatetUser(user.FranchiseID, user.UserID, int.Parse(lblUserID.Text), txtUserName.Text, "",
-                    txtFirstName.Text, txtLastName.Text, txtEmail.Text, ddlUserType.SelectedValue,
+                    txtFirstName.Text, txtLastName.Text, txtEmail.Text, sRecordTypeID,
                     sRoleSetID, cbkActive.Checked, txtValidFrom.Text, txtValidThru.Text,
                     rblAuthenticated.SelectedValue == "True", txtMobilephone.Text, txtNote.Text);
 
