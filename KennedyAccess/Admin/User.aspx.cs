@@ -19,7 +19,7 @@ namespace KennedyAccess
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Page.MaintainScrollPositionOnPostBack = true;
+            //Page.MaintainScrollPositionOnPostBack = true;
 
             user = (User)Session["User"];
             if (user == null)
@@ -170,22 +170,17 @@ namespace KennedyAccess
         {
             try
             {
-                string sRoleSetID;
-                // get rolesetid from ddlusertype
-                DataTable dtRoleSet = (DataTable)Application["RoleSet"];
-                DataRow[] drRoleSet = dtRoleSet.Select("RoleSetName='" + ddlUserType.SelectedItem.Text + "'");
-                if (drRoleSet.Length == 1)
-                {
-                    sRoleSetID = drRoleSet[0]["RoleSetID"].ToString();
-                    lblUserID.Text = bd.InserUpdatetUser(user.FranchiseID, user.UserID, int.Parse(lblUserID.Text), txtUserName.Text, "",
-                        txtFirstName.Text, txtLastName.Text, txtEmail.Text, ddlUserType.SelectedValue,
-                        sRoleSetID, cbkActive.Checked, txtValidFrom.Text, txtValidThru.Text,
-                        rblAuthenticated.SelectedValue == "True", txtMobilephone.Text, txtNote.Text);
+                string sRoleSetID = ddlUserType.SelectedValue;
+                // get recordtypeid from sRoleSetID
+                string sRecordTypeID = bd.GetRecordTypeID((DataTable)Application["RecordType"], user.FranchiseID, "User", ddlUserType.SelectedItem.Text).ToString();
+                lblUserID.Text = bd.InserUpdatetUser(user.FranchiseID, user.UserID, int.Parse(lblUserID.Text), txtUserName.Text, "",
+                    txtFirstName.Text, txtLastName.Text, txtEmail.Text, ddlUserType.SelectedValue,
+                    sRoleSetID, cbkActive.Checked, txtValidFrom.Text, txtValidThru.Text,
+                    rblAuthenticated.SelectedValue == "True", txtMobilephone.Text, txtNote.Text);
 
-                        bd.ResetUserRoleSets(user, lblUserID.Text);
+                bd.ResetUserRoleSets(user, lblUserID.Text);
 
-                        LoadUserRoleSetRoles(true);
-                }
+                LoadUserRoleSetRoles(true);
             }
             catch (Exception ex)
             {

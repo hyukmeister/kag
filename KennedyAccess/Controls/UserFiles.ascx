@@ -106,7 +106,7 @@
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtRenameFolder" forecolor="red"
                                                 ValidationGroup="RenFolderResponse" ErrorMessage="A new folder name is required"></asp:RequiredFieldValidator>
                                         </div>
-                                        <asp:Button ID="Button1" runat="server" class="btn btn-primary" ValidationGroup="RenFolderResponse" Text="Rename" OnClick="btnRename_Click"/>
+                                        <asp:Button ID="btnRename" runat="server" class="btn btn-primary" ValidationGroup="RenFolderResponse" Text="Rename" OnClick="btnRename_Click"/>
                                         <button type="button" class="btn btn-primary" data-bs-dismiss="modal" value="Close">Close</button>
                                         </asp:TableCell>
                                 </asp:TableRow>

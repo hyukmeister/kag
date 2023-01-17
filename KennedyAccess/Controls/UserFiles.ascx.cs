@@ -47,20 +47,19 @@ namespace KennedyAccess.Controls
                     int fileSizeInBytes = file.ContentLength;
                     if(fileSizeInBytes > 0)
                     {
-                        string fileName = Request.Headers["X-File-Name"];
-                        string fileExtension = "";
+                        //string fileName = Request.Headers["X-File-Name"];
+                        //string fileExtension = "";
 
-                        if (!string.IsNullOrEmpty(fileName))
-                            fileExtension = Path.GetExtension(fileName);
+                        //if (!string.IsNullOrEmpty(fileName))
+                        //    fileExtension = Path.GetExtension(fileName);
 
                         // IMPORTANT! Make sure to validate uploaded file contents, size, etc. to prevent scripts being uploaded into your web app directory
-                        string savedFileName = Path.Combine(folderName, file.FileName + fileExtension);
+                        //string savedFileName = Path.Combine(folderName, file.FileName + fileExtension);
+                        string savedFileName = Path.Combine(folderName, file.FileName);
                         file.SaveAs(savedFileName);
                     }
                 }
-            }
-
-            
+            }            
         }
 
         private void LoadFolders()

@@ -13,7 +13,9 @@
             </asp:TableRow>
             <asp:TableRow>
                 <asp:TableCell ColumnSpan="2">
-                    <asp:GridView ID="gvRoleSets" runat="server" AutoGenerateColumns="False" class="table table-hover"
+                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                        <ContentTemplate>
+                            <asp:GridView ID="gvRoleSets" runat="server" AutoGenerateColumns="False" class="table table-hover"
                         GridLines="None" CellPadding="4" OnRowCancelingEdit="gvRoleSets_RowCancelingEdit" 
                         OnRowEditing="gvRoleSets_RowEditing" OnRowUpdating="gvRoleSets_RowUpdating">
                         <Columns>
@@ -62,6 +64,8 @@
                         </Columns>
                         <HeaderStyle BackColor="dimgray" ForeColor="White" />
                     </asp:GridView>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>

@@ -261,12 +261,14 @@
                     </h2>
                     <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
-                            <uc2:Questionnaire runat="server" ID="Questionnaire" />
+                            <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                                <ContentTemplate>
+                                    <uc2:Questionnaire runat="server" ID="Questionnaire" />
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
                         </div>
                     </div>
                 </div>
-        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-            <ContentTemplate>
 
                 <asp:Panel ID="panFiles" runat="server">
                 <div class="accordion-item">
@@ -277,14 +279,16 @@
                     </h2>
                     <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
-                            <uc5:UserFiles runat="server" ID="UserFiles" />
+                            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                <ContentTemplate>
+                                    <uc5:UserFiles runat="server" ID="UserFiles" />
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
 
                         </div>
                     </div>
                 </div>
                 </asp:Panel>
-            </ContentTemplate>
-        </asp:UpdatePanel>
             </asp:Panel>
         </div>
     </div>

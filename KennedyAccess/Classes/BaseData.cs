@@ -54,14 +54,24 @@ namespace KennedyAccess.Classes
         public int GetRecordTypeID(DataTable dt, int iFranchiseID, string sUsage, string sRecordType)
         {
             int iRecType = -1;
-
+            DataRow[] dr;
             if (dt != null)
             {
-                DataRow[] dr = dt.Select("FranchiseID=" + iFranchiseID + " and Usage ='" + sUsage + "' and RecordType='" + sRecordType + "'");
+                dr = dt.Select("FranchiseID=" + iFranchiseID + " and Usage ='" + sUsage + "' and RecordType='" + sRecordType + "'");
 
                 if (dr.Length == 1)
                 {
                     iRecType = int.Parse(dr[0]["RecordTypeID"].ToString());
+                }
+                else
+                {
+                    // profiles which are not offered in registration. ie team leader profiles
+                    dr = dt.Select("FranchiseID=" + iFranchiseID + " and Usage ='" + sUsage + "' and RecordType='Kennedy Access'");
+
+                    if (dr.Length == 1)
+                    {
+                        iRecType = int.Parse(dr[0]["RecordTypeID"].ToString());
+                    }
                 }
             }
             return iRecType;

@@ -111,7 +111,6 @@
         </div>
 
         <script src="Scripts/bootstrap.bundle.min.js"></script>
-        <script src="Scripts/jquery-3.6.1.min.js"></script>
 
     </form>
 </body>

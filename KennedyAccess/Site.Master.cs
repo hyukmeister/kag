@@ -35,6 +35,7 @@ namespace KennedyAccess
                     divCampaigns.Visible = user.HasRole("Campaigns") && (user.ObjectID != 0 || user.UserType != "Employer");
                     divJobListings.Visible = user.HasRole("JobListings") && (user.ObjectID != 0 || user.UserType != "Applicant");
                     divApplications.Visible = user.HasRole("Applications") && (user.ObjectID != 0 || user.UserType != "Employer");
+                    divProfile.Visible = (user.ObjectID != 0 && (user.UserType == "Applicant" || user.UserType == "Employer"));
 
                     accordionMenu.Visible = users || settings || roles || rolesets || roles || questionnaires || employers || profiles;
                     divUsers.Visible = users;
@@ -45,7 +46,7 @@ namespace KennedyAccess
                     divLogOut.Visible = employers;
                     divProfiles.Visible = profiles;
 
-                    divProfile.Visible = user.UserType != "System Admin";
+                    //divProfile.Visible = user.UserType != "System Admin";
                     divLogOut.Visible = true;
                 }
                 else

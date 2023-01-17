@@ -23,7 +23,7 @@ namespace KennedyAccess
 
             if (!Page.IsPostBack)
             {
-                string sJobListingID = string.Empty;
+                string sJobListingID = "0";
 
                 switch (user.UserType)
                 {
