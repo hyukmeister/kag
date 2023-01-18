@@ -179,17 +179,22 @@ namespace KennedyAccess.Controls
         }
         protected void btnRename_Click(object sender, EventArgs e)
         {
-            string oldFoldePath = tvUserFolders.SelectedValue;
-            string newFoldePath = oldFoldePath;
-
             string oldName = tvUserFolders.SelectedNode.Text;
             string newName = txtRenameFolder.Text;
 
-            int i = newFoldePath.LastIndexOf(oldName);
-            if (i >= 0)
-                newFoldePath = newFoldePath.Substring(0, i) + newName;
+            if (newName != string.Empty)
+            {
+                string oldFoldePath = tvUserFolders.SelectedValue;
+                string newFoldePath = oldFoldePath;
 
-            RenameFolder(oldFoldePath, newFoldePath);
+
+
+                int i = newFoldePath.LastIndexOf(oldName);
+                if (i >= 0)
+                    newFoldePath = newFoldePath.Substring(0, i) + newName;
+
+                RenameFolder(oldFoldePath, newFoldePath);
+            }
         }
     }
 }
