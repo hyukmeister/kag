@@ -42,7 +42,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Agent Name" SortExpression="AgentName">
                             <ItemTemplate>
-                                <asp:Label ID="EducationLevel" runat="server" Text='<%# Eval("AgentName") %>'></asp:Label>
+                                <asp:Label ID="lblAgentName" runat="server" Text='<%# Eval("AgentName") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:ButtonField CommandName="Open" ItemStyle-HorizontalAlign="Center" ButtonType="Link" Text="Open" >

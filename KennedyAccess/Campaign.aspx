@@ -125,18 +125,23 @@
                 </h2>
                 <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushCampaign">
                     <div class="accordion-body">
+                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                        <ContentTemplate>
                         <asp:Table ID="Table1" runat="server" class="table table-hover">
                             <asp:TableRow>
                                 <asp:TableCell Width="450px" HorizontalAlign="Left">
                                     <asp:DropDownList ID="ddlPrevailingWages" runat="server" Width="220px" AutoPostBack="True" Style="border-radius: 8px;" OnSelectedIndexChanged="ddlPrevailingWages_Change"></asp:DropDownList><br />
                                 </asp:TableCell>
                                 <asp:TableCell  Width="450px" HorizontalAlign="Right">
-                                    <asp:Button ID="btnSavePrevWage" runat="server" class="btn btn-primary" Text="Save" ValidationGroup="CampaginGroup" OnClick="btnSavePrevWage_Click" />&nbsp;
+                                    <asp:Button ID="btnSavePrevWage" runat="server" class="btn btn-primary" Text="Save" ValidationGroup="CampaginGroup" OnClick="btnSavePrevWage_Click" Visible="false"/>&nbsp;
                                     <asp:Button ID="btnEditPrevWage" runat="server" class="btn btn-primary" CausesValidation="false" Text="Edit" OnClick="btnEditPrevWage_Click" />
+                                    <asp:Button ID="Button1" runat="server" class="btn btn-primary" Text="Cancel" CausesValidation="false" OnClientClick="return confirm('Cancel without saving?');" OnClick="btnCancel_Click" Visible="false" /><br />
                                 </asp:TableCell>
                             </asp:TableRow>
                         </asp:Table>
                         <uc3:PrevWage runat="server" ID="contPrevWage" width="100%" />
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
                     </div>
                 </div>
             </div>
@@ -149,11 +154,13 @@
                 <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushCampaign">
                     <div class="accordion-body">
                         <asp:Panel ID="panJobOpportunity" runat="server">
+                        <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                            <ContentTemplate>
                             <asp:Table ID="tabJobOpportunity" runat="server" class="table table-hover">
                                 <asp:TableRow>
                                     <asp:TableCell ColumnSpan="2">
                                         <label for="floatingInputGrid">Post Job Opportunity</label>
-                                        <asp:RadioButtonList ID="rblI_34_ListJob" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" Enabled="false" BorderStyle="None">
+                                        <asp:RadioButtonList ID="rblI_34_ListJob" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" Enabled="false" BorderStyle="None" OnSelectedIndexChanged="JobOpportunityChanged">
                                             <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                             <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;"/>
                                         </asp:RadioButtonList><br />
@@ -355,6 +362,8 @@
                                     </asp:TableCell>
                                 </asp:TableRow>
                             </asp:Table>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
                         </asp:Panel>
                     </div>
                 </div>

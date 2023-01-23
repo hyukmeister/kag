@@ -267,8 +267,8 @@ namespace KennedyAccess
             cbActive.Enabled = !bLock;
             cbActive.BorderStyle = sBorder;
 
-            //ddlPrevailingWages.Enabled = !bLock;
-            //ddlPrevailingWages.BorderStyle = sBorder;
+            ddlPrevailingWages.Enabled = !bLock;
+            ddlPrevailingWages.BorderStyle = sBorder;
             txtOfferWageFrom.ReadOnly = bLock;
             txtOfferWageFrom.BorderStyle = sBorder;
             txtOfferWageTo.ReadOnly = bLock;
