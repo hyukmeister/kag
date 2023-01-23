@@ -40,7 +40,7 @@
     </asp:Table>
 
     <div style="width:750px">
-        <div class="modal fade" id="myNewFolderModal">
+        <div class="modal fade" role="dialog" id="myNewFolderModal">
             <div class="modal-dialog">
                 <!-- Modal content-->
                 <div class="modal-content" style="width:450px">
@@ -78,7 +78,7 @@
             </div>
         </div>
    </div>
-    <div style="width:750px">
+<%--    <div style="width:750px">
         <div class="modal fade" id="myRenameFolderModal">
             <div class="modal-dialog">
                 <!-- Modal content-->
@@ -116,4 +116,4 @@
                 </div>
             </div>
         </div>
-   </div>
+   </div>--%>

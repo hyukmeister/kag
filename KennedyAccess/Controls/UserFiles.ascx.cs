@@ -180,7 +180,7 @@ namespace KennedyAccess.Controls
         protected void btnRename_Click(object sender, EventArgs e)
         {
             string oldName = tvUserFolders.SelectedNode.Text;
-            string newName = txtRenameFolder.Text;
+            string newName = string.Empty;//= txtRenameFolder.Text;
 
             if (newName != string.Empty)
             {

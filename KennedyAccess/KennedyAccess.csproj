@@ -177,6 +177,8 @@
     <Content Include="Attorneys.aspx" />
     <Content Include="Campaign.aspx" />
     <Content Include="Campaigns.aspx" />
+    <Content Include="Case.aspx" />
+    <Content Include="Cases.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -240,6 +242,7 @@
     <Content Include="images\lay001.svg" />
     <Content Include="images\logout.png" />
     <Content Include="images\map009.svg" />
+    <Content Include="images\save.png" />
     <Content Include="images\teh001.svg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -257,6 +260,7 @@
     <Content Include="Scripts\esm\popper.js.map" />
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="WebForm4.aspx" />
     <None Include="Scripts\jquery-3.6.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.1.js" />
     <Content Include="Scripts\jquery-3.6.1.min.js" />
@@ -507,6 +511,20 @@
     </Compile>
     <Compile Include="Campaigns.aspx.designer.cs">
       <DependentUpon>Campaigns.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Case.aspx.cs">
+      <DependentUpon>Case.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Case.aspx.designer.cs">
+      <DependentUpon>Case.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cases.aspx.cs">
+      <DependentUpon>Cases.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cases.aspx.designer.cs">
+      <DependentUpon>Cases.aspx</DependentUpon>
     </Compile>
     <Compile Include="Classes\Applicant.cs" />
     <Compile Include="Classes\BaseData.cs" />
@@ -770,6 +788,13 @@
     </Compile>
     <Compile Include="WebForm3.aspx.designer.cs">
       <DependentUpon>WebForm3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm4.aspx.cs">
+      <DependentUpon>WebForm4.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm4.aspx.designer.cs">
+      <DependentUpon>WebForm4.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
