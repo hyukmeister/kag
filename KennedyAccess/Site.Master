@@ -35,8 +35,11 @@
         </asp:ScriptManager>
 
         <div class="d-flex" id="wrapper" >
+
             <div class="border-light" id ="sidebar-wrapper" style="position:fixed; padding-left:15px;padding-right:10px;background-color:dimgray;width:265px">
-                <div class="sidebar-heading" style="background-color:dimgray; overflow-y: auto;height:100%;" ></div>
+                <div class="sidebar-heading" style="background-color:dimgray; overflow-y: auto;height:100%;" >
+
+                </div>
                 <div id="divMenu" runat="server" class="list-group list-group-flush" style="background-color:dimgray; word-wrap:inherit; overflow-y: auto;height:100%;"><br /><br />
                     <div id="divHome" runat="server" style="height:50px"><asp:ImageButton ID="ibHome" runat="server" CssClass="align-bottom" ImageUrl="~/images/gen001.svg" Width="30px" CausesValidation="false" PostBackUrl="~/home.aspx"></asp:ImageButton>&nbsp;&nbsp;<asp:HyperLink runat="server" NavigateUrl="~/home.aspx" Text="Home" Font-Bold="true" ForeColor="White" Font-Underline="false" Font-Size="22px"></asp:HyperLink></div>
                     <div id="divEmployers" runat="server" style="height:50px"><asp:ImageButton ID="ibEmployers" runat="server" CssClass="align-bottom" ImageUrl="~/images/map009.svg" Width="30px" CausesValidation="false" PostBackUrl="~/Employers.aspx"></asp:ImageButton>&nbsp;&nbsp;<asp:HyperLink runat="server" NavigateUrl="~/Employers.aspx" Text="Employers" Font-Bold="true" ForeColor="White" Font-Underline="false" Font-Size="22px"></asp:HyperLink></div>
@@ -49,9 +52,8 @@
                     <div id="divCampaigns" runat="server" style="height:50px"><asp:ImageButton ID="ibCampaigns" runat="server" CssClass="align-bottom" ImageUrl="~/images/teh001.svg" Width="30px" CausesValidation="false" PostBackUrl="~/Campaigns.aspx"></asp:ImageButton>&nbsp;&nbsp;<asp:HyperLink runat="server" NavigateUrl="~/Campaigns.aspx" Text="Campaigns" Font-Bold="true" ForeColor="White" Font-Underline="false" Font-Size="22px"></asp:HyperLink></div>
                     <div id="divJobListings" runat="server" style="height:50px"><asp:ImageButton ID="ibJobListings" runat="server" CssClass="align-bottom" ImageUrl="~/images/cod002.svg" Width="30px" CausesValidation="false" PostBackUrl="~/JobListings.aspx"></asp:ImageButton>&nbsp;&nbsp;<asp:HyperLink runat="server" NavigateUrl="~/JobListings.aspx" Text="Job Listings" Font-Bold="true" ForeColor="White" Font-Underline="false" Font-Size="22px"></asp:HyperLink></div>
                     <div id="divApplications" runat="server" style="height:50px"><asp:ImageButton ID="ibApplications" runat="server" CssClass="align-bottom" ImageUrl="~/images/ecm008.svg" Width="30px" CausesValidation="false" PostBackUrl="~/Applications.aspx"></asp:ImageButton>&nbsp;&nbsp;<asp:HyperLink runat="server" NavigateUrl="~/Applications.aspx" Text="Applications" Font-Bold="true" ForeColor="White" Font-Underline="false" Font-Size="22px"></asp:HyperLink></div>
-
+                    <div id="divCases" runat="server" style="height:50px"><asp:ImageButton ID="ibCases" runat="server" CssClass="align-bottom" ImageUrl="~/images/ecm008.svg" Width="30px" CausesValidation="false" PostBackUrl="~/Cases.aspx"></asp:ImageButton>&nbsp;&nbsp;<asp:HyperLink runat="server" NavigateUrl="~/Cases.aspx" Text="Cases" Font-Bold="true" ForeColor="White" Font-Underline="false" Font-Size="22px"></asp:HyperLink></div>
                     <div id="divProfile" runat="server" style="height:50px"><asp:ImageButton ID="ibProfile" runat="server" ImageUrl="images/com006.svg" Width="30px" OnClick="btnProfile_Click" Text="Profile"/>&nbsp;&nbsp;<asp:Button ID="btnProfile" runat="server" ForeColor="White" Font-Bold="true" BackColor="Transparent" Font-Size="22px" BorderStyle="None" OnClick="btnProfile_Click1" Text="Profile"></asp:Button></div>
-
 
                     <div class="accordion" runat="server" id="accordionMenu">
                         <div class="accordion-item">
@@ -84,8 +86,12 @@
                 <nav class="navbar navbar-expand-lg navbar-light" style="position:fixed; background-color:#edf2f2;width:265px">
                     <button type="button" id="menu-toggle" style="border:hidden">
                         <img src="../images/logo.png" />
-                    </button>                    
+                    </button>
+
                 </nav>
+                <div id="divWelcom" runat="server" style="position:absolute;left:1100px;top:10px;">
+                    <asp:Label ID="labWelcome" runat="server" Text=""></asp:Label>
+                </div>
             </div>
             <div class="container body-content;" style="position:absolute; left:300px; top:40px">
                 <table>

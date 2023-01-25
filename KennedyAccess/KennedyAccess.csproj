@@ -200,6 +200,7 @@
     <Content Include="Content\dropzone.min.css" />
     <Content Include="Controls\Attachments.ascx" />
     <Content Include="Controls\Contact.ascx" />
+    <Content Include="Controls\DropDownCheckBox.ascx" />
     <Content Include="Controls\PrevWage.ascx" />
     <Content Include="Controls\ProfilePicture.ascx" />
     <Content Include="Controls\Questionnaire.ascx" />
@@ -544,6 +545,13 @@
     </Compile>
     <Compile Include="Controls\Contact.ascx.designer.cs">
       <DependentUpon>Contact.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DropDownCheckBox.ascx.cs">
+      <DependentUpon>DropDownCheckBox.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\DropDownCheckBox.ascx.designer.cs">
+      <DependentUpon>DropDownCheckBox.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controls\PrevWage.ascx.cs">
       <DependentUpon>PrevWage.ascx</DependentUpon>

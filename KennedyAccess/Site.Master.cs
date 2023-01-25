@@ -26,6 +26,7 @@ namespace KennedyAccess
                     bool questionnaires = user.HasRole("Questionnaires");
                     bool employers = user.HasRole("Employers");
                     bool profiles = user.HasRole("Profiles");
+                    bool cases = user.HasRole("Cases");
 
                     divEmployers.Visible = user.HasRole("Employers");
                     divAgents.Visible = user.HasRole("Agents");
@@ -35,7 +36,8 @@ namespace KennedyAccess
                     divCampaigns.Visible = user.HasRole("Campaigns") && (user.ObjectID != 0 || user.UserType != "Employer");
                     divJobListings.Visible = user.HasRole("JobListings") && (user.ObjectID != 0 || user.UserType != "Applicant");
                     divApplications.Visible = user.HasRole("Applications") && (user.ObjectID != 0 || user.UserType != "Employer");
-                    divProfile.Visible = (user.ObjectID != 0 && (user.UserType == "Applicant" || user.UserType == "Employer"));
+                    //divProfile.Visible = (user.ObjectID != 0 && (user.UserType == "Applicant" || user.UserType == "Employer"));
+                    divProfile.Visible = user.UserType == "Applicant" || user.UserType == "Employer";
 
                     accordionMenu.Visible = users || settings || roles || rolesets || roles || questionnaires || employers || profiles;
                     divUsers.Visible = users;
@@ -45,9 +47,12 @@ namespace KennedyAccess
                     divQuestionnaires.Visible = questionnaires;
                     divLogOut.Visible = employers;
                     divProfiles.Visible = profiles;
+                    divCases.Visible = cases;
 
                     //divProfile.Visible = user.UserType != "System Admin";
                     divLogOut.Visible = true;
+
+                    labWelcome.Text = "Welcome " + user.FirstName + "<br />"+user.UserType;
                 }
                 else
                 {

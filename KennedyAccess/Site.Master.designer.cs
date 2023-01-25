@@ -186,6 +186,24 @@ namespace KennedyAccess
         protected global::System.Web.UI.WebControls.ImageButton ibApplications;
 
         /// <summary>
+        /// divCases control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divCases;
+
+        /// <summary>
+        /// ibCases control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ibCases;
+
+        /// <summary>
         /// divProfile control.
         /// </summary>
         /// <remarks>
@@ -346,6 +364,24 @@ namespace KennedyAccess
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ibLogOut;
+
+        /// <summary>
+        /// divWelcom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divWelcom;
+
+        /// <summary>
+        /// labWelcome control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label labWelcome;
 
         /// <summary>
         /// MainContent control.

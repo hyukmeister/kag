@@ -6,7 +6,6 @@
 <%@ Register Src="~/Controls/ProfilePicture.ascx" TagPrefix="uc4" TagName="ProfilePicture" %>
 <%@ Register Src="~/Controls/UserFiles.ascx" TagPrefix="uc5" TagName="UserFiles" %>
 
-
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <asp:CheckBox ID="cbkEmployerChanged" runat="server" Checked="false" Visible="false" />
     <h2>
@@ -19,7 +18,7 @@
                     <asp:Table ID="tabEmployer" runat="server" class="table table-responsive table-hover">
                         <asp:TableRow>
                             <asp:TableCell ColumnSpan="2" HorizontalAlign="Left">
-                                 <asp:Label ID="Label1" runat="server" Text="User Name"></asp:Label>
+                                <asp:Label ID="Label1" runat="server" Text="User Name"></asp:Label>
                                 <asp:DropDownList ID="ddlUserName" class="form-select" runat="server" Width="300px" Enabled="false"></asp:DropDownList>
                             </asp:TableCell>
                             <asp:TableCell ColumnSpan="2" HorizontalAlign="Right">
