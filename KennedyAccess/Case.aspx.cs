@@ -28,6 +28,9 @@ namespace KennedyAccess
                 DropDownCampaigns.ClearAll();
                 DropDownCampaigns.AddItems(campaigns, "Description", "CampaignID");
 
+                DataTable statuses = bd.GetProfile(user);
+                DropDownStatuses.ClearAll();
+                DropDownStatuses.AddItems(statuses, "RoleSetName", "RoleSetID");
             }
         }
     }

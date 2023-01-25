@@ -41,4 +41,3 @@ function CheckItem(checkBoxList)
         Height="220" onclick="CheckItem(this)">                                                                                                                                                                        
     </asp:CheckBoxList>
 </asp:Panel>
-<asp:Button ID="Test" runat="server" Text="Button" OnClick="Test_Click" />
