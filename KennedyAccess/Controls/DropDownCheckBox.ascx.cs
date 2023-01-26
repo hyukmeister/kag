@@ -113,7 +113,6 @@ namespace KennedyAccess.Controls
         /// </summary>
         public string Text
         {
-            get { return hidVal.Value; }
             set { txtCombo.Text = value; }
         }
 
@@ -131,11 +130,6 @@ namespace KennedyAccess.Controls
             }
 
             return "(" + SelectedValues.Substring(1, SelectedValues.Length - 1) + ")";
-        }
-
-        protected void Test_Click(object sender, EventArgs e)
-        {
-            Console.WriteLine(GetSelectedValues());
         }
     }
 }

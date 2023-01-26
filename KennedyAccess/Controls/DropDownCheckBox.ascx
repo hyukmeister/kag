@@ -21,23 +21,20 @@ function CheckItem(checkBoxList)
     }
     var TxtBox = document.getElementById("<%=txtCombo.ClientID%>");       
     TxtBox.value = s;
-    document.getElementById('<%=hidVal.ClientID %>').value = s;
 }
 </script>
 
 <div class="form-floating mb-3;">
-    <asp:TextBox ID="txtCombo" class="form-control" runat="server" ReadOnly="true" Width="200" Font-Size="X-Small" ViewStateMode="Enabled"></asp:TextBox>
+    <asp:TextBox ID="txtCombo" class="form-control" runat="server" ReadOnly="true" Width="200" Font-Size="X-Small"></asp:TextBox>
     <label id="labLabel" runat="server" for="txtCombo">Employers</label>
 </div>
 
 <mcc:PopupControlExtender ID="PopupControlExtender111" runat="server" 
     TargetControlID="txtCombo" PopupControlID="Panel111" Position="Bottom" >
 </mcc:PopupControlExtender>
-<input type="hidden" name="hidVal" id="hidVal" runat="server" />
 
 <asp:Panel ID="Panel111" runat="server" CssClass="rounded-3 panel-primary" ScrollBars="Vertical" Width="300" Height="220" BackColor="AliceBlue" BorderColor="Gray" BorderWidth="1">
-    <asp:CheckBoxList ID="chkList" 
-        runat="server" ViewStateMode="Enabled"
+    <asp:CheckBoxList ID="chkList" runat="server" 
         Height="220" onclick="CheckItem(this)">                                                                                                                                                                        
     </asp:CheckBoxList>
 </asp:Panel>

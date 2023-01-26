@@ -7,12 +7,12 @@
     <div class="mb-3;" style="width: 220px">
         <uc1:DropDownCheckBox runat="server" id="DropDownEmployers" ControlLabel="Employers"/>
     </div>
-    <div class="mb-3;" style="width: 220px">
+<%--    <div class="mb-3;" style="width: 220px">
         <uc1:DropDownCheckBox runat="server" id="DropDownCampaigns" ControlLabel="Campaigns"/>
     </div>
     <div class="mb-3;" style="width: 220px">
         <uc1:DropDownCheckBox runat="server" id="DropDownStatuses" ControlLabel="Statuses"/>
-    </div>
+    </div>--%>
 
     
 

@@ -52,7 +52,7 @@ namespace KennedyAccess
                     //divProfile.Visible = user.UserType != "System Admin";
                     divLogOut.Visible = true;
 
-                    labWelcome.Text = "Welcome " + user.FirstName + "<br />"+user.UserType;
+                    labWelcome.Text = "Welcome, " + user.FirstName + "<br />"+user.UserType;
                 }
                 else
                 {

@@ -42,15 +42,6 @@ namespace KennedyAccess.Controls
         protected global::AjaxControlToolkit.PopupControlExtender PopupControlExtender111;
 
         /// <summary>
-        /// hidVal control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hidVal;
-
-        /// <summary>
         /// Panel111 control.
         /// </summary>
         /// <remarks>
