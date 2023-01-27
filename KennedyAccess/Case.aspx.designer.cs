@@ -22,5 +22,23 @@ namespace KennedyAccess
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::KennedyAccess.Controls.DropDownCheckBox DropDownEmployers;
+
+        /// <summary>
+        /// DropDownCampaigns control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::KennedyAccess.Controls.DropDownCheckBox DropDownCampaigns;
+
+        /// <summary>
+        /// DropDownStatuses control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::KennedyAccess.Controls.DropDownCheckBox DropDownStatuses;
     }
 }

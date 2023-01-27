@@ -24,13 +24,13 @@ namespace KennedyAccess
                 DropDownEmployers.ClearAll();
                 DropDownEmployers.AddItems(employers, "EmployerName", "EmployerId");
 
-                //DataTable campaigns = bd.GetCampaign(user, "0", "0");
-                //DropDownCampaigns.ClearAll();
-                //DropDownCampaigns.AddItems(campaigns, "Description", "CampaignID");
+                DataTable campaigns = bd.GetCampaign(user, "0", "0");
+                DropDownCampaigns.ClearAll();
+                DropDownCampaigns.AddItems(campaigns, "Description", "CampaignID");
 
-                //DataTable statuses = bd.GetProfile(user);
-                //DropDownStatuses.ClearAll();
-                //DropDownStatuses.AddItems(statuses, "RoleSetName", "RoleSetID");
+                DataTable statuses = bd.GetProfile(user);
+                DropDownStatuses.ClearAll();
+                DropDownStatuses.AddItems(statuses, "RoleSetName", "RoleSetID");
             }
         }
     }

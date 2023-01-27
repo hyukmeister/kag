@@ -19,7 +19,7 @@ function CheckItem(checkBoxList)
     {       
        s = s.substring(2, s.length); 
     }
-    var TxtBox = document.getElementById("<%=txtCombo.ClientID%>");       
+    var TxtBox = document.getElementById("<%=txtCombo.ClientID%>");
     TxtBox.value = s;
 }
 </script>
@@ -34,7 +34,7 @@ function CheckItem(checkBoxList)
 </mcc:PopupControlExtender>
 
 <asp:Panel ID="Panel111" runat="server" CssClass="rounded-3 panel-primary" ScrollBars="Vertical" Width="300" Height="220" BackColor="AliceBlue" BorderColor="Gray" BorderWidth="1">
-    <asp:CheckBoxList ID="chkList" runat="server" 
+    <asp:CheckBoxList ID="chkList" runat="server" CellPadding="8"
         Height="220" onclick="CheckItem(this)">                                                                                                                                                                        
     </asp:CheckBoxList>
 </asp:Panel>
