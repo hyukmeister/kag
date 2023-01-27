@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="DropDownCheckBox.ascx.cs" Inherits="KennedyAccess.Controls.DropDownCheckBox" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="mcc" %>
 <script type = "text/javascript"> 
-function CheckItem(checkBoxList)
+function CheckItem_<%=ControlLabel%>(checkBoxList)
 {
     var options = checkBoxList.getElementsByTagName('input');
     var arrayOfCheckBoxLabels= checkBoxList.getElementsByTagName("label");
@@ -33,8 +33,9 @@ function CheckItem(checkBoxList)
     TargetControlID="txtCombo" PopupControlID="Panel111" Position="Bottom" >
 </mcc:PopupControlExtender>
 
-<asp:Panel ID="Panel111" runat="server" CssClass="rounded-3 panel-primary" ScrollBars="Vertical" Width="300" Height="220" BackColor="AliceBlue" BorderColor="Gray" BorderWidth="1">
+<asp:Panel ID="Panel111" runat="server" CssClass="rounded-3 panel-primary" ScrollBars="Vertical" 
+    Width="300" Height="220" BackColor="AliceBlue" BorderColor="Gray" BorderWidth="1">
     <asp:CheckBoxList ID="chkList" runat="server" CellPadding="8"
-        Height="220" onclick="CheckItem(this)">                                                                                                                                                                        
+        Height="220" >                                                                                                                                                                        
     </asp:CheckBoxList>
 </asp:Panel>

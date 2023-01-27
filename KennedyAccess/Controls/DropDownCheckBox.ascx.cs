@@ -20,6 +20,8 @@ namespace KennedyAccess.Controls
             {
                 labLabel.InnerText = ControlLabel;
             }
+
+            chkList.Attributes.Add("onclick", "CheckItem_" + ControlLabel + "(this)");
         }
         public int WidthCheckListBox
         {
