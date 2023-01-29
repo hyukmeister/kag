@@ -100,13 +100,32 @@
                             </asp:ContentPlaceHolder>
                         </td>
                         <td style="vertical-align:top;border:hidden;width:100%">
-                            <ajaxToolkit:TabContainer ID="TabContainer1" runat="server">
-                                <ajaxToolkit:TabPanel>
+
+                            <ajaxToolkit:TabContainer ID="tcContainer" runat="server" Width="450px" Visible="false">
+                                <ajaxToolkit:TabPanel ID="tab1" runat="server" ScrollBars="Auto" Visible="false">
+                                    <ContentTemplate>
+                                    </ContentTemplate>
+                                </ajaxToolkit:TabPanel>
+                                <ajaxToolkit:TabPanel ID="tab2" runat="server" ScrollBars="Auto" Visible="false">
+                                    <ContentTemplate>
+                                    </ContentTemplate>
+                                </ajaxToolkit:TabPanel>
+                                <ajaxToolkit:TabPanel ID="tab3" runat="server" ScrollBars="Auto" Visible="false">
+                                    <ContentTemplate>
+                                    </ContentTemplate>
+                                </ajaxToolkit:TabPanel>
+                                <ajaxToolkit:TabPanel ID="tab4" runat="server" ScrollBars="Auto" Visible="false">
+                                    <ContentTemplate>
+                                    </ContentTemplate>
                                 </ajaxToolkit:TabPanel>
                             </ajaxToolkit:TabContainer>
+
+
                             <asp:GridView ID="gvInfo" runat="server" class="table table-hover" GridLines="None">
                                 <HeaderStyle BackColor="dimgray" ForeColor="White"/>
                             </asp:GridView>
+
+
                         </td>
                     </tr>
                 </table>

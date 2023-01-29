@@ -5,7 +5,6 @@
 <%@ Register Src="~/Controls/Attachments.ascx" TagPrefix="att" TagName="Attachments" %>
 <%@ Register Src="~/Controls/ProfilePicture.ascx" TagPrefix="us3" TagName="ProfilePicture" %>
 
-
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <asp:CheckBox ID="cbkApplicantChanged" runat="server" Checked="false" Visible="false"/>
     <script src="https://www.paypal.com/sdk/js?client-id=AepfpfwepHHb_K-Ob9k_ocTwZqHQGYpKa8HUnDDnUtwv7qZHhg30N6kW0dQo7BIUq3CE6iQ0oztHezNz&components=buttons"></script>
@@ -140,7 +139,12 @@
         </h2>
         <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
             <div class="accordion-body">
-                <uc2:WorkExperience runat="server" ID="WorkExperience" />
+                <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                    <ContentTemplate>
+                        <uc2:WorkExperience runat="server" ID="WorkExperience" />
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+
             </div>
         </div>
         </div>
@@ -230,7 +234,6 @@
                                                 Please open and sign the service agreement to proceed.
                                                 <asp:LinkButton ID="lbServiceAgreement" runat="server" Text="Sign Agreement" CssClass="btn btn-primary" OnClientClick="openAgreement(); return false;" ></asp:LinkButton>
                                             </p>
-
 
                                             <asp:GridView ID="gvPaymentSchedule" runat="server" AutoGenerateColumns="False" style="width:100%"
                                                 BorderStyle="None" class="table table-hover" OnRowDataBound="gvPaymentSchedule_RowDataBound">

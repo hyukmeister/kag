@@ -131,7 +131,10 @@ namespace KennedyAccess.Controls
                 }
             }
 
-            return "(" + SelectedValues.Substring(1, SelectedValues.Length - 1) + ")";
+            if(SelectedValues != string.Empty)
+                SelectedValues = "(" + SelectedValues.Substring(1, SelectedValues.Length - 1) + ")";
+
+            return SelectedValues;
         }
     }
 }

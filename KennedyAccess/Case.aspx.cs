@@ -33,5 +33,17 @@ namespace KennedyAccess
                 DropDownStatuses.AddItems(statuses, "RoleSetName", "RoleSetID");
             }
         }
+
+        protected void SaveSearch_Click(object sender, EventArgs e)
+        {
+            string selectedEmps = DropDownEmployers.GetSelectedValues();
+            string selectedCamp = DropDownCampaigns.GetSelectedValues();
+            string selectedStat = DropDownStatuses.GetSelectedValues();
+        }
+
+        protected void Search_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

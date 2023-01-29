@@ -1094,5 +1094,20 @@ namespace KennedyAccess.Classes
                 new SqlParameter("@SystemSettingDesc", SettingDesc)
             );
         }
+
+        public DataTable GetLoginHistory(string FranchiseID, string UserID)
+        {
+            DataTable dtHistory = null;
+            DataSet ds = (SqlHelper.ExecuteDataset(Global.dbcnn, "GetLoginHistory",
+                new SqlParameter("@FranchiseID", FranchiseID),
+                    new SqlParameter("@UserID", UserID)));
+
+            if (ds != null && ds.Tables.Count > 0)
+            {
+                dtHistory = ds.Tables[0];
+            }
+            return dtHistory;
+        }
+
     }
 }

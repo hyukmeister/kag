@@ -13,6 +13,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using iTextSharp.text.pdf;
 using KennedyAccess.Controls;
+using AjaxControlToolkit;
 
 namespace KennedyAccess
 {
@@ -26,8 +27,6 @@ namespace KennedyAccess
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Page.MaintainScrollPositionOnPostBack = true;
-
             user = (User)Session["User"];
             if (user == null || !user.HasRole("Applicant"))
                 Response.Redirect("Default.aspx");
@@ -124,9 +123,36 @@ namespace KennedyAccess
                     panStep2.Visible = true;
 
                     // applicant info
-                    GridView gvInfo = (GridView)Master.FindControl("gvInfo");
-                    gvInfo.DataSource= bd.GetApplicationHistory(user, labApplicantID.Text);
-                    gvInfo.DataBind();
+                    //GridView gvInfo = (GridView)Master.FindControl("gvInfo");
+                    //gvInfo.DataSource= bd.GetApplicationHistory(user, labApplicantID.Text);
+                    //gvInfo.DataBind();
+
+                    TabContainer tcContainer = (TabContainer)Master.FindControl("tcContainer");
+                    tcContainer.Visible = user.UserType == "System Admin";
+                    
+                    // tab 1 : application history
+                    tcContainer.Tabs[0].HeaderText = "Application History";
+                    GridView gv1 = new GridView();
+                    gv1.CssClass = "table table-hover";
+                    gv1.GridLines = GridLines.None;
+                    gv1.HeaderStyle.ForeColor = System.Drawing.Color.DimGray;
+                    gv1.HeaderStyle.BackColor = System.Drawing.Color.Silver;
+                    gv1.DataSource = bd.GetApplicationHistory(user, labApplicantID.Text);
+                    gv1.DataBind();
+                    tcContainer.Tabs[0].Controls.Add(gv1);
+                    tcContainer.Tabs[0].Visible = true;
+
+                    // tab 2 : login history
+                    tcContainer.Tabs[1].HeaderText = "Login History";
+                    GridView gv2 = new GridView();
+                    gv2.CssClass = "table table-hover";
+                    gv2.GridLines = GridLines.None;
+                    gv2.HeaderStyle.ForeColor = System.Drawing.Color.DimGray;
+                    gv2.HeaderStyle.BackColor = System.Drawing.Color.Silver;
+                    gv2.DataSource = bd.GetLoginHistory(user.FranchiseID.ToString(), labApplicantID.Text);
+                    gv2.DataBind();
+                    tcContainer.Tabs[1].Controls.Add(gv2);
+                    tcContainer.Tabs[1].Visible = true;
                 }
 
                 // applicant status
