@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="Cases" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Cases.aspx.cs" Inherits="KennedyAccess.Cases" %>
 
+<%@ Register Src="~/Controls/UserSearchProfiles.ascx" TagPrefix="uc1" TagName="UserSearchProfiles" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div style="background-image: url('images/kagimg10.jpg'); filter: blur(4px); height: 100px; width: 900px; background-size: cover; background-position: center; position: relative; opacity: 55%; top: 20px">
         &nbsp;

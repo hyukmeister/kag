@@ -30,7 +30,7 @@ function CheckItem_<%=ControlLabel%>(checkBoxList)
 </div>
 
 <mcc:PopupControlExtender ID="PopupControlExtender111" runat="server" 
-    TargetControlID="txtCombo" PopupControlID="Panel111" Position="Bottom" >
+    TargetControlID="txtCombo" PopupControlID="Panel111" Position="Right" >
 </mcc:PopupControlExtender>
 
 <asp:Panel ID="Panel111" runat="server" CssClass="rounded-3 panel-primary" ScrollBars="Vertical" 

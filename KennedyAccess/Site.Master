@@ -99,8 +99,7 @@
                             <asp:ContentPlaceHolder ID="MainContent" runat="server">
                             </asp:ContentPlaceHolder>
                         </td>
-                        <td style="vertical-align:top;border:hidden;width:100%">
-
+                        <td style="vertical-align:top;border:hidden;width:100%; padding:20px">
                             <ajaxToolkit:TabContainer ID="tcContainer" runat="server" Width="450px" Visible="false">
                                 <ajaxToolkit:TabPanel ID="tab1" runat="server" ScrollBars="Auto" Visible="false">
                                     <ContentTemplate>
@@ -120,10 +119,6 @@
                                 </ajaxToolkit:TabPanel>
                             </ajaxToolkit:TabContainer>
 
-
-                            <asp:GridView ID="gvInfo" runat="server" class="table table-hover" GridLines="None">
-                                <HeaderStyle BackColor="dimgray" ForeColor="White"/>
-                            </asp:GridView>
 
 
                         </td>

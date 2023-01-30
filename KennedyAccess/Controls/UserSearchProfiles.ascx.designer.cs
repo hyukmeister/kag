@@ -7,39 +7,39 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KennedyAccess
+namespace KennedyAccess.Controls
 {
 
 
-    public partial class Case
+    public partial class UserSearchProfiles
     {
 
         /// <summary>
-        /// DropDownEmployers control.
+        /// ddcbEmployers control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::KennedyAccess.Controls.DropDownCheckBox DropDownEmployers;
+        protected global::KennedyAccess.Controls.DropDownCheckBox ddcbEmployers;
 
         /// <summary>
-        /// DropDownCampaigns control.
+        /// ddcbCampaigns control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::KennedyAccess.Controls.DropDownCheckBox DropDownCampaigns;
+        protected global::KennedyAccess.Controls.DropDownCheckBox ddcbCampaigns;
 
         /// <summary>
-        /// DropDownStatuses control.
+        /// ddcbStatuses control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::KennedyAccess.Controls.DropDownCheckBox DropDownStatuses;
+        protected global::KennedyAccess.Controls.DropDownCheckBox ddcbStatuses;
 
         /// <summary>
         /// btnSearch control.

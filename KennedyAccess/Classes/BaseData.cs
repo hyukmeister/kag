@@ -1108,6 +1108,39 @@ namespace KennedyAccess.Classes
             }
             return dtHistory;
         }
+        public string InsertUpdateSearch(User user, string Status, 
+            bool Active, int UsrSearchID, bool Default, 
+            string RecordType, string SearchName)
+        {
+            var obj = SqlHelper.ExecuteScalar(
+                    Global.dbcnn, "InsertUpdateSearch",
+                    new SqlParameter("@FranchiseID", user.FranchiseID),
+                    new SqlParameter("@UserID", user.UserID),
+                    new SqlParameter("@Status", Status),
+                    new SqlParameter("@Active", Active),
+                    new SqlParameter("@UsrSearchID", UsrSearchID),
+                    new SqlParameter("@Default", Default),
+                    new SqlParameter("@RecordType", RecordType),
+                    new SqlParameter("@SearchName", SearchName)
+                );
 
+            return obj.ToString();
+        }
+        public void InsertUpdateSearchDetails(User user, string Status,
+            string UsrSearchID, string UsrSearchDetailID, string RecordType, 
+            string IntValue, string StrValue)
+        {
+            var obj = SqlHelper.ExecuteScalar(
+                    Global.dbcnn, "InsertUpdateSearchDetails",
+                    new SqlParameter("@FranchiseID", user.FranchiseID),
+                    new SqlParameter("@UserID", user.UserID),
+                    new SqlParameter("@Status", Status),
+                    new SqlParameter("@UsrSearchDetailID", UsrSearchDetailID),
+                    new SqlParameter("@UsrSearchID", UsrSearchID),
+                    new SqlParameter("@RecordType", RecordType),
+                    new SqlParameter("@IntValue", IntValue),
+                    new SqlParameter("@StrValue", StrValue)
+                );
+        }
     }
 }

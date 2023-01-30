@@ -122,11 +122,6 @@ namespace KennedyAccess
                     // profile is completed
                     panStep2.Visible = true;
 
-                    // applicant info
-                    //GridView gvInfo = (GridView)Master.FindControl("gvInfo");
-                    //gvInfo.DataSource= bd.GetApplicationHistory(user, labApplicantID.Text);
-                    //gvInfo.DataBind();
-
                     TabContainer tcContainer = (TabContainer)Master.FindControl("tcContainer");
                     tcContainer.Visible = user.UserType == "System Admin";
                     
@@ -155,7 +150,7 @@ namespace KennedyAccess
                     tcContainer.Tabs[1].Visible = true;
                 }
 
-                // applicant status
+                // applicant progress
                 DataTable dt = bd.GetApplicantStatus(user.FranchiseID, user.UserID, iApplicantID);
                 string sImage = "images/ApplicantStatus_Profile.png";
                 if (dt != null && dt.Rows.Count > 0)

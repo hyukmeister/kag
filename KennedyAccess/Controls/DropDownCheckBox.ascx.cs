@@ -118,23 +118,23 @@ namespace KennedyAccess.Controls
             set { txtCombo.Text = value; }
         }
 
-        public string GetSelectedValues()
+        public DataTable GetSelectedValues()
         {
-            string SelectedValues = string.Empty;
+            DataTable dt = new DataTable();
+            
+            dt.Columns.Add("value", typeof(int));
 
             foreach (ListItem listItem in chkList.Items)
             {
                 if (listItem.Selected)
                 {
-                    //do some work 
-                    SelectedValues += ","+listItem.Value;
+                    DataRow dr = dt.NewRow();
+                    dr["value"] = listItem.Value;
+                    dt.Rows.Add(dr);
                 }
             }
 
-            if(SelectedValues != string.Empty)
-                SelectedValues = "(" + SelectedValues.Substring(1, SelectedValues.Length - 1) + ")";
-
-            return SelectedValues;
+            return dt;
         }
     }
 }

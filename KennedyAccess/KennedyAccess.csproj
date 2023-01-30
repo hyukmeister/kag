@@ -205,6 +205,7 @@
     <Content Include="Controls\ProfilePicture.ascx" />
     <Content Include="Controls\Questionnaire.ascx" />
     <Content Include="Controls\UserFiles.ascx" />
+    <Content Include="Controls\UserSearchProfiles.ascx" />
     <Content Include="Controls\WorkExperience.ascx" />
     <Content Include="Dashboard.aspx" />
     <Content Include="Default.aspx" />
@@ -580,6 +581,13 @@
     </Compile>
     <Compile Include="Controls\UserFiles.ascx.designer.cs">
       <DependentUpon>UserFiles.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\UserSearchProfiles.ascx.cs">
+      <DependentUpon>UserSearchProfiles.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\UserSearchProfiles.ascx.designer.cs">
+      <DependentUpon>UserSearchProfiles.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controls\WorkExperience.ascx.cs">
       <DependentUpon>WorkExperience.ascx</DependentUpon>

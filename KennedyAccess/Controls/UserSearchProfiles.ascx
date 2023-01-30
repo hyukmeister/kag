@@ -1,32 +1,16 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Case.aspx.cs" Inherits="KennedyAccess.Case" %>
-
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UserSearchProfiles.ascx.cs" Inherits="KennedyAccess.Controls.UserSearchProfiles" %>
 <%@ Register Src="~/Controls/DropDownCheckBox.ascx" TagPrefix="uc1" TagName="DropDownCheckBox" %>
+    <div class="mb-3;" style="width: 220px">
+        <uc1:DropDownCheckBox runat="server" id="ddcbEmployers" ControlLabel="Employers" />
+    </div>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <div class="mb-3;" style="width: 220px">
+        <uc1:DropDownCheckBox runat="server" id="ddcbCampaigns" ControlLabel="Campaigns"/>
+    </div>
 
-    <asp:table runat="server" Width="900px">
-        <asp:TableRow>
-            <asp:TableCell>
-                <div class="mb-3;" style="width: 220px">
-                    <uc1:DropDownCheckBox runat="server" id="DropDownEmployers" ControlLabel="Employers"/>
-                </div>
-            </asp:TableCell>
-            <asp:TableCell>
-                <div class="mb-3;" style="width: 220px">
-                    <uc1:DropDownCheckBox runat="server" id="DropDownCampaigns" ControlLabel="Campaigns"/>
-                </div>
-            </asp:TableCell>
-            <asp:TableCell>
-                <div class="mb-3;" style="width: 220px">
-                    <uc1:DropDownCheckBox runat="server" id="DropDownStatuses" ControlLabel="Statuses"/>
-                </div>
-            </asp:TableCell>
-            <asp:TableCell>
-                <div class="mb-3;" style="width: 220px">
-                </div>
-            </asp:TableCell>
-        </asp:TableRow>
-    </asp:table>
+    <div class="mb-3;" style="width: 220px">
+        <uc1:DropDownCheckBox runat="server" id="ddcbStatuses" ControlLabel="Statuses"/>
+    </div>
 
     <asp:Button ID="btnSearch" runat="server" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" text="Search" />
     <button id="btnSaveSearch" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Save Filters</button>
@@ -57,7 +41,3 @@
         </div>
       </div>
     </div>
-
-
-
-</asp:Content>

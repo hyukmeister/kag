@@ -1,5 +1,7 @@
-﻿using iTextSharp.text.pdf;
+﻿using AjaxControlToolkit;
+using iTextSharp.text.pdf;
 using KennedyAccess.Classes;
+using KennedyAccess.Controls;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -31,6 +33,19 @@ namespace KennedyAccess
                 gvCases.DataBind();
 
                 ViewState["dtApplicants"] = dtApplicants;
+
+                TabContainer tcContainer = (TabContainer)Master.FindControl("tcContainer");
+                tcContainer.Visible = user.UserType == "System Admin";
+
+                // tab 1 : application history
+                tcContainer.Tabs[0].HeaderText = "Search Profiles";
+
+
+                UserControl usp = (UserControl)Page.LoadControl("~/Controls/UserSearchProfiles.ascx");
+
+
+                tcContainer.Tabs[0].Controls.Add(usp);
+                tcContainer.Tabs[0].Visible = true;
             }
 
             gvCases.Columns[5].Visible = user.HasRole("Applicant");
