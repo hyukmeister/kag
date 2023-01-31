@@ -115,6 +115,7 @@ namespace KennedyAccess.Controls
         /// </summary>
         public string Text
         {
+            get { return txtCombo.Text; }
             set { txtCombo.Text = value; }
         }
 
@@ -135,6 +136,16 @@ namespace KennedyAccess.Controls
             }
 
             return dt;
+        }
+
+        public ListItem Item(int idx)
+        {
+            ListItem item = chkList.Items[idx];
+            return item;
+        }
+        public int Length()
+        {
+            return chkList.Items.Count;
         }
     }
 }

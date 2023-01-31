@@ -95,13 +95,13 @@ namespace KennedyAccess
         }
         void Session_End(object sender, EventArgs e)
         {
-            User user = (User)Session["User"];
-            if(user != null)
-            {
-                BaseData bd = new BaseData();
-                string recordtypeid = bd.GetRecordTypeID((DataTable)Application["RecordType"], user.FranchiseID, "User", "Login").ToString();
-                bd.WriteAuditTrail(user, recordtypeid, "User logged out");
-            }
+            //User user = (User)Session["User"];
+            //if(user != null)
+            //{
+            //    BaseData bd = new BaseData();
+            //    string recordtypeid = bd.GetRecordTypeID((DataTable)Application["RecordType"], user.FranchiseID, "User", "Login").ToString();
+            //    bd.WriteAuditTrail(user, recordtypeid, "User logged out");
+            //}
         }
         private string RemoveSalt(string sSaltedString)
         {

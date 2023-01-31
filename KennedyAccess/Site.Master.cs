@@ -10,9 +10,11 @@ namespace KennedyAccess
 {
     public partial class Sapphire : System.Web.UI.MasterPage
     {
+        //public static bool Flag = false;
         private User user;
         protected void Page_Load(object sender, EventArgs e)
         {
+            //if (!IsPostBack && !Flag)
             if (!IsPostBack)
             {
                 user = (User)Session["User"];

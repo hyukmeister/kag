@@ -12,15 +12,20 @@
         <uc1:DropDownCheckBox runat="server" id="ddcbStatuses" ControlLabel="Statuses"/>
     </div>
 
-    <asp:Button ID="btnSearch" runat="server" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" text="Search" />
-    <button id="btnSaveSearch" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Save Filters</button><br /><br />
+    <asp:Button ID="btnSearch" runat="server" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" text="Search" OnClick="btnSearch_Click"/>
+    <button id="btnSaveSearch" type="button" class="btn btn-default" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Save Filters</button><br /><br />
 
-    <asp:GridView ID="gvSearchProfiles" runat="server" AutoGenerateColumns="False" Width="100%"
+    <asp:GridView ID="gvSearchProfiles" runat="server" AutoGenerateColumns="False" Width="100%" OnRowDataBound="gvSearchProfiles_RowDataBound"
         GridLines="None" class="table table-hover" OnRowCommand="gvSearchProfiles_RowCommand" AllowSorting="True">
         <Columns>
-            <asp:TemplateField HeaderText="UsrSearchID" Visible="true" SortExpression="UsrSearchID">
+            <asp:TemplateField HeaderText="UsrSearchID" Visible="false" SortExpression="UsrSearchID">
                 <ItemTemplate>
                     <asp:Label ID="UsrSearchID" runat="server" Text='<%# Eval("UsrSearchID") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Default" Visible="true" SortExpression="Default">
+                <ItemTemplate>
+                    <asp:CheckBox ID="cbkDefault" Runat="server" Checked='<%# Eval("Default") %>' Enabled="false" />
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Profile Name" SortExpression="ProfileName">

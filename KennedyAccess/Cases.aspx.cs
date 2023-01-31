@@ -26,6 +26,11 @@ namespace KennedyAccess
                 Response.Redirect("Default.aspx");
 
             if (!IsPostBack)
+            //{
+            //    TabContainer tcContainer = (TabContainer)Master.FindControl("tcContainer");
+            //    tcContainer = (TabContainer)ViewState["tcContainer"];
+            //}
+            //else
             {
                 DataTable dtApplicants = bd.GetApplicant(user, 0);
 
@@ -46,8 +51,7 @@ namespace KennedyAccess
                 tcContainer.Tabs[0].Controls.Add(usp);
                 tcContainer.Tabs[0].Visible = true;
 
-                // gridview for search profiles
-                GridView gv = new GridView();
+                //ViewState["tcContainer"] = tcContainer;
 
             }
 
