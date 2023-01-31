@@ -34,18 +34,21 @@ namespace KennedyAccess
 
                 ViewState["dtApplicants"] = dtApplicants;
 
+                // load info bar
                 TabContainer tcContainer = (TabContainer)Master.FindControl("tcContainer");
                 tcContainer.Visible = user.UserType == "System Admin";
 
                 // tab 1 : application history
                 tcContainer.Tabs[0].HeaderText = "Search Profiles";
 
-
                 UserControl usp = (UserControl)Page.LoadControl("~/Controls/UserSearchProfiles.ascx");
-
 
                 tcContainer.Tabs[0].Controls.Add(usp);
                 tcContainer.Tabs[0].Visible = true;
+
+                // gridview for search profiles
+                GridView gv = new GridView();
+
             }
 
             gvCases.Columns[5].Visible = user.HasRole("Applicant");

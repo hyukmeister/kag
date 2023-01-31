@@ -9,6 +9,7 @@ using System.Web.UI.WebControls;
 using AjaxControlToolkit.HtmlEditor.ToolbarButtons;
 using Antlr.Runtime.Misc;
 using KennedyAccess.Classes;
+using AjaxControlToolkit;
 
 namespace KennedyAccess
 {
@@ -76,6 +77,22 @@ namespace KennedyAccess
                             LoadUserRoleSetRoles(true);
 
                             gvRoleSets.Columns[6].Visible = btnEditUser.Visible = user.HasRole("UserEdit");
+
+                            // info section
+                            TabContainer tcContainer = (TabContainer)Master.FindControl("tcContainer");
+                            tcContainer.Visible = user.UserType == "System Admin";
+
+                            // tab 1 : login history
+                            tcContainer.Tabs[1].HeaderText = "Login History";
+                            GridView gv1 = new GridView();
+                            gv1.CssClass = "table table-hover";
+                            gv1.GridLines = GridLines.None;
+                            gv1.HeaderStyle.ForeColor = System.Drawing.Color.DimGray;
+                            gv1.HeaderStyle.BackColor = System.Drawing.Color.Silver;
+                            gv1.DataSource = bd.GetLoginHistory(user.FranchiseID.ToString(), lblUserID.Text);
+                            gv1.DataBind();
+                            tcContainer.Tabs[1].Controls.Add(gv1);
+                            tcContainer.Tabs[1].Visible = true;
                         }
 
                         SetEditVisibility(true);

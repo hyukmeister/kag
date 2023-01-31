@@ -1,19 +1,40 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UserSearchProfiles.ascx.cs" Inherits="KennedyAccess.Controls.UserSearchProfiles" %>
 <%@ Register Src="~/Controls/DropDownCheckBox.ascx" TagPrefix="uc1" TagName="DropDownCheckBox" %>
-    <div class="mb-3;" style="width: 220px">
+    <div class="mb-3;" style="width: 200px">
         <uc1:DropDownCheckBox runat="server" id="ddcbEmployers" ControlLabel="Employers" />
     </div>
 
-    <div class="mb-3;" style="width: 220px">
+    <div class="mb-3;" style="width: 200px">
         <uc1:DropDownCheckBox runat="server" id="ddcbCampaigns" ControlLabel="Campaigns"/>
     </div>
 
-    <div class="mb-3;" style="width: 220px">
+    <div class="mb-3;" style="width: 200px">
         <uc1:DropDownCheckBox runat="server" id="ddcbStatuses" ControlLabel="Statuses"/>
     </div>
 
     <asp:Button ID="btnSearch" runat="server" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" text="Search" />
-    <button id="btnSaveSearch" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Save Filters</button>
+    <button id="btnSaveSearch" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Save Filters</button><br /><br />
+
+    <asp:GridView ID="gvSearchProfiles" runat="server" AutoGenerateColumns="False" Width="100%"
+        GridLines="None" class="table table-hover" OnRowCommand="gvSearchProfiles_RowCommand" AllowSorting="True">
+        <Columns>
+            <asp:TemplateField HeaderText="UsrSearchID" Visible="true" SortExpression="UsrSearchID">
+                <ItemTemplate>
+                    <asp:Label ID="UsrSearchID" runat="server" Text='<%# Eval("UsrSearchID") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Profile Name" SortExpression="ProfileName">
+                <ItemTemplate>
+                    <asp:Label ID="lblProfileName" runat="server" Text='<%# Eval("SearchName") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:ButtonField CommandName="Open" ItemStyle-HorizontalAlign="Center" ButtonType="Link" Text="Open">
+                <ItemStyle HorizontalAlign="Center"></ItemStyle>
+            </asp:ButtonField>
+        </Columns>
+        <HeaderStyle BackColor="dimgray" ForeColor="White" />
+    </asp:GridView>
+
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">

@@ -1142,5 +1142,42 @@ namespace KennedyAccess.Classes
                     new SqlParameter("@StrValue", StrValue)
                 );
         }
+        public void WriteAuditTrail(User user, string RecordTypeID, string SystemLog)
+        {
+            SqlHelperv2.ExecuteNonQuery(Global.dbcnn, "WriteAuditTrail",
+                new SqlParameter("@FranchiseID", user.FranchiseID),
+                    new SqlParameter("@UserID", user.UserID),
+                    new SqlParameter("@RecordTypeID", RecordTypeID),
+                    new SqlParameter("@SystemLog", SystemLog));
+        }
+
+        public DataTable GetUserSearchProfile(User user)
+        {
+            DataTable dtSearchProfile = null;
+            DataSet ds = (SqlHelper.ExecuteDataset(Global.dbcnn, "GetUserSearchProfile",
+                new SqlParameter("@FranchiseID", user.FranchiseID),
+                    new SqlParameter("@UserID", user.UserID)));
+
+            if (ds != null && ds.Tables.Count > 0)
+            {
+                dtSearchProfile = ds.Tables[0];
+            }
+            return dtSearchProfile;
+        }
+
+        public DataTable GetUserSearchProfileDetail(User user, string UsrSearchID)
+        {
+            DataTable dtProfileDetail = null;
+            DataSet ds = (SqlHelper.ExecuteDataset(Global.dbcnn, "GetUserSearchProfileDetail",
+                new SqlParameter("@FranchiseID", user.FranchiseID),
+                    new SqlParameter("@UserID", user.UserID),
+                    new SqlParameter("@UsrSearchID", UsrSearchID)));
+
+            if (ds != null && ds.Tables.Count > 0)
+            {
+                dtProfileDetail = ds.Tables[0];
+            }
+            return dtProfileDetail;
+        }
     }
 }

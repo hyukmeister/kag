@@ -88,6 +88,21 @@ namespace KennedyAccess
             BaseData bd = new BaseData();
             bd.LoadBaseData(Application);
         }
+
+        void Session_Start(object sender, EventArgs e)
+        {
+            // your code here, it will be executed upon session start
+        }
+        void Session_End(object sender, EventArgs e)
+        {
+            User user = (User)Session["User"];
+            if(user != null)
+            {
+                BaseData bd = new BaseData();
+                string recordtypeid = bd.GetRecordTypeID((DataTable)Application["RecordType"], user.FranchiseID, "User", "Login").ToString();
+                bd.WriteAuditTrail(user, recordtypeid, "User logged out");
+            }
+        }
         private string RemoveSalt(string sSaltedString)
         {
             int iPos = 0;
@@ -102,6 +117,5 @@ namespace KennedyAccess
             result += sSaltedString.Substring(iPos - 3, len);
             return result;
         }
-    }
- 
+    } 
 }

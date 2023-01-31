@@ -61,7 +61,7 @@ namespace KennedyAccess
             }
         }
 
-        protected void btnProfile_Click(object sender, ImageClickEventArgs e)
+        protected void btnProfile_Click(object sender, EventArgs e)
         {
             user = (User)Session["User"];
             if (user != null)
@@ -88,9 +88,9 @@ namespace KennedyAccess
             }
         }
 
-        protected void btnProfile_Click1(object sender, EventArgs e)
-        {
-            btnProfile_Click(sender, null);
-        }
+        //protected void btnProfile_Click1(object sender, EventArgs e)
+        //{
+        //    btnProfile_Click(sender, null);
+        //}
     }
 }

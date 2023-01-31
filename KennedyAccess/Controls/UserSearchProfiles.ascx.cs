@@ -29,6 +29,20 @@ namespace KennedyAccess.Controls
                 DataTable statuses = bd.GetProfile(user);
                 ddcbStatuses.ClearAll();
                 ddcbStatuses.AddItems(statuses, "RoleSetName", "RoleSetID");
+
+                // load search profiles
+                DataTable dt = bd.GetUserSearchProfile(user);
+                gvSearchProfiles.DataSource = dt;
+                gvSearchProfiles.DataBind();
+
+                // check for default profile
+                foreach(DataRow dr in dt.Rows)
+                {
+                    if (dr["Default"].ToString() == "True")
+                    {
+                        // set dropdown checkboxes with default profile settings
+                    }
+                }
             }
         }
         protected void SaveSearch_Click(object sender, EventArgs e)
@@ -53,6 +67,20 @@ namespace KennedyAccess.Controls
             foreach (DataRow row in selectedStat.Rows)
             {
                 bd.InsertUpdateSearchDetails(user, "n", UserSearchID, "0", "Status", row[0].ToString(), "");
+            }
+        }
+
+        protected void gvSearchProfiles_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Open")
+            {
+                int index = Convert.ToInt32(e.CommandArgument);
+
+                GridViewRow selectedRow = gvSearchProfiles.Rows[index];
+                string UsrSearchID = ((Label)selectedRow.Cells[0].Controls[1]).Text;
+
+                // get search profile
+                //DataTable dt = bd.
             }
         }
     }

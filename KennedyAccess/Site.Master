@@ -53,7 +53,7 @@
                     <div id="divJobListings" runat="server" style="height:42px"><asp:ImageButton ID="ibJobListings" runat="server" CssClass="align-bottom" ImageUrl="~/images/cod002.svg" Width="30px" CausesValidation="false" PostBackUrl="~/JobListings.aspx"></asp:ImageButton>&nbsp;&nbsp;<asp:HyperLink runat="server" NavigateUrl="~/JobListings.aspx" Text="Job Listings" Font-Bold="true" ForeColor="White" Font-Underline="false" Font-Size="22px"></asp:HyperLink></div>
                     <div id="divApplications" runat="server" style="height:42px"><asp:ImageButton ID="ibApplications" runat="server" CssClass="align-bottom" ImageUrl="~/images/ecm008.svg" Width="30px" CausesValidation="false" PostBackUrl="~/Applications.aspx"></asp:ImageButton>&nbsp;&nbsp;<asp:HyperLink runat="server" NavigateUrl="~/Applications.aspx" Text="Applications" Font-Bold="true" ForeColor="White" Font-Underline="false" Font-Size="22px"></asp:HyperLink></div>
                     <div id="divCases" runat="server" style="height:42px"><asp:ImageButton ID="ibCases" runat="server" CssClass="align-bottom" ImageUrl="~/images/ecm008.svg" Width="30px" CausesValidation="false" PostBackUrl="~/Cases.aspx"></asp:ImageButton>&nbsp;&nbsp;<asp:HyperLink runat="server" NavigateUrl="~/Cases.aspx" Text="Cases" Font-Bold="true" ForeColor="White" Font-Underline="false" Font-Size="22px"></asp:HyperLink></div>
-                    <div id="divProfile" runat="server" style="height:42px"><asp:ImageButton ID="ibProfile" runat="server" ImageUrl="images/com006.svg" Width="30px" OnClick="btnProfile_Click" Text="Profile"/>&nbsp;&nbsp;<asp:Button ID="btnProfile" runat="server" ForeColor="White" Font-Bold="true" BackColor="Transparent" Font-Size="22px" BorderStyle="None" OnClick="btnProfile_Click1" Text="Profile"></asp:Button></div>
+                    <div id="divProfile" runat="server" style="height:42px"><asp:ImageButton ID="ibProfile" runat="server" ImageUrl="images/com006.svg" Width="30px" OnClick="btnProfile_Click" Text="Profile"/>&nbsp;&nbsp;<asp:Button ID="btnProfile" runat="server" ForeColor="White" Font-Bold="true" BackColor="Transparent" Font-Size="22px" BorderStyle="None" OnClick="btnProfile_Click" Text="Profile"></asp:Button></div>
 
                     <div class="accordion" runat="server" id="accordionMenu">
                         <div class="accordion-item">
@@ -71,7 +71,6 @@
                                     <div id="divProfiles" runat="server" style="height:42px"><asp:ImageButton ID="ibProfiles" runat="server" CssClass="align-bottom" ImageUrl="~/images/lay001.svg" Width="30px" CausesValidation="false" PostBackUrl="~/Admin/Profiles.aspx"></asp:ImageButton>&nbsp;&nbsp;<asp:HyperLink runat="server" NavigateUrl="~/Admin/Profiles.aspx" Text="Profiles" Font-Bold="true" ForeColor="White" Font-Underline="false" Font-Size="22px"></asp:HyperLink></div>
                                     <div id="divQuestionnaires" runat="server" style="height:42px"><asp:ImageButton ID="ibQuestionnaires" runat="server" CssClass="align-bottom" ImageUrl="~/images/com007.svg" Width="30px" CausesValidation="false" PostBackUrl="~/Admin/Questionnaires.aspx"></asp:ImageButton>&nbsp;&nbsp;<asp:HyperLink runat="server" NavigateUrl="~/Admin/Questionnaires.aspx" Text="Questionnaires" Font-Bold="true" ForeColor="White" Font-Underline="false" Font-Size="22px"></asp:HyperLink></div>
                                     <div id="divSettings" runat="server" style="height:42px"><asp:ImageButton ID="ibSettings" runat="server" CssClass="align-bottom" ImageUrl="~/images/cod001.svg" Width="30px" CausesValidation="false" PostBackUrl="~/Admin/Settings.aspx"></asp:ImageButton>&nbsp;&nbsp;<asp:HyperLink runat="server" NavigateUrl="~/Admin/Settings.aspx" Text="Settings" Font-Bold="true" ForeColor="White" Font-Underline="false" Font-Size="22px"></asp:HyperLink></div>
-
                                 </div>
                             </div>
                         </div>
@@ -89,13 +88,12 @@
                     <button type="button" id="menu-toggle" style="border:hidden">
                         <img src="../images/logo.png" />
                     </button>
-
                 </nav>
             </div>
             <div class="container body-content;" style="position:absolute; left:300px; top:40px">
                 <table>
                     <tr>
-                        <td>
+                        <td style="vertical-align:top;">
                             <asp:ContentPlaceHolder ID="MainContent" runat="server">
                             </asp:ContentPlaceHolder>
                         </td>
@@ -118,9 +116,6 @@
                                     </ContentTemplate>
                                 </ajaxToolkit:TabPanel>
                             </ajaxToolkit:TabContainer>
-
-
-
                         </td>
                     </tr>
                 </table>

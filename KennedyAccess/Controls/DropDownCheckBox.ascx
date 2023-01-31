@@ -34,8 +34,7 @@ function CheckItem_<%=ControlLabel%>(checkBoxList)
 </mcc:PopupControlExtender>
 
 <asp:Panel ID="Panel111" runat="server" CssClass="rounded-3 panel-primary" ScrollBars="Vertical" 
-    Width="300" Height="220" BackColor="AliceBlue" BorderColor="Gray" BorderWidth="1">
-    <asp:CheckBoxList ID="chkList" runat="server" CellPadding="8"
-        Height="220" >                                                                                                                                                                        
+    Width="240" Height="220" BackColor="AliceBlue" BorderColor="Gray" BorderWidth="1">
+    <asp:CheckBoxList ID="chkList" runat="server" CellPadding="8" Height="220" >                                                                                                                                                                        
     </asp:CheckBoxList>
 </asp:Panel>

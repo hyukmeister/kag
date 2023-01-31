@@ -19,11 +19,14 @@ namespace KennedyAccess
         protected void Page_Load(object sender, EventArgs e)
         {
             Session.Clear();
+            if(!Page.IsPostBack)
+            {
+                Session.Abandon();
+            }
         }
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             string cnn = Global.dbcnn;
-
 
             //string hashpass = HashGenerator.ComputeHash(txtPassword.Text, "SHA512", null);
             DataTable dt = bd.AuthenticateByUserName(1000, txtUserName.Text);
