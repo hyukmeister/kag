@@ -13,11 +13,13 @@ namespace KennedyAccess.Controls
     public partial class UserSearchProfiles : System.Web.UI.UserControl
     {
         private User user;
+        public bool LoadProfiles;
+
         BaseData bd = new BaseData();
         protected void Page_Load(object sender, EventArgs e)
         {
             user = (User)Session["User"];
-            if (!Page.IsPostBack)
+            if (!Page.IsPostBack && LoadProfiles)
             {
                 DataTable employers = bd.GetEmployer(user, "0", "");
                 //ddcbEmployers.ClearAll();

@@ -25,12 +25,12 @@ function CheckItem_<%=ControlLabel%>(checkBoxList)
 </script>
 
 <div class="form-floating mb-3;">
-    <asp:TextBox ID="txtCombo" class="form-control" runat="server" ReadOnly="true" Width="200" Font-Size="X-Small"></asp:TextBox>
+    <asp:TextBox ID="txtCombo" class="form-control" runat="server" ReadOnly="true" Width="430" Font-Size="X-Small"></asp:TextBox>
     <label id="labLabel" runat="server" for="txtCombo">Employers</label>
 </div>
 
 <mcc:PopupControlExtender ID="PopupControlExtender111" runat="server" 
-    TargetControlID="txtCombo" PopupControlID="Panel111" Position="Right" >
+    TargetControlID="txtCombo" PopupControlID="Panel111" Position="Bottom" >
 </mcc:PopupControlExtender>
 
 <asp:Panel ID="Panel111" runat="server" CssClass="rounded-3 panel-primary" ScrollBars="Vertical" 

@@ -1,5 +1,7 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="KennedyAccess.Sapphire" %>
 
+<%@ Register Src="~/Controls/UserSearchProfiles.ascx" TagPrefix="uc1" TagName="UserSearchProfiles" %>
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -105,6 +107,7 @@
                                 </ajaxToolkit:TabPanel>
                                 <ajaxToolkit:TabPanel ID="tab2" runat="server" ScrollBars="Auto" Visible="false">
                                     <ContentTemplate>
+                                        <uc1:UserSearchProfiles runat="server" ID="UserSearchProfiles" />
                                     </ContentTemplate>
                                 </ajaxToolkit:TabPanel>
                                 <ajaxToolkit:TabPanel ID="tab3" runat="server" ScrollBars="Auto" Visible="false">
@@ -116,6 +119,7 @@
                                     </ContentTemplate>
                                 </ajaxToolkit:TabPanel>
                             </ajaxToolkit:TabContainer>
+                            
                         </td>
                     </tr>
                 </table>
