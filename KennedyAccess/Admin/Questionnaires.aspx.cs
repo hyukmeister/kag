@@ -11,7 +11,14 @@ namespace KennedyAccess
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.IsPostBack)
+            {
 
+                // campaign level questionnaire
+                Questionnaire.bGeneral = true;
+                Questionnaire.iEmployerID = -1;
+                Questionnaire.iCampaignID = 0;
+            }
         }
     }
 }

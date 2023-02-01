@@ -21,7 +21,7 @@
                         CellPadding="4" OnRowCommand="gvCampaign_RowCommand" EmptyDataText="No Campaign found" 
                         AllowSorting="True" OnSorting="gvCampaigns_Sorting">
                         <Columns>
-                            <asp:TemplateField HeaderText="CampaignID" SortExpression="CampaignID">
+                            <asp:TemplateField HeaderText="ID" SortExpression="CampaignID">
                                 <ItemTemplate>
                                     <asp:Label ID="lblCampaignID" runat="server" Text='<%# Eval("CampaignID") %>'></asp:Label>
                                 </ItemTemplate>
@@ -32,13 +32,13 @@
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Left" />
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Campaign Start Date" SortExpression="DateFrom">
+                            <asp:TemplateField HeaderText="Start Date" SortExpression="DateFrom">
                                 <ItemTemplate>
                                     <asp:Label ID="lblDateFrom" runat="server" Text='<%# Eval("DateFrom") %>'></asp:Label>
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" />
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Campaign End Date" SortExpression="DateThru">
+                            <asp:TemplateField HeaderText="End Date" SortExpression="DateThru">
                                 <ItemTemplate>
                                     <asp:Label ID="lblDateThru" runat="server" Text='<%# Eval("DateThru") %>'></asp:Label>
                                 </ItemTemplate>

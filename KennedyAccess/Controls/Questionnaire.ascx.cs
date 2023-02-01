@@ -54,7 +54,7 @@ namespace KennedyAccess.Controls
                 if (((DataRowView)e.Row.DataItem)["General"].ToString() == "True")
                 {
                     rblQType.Enabled = false;
-                    LinkButton lbUpdate = (LinkButton)e.Row.FindControl("lnkBtnUpdate");
+                    ImageButton lbUpdate = (ImageButton)e.Row.FindControl("lnkBtnUpdate");
                     lbUpdate.Visible = false;
                 }
             }
@@ -80,7 +80,7 @@ namespace KennedyAccess.Controls
         protected void lnkBtnAddNew_OnClik(object sender, EventArgs e)
         {            
             bd.InsertUpdateQuestionnaire(user, 0, int.Parse(labEmployerID.Text), 
-                labCampaignID.Text, false, 0, txtNewQuestion.Text, rblNewQustionType.SelectedValue, true);
+                labCampaignID.Text, cbkGeneral.Checked, 0, txtNewQuestion.Text, rblNewQustionType.SelectedValue, true);
 
             txtNewQuestion.Text = "";
             rblNewQustionType.SelectedIndex = -1;

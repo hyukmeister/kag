@@ -343,34 +343,36 @@ namespace KennedyAccess
         {
             if (cbkApplicantChanged.Checked)
             { 
-            //iApplicantID = int.Parse(labApplicantID.Text);
-            // save data
-            iApplicantID = (labApplicantID.Text == "") ? 0 : int.Parse(labApplicantID.Text);
-            int iRecordTypeID = bd.GetRecordTypeID((DataTable)Application["RecordType"], user.FranchiseID, "Contact", "Applicant");
-            iApplicantID = bd.InsertUpdateApplicant(user, iApplicantID, iRecordTypeID, "u", true,
-                int.Parse(ddlCitizenshipCountry.SelectedValue), int.Parse(ddlBirthCountry.SelectedValue), txtDateOfBirth.Text, txtAdmissionClass.Text,
-                txtAlienRegistration.Text, txtAlienAdmission.Text, true);
+                //iApplicantID = int.Parse(labApplicantID.Text);
+                // save data
+                iApplicantID = (labApplicantID.Text == "") ? 0 : int.Parse(labApplicantID.Text);
+                int iRecordTypeID = bd.GetRecordTypeID((DataTable)Application["RecordType"], user.FranchiseID, "Contact", "Applicant");
+                iApplicantID = bd.InsertUpdateApplicant(user, iApplicantID, iRecordTypeID, "u", true,
+                    int.Parse(ddlCitizenshipCountry.SelectedValue), int.Parse(ddlBirthCountry.SelectedValue), txtDateOfBirth.Text, txtAdmissionClass.Text,
+                    txtAlienRegistration.Text, txtAlienAdmission.Text, true);
 
-            // set contact reference id
-            Session["ApplicantID"] = user.ObjectID = contApplicantContact.intReferencerID = contApplicantOversea.intReferencerID = iApplicantID;
+                // set contact reference id
+                Session["ApplicantID"] = user.ObjectID = contApplicantContact.intReferencerID = contApplicantOversea.intReferencerID = iApplicantID;
 
-            // to pass ApplicantID to controls: attachment 
-            contAttachments.RecordTypeID = bd.GetRecordTypeID((DataTable)Application["RecordType"], user.FranchiseID, "Object", "Applicant").ToString();
-            contAttachments.ReferenceID = iApplicantID.ToString();
-            ((Label)contAttachments.FindControl("LabReferenceID")).Text = iApplicantID.ToString();
+                // to pass ApplicantID to controls: attachment 
+                contAttachments.RecordTypeID = bd.GetRecordTypeID((DataTable)Application["RecordType"], user.FranchiseID, "Object", "Applicant").ToString();
+                contAttachments.ReferenceID = iApplicantID.ToString();
+                ((Label)contAttachments.FindControl("LabReferenceID")).Text = iApplicantID.ToString();
 
-            // set work experience reference id
-            WorkExperience.iApplicantID = iApplicantID;
-            ((Label)WorkExperience.FindControl("txtApplicantID")).Text = iApplicantID.ToString();
+                // set work experience reference id
+                WorkExperience.iApplicantID = iApplicantID;
+                ((Label)WorkExperience.FindControl("txtApplicantID")).Text = iApplicantID.ToString();
 
-            labApplicantID.Text = iApplicantID.ToString();
+                labApplicantID.Text = iApplicantID.ToString();
+
+            }
 
             // save applicant current contact
             contApplicantContact.btnSave_Click(sender, e);
 
             // save applicant oversea contact
             contApplicantOversea.btnSave_Click(sender, e);
-            }
+
             // go to read only mode
             SetEditVisibility(true);
             cbkApplicantChanged.Checked = false;
