@@ -51,12 +51,12 @@ namespace KennedyAccess.Controls
             {
                 RadioButtonList rblQType = (RadioButtonList)e.Row.FindControl("rblQustionType");
                 rblQType.SelectedValue = ((DataRowView)e.Row.DataItem)["QuestionType"].ToString();
-                if (((DataRowView)e.Row.DataItem)["General"].ToString() == "True")
-                {
-                    rblQType.Enabled = false;
-                    ImageButton lbUpdate = (ImageButton)e.Row.FindControl("lnkBtnUpdate");
-                    lbUpdate.Visible = false;
-                }
+                //if (((DataRowView)e.Row.DataItem)["General"].ToString() == "True")
+                //{
+                //    rblQType.Enabled = false;
+                //    ImageButton lbUpdate = (ImageButton)e.Row.FindControl("lnkBtnUpdate");
+                //    lbUpdate.Visible = false;
+                //}
             }
             if (e.Row.RowType == DataControlRowType.Footer)
             {

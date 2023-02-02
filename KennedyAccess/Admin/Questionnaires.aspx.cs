@@ -9,11 +9,16 @@ namespace KennedyAccess
 {
     public partial class Questionnaires : System.Web.UI.Page
     {
+        private User user;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            user = (User)Session["User"];
+            if (user == null || !user.HasRole("Questionnaires"))
+                Response.Redirect("Default.aspx");
+
             if (!Page.IsPostBack)
             {
-
                 // campaign level questionnaire
                 Questionnaire.bGeneral = true;
                 Questionnaire.iEmployerID = -1;

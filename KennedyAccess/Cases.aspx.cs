@@ -52,6 +52,7 @@ namespace KennedyAccess
 
                 UserSearchProfiles tcProfiles = (UserSearchProfiles)tcContainer.Tabs[1].FindControl("UserSearchProfiles");
                 tcProfiles.LoadProfiles = true;
+                tcProfiles.Visible = true;
                 tcContainer.Tabs[1].Visible = true;
 
                 //ViewState["tcContainer"] = tcContainer;

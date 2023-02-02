@@ -9,9 +9,9 @@
             <asp:TableRow>
                 <asp:TableCell ColumnSpan="4" HorizontalAlign="Right">
                     <asp:TextBox ID="txtError" runat="server"  Visible="false" ForeColor="Red" BorderStyle="None" BackColor="Transparent" Width="450px"></asp:TextBox>
-                    <asp:Button ID="btnEditUser" runat="server" class="btn btn-default" Text="Edit" OnClick="btnEditUser_Click" />
-                    <asp:Button ID="btnSaveUser" runat="server" class="btn btn-default" Text="Save" OnClick="btnSaveUser_Click" Visible="false"/>&nbsp;
-                    <asp:Button ID="btnCancel" runat="server" class="btn btn-default" Text="Cancel" OnClick="btnCancel_Click"/>
+                    <asp:Button ID="btnEditUser" runat="server" class="btn btn-primary" Text="Edit" OnClick="btnEditUser_Click" />
+                    <asp:Button ID="btnSaveUser" runat="server" class="btn btn-primary" Text="Save" OnClick="btnSaveUser_Click" Visible="false"/>&nbsp;
+                    <asp:Button ID="btnCancel" runat="server" class="btn btn-primary" Text="Cancel" OnClick="btnCancel_Click"/>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>

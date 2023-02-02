@@ -99,7 +99,7 @@
                             <asp:ContentPlaceHolder ID="MainContent" runat="server">
                             </asp:ContentPlaceHolder>
                         </td>
-                        <td style="vertical-align:top;border:hidden;width:100%; padding:20px">
+                        <td style="vertical-align:top;border:hidden;width:100%; padding:20px"><br /><br /><br />
                             <ajaxToolkit:TabContainer ID="tcContainer" runat="server" Width="450px" Visible="false" ViewStateMode="Enabled">
                                 <ajaxToolkit:TabPanel ID="tab1" runat="server" ScrollBars="Auto" Visible="false">
                                     <ContentTemplate>
@@ -107,7 +107,7 @@
                                 </ajaxToolkit:TabPanel>
                                 <ajaxToolkit:TabPanel ID="tab2" runat="server" ScrollBars="Auto" Visible="false">
                                     <ContentTemplate>
-                                        <uc1:UserSearchProfiles runat="server" ID="UserSearchProfiles" />
+                                        <uc1:UserSearchProfiles runat="server" ID="UserSearchProfiles" visible="false"/>
                                     </ContentTemplate>
                                 </ajaxToolkit:TabPanel>
                                 <ajaxToolkit:TabPanel ID="tab3" runat="server" ScrollBars="Auto" Visible="false">

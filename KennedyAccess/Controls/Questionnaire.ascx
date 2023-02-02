@@ -3,7 +3,7 @@
 <asp:Label runat="server" ID="labEmployerID" Visible="false"></asp:Label>
 <asp:Label runat="server" ID="labCampaignID" Visible="false"></asp:Label>
 <asp:GridView ID="gvQuestionnaire" runat="server" AutoGenerateColumns="False" OnRowDataBound="gvQuestionnaire_RowDataBound" 
-    class="table table-bordered table-hover" style="border-radius:15px;" CellPadding="4"
+    class="table table-bordered table-hover" style="border-radius:15px;" CellPadding="4" HeaderStyle-BackColor="gainsboro"
     GridLines="None" ShowHeaderWhenEmpty="true" EmptyDataText="Questionnaires not found">
     <Columns>
         <asp:TemplateField HeaderText="Sort" HeaderStyle-BorderStyle="None" ItemStyle-BorderStyle="None" Visible="false">
@@ -40,13 +40,13 @@
         <asp:TemplateField HeaderText="" HeaderStyle-BorderStyle="None" ItemStyle-BorderStyle="None" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Top">
             <ItemTemplate>
                 <asp:ImageButton ID="lnkBtnUpdate" runat="server" OnClick="lnkBtnUpdate_OnClik" AlternateText="Save" ImageAlign="Top" Height="22px" ImageUrl="~/images/save.png"/>
-                <asp:ImageButton ID="lnkBtnDelete" runat="server" OnClick="lnkBtnDelete_Click" AlternateText="Delete" ImageAlign="Top" Height="25px" ImageUrl="~/images/gen027.png"/>
+                <asp:ImageButton ID="lnkBtnDelete" runat="server" OnClick="lnkBtnDelete_Click" AlternateText="Delete" ImageAlign="Top" Height="25px" ImageUrl="~/images/gen027.png" OnClientClick="return confirm('Are you sure?');" />
             </ItemTemplate>
         </asp:TemplateField>
     </Columns>
 </asp:GridView>
 <table style="width:100%">
-    <tr style="height:40px; background-color:gainsboro; vertical-align:middle">
+    <tr style="height:25px; background-color:gainsboro; vertical-align:middle">
         <td Width="14px"></td>
         <td Width="550px"><br />
             <asp:TextBox ID="txtNewQuestion" runat="server" BorderWidth="0" BorderStyle="None" Text=" " Width="540px" MaxLength="255" ForeColor="Navy"></asp:TextBox>

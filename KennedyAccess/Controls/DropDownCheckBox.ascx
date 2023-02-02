@@ -24,6 +24,16 @@ function CheckItem_<%=ControlLabel%>(checkBoxList)
 }
 </script>
 
+<style type="text/css">
+.checkboxlist input {
+    margin-right: 10px !important;
+}
+.checkboxlist label {
+    color: #ff6a00  !important;
+}
+
+</style>
+
 <div class="form-floating mb-3;">
     <asp:TextBox ID="txtCombo" class="form-control" runat="server" ReadOnly="true" Width="430" Font-Size="X-Small"></asp:TextBox>
     <label id="labLabel" runat="server" for="txtCombo">Employers</label>
@@ -35,6 +45,6 @@ function CheckItem_<%=ControlLabel%>(checkBoxList)
 
 <asp:Panel ID="Panel111" runat="server" CssClass="rounded-3 panel-primary" ScrollBars="Vertical" 
     Width="240" Height="220" BackColor="AliceBlue" BorderColor="Gray" BorderWidth="1">
-    <asp:CheckBoxList ID="chkList" runat="server" CellPadding="8" Height="220" >                                                                                                                                                                        
+    <asp:CheckBoxList ID="chkList" runat="server" CellPadding="8" CssClass="checkboxlist" Height="220" >                                                                                                                                                                        
     </asp:CheckBoxList>
 </asp:Panel>
