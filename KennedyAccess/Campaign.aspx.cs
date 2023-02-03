@@ -61,7 +61,7 @@ namespace KennedyAccess
                 else
                 {
                     // load campaigns for employer
-                    DataTable dtCampaign = bd.GetCampaign(user, employerid.ToString(), campaignid.ToString());
+                    DataTable dtCampaign = bd.GetCampaign(user, employerid.ToString(), campaignid.ToString(),"");
 
                     if (dtCampaign.Rows.Count == 1)
                     {

@@ -86,7 +86,7 @@ namespace KennedyAccess
                     }
                     else
                     {
-                        DataTable dtApplicant = bd.GetApplicant(user, iApplicantID);
+                        DataTable dtApplicant = bd.GetApplicant(user, iApplicantID, "");
 
                         if (dtApplicant.Rows.Count == 1)
                         {

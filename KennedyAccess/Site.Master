@@ -38,10 +38,10 @@
 
         <div class="d-flex" id="wrapper" >
 
-            <div class="border-light" id ="sidebar-wrapper" style="position:fixed; padding-left:15px;padding-right:10px;background-color:dimgray;width:265px">
-                <div class="sidebar-heading" style="background-color:dimgray; overflow-y: auto;height:100%;" >
+            <div class="border-light" id ="sidebar-wrapper" style="position:fixed; padding-left:15px;padding-right:10px;background-color:dimgray;width:265px;overflow-x: hidden;height: 100%;top: 30px;">
+                <%--<div class="sidebar-heading" style="background-color:dimgray; overflow-y: auto;height:100%;" >
 
-                </div>
+                </div>--%>
                 <div id="divMenu" runat="server" class="list-group list-group-flush" style="background-color:dimgray; word-wrap:inherit; overflow-y: auto;"><br /><br />
                     <div id="divHome" runat="server" style="height:42px"><asp:ImageButton ID="ibHome" runat="server" CssClass="align-bottom" ImageUrl="~/images/gen001.svg" Width="30px" CausesValidation="false" PostBackUrl="~/home.aspx"></asp:ImageButton>&nbsp;&nbsp;<asp:HyperLink runat="server" NavigateUrl="~/home.aspx" Text="Home" Font-Bold="true" ForeColor="White" Font-Underline="false" Font-Size="22px"></asp:HyperLink></div>
                     <div id="divEmployers" runat="server" style="height:42px"><asp:ImageButton ID="ibEmployers" runat="server" CssClass="align-bottom" ImageUrl="~/images/map009.svg" Width="30px" CausesValidation="false" PostBackUrl="~/Employers.aspx"></asp:ImageButton>&nbsp;&nbsp;<asp:HyperLink runat="server" NavigateUrl="~/Employers.aspx" Text="Employers" Font-Bold="true" ForeColor="White" Font-Underline="false" Font-Size="22px"></asp:HyperLink></div>

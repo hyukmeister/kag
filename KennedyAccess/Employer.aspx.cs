@@ -22,8 +22,6 @@ namespace KennedyAccess
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Page.MaintainScrollPositionOnPostBack = true;
-
             user = (User)Session["User"];
             if (user == null || !user.HasRole("Employer"))
                 Response.Redirect("Default.aspx");
@@ -81,7 +79,7 @@ namespace KennedyAccess
 
                         SetEditVisibility(true);
 
-                        DataTable dt = bd.GetCampaign(user, employerid.ToString(), "0");
+                        DataTable dt = bd.GetCampaign(user, employerid.ToString(), "0", "");
                         
                         gvCampaigns.DataSource = dt;
                         gvCampaigns.DataBind();

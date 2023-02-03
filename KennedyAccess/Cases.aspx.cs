@@ -32,7 +32,7 @@ namespace KennedyAccess
             //}
             //else
             {
-                DataTable dtApplicants = bd.GetApplicant(user, 0);
+                DataTable dtApplicants = bd.GetApplicant(user, 0,"");
 
                 gvCases.DataSource = dtApplicants;
                 gvCases.DataBind();

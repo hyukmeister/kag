@@ -97,13 +97,13 @@
                     <asp:Label runat="server" Text="Valid From"></asp:Label>
                 </asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtValidFrom" ReadOnly="true" Style="text-align: right" runat="server" TextMode="Date" BorderStyle="NotSet"></asp:TextBox>
+                    <asp:TextBox ID="txtValidFrom" ReadOnly="true" Style="text-align: left" runat="server" TextMode="Date" BorderStyle="NotSet"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell>
                     <asp:Label runat="server" Text="Valid Thru"></asp:Label>
                 </asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtValidThru" ReadOnly="true" Style="text-align: right" runat="server" TextMode="Date"></asp:TextBox>
+                    <asp:TextBox ID="txtValidThru" ReadOnly="true" Style="text-align: left" runat="server" TextMode="Date"></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>
@@ -125,13 +125,13 @@
                     <asp:Label runat="server" Text="Created Date"></asp:Label>
                 </asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtCreateDate" ReadOnly="true" Style="text-align: right" runat="server" TextMode="Date" BorderStyle="NotSet"></asp:TextBox>
+                    <asp:TextBox ID="txtCreateDate" ReadOnly="true" Style="text-align: left" runat="server" TextMode="Date" BorderStyle="NotSet"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell>
-                    <asp:Label runat="server" Text="Modified Date"></asp:Label>
+                    <asp:Label runat="server" Text="Last Modified Date"></asp:Label>
                 </asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtModifiedDate" ReadOnly="true" Style="text-align: right" runat="server" TextMode="Date"></asp:TextBox>
+                    <asp:TextBox ID="txtModifiedDate" ReadOnly="true" Style="text-align: left" runat="server" TextMode="Date"></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>
@@ -147,73 +147,76 @@
 
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
-                <asp:GridView ID="gvRoleSets" runat="server" AutoGenerateColumns="False" class="table table-hover"  
-            GridLines="None" CellPadding="4" OnRowEditing="gvRoleSets_RowEditing" ShowFooter="True" 
-            OnRowDeleting="gvRoleSets_RowDeleting" OnRowDeleted="gvRoleSets_RowDeleted"
-            OnRowCancelingEdit="gvRoleSets_RowCancelingEdit" OnRowUpdating="gvRoleSets_RowUpdating">
-            <Columns>
-                <asp:TemplateField HeaderText="Active" >
-                    <ItemTemplate>
-                        <asp:CheckBox ID="cbkActive" Runat="server" Checked='<%# Eval("Active") %>' Enabled="false" />
-                    </ItemTemplate>
-                    <EditItemTemplate>
-                        <asp:Label ID="LabRoleID" runat="server" Text='<%# Eval("RoleID") %>' Visible="false"></asp:Label>
-                        <asp:Label ID="labRoleRelID" runat="server" Text='<%# Eval("RoleRelID") %>' Visible="false"></asp:Label>
-                        <asp:Label ID="lblRecordType" runat="server" Text='<%# Eval("RecordType") %>' Visible="false"></asp:Label>
-                        <asp:CheckBox ID="cbkActive" Runat="server" Checked='<%# Eval("Active") %>' />
-                    </EditItemTemplate>
-                    <FooterTemplate>
-                        <asp:CheckBox ID="fActive" runat="server" DataField="Active" HeaderText="Active"></asp:CheckBox>
-                    </FooterTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="Manual" >
-                    <ItemTemplate>
-                        <asp:CheckBox ID="cbkManual" Runat="server" Checked='<%# Eval("Manual") %>' enabled="false"/>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="Role Name" ItemStyle-Width="10px">
-                    <ItemTemplate>
-                        <asp:Label ID="lblRoleName" runat="server" Text='<%# Eval("RoleName") %>'></asp:Label>
-                    </ItemTemplate>
-                    <FooterTemplate>
-                        <asp:DropDownList ID="fRoleName" runat="server"></asp:DropDownList>
-                        <asp:TextBox ID="txtRoleError" runat="server"  Visible="false" ForeColor="Red" BorderStyle="None" BackColor="Transparent"></asp:TextBox>
-                    </FooterTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="Role Description">
-                    <ItemTemplate>
-                        <asp:Label ID="lblRoleDescription" runat="server" Text='<%# Eval("RoleDescription") %>'></asp:Label>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="Valid From">
-                    <ItemTemplate>
-                        <asp:Label ID="Label1" runat="server" Text='<%# Eval("ValidFrom") %>'></asp:Label>
-                    </ItemTemplate>
-                    <EditItemTemplate>
-                        <asp:TextBox ID="txtValidFrom" Runat="server" Width="140px" Text='<%# Eval("ValidFrom") %>' TextMode="Date"></asp:TextBox>
-                    </EditItemTemplate>
-                    <FooterTemplate>
-                        <asp:TextBox ID="fDateFrom" runat="server" TextMode="Date"></asp:TextBox>
-                    </FooterTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="Valid Thru" FooterStyle-Width="180px">
-                    <ItemTemplate>
-                        <asp:Label ID="labValidThru" runat="server" Text='<%# Eval("ValidThru") %>'></asp:Label>
-                    </ItemTemplate>
-                    <EditItemTemplate>
-                        <asp:TextBox ID="txtValidThru" Runat="server" Width="140px" Text='<%# Eval("ValidThru") %>' TextMode="Date"></asp:TextBox>
-                    </EditItemTemplate>
-                    <FooterTemplate>
-                        <asp:TextBox ID="fDateThru" runat="server" TextMode="Date" Width="120px"></asp:TextBox>&nbsp;
-                        <asp:ImageButton ID="NewRole" runat="server" OnClick="NewRole_Click" AlternateText="Save" ImageAlign="Top" Height="25px" ImageUrl="~/images/save_icon.png"/>
-                    </FooterTemplate>
-                </asp:TemplateField>
+                <asp:Panel runat="server" ID="panUserRoleSets" Height="600px" ScrollBars="Vertical">
+                    <asp:GridView ID="gvRoleSets" runat="server" AutoGenerateColumns="False" class="table table-hover"  
+                    GridLines="None" CellPadding="4" OnRowEditing="gvRoleSets_RowEditing" ShowFooter="True" 
+                    OnRowDeleting="gvRoleSets_RowDeleting" OnRowDeleted="gvRoleSets_RowDeleted"
+                    OnRowCancelingEdit="gvRoleSets_RowCancelingEdit" OnRowUpdating="gvRoleSets_RowUpdating" >
+                        <Columns>
+                        <asp:TemplateField HeaderText="Active" >
+                            <ItemTemplate>
+                                <asp:CheckBox ID="cbkActive" Runat="server" Checked='<%# Eval("Active") %>' Enabled="false" />
+                            </ItemTemplate>
+                            <EditItemTemplate>
+                                <asp:Label ID="LabRoleID" runat="server" Text='<%# Eval("RoleID") %>' Visible="false"></asp:Label>
+                                <asp:Label ID="labRoleRelID" runat="server" Text='<%# Eval("RoleRelID") %>' Visible="false"></asp:Label>
+                                <asp:Label ID="lblRecordType" runat="server" Text='<%# Eval("RecordType") %>' Visible="false"></asp:Label>
+                                <asp:CheckBox ID="cbkActive" Runat="server" Checked='<%# Eval("Active") %>' />
+                            </EditItemTemplate>
+                            <FooterTemplate>
+                                <asp:CheckBox ID="fActive" runat="server" DataField="Active" HeaderText="Active"></asp:CheckBox>
+                            </FooterTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Manual" >
+                            <ItemTemplate>
+                                <asp:CheckBox ID="cbkManual" Runat="server" Checked='<%# Eval("Manual") %>' enabled="false"/>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Role Name" ItemStyle-Width="10px">
+                            <ItemTemplate>
+                                <asp:Label ID="lblRoleName" runat="server" Text='<%# Eval("RoleName") %>'></asp:Label>
+                            </ItemTemplate>
+                            <FooterTemplate>
+                                <asp:DropDownList ID="fRoleName" runat="server"></asp:DropDownList>
+                                <asp:TextBox ID="txtRoleError" runat="server"  Visible="false" ForeColor="Red" BorderStyle="None" BackColor="Transparent"></asp:TextBox>
+                            </FooterTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Role Description">
+                            <ItemTemplate>
+                                <asp:Label ID="lblRoleDescription" runat="server" Text='<%# Eval("RoleDescription") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Valid From">
+                            <ItemTemplate>
+                                <asp:Label ID="Label1" runat="server" Text='<%# Eval("ValidFrom") %>'></asp:Label>
+                            </ItemTemplate>
+                            <EditItemTemplate>
+                                <asp:TextBox ID="txtValidFrom" Runat="server" Width="140px" Text='<%# Eval("ValidFrom") %>' TextMode="Date"></asp:TextBox>
+                            </EditItemTemplate>
+                            <FooterTemplate>
+                                <asp:TextBox ID="fDateFrom" runat="server" TextMode="Date"></asp:TextBox>
+                            </FooterTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Valid Thru" FooterStyle-Width="180px">
+                            <ItemTemplate>
+                                <asp:Label ID="labValidThru" runat="server" Text='<%# Eval("ValidThru") %>'></asp:Label>
+                            </ItemTemplate>
+                            <EditItemTemplate>
+                                <asp:TextBox ID="txtValidThru" Runat="server" Width="140px" Text='<%# Eval("ValidThru") %>' TextMode="Date"></asp:TextBox>
+                            </EditItemTemplate>
+                            <FooterTemplate>
+                                <asp:TextBox ID="fDateThru" runat="server" TextMode="Date" Width="120px"></asp:TextBox>&nbsp;
+                                <asp:ImageButton ID="NewRole" runat="server" OnClick="NewRole_Click" AlternateText="Save" ImageAlign="Top" Height="25px" ImageUrl="~/images/save_icon.png"/>
+                            </FooterTemplate>
+                        </asp:TemplateField>
 
-                <asp:CommandField ShowEditButton="True" ItemStyle-Width="80px" />
-            </Columns>
-        </asp:GridView>
+                        <asp:CommandField ShowEditButton="True" ItemStyle-Width="80px" />
+                    </Columns>
+                    </asp:GridView>
+                </asp:Panel>
             </ContentTemplate>
         </asp:UpdatePanel>
 
     </div>
+
 </asp:Content>

@@ -32,7 +32,7 @@ namespace KennedyAccess
 
             if (!Page.IsPostBack)
             {
-                DataTable dtCampaigns = bd.GetCampaign(user, employerid.ToString(), "0");
+                DataTable dtCampaigns = bd.GetCampaign(user, employerid.ToString(), "0", txtSearch.Text);
                 gvCampaigns.DataSource = dtCampaigns;
                 gvCampaigns.DataBind();
 
@@ -59,7 +59,7 @@ namespace KennedyAccess
         }
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            DataTable dt = bd.GetCampaign(user, "0", txtSearch.Text);
+            DataTable dt = bd.GetCampaign(user, "0", "0", txtSearch.Text);
             gvCampaigns.DataSource = dt;
             gvCampaigns.DataBind();
         }

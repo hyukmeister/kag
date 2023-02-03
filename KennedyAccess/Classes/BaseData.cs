@@ -263,12 +263,13 @@ namespace KennedyAccess.Classes
             }
             return iNewApplicantID;
         }
-        public DataTable GetApplicant(User user, int iApplicantID)
+        public DataTable GetApplicant(User user, int iApplicantID, string Search)
         {
             DataTable dtApplicant = (SqlHelper.ExecuteDataset(Global.dbcnn, "GetApplicant",
                             new SqlParameter("@FranchiseID", user.FranchiseID),
                             new SqlParameter("@UserID", user.UserID),
-                            new SqlParameter("@ApplicantID", iApplicantID))).Tables[0];
+                            new SqlParameter("@ApplicantID", iApplicantID),
+                            new SqlParameter("@Search", Search))).Tables[0];
             return dtApplicant;
         }
 
@@ -444,7 +445,7 @@ namespace KennedyAccess.Classes
         }
 
 
-        public DataTable GetCampaign(User user, string EmployerID, string CampaignID)
+        public DataTable GetCampaign(User user, string EmployerID, string CampaignID, string Search)
         {
             DataTable dtCampaign = null;
 
@@ -454,7 +455,8 @@ namespace KennedyAccess.Classes
                     new SqlParameter("@FranchiseID", user.FranchiseID),
                     new SqlParameter("@UserID", user.UserID),
                     new SqlParameter("@EmployerID", EmployerID),
-                    new SqlParameter("@CampaignID", CampaignID)
+                    new SqlParameter("@CampaignID", CampaignID),
+                    new SqlParameter("@Search", Search)
                 );
 
             if (ds != null && ds.Tables.Count > 0)

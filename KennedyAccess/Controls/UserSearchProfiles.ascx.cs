@@ -25,7 +25,7 @@ namespace KennedyAccess.Controls
                 //ddcbEmployers.ClearAll();
                 ddcbEmployers.AddItems(employers, "EmployerName", "EmployerId");
 
-                DataTable campaigns = bd.GetCampaign(user, "0", "0");
+                DataTable campaigns = bd.GetCampaign(user, "0", "0", "");
                 //ddcbCampaigns.ClearAll();
                 ddcbCampaigns.AddItems(campaigns, "Description", "CampaignID");
 

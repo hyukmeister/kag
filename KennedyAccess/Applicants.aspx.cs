@@ -26,7 +26,7 @@ namespace KennedyAccess.users
 
             if (!IsPostBack)
             {
-                DataTable dtApplicants = bd.GetApplicant(user, 0);
+                DataTable dtApplicants = bd.GetApplicant(user, 0, "");
 
                 gvApplicants.DataSource = dtApplicants;
                 gvApplicants.DataBind();
@@ -103,7 +103,7 @@ namespace KennedyAccess.users
 
         protected void btnSearchApplicant_Click(object sender, EventArgs e)
         {
-            DataTable dt = bd.GetEmployer(user, "0", txtSearch.Text);
+            DataTable dt = bd.GetApplicant(user, 0, txtSearch.Text);
             gvApplicants.DataSource = dt;
             gvApplicants.DataBind();
         }

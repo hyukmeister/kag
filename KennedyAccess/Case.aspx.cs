@@ -24,7 +24,7 @@ namespace KennedyAccess
                 DropDownEmployers.ClearAll();
                 DropDownEmployers.AddItems(employers, "EmployerName", "EmployerId");
 
-                DataTable campaigns = bd.GetCampaign(user, "0", "0");
+                DataTable campaigns = bd.GetCampaign(user, "0", "0", "");
                 DropDownCampaigns.ClearAll();
                 DropDownCampaigns.AddItems(campaigns, "Description", "CampaignID");
 

@@ -10,6 +10,7 @@ using AjaxControlToolkit.HtmlEditor.ToolbarButtons;
 using Antlr.Runtime.Misc;
 using KennedyAccess.Classes;
 using AjaxControlToolkit;
+using TextMagicClient.Model;
 
 namespace KennedyAccess
 {
@@ -55,7 +56,7 @@ namespace KennedyAccess
                         {
                             DataRow drUser = dtUsr.Rows[0];
 
-                            labUser.Text = Page.Title = drUser["UserName"].ToString();
+                            labUser.Text = Page.Title = drUser["FirstName"].ToString() +" "+ drUser["LastName"].ToString() + " (" + drUser["UserName"].ToString() + ")" ;
                             lblUserID.Text = drUser["UserID"].ToString();
                             cbkActive.Checked = drUser["Active"].ToString() == "True";
                             lblRecordType.Text = drUser["RecordTypeID"].ToString();
@@ -85,6 +86,7 @@ namespace KennedyAccess
                             // tab 1 : login history
                             tcContainer.Tabs[1].HeaderText = "Login History";
                             GridView gv1 = new GridView();
+                            gv1.ID = "gvHistory";
                             gv1.CssClass = "table table-hover";
                             gv1.GridLines = GridLines.None;
                             gv1.HeaderStyle.ForeColor = System.Drawing.Color.DimGray;

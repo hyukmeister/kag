@@ -64,7 +64,7 @@ namespace KennedyAccess
                         }
 
                         // application info
-                        DataTable dtApplicant = bd.GetApplicant(user, int.Parse(labApplicantID.Text));
+                        DataTable dtApplicant = bd.GetApplicant(user, int.Parse(labApplicantID.Text),"");
                         if (dtApplicant != null && dtApplicant.Rows.Count > 0)
                         {
                             DataRow drApplicant = dtApplicant.Rows[0];
