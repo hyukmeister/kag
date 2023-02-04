@@ -4,11 +4,10 @@
 <%@ Register Src="~/Controls/ApplicantInfo.ascx" TagPrefix="uc2" TagName="ApplicantInfo" %>
 <%@ Register Src="~/Controls/UserFiles.ascx" TagPrefix="uc3" TagName="UserFiles" %>
 
-
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <asp:Label ID="labApplicantID" runat="server" Visible="false"></asp:Label>
+    <h2><asp:Label ID="labApplicant" runat="server" Text=""></asp:Label></h2>
     <uc2:ApplicantInfo runat="server" ID="ApplicantInfo" />
-
 
     <div class="accordion" id="accordionFlush" runat="server">
         <div class="accordion-item">

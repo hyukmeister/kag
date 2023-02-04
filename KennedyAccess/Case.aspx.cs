@@ -23,10 +23,12 @@ namespace KennedyAccess
                 ApplicantInfo.ApplicantID = labApplicantID.Text = Session["ApplicantID"].ToString();
 
                 DataTable dtApplicant = bd.GetApplicant(user, bd.StringToInt(labApplicantID.Text), "");
-
-
+                if (dtApplicant.Rows.Count == 1)
+                {
+                    DataRow drApplicant = dtApplicant.Rows[0];
+                    UserFiles.UserName = labApplicant.Text = drApplicant["FirstName"].ToString() + drApplicant["LastName"].ToString();
+                }
             }
         }
-
     }
 }
