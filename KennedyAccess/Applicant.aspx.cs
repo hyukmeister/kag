@@ -36,16 +36,6 @@ namespace KennedyAccess
             
             if (!Page.IsPostBack)
             {
-                ddlCitizenshipCountry.DataSource = (DataTable)Application["Country"];
-                ddlCitizenshipCountry.DataValueField = "CountryID";
-                ddlCitizenshipCountry.DataTextField = "CountryName";
-                ddlCitizenshipCountry.DataBind();
-
-                ddlBirthCountry.DataSource = (DataTable)Application["Country"];
-                ddlBirthCountry.DataValueField = "CountryID";
-                ddlBirthCountry.DataTextField = "CountryName";
-                ddlBirthCountry.DataBind();
-
                 if (Session["ApplicantID"].ToString() == "-1")
                 {
                     labApplicant.Text = Page.Title = "New Applicant";
@@ -60,9 +50,10 @@ namespace KennedyAccess
                 else
                 { 
                     iApplicantID = int.Parse(Session["ApplicantID"].ToString());
-
+                    ApplicantInfo.ApplicantID = labApplicantID.Text = iApplicantID.ToString();
+                    
                     WorkExperience.iApplicantID = iApplicantID;
-                    labApplicantID.Text = iApplicantID.ToString();
+                    
 
                     labProcessingFeeRate.Text = "Processing Fee (" + (dRate * 100).ToString() + "%)";
 
@@ -92,19 +83,6 @@ namespace KennedyAccess
                         {
                             DataRow drApplicant = dtApplicant.Rows[0]; 
                             labApplicantID.Text = drApplicant["ApplicantID"].ToString();
-                            labAgentName.Text= drApplicant["AgentName"].ToString();
-
-                            ddlCitizenshipCountry.SelectedValue = drApplicant["CitizenshipCountryID"].ToString();
-                            ddlBirthCountry.SelectedValue = drApplicant["BirthCountryID"].ToString();
-                            ddlCitizenshipCountry.Enabled = ddlBirthCountry.Enabled = true;
-
-                            txtDateOfBirth.Text = DateTime.Parse(drApplicant["DateOfBirth"].ToString()).ToString("yyyy-MM-dd");
-
-                            txtAdmissionClass.Text = drApplicant["AdmissionClass"].ToString();
-                            txtAlienRegistration.Text = drApplicant["AlienRegistration"].ToString();
-                            txtAlienAdmission.Text = drApplicant["AlienAdmission"].ToString();
-                            cbkProfileCompleted.Checked=(drApplicant["ProfileCompleted"].ToString()=="True") ? true : false;
-                            labWebForm.Text = drApplicant["WID"].ToString();
                         }
                     }
 
@@ -113,11 +91,6 @@ namespace KennedyAccess
 
                     // reload payment schedule
                     PopulatePaymentSchedule();
-
-                    // profile picture control
-                    ProfilePicture.sObject = "Applicant";
-                    ProfilePicture.sObjectID = labApplicantID.Text;
-                    ProfilePicture.bShowButtons = true;
 
                     // profile is completed
                     panStep2.Visible = true;
@@ -310,27 +283,13 @@ namespace KennedyAccess
             btnEditApplicant.Visible = bLock && user.HasRole("ApplicantEdit");
             btnCancel.Visible = btnSaveApplicant.Visible = !bLock;
 
-            txtDateOfBirth.ReadOnly = bLock;
-            txtDateOfBirth.BorderStyle = sBorder;
-            txtAdmissionClass.ReadOnly = bLock;
-            txtAdmissionClass.BorderStyle = sBorder;
-            txtAlienRegistration.ReadOnly = bLock;
-            txtAlienRegistration.BorderStyle = sBorder;
-            txtAlienAdmission.ReadOnly = bLock;
-            txtAlienAdmission.BorderStyle = sBorder;
-            txtDateOfBirth.ReadOnly = bLock;
-            txtDateOfBirth.BorderStyle = sBorder;
-
-            ddlCitizenshipCountry.Enabled = !bLock;
-            ddlCitizenshipCountry.BorderStyle = sBorder;
-            ddlBirthCountry.Enabled = !bLock;
-            ddlBirthCountry.BorderStyle = sBorder;
-
             // applicant Contact Edit & Visibility
             contApplicantContact.SetEditability(bLock);
 
             // applicant oversea Edit & Visibility
             contApplicantOversea.SetEditability(bLock);
+
+            ApplicantInfo.SetEditVisibility(bLock);
 
         }
 
@@ -346,10 +305,6 @@ namespace KennedyAccess
                 //iApplicantID = int.Parse(labApplicantID.Text);
                 // save data
                 iApplicantID = (labApplicantID.Text == "") ? 0 : int.Parse(labApplicantID.Text);
-                int iRecordTypeID = bd.GetRecordTypeID((DataTable)Application["RecordType"], user.FranchiseID, "Contact", "Applicant");
-                iApplicantID = bd.InsertUpdateApplicant(user, iApplicantID, iRecordTypeID, "u", true,
-                    int.Parse(ddlCitizenshipCountry.SelectedValue), int.Parse(ddlBirthCountry.SelectedValue), txtDateOfBirth.Text, txtAdmissionClass.Text,
-                    txtAlienRegistration.Text, txtAlienAdmission.Text, true);
 
                 // set contact reference id
                 Session["ApplicantID"] = user.ObjectID = contApplicantContact.intReferencerID = contApplicantOversea.intReferencerID = iApplicantID;
@@ -364,7 +319,6 @@ namespace KennedyAccess
                 ((Label)WorkExperience.FindControl("txtApplicantID")).Text = iApplicantID.ToString();
 
                 labApplicantID.Text = iApplicantID.ToString();
-
             }
 
             // save applicant current contact
@@ -375,6 +329,7 @@ namespace KennedyAccess
 
             // go to read only mode
             SetEditVisibility(true);
+
             cbkApplicantChanged.Checked = false;
             panStep2.Visible = true;
         }

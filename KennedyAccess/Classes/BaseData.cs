@@ -884,7 +884,7 @@ namespace KennedyAccess.Classes
         }
         public int StringToInt(string sValue)
         {
-            int iResult;
+            int iResult=0;
 
             int.TryParse(sValue, out iResult);
             return iResult;

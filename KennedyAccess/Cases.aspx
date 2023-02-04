@@ -7,7 +7,7 @@
         &nbsp;
     </div>
 
-    <h2>Cases</h2>
+    <h2>Case Management</h2>
     <div class="jumbotron" style="width: 900px;">
         <asp:Table ID="Table1" runat="server" Width="100%">
             <asp:TableRow>

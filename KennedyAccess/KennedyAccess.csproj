@@ -198,6 +198,7 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\dropzone.min.css" />
+    <Content Include="Controls\ApplicantInfo.ascx" />
     <Content Include="Controls\Attachments.ascx" />
     <Content Include="Controls\Contact.ascx" />
     <Content Include="Controls\DropDownCheckBox.ascx" />
@@ -537,6 +538,13 @@
     <Compile Include="Classes\employer.cs" />
     <Compile Include="Classes\SqlHelperv2.cs" />
     <Compile Include="Classes\user.cs" />
+    <Compile Include="Controls\ApplicantInfo.ascx.cs">
+      <DependentUpon>ApplicantInfo.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ApplicantInfo.ascx.designer.cs">
+      <DependentUpon>ApplicantInfo.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Attachments.ascx.cs">
       <DependentUpon>Attachments.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

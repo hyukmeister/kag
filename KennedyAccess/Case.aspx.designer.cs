@@ -15,66 +15,48 @@ namespace KennedyAccess
     {
 
         /// <summary>
-        /// DropDownEmployers control.
+        /// labApplicantID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::KennedyAccess.Controls.DropDownCheckBox DropDownEmployers;
+        protected global::System.Web.UI.WebControls.Label labApplicantID;
 
         /// <summary>
-        /// DropDownCampaigns control.
+        /// ApplicantInfo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::KennedyAccess.Controls.DropDownCheckBox DropDownCampaigns;
+        protected global::KennedyAccess.Controls.ApplicantInfo ApplicantInfo;
 
         /// <summary>
-        /// DropDownStatuses control.
+        /// accordionFlush control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::KennedyAccess.Controls.DropDownCheckBox DropDownStatuses;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl accordionFlush;
 
         /// <summary>
-        /// btnSearch control.
+        /// UpdatePanel2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSearch;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel2;
 
         /// <summary>
-        /// txtSearchProfileName control.
+        /// UserFiles control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearchProfileName;
-
-        /// <summary>
-        /// rblDefaultSearchProfile control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rblDefaultSearchProfile;
-
-        /// <summary>
-        /// Button1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::KennedyAccess.Controls.UserFiles UserFiles;
     }
 }

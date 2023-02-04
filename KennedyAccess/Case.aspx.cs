@@ -20,47 +20,13 @@ namespace KennedyAccess
             user = (User)Session["User"];
             if (!Page.IsPostBack)
             {
-                DataTable employers = bd.GetEmployer(user, "0", "");
-                DropDownEmployers.ClearAll();
-                DropDownEmployers.AddItems(employers, "EmployerName", "EmployerId");
+                ApplicantInfo.ApplicantID = labApplicantID.Text = Session["ApplicantID"].ToString();
 
-                DataTable campaigns = bd.GetCampaign(user, "0", "0", "");
-                DropDownCampaigns.ClearAll();
-                DropDownCampaigns.AddItems(campaigns, "Description", "CampaignID");
+                DataTable dtApplicant = bd.GetApplicant(user, bd.StringToInt(labApplicantID.Text), "");
 
-                DataTable statuses = bd.GetProfile(user);
-                DropDownStatuses.ClearAll();
-                DropDownStatuses.AddItems(statuses, "RoleSetName", "RoleSetID");
+
             }
         }
 
-        protected void Search_Click(object sender, EventArgs e)
-        {
-
-        }
-        protected void SaveSearch_Click(object sender, EventArgs e)
-        {
-
-            // save the search name and get the parent id
-            bool bDefault = rblDefaultSearchProfile.SelectedValue.ToString() == "1";
-            string UserSearchID = bd.InsertUpdateSearch(user, "n", true, 0, bDefault, "Employers", txtSearchProfileName.Text);
-
-            // loop each search criteria and save with parent id
-            DataTable selectedEmps = DropDownEmployers.GetSelectedValues();
-            foreach (DataRow row in selectedEmps.Rows)
-            {
-                bd.InsertUpdateSearchDetails(user, "n", UserSearchID, "0", "Employers", row[0].ToString(), "");
-            }
-            DataTable selectedCamp = DropDownCampaigns.GetSelectedValues();
-            foreach (DataRow row in selectedCamp.Rows)
-            {
-                bd.InsertUpdateSearchDetails(user, "n", UserSearchID, "0", "Campaigns", row[0].ToString(), "");
-            }
-            DataTable selectedStat = DropDownStatuses.GetSelectedValues();
-            foreach (DataRow row in selectedStat.Rows)
-            {
-                bd.InsertUpdateSearchDetails(user, "n", UserSearchID, "0", "Status", row[0].ToString(), "");
-            }
-        }
     }
 }
