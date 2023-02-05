@@ -862,10 +862,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Documents\" />
-    <Folder Include="UserFiles\hyuk\Downloads\" />
-    <Folder Include="UserFiles\hyuk\Music\" />
-    <Folder Include="UserFiles\hyuk\Pictures\" />
-    <Folder Include="UserFiles\hyuk\Videos\" />
+    <Folder Include="UserFiles\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -879,7 +876,6 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="UserFiles\hyuk\Documents\AdobeGCInfo\ConsentRecord" />
     <Content Include="Scripts\jquery-3.6.1.min.map" />
     <Content Include="Scripts\jquery-3.6.1.slim.min.map" />
     <None Include="Web.Debug.config">
