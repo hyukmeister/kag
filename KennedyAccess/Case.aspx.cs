@@ -1,4 +1,5 @@
 ﻿using KennedyAccess.Classes;
+using KennedyAccess.Controls;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -21,14 +22,20 @@ namespace KennedyAccess
             if (!Page.IsPostBack)
             {
                 ApplicantInfo.ApplicantID = labApplicantID.Text = Session["ApplicantID"].ToString();
-
+                
                 DataTable dtApplicant = bd.GetApplicant(user, bd.StringToInt(labApplicantID.Text), "");
                 if (dtApplicant.Rows.Count == 1)
                 {
                     DataRow drApplicant = dtApplicant.Rows[0];
-                    UserFiles.UserName = labApplicant.Text = drApplicant["FirstName"].ToString() + drApplicant["LastName"].ToString();
+
+                    UserFiles.guid = guid.Text = drApplicant["guid"].ToString();
+                    UserFiles.UserName = labApplicant.Text = drApplicant["FirstName"].ToString() + " " + drApplicant["LastName"].ToString();
                 }
             }
+            //else
+            //{
+
+            //}
         }
     }
 }

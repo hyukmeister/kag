@@ -24,6 +24,15 @@ namespace KennedyAccess
         protected global::System.Web.UI.WebControls.Label labApplicantID;
 
         /// <summary>
+        /// guid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label guid;
+
+        /// <summary>
         /// labApplicant control.
         /// </summary>
         /// <remarks>
@@ -42,6 +51,15 @@ namespace KennedyAccess
         protected global::KennedyAccess.Controls.ApplicantInfo ApplicantInfo;
 
         /// <summary>
+        /// Label1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
+
+        /// <summary>
         /// accordionFlush control.
         /// </summary>
         /// <remarks>
@@ -49,6 +67,24 @@ namespace KennedyAccess
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl accordionFlush;
+
+        /// <summary>
+        /// DS260 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::KennedyAccess.Controls.DS260 DS260;
+
+        /// <summary>
+        /// I485 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::KennedyAccess.Controls.I485 I485;
 
         /// <summary>
         /// UpdatePanel2 control.

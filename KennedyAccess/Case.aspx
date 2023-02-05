@@ -3,17 +3,21 @@
 <%@ Register Src="~/Controls/DropDownCheckBox.ascx" TagPrefix="uc1" TagName="DropDownCheckBox" %>
 <%@ Register Src="~/Controls/ApplicantInfo.ascx" TagPrefix="uc2" TagName="ApplicantInfo" %>
 <%@ Register Src="~/Controls/UserFiles.ascx" TagPrefix="uc3" TagName="UserFiles" %>
+<%@ Register Src="~/Controls/DS260.ascx" TagPrefix="uc4" TagName="DS260" %>
+<%@ Register Src="~/Controls/I485.ascx" TagPrefix="uc5" TagName="i485" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <asp:Label ID="labApplicantID" runat="server" Visible="false"></asp:Label>
+    <asp:Label ID="guid" runat="server" Visible="false"></asp:Label>
     <h2><asp:Label ID="labApplicant" runat="server" Text=""></asp:Label></h2>
-    <uc2:ApplicantInfo runat="server" ID="ApplicantInfo" />
+    <uc2:ApplicantInfo runat="server" ID="ApplicantInfo" /><br />
 
+    <h2><asp:Label ID="Label1" runat="server" Text="Forms & Files"></asp:Label></h2>
     <div class="accordion" id="accordionFlush" runat="server">
         <div class="accordion-item">
             <h2 class="accordion-header" id="flush-headingOne">
                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                <h5>ETA 9089</h5>
+                <h5>ETA 9089 Application for Permanent Employment Certification</h5>
                 </button>
             </h2>
             <div id="flush-collapseOne" class="accordion-collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlush">
@@ -24,7 +28,7 @@
         <div class="accordion-item">
             <h2 class="accordion-header" id="flush-headingTwo">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                <h5>I 140</h5>
+                <h5>I-140 Immigrant Petition for Alien Workers</h5>
                 </button>
             </h2>
             <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlush">
@@ -35,22 +39,55 @@
         <div class="accordion-item">
             <h2 class="accordion-header" id="flush-headingThree">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                <h5>DS 260</h5>
+                <h5>DS-260 Immigrant Visa Electronic Application</h5>
                 </button>
             </h2>
             <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlush">
-                <div class="accordion-body">Pending</div>
+                <div class="accordion-body">
+
+
+                    <div class="accordion" id="accordApplicant">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                    <h5>Applicant</h5>
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordApplicant">
+                                <div class="accordion-body">
+                                    <uc4:DS260 runat="server" id="DS260" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    <h5>Spouse</h5>
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordApplicant">
+                                <div class="accordion-body">
+                        
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
             </div>
         </div>
 
         <div class="accordion-item">
             <h2 class="accordion-header" id="flush-headingFour">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-                <h5>I 485</h5>
+                <h5>I-485 Application to Register Permanent Residence</h5>
                 </button>
             </h2>
             <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlush">
-                <div class="accordion-body">Pending</div>
+                <div class="accordion-body">
+                    <uc5:i485 runat="server" id="I485" />
+                </div>
             </div>
         </div>
         <div class="accordion-item">
@@ -68,6 +105,7 @@
                     </asp:UpdatePanel>
                 </div>
             </div>
-        </div>
+        </div><br /><br />
     </div>
+    
 </asp:Content>

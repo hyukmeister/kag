@@ -1181,5 +1181,21 @@ namespace KennedyAccess.Classes
             }
             return dtProfileDetail;
         }
+        public DataTable GetDS260(User user, string ApplicantID, string FamilyRelationID, string ReferenceID)
+        {
+            DataTable dtDS260 = null;
+            DataSet ds = (SqlHelper.ExecuteDataset(Global.dbcnn, "GetDS260",
+                new SqlParameter("@FranchiseID", user.FranchiseID),
+                    new SqlParameter("@UserID", user.UserID),
+                    new SqlParameter("@ApplicantID", ApplicantID),
+                    new SqlParameter("@FamilyRelationID", FamilyRelationID),
+                    new SqlParameter("@ReferenceID", ReferenceID)));
+
+            if (ds != null && ds.Tables.Count > 0)
+            {
+                dtDS260 = ds.Tables[0];
+            }
+            return dtDS260;
+        }
     }
 }

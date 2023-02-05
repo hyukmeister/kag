@@ -202,6 +202,8 @@
     <Content Include="Controls\Attachments.ascx" />
     <Content Include="Controls\Contact.ascx" />
     <Content Include="Controls\DropDownCheckBox.ascx" />
+    <Content Include="Controls\DS260.ascx" />
+    <Content Include="Controls\I485.ascx" />
     <Content Include="Controls\PrevWage.ascx" />
     <Content Include="Controls\ProfilePicture.ascx" />
     <Content Include="Controls\Questionnaire.ascx" />
@@ -210,10 +212,12 @@
     <Content Include="Controls\WorkExperience.ascx" />
     <Content Include="Dashboard.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="DS260_VEA.aspx" />
     <Content Include="Employer.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="I485_ATRPR.aspx" />
     <Content Include="images\abs012.svg" />
     <Content Include="images\arr017.svg" />
     <Content Include="images\arr018.svg" />
@@ -230,10 +234,12 @@
     <Content Include="images\explorer2.png" />
     <Content Include="images\fil007.svg" />
     <Content Include="images\fil012.svg" />
+    <Content Include="images\file1.png" />
     <Content Include="images\fin001.svg" />
     <Content Include="images\fin010.svg" />
     <Content Include="images\gen001.svg" />
     <Content Include="images\gen004.svg" />
+    <Content Include="images\gen008.svg" />
     <Content Include="images\gen009.svg" />
     <Content Include="images\gen019.svg" />
     <Content Include="images\gen027.png" />
@@ -566,6 +572,20 @@
     <Compile Include="Controls\DropDownCheckBox.ascx.designer.cs">
       <DependentUpon>DropDownCheckBox.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\DS260.ascx.cs">
+      <DependentUpon>DS260.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\DS260.ascx.designer.cs">
+      <DependentUpon>DS260.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\I485.ascx.cs">
+      <DependentUpon>I485.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\I485.ascx.designer.cs">
+      <DependentUpon>I485.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\PrevWage.ascx.cs">
       <DependentUpon>PrevWage.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -623,12 +643,26 @@
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Classes\EmailServer.cs" />
+    <Compile Include="DS260_VEA.aspx.cs">
+      <DependentUpon>DS260_VEA.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DS260_VEA.aspx.designer.cs">
+      <DependentUpon>DS260_VEA.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Employer.aspx.cs">
       <DependentUpon>Employer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Employer.aspx.designer.cs">
       <DependentUpon>Employer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="I485_ATRPR.aspx.cs">
+      <DependentUpon>I485_ATRPR.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="I485_ATRPR.aspx.designer.cs">
+      <DependentUpon>I485_ATRPR.aspx</DependentUpon>
     </Compile>
     <Compile Include="InternalError.aspx.cs">
       <DependentUpon>InternalError.aspx</DependentUpon>

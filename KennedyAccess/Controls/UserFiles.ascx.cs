@@ -12,15 +12,19 @@ namespace KennedyAccess.Controls
     {
         private User user;
         public string UserName;
+        public string guid;
         private string rootFolder;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!this.IsPostBack)
             {
+                LabGuid.Text = guid;
+                rootFolder = "~/UserFiles/" + LabGuid.Text + "/ ";
+
                 labUserName.Text = UserName;
                 user = (User)Session["User"];
-                rootFolder = "~/UserFiles/" + labUserName.Text + "/ ";
+                
 
                 // create the root folder if necessary
                 CreateFolder(Server.MapPath(rootFolder));
@@ -37,7 +41,7 @@ namespace KennedyAccess.Controls
             }
             else
             {
-                rootFolder = "~/UserFiles/" + labUserName.Text + "/ ";
+                rootFolder = "~/UserFiles/" + LabGuid.Text + "/ ";
 
                 foreach (string s in Request.Files)
                 {
@@ -47,12 +51,6 @@ namespace KennedyAccess.Controls
                     int fileSizeInBytes = file.ContentLength;
                     if(fileSizeInBytes > 0)
                     {
-                        //string fileName = Request.Headers["X-File-Name"];
-                        //string fileExtension = "";
-
-                        //if (!string.IsNullOrEmpty(fileName))
-                        //    fileExtension = Path.GetExtension(fileName);
-
                         // IMPORTANT! Make sure to validate uploaded file contents, size, etc. to prevent scripts being uploaded into your web app directory
                         //string savedFileName = Path.Combine(folderName, file.FileName + fileExtension);
                         string savedFileName = Path.Combine(folderName, file.FileName);
@@ -180,7 +178,7 @@ namespace KennedyAccess.Controls
         protected void btnRename_Click(object sender, EventArgs e)
         {
             string oldName = tvUserFolders.SelectedNode.Text;
-            string newName = string.Empty;//= txtRenameFolder.Text;
+            string newName = txtRenameFolder.Text;
 
             if (newName != string.Empty)
             {

@@ -131,6 +131,7 @@ namespace KennedyAccess
                         panFiles.Visible = user.HasRole("EmployerFiles");
 
                         UserFiles.UserName = labEmployer.Text;
+                        UserFiles.guid = dr["guid"].ToString();
                     }
 
                     // employer

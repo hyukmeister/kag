@@ -2,13 +2,14 @@
 <script src="../Scripts/dropzone.min.js" type="text/javascript"></script>
     
     <asp:Label ID="labUserName" runat="server" Visible="false"></asp:Label>
+    <asp:Label ID="LabGuid" runat="server" Visible="false"></asp:Label>
     <asp:Label runat="server" ID="labRecordTypeID" Visible="false"></asp:Label>
 
     <asp:Table ID="tblAttachment" runat="server" class="table" Width="850px">
         <asp:TableRow BackColor="#B5B5B5" Height="30px">
             <asp:TableCell Width="300px" HorizontalAlign="Right">
-                <button id="btnNewFolder" runat="server" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myNewFolderModal">New</button>&nbsp;
-                <button id="btnRenameFolder" runat="server" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myRenameFolderModal">Rename</button>&nbsp;
+                <button id="btnNewFolder" runat="server" type="button" class="btn btn-default" data-bs-toggle="modal" data-bs-target="#myNewFolderModal">New</button>&nbsp;
+                <button id="btnRenameFolder" runat="server" type="button" class="btn btn-default" data-bs-toggle="modal" data-bs-target="#myRenameFolderModal">Rename</button>&nbsp;
                 <asp:ImageButton ID="lnkBtnDelete" runat="server" OnClick="lnkBtnDelete_Click" AlternateText="Delete" ImageAlign="Top" Height="20px" ImageUrl="~/images/gen027.svg" Visible="false"/>
             </asp:TableCell>
             <asp:TableCell Width="500px">
@@ -67,7 +68,7 @@
                                             <asp:RequiredFieldValidator ID="rfvtxtFolderNmae" runat="server" ControlToValidate="txtFolderNmae" forecolor="red"
                                                 ValidationGroup="NewFolderResponse" ErrorMessage="A new folder name is required"></asp:RequiredFieldValidator>
                                         </div>
-                                        <asp:Button ID="btnCreate" runat="server" class="btn btn-primary" ValidationGroup="NewFolderResponse" Text="Create" OnClick="btnCreate_Click"/>
+                                        <asp:Button ID="btnCreate" runat="server" class="btn btn-primary" data-bs-dismiss="modal" ValidationGroup="NewFolderResponse" Text="Create" OnClick="btnCreate_Click"/>
                                         <button type="button" class="btn btn-primary" data-bs-dismiss="modal" value="Close">Close</button>
                                         </asp:TableCell>
                                 </asp:TableRow>
@@ -77,8 +78,8 @@
                 </div>
             </div>
         </div>
-   </div>
-<%--    <div style="width:750px">
+    </div>
+    <div style="width:750px">
         <div class="modal fade" id="myRenameFolderModal">
             <div class="modal-dialog">
                 <!-- Modal content-->
@@ -106,7 +107,7 @@
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtRenameFolder" forecolor="red"
                                                 ValidationGroup="RenFolderResponse" ErrorMessage="A new folder name is required"></asp:RequiredFieldValidator>
                                         </div>
-                                        <asp:Button ID="btnRename" runat="server" class="btn btn-primary" ValidationGroup="RenFolderResponse" Text="Rename" OnClick="btnRename_Click"/>
+                                        <asp:Button ID="Button1" runat="server" class="btn btn-primary" data-bs-dismiss="modal" ValidationGroup="RenFolderResponse" Text="Rename" OnClick="btnRename_Click"/>
                                         <button type="button" class="btn btn-primary" data-bs-dismiss="modal" value="Close">Close</button>
                                         </asp:TableCell>
                                 </asp:TableRow>
@@ -116,4 +117,4 @@
                 </div>
             </div>
         </div>
-   </div>--%>
+   </div>
