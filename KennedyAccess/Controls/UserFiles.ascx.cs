@@ -1,8 +1,10 @@
-﻿using System;
+﻿using iTextSharp.text;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -15,7 +17,8 @@ namespace KennedyAccess.Controls
         public string UserName;
         public string guid;
         private string rootFolder;
-
+        private string key = "KennedyAccessSapphireForceConsul";
+        private string iv = "SapphireConsulti";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!this.IsPostBack)
@@ -52,63 +55,35 @@ namespace KennedyAccess.Controls
                     int fileSizeInBytes = file.ContentLength;
                     if(fileSizeInBytes > 0)
                     {
-                        //// IMPORTANT! Make sure to validate uploaded file contents, size, etc. to prevent scripts being uploaded into your web app directory
-                        ////string savedFileName = Path.Combine(folderName, file.FileName + fileExtension);
+                        // IMPORTANT! Make sure to validate uploaded file contents, size, etc. to prevent scripts being uploaded into your web app directory
+                        //string savedFileName = Path.Combine(folderName, file.FileName + fileExtension);
                         string savedFileName = Path.Combine(folderName, file.FileName);
-                        //file.SaveAs(savedFileName);
+                        file.SaveAs(savedFileName);
 
                         byte[] fileData = new byte[file.ContentLength];
                         file.InputStream.Read(fileData, 0, file.ContentLength);
 
-                        using (Aes aes = Aes.Create())
-                        {
-                            aes.Key = new byte[32]; // your encryption key
-                            aes.IV = new byte[16]; // your initialization vector
-
-                            using (MemoryStream ms = new MemoryStream())
-                            {
-                                using (CryptoStream cs = new CryptoStream(ms, aes.CreateEncryptor(), CryptoStreamMode.Write))
-                                {
-                                    cs.Write(fileData, 0, fileData.Length);
-                                }
-
-                                // Save the encrypted data to a file
-                                File.WriteAllBytes(savedFileName, ms.ToArray());
-                            }
-                        }
-
-
-                        /// How to decrypt
-                        //private void DecryptFile(string encryptedFilePath)
+                        ///================================================================================================================
+                        /// encrypt & save
+                        //byte[] fileData = new byte[file.ContentLength];
+                        //string savedFileName = Path.Combine(folderName, file.FileName);
+                        //using (Aes aes = Aes.Create())
                         //{
-                        //    // The path to save the decrypted file
-                        //    string decryptedFilePath = Path.Combine(Server.MapPath("~/DecryptedFiles"), Path.GetFileNameWithoutExtension(encryptedFilePath));
+                        //    aes.Key = Encoding.ASCII.GetBytes(key);
+                        //    aes.IV = Encoding.ASCII.GetBytes(iv);
 
-                        //    // Get the encrypted file data
-                        //    byte[] encryptedFileData = File.ReadAllBytes(encryptedFilePath);
-
-                        //    // Decrypt the data using a symmetric algorithm
-                        //    using (Aes aes = Aes.Create())
+                        //    using (MemoryStream ms = new MemoryStream())
                         //    {
-                        //        aes.Key = new byte[32]; // your encryption key
-                        //        aes.IV = new byte[16]; // your initialization vector
-
-                        //        using (MemoryStream ms = new MemoryStream(encryptedFileData))
+                        //        using (CryptoStream cs = new CryptoStream(ms, aes.CreateEncryptor(), CryptoStreamMode.Write))
                         //        {
-                        //            using (CryptoStream cs = new CryptoStream(ms, aes.CreateDecryptor(), CryptoStreamMode.Read))
-                        //            {
-                        //                using (MemoryStream decryptedStream = new MemoryStream())
-                        //                {
-                        //                    cs.CopyTo(decryptedStream);
-                        //                    decryptedStream.Position = 0;
-
-                        //                    // Save the decrypted data to a file
-                        //                    File.WriteAllBytes(decryptedFilePath, decryptedStream.ToArray());
-                        //                }
-                        //            }
+                        //            cs.Write(fileData, 0, fileData.Length);
                         //        }
+
+                        //        Save the encrypted data to a file
+                        //        File.WriteAllBytes(savedFileName, ms.ToArray());
                         //    }
                         //}
+                        ///================================================================================================================
                     }
                 }
             }            
@@ -247,6 +222,56 @@ namespace KennedyAccess.Controls
 
                 RenameFolder(oldFoldePath, newFoldePath);
             }
+        }
+
+        protected void tvUserFiles_SelectedNodeChanged(object sender, EventArgs e)
+        {
+            if (tvUserFiles.SelectedNode.Value != "")
+            {
+                string filename = tvUserFiles.SelectedNode.Value;
+
+                System.IO.FileInfo file = new System.IO.FileInfo(filename);
+
+                if (file.Exists)
+                {
+                    System.Diagnostics.Process.Start(file.FullName);
+                }
+            }
+
+            ///================================================================================================================
+            /// How to decrypt
+            //private void DecryptFile(string encryptedFilePath)
+            //{
+            //    // The path to save the decrypted file
+            //    string decryptedFilePath = Path.Combine(Server.MapPath("~/DecryptedFiles"), Path.GetFileNameWithoutExtension(encryptedFilePath));
+
+            //    // Get the encrypted file data
+            //    byte[] encryptedFileData = File.ReadAllBytes(encryptedFilePath);
+
+            //    // Decrypt the data using a symmetric algorithm
+            //    using (Aes aes = Aes.Create())
+            //    {
+            //        aes.Key = new byte[32]; // your encryption key
+            //        aes.IV = new byte[16]; // your initialization vector
+
+            //        using (MemoryStream ms = new MemoryStream(encryptedFileData))
+            //        {
+            //            using (CryptoStream cs = new CryptoStream(ms, aes.CreateDecryptor(), CryptoStreamMode.Read))
+            //            {
+            //                using (MemoryStream decryptedStream = new MemoryStream())
+            //                {
+            //                    cs.CopyTo(decryptedStream);
+            //                    decryptedStream.Position = 0;
+
+            //                    // Save the decrypted data to a file
+            //                    File.WriteAllBytes(decryptedFilePath, decryptedStream.ToArray());
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
+            ///================================================================================================================
+
         }
     }
 }

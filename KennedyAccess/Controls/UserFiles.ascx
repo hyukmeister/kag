@@ -29,7 +29,7 @@
                 </asp:TreeView>
             </asp:TableCell>
             <asp:TableCell VerticalAlign="Top" Width="500px">
-                <asp:TreeView ID="tvUserFiles" runat="server" ImageSet="XPFileExplorer" NodeIndent="15" >
+                <asp:TreeView ID="tvUserFiles" runat="server" ImageSet="XPFileExplorer" NodeIndent="15" OnSelectedNodeChanged="tvUserFiles_SelectedNodeChanged">
                     <NodeStyle Font-Names="Tahoma" Font-Size="10pt" ForeColor="Black" HorizontalPadding="2px"
                         NodeSpacing="0px" VerticalPadding="2px"></NodeStyle>
                 </asp:TreeView>
