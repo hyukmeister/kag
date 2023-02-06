@@ -22,8 +22,8 @@ namespace KennedyAccess
         private double dRate;
         private User user;
         private int iApplicantID;
-        public static int uid;
         BaseData bd = new BaseData();
+        private string ApplicantUserID;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -31,7 +31,6 @@ namespace KennedyAccess
             if (user == null || !user.HasRole("Applicant"))
                 Response.Redirect("Default.aspx");
 
-            uid = user.UserID;
             dRate = bd.GetSysSettingValue((DataTable)Application["SysSettings"], user.FranchiseID, "PayPal_Fee_Perc");
             
             if (!Page.IsPostBack)
@@ -83,6 +82,7 @@ namespace KennedyAccess
                         {
                             DataRow drApplicant = dtApplicant.Rows[0]; 
                             labApplicantID.Text = drApplicant["ApplicantID"].ToString();
+                            ApplicantUserID = drApplicant["UserID"].ToString();
                         }
                     }
 
@@ -99,7 +99,7 @@ namespace KennedyAccess
                     tcContainer.Visible = user.UserType == "System Admin";
                     
                     // tab 1 : application history
-                    tcContainer.Tabs[0].HeaderText = "Application History";
+                    tcContainer.Tabs[0].HeaderText = "Job Application";
                     GridView gv1 = new GridView();
                     gv1.CssClass = "table table-hover";
                     gv1.GridLines = GridLines.None;
@@ -111,13 +111,13 @@ namespace KennedyAccess
                     tcContainer.Tabs[0].Visible = true;
 
                     // tab 2 : login history
-                    tcContainer.Tabs[1].HeaderText = "Login History";
+                    tcContainer.Tabs[1].HeaderText = "Login";
                     GridView gv2 = new GridView();
                     gv2.CssClass = "table table-hover";
                     gv2.GridLines = GridLines.None;
                     gv2.HeaderStyle.ForeColor = System.Drawing.Color.DimGray;
                     gv2.HeaderStyle.BackColor = System.Drawing.Color.Silver;
-                    gv2.DataSource = bd.GetLoginHistory(user.FranchiseID.ToString(), labApplicantID.Text);
+                    gv2.DataSource = bd.GetLoginHistory(user.FranchiseID.ToString(), ApplicantUserID);
                     gv2.DataBind();
                     tcContainer.Tabs[1].Controls.Add(gv2);
                     tcContainer.Tabs[1].Visible = true;
