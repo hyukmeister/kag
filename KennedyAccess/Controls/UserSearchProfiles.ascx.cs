@@ -96,7 +96,9 @@ namespace KennedyAccess.Controls
 
         private void LoadSearchProfile(string UsrSearchID)
         {
+            // clear prev search texts
             ddcbEmployers.Text = ddcbCampaigns.Text = ddcbStatuses.Text = string.Empty;
+
             DataTable dt = bd.GetUserSearchProfileDetail(user, UsrSearchID);
             foreach(DataRow row in dt.Rows)
             {
