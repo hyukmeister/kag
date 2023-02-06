@@ -82,6 +82,12 @@ namespace KennedyAccess.Controls
 
                 GridViewRow selectedRow = gvSearchProfiles.Rows[index];
                 string UsrSearchID = ((Label)selectedRow.Cells[0].Controls[1]).Text;
+                foreach(GridViewRow gvr in gvSearchProfiles.Rows)
+                {
+                    gvr.BackColor = Color.White;
+                }
+
+                selectedRow.BackColor = Color.Silver;
 
                 // get search profile
                 LoadSearchProfile(UsrSearchID);
@@ -90,6 +96,7 @@ namespace KennedyAccess.Controls
 
         private void LoadSearchProfile(string UsrSearchID)
         {
+            ddcbEmployers.Text = ddcbCampaigns.Text = ddcbStatuses.Text = string.Empty;
             DataTable dt = bd.GetUserSearchProfileDetail(user, UsrSearchID);
             foreach(DataRow row in dt.Rows)
             {
@@ -143,7 +150,6 @@ namespace KennedyAccess.Controls
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                //string main = ((CheckBox)e.Row.Cells[1].Controls[1]).Checked;
                 if (((CheckBox)e.Row.Cells[1].Controls[1]).Checked)
                 {
                     e.Row.BackColor = Color.Silver;

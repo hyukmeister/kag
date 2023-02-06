@@ -1,4 +1,5 @@
 ﻿using iTextSharp.text;
+using KennedyAccess.Classes;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,6 +15,7 @@ namespace KennedyAccess.Controls
     public partial class UserFiles : System.Web.UI.UserControl
     {
         private User user;
+        BaseData bd = new BaseData();
         public string UserName;
         public string guid;
         private string rootFolder;
@@ -226,18 +228,25 @@ namespace KennedyAccess.Controls
 
         protected void tvUserFiles_SelectedNodeChanged(object sender, EventArgs e)
         {
-            if (tvUserFiles.SelectedNode.Value != "")
+
+            try
             {
-                string filename = tvUserFiles.SelectedNode.Value;
-
-                System.IO.FileInfo file = new System.IO.FileInfo(filename);
-
-                if (file.Exists)
+                if (tvUserFiles.SelectedNode.Value != "")
                 {
-                    System.Diagnostics.Process.Start(file.FullName);
+                    string filename = tvUserFiles.SelectedNode.Value;
+
+                    System.IO.FileInfo file = new System.IO.FileInfo(filename);
+
+                    if (file.Exists)
+                    {
+                        System.Diagnostics.Process.Start(file.FullName);
+                    }
                 }
             }
-
+            catch (Exception ex)
+            {
+                bd.WriteAuditTrail(user, "0", ex.Message);
+            }
             ///================================================================================================================
             /// How to decrypt
             //private void DecryptFile(string encryptedFilePath)
