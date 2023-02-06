@@ -84,7 +84,7 @@ namespace KennedyAccess
                             tcContainer.Visible = user.UserType == "System Admin";
 
                             // tab 1 : login history
-                            tcContainer.Tabs[1].HeaderText = "Login History";
+                            tcContainer.Tabs[1].HeaderText = "Logins";
                             GridView gv1 = new GridView();
                             gv1.ID = "gvHistory";
                             gv1.CssClass = "table table-hover";

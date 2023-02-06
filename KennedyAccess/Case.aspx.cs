@@ -29,7 +29,8 @@ namespace KennedyAccess
                     DataRow drApplicant = dtApplicant.Rows[0];
 
                     UserFiles.guid = guid.Text = drApplicant["guid"].ToString();
-                    UserFiles.UserName = labApplicant.Text = drApplicant["FirstName"].ToString() + " " + drApplicant["LastName"].ToString();
+                    Page.Title = UserFiles.UserName = labApplicant.Text = drApplicant["FirstName"].ToString() + " " + drApplicant["LastName"].ToString();
+                    ApplicantInfo.EnablePhotoUpload(false);
                 }
             }
             //else

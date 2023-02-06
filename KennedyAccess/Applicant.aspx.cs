@@ -111,7 +111,7 @@ namespace KennedyAccess
                     tcContainer.Tabs[0].Visible = true;
 
                     // tab 2 : login history
-                    tcContainer.Tabs[1].HeaderText = "Login";
+                    tcContainer.Tabs[1].HeaderText = "Logins";
                     GridView gv2 = new GridView();
                     gv2.CssClass = "table table-hover";
                     gv2.GridLines = GridLines.None;

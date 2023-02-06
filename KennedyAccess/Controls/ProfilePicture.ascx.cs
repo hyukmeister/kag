@@ -38,14 +38,14 @@ namespace KennedyAccess.Controls
 
         private void LoadProfilePicture()
         {
-            if(sObject==null || sObjectID==null)
+            if (sObject == null || sObjectID == null)
             {
                 imgProfilePicture.ImageUrl = "";
             }
             else
             {
                 byte[] img = bd.GetProfilePicture(user, labObject.Text, labObjectID.Text);
-                if(img!=null)
+                if (img != null)
                     imgProfilePicture.ImageUrl = "data:image;base64," + Convert.ToBase64String(img);
             }
         }
@@ -65,6 +65,12 @@ namespace KennedyAccess.Controls
                 if (imagefile != null)
                     imgProfilePicture.ImageUrl = "data:image;base64," + Convert.ToBase64String(imagefile);
             }
+        }
+        public void UploadButtonVisible(bool bVisible)
+        {
+            pictureUpload.Visible = bVisible;
+            btnUpload.Visible = bVisible;
+            divUpload.Visible = bVisible;
         }
     }
 }

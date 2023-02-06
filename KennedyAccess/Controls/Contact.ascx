@@ -32,7 +32,7 @@
     <asp:TableRow>
         <asp:TableCell ColumnSpan="4"><br />
             <div class="form-floating mb-3;" style="width:420px">
-                <asp:TextBox ID="txtAddress1" class="form-control" runat="server" placeholder="Address 1" ValidationGroup="ContactInfo" requiredrequired="Address 1 is required"></asp:TextBox>
+                <asp:TextBox ID="txtAddress1" class="form-control" runat="server" placeholder="Address 1" ValidationGroup="ContactInfo" required="Address 1 is required"></asp:TextBox>
                 <label for="txtAddress1" class="form-label">Address 1</label>
                 <div class="invalid-feedback">Please provide a valid Address 1.</div>
             </div>            
@@ -48,13 +48,13 @@
     <asp:TableRow>
         <asp:TableCell ColumnSpan="2">
             <div class="form-floating mb-3;" style="width:420px">
-            <asp:TextBox ID="txtCity" class="form-control" runat="server" placeholder="City" ValidationGroup="ContactInfo" requiredrequired="City is required"></asp:TextBox>
+            <asp:TextBox ID="txtCity" class="form-control" runat="server" placeholder="City" ValidationGroup="ContactInfo" required="City is required"></asp:TextBox>
             <label for="txtCity">City</label>
             </div>
         </asp:TableCell>
         <asp:TableCell ColumnSpan="2">
             <div class="form-floating mb-3;" style="width:350px">
-            <asp:TextBox ID="txtStateProvince" class="form-control" runat="server" placeholder="State" ValidationGroup="ContactInfo" requiredrequired="State/Province is required"></asp:TextBox>
+            <asp:TextBox ID="txtStateProvince" class="form-control" runat="server" placeholder="State" ValidationGroup="ContactInfo" required="State/Province is required"></asp:TextBox>
             <label for="txtCity">State</label>
             </div>
         </asp:TableCell>
@@ -62,21 +62,21 @@
     <asp:TableRow>
         <asp:TableCell ColumnSpan="2">
             <div class="form-floating mb-3;" style="width:240px">
-            <asp:TextBox ID="txtPostalCode" runat="server" class="form-control" placeholder="Postal Code" ValidationGroup="ContactInfo" requiredrequired="Postal Code is required"></asp:TextBox>
+            <asp:TextBox ID="txtPostalCode" runat="server" class="form-control" placeholder="Postal Code" ValidationGroup="ContactInfo" required="Postal Code is required"></asp:TextBox>
             <label for="txtPostalCode">Postal Code</label>
             </div>
         </asp:TableCell>
         <asp:TableCell ColumnSpan="2">
             <div class="mb-3;" style="width:350px">
                 <label for="ddlCountry" class="form-label">Country</label><br />
-                <asp:DropDownList ID="ddlCountry" class="form-select"  runat="server" Width="300px" ValidationGroup="ContactInfo" requiredrequired="Country is required"></asp:DropDownList>
+                <asp:DropDownList ID="ddlCountry" class="form-select"  runat="server" Width="300px" ValidationGroup="ContactInfo" required="Country is required"></asp:DropDownList>
             </div>
         </asp:TableCell>
     </asp:TableRow>
     <asp:TableRow>
         <asp:TableCell>
             <div class="form-floating mb-3;" style="width:240px">
-            <asp:TextBox ID="txtPhoneNumber" class="form-control" runat="server" placeholder="Phone number" ValidationGroup="ContactInfo" requiredrequired="Phone Number is required"></asp:TextBox>
+            <asp:TextBox ID="txtPhoneNumber" class="form-control" runat="server" placeholder="Phone number" ValidationGroup="ContactInfo" required="Phone Number is required"></asp:TextBox>
             <label for="txtPhoneNumber">Phone number</label>
             </div>
         </asp:TableCell>
@@ -88,7 +88,7 @@
         </asp:TableCell>
         <asp:TableCell ColumnSpan="2">
             <div class="form-floating mb-3;" style="width:350px">
-            <asp:TextBox ID="txtEmail" class="form-control" runat="server" TextMode="Email" placeholder="Email" ValidationGroup="ContactInfo" requiredrequired="Email is required"></asp:TextBox>
+            <asp:TextBox ID="txtEmail" class="form-control" runat="server" TextMode="Email" placeholder="Email" ValidationGroup="ContactInfo" required="Email is required"></asp:TextBox>
             <label for="txtEmail">Email</label>
             </div>
         </asp:TableCell>

@@ -104,5 +104,9 @@ namespace KennedyAccess.Controls
         {
             cbkApplicantChanged.Checked = true;
         }
+        public void EnablePhotoUpload(bool bShow)
+        {
+            ProfilePicture.UploadButtonVisible(bShow);
+        }
     }
 }

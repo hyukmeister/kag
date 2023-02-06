@@ -89,7 +89,7 @@
                     </button>
                 </nav>
             </div>
-            <div class="container body-content;" style="position:absolute; left:300px; top:40px">
+            <div class="container body-content;" style="position:absolute; left:300px; top:40px; height:400px">
                 <table>
                     <tr>
                         <td style="vertical-align:top;">
@@ -116,7 +116,6 @@
                                     </ContentTemplate>
                                 </ajaxToolkit:TabPanel>
                             </ajaxToolkit:TabContainer>
-                            
                         </td>
                     </tr>
                 </table>
