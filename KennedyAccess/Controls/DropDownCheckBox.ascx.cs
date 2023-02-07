@@ -14,6 +14,8 @@ namespace KennedyAccess.Controls
     {
         public string ControlLabel { get; set; }
 
+        public event EventHandler UserControlButtonClicked;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -86,6 +88,11 @@ namespace KennedyAccess.Controls
             {
                 chkList.Items.Add(dr[textField].ToString());
                 chkList.Items[i].Value = dr[valueField].ToString();
+
+                if(i>0)
+                    txtCombo.Text += ", ";
+
+                txtCombo.Text += dr[textField].ToString();
                 i++;
             }
         }
@@ -93,11 +100,11 @@ namespace KennedyAccess.Controls
         /// <summary>
         /// Uncheck of the Items of the CheckBox
         /// </summary>
-        public void unselectAllItems()
+        public void SetAllItems(bool bCheck)
         {
             for (int i = 0; i < chkList.Items.Count; i++)
             {
-                chkList.Items[i].Selected = false;
+                chkList.Items[i].Selected = bCheck;
             }
         }
 
@@ -146,6 +153,18 @@ namespace KennedyAccess.Controls
         public int Length()
         {
             return chkList.Items.Count;
+        }
+
+        protected void btnDone_Click(object sender, EventArgs e)
+        {
+            OnUserControlButtonClick();
+        }
+        private void OnUserControlButtonClick()
+        {
+            if (UserControlButtonClicked != null)
+            {
+                UserControlButtonClicked(this, EventArgs.Empty);
+            }
         }
     }
 }

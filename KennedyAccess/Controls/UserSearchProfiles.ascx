@@ -13,9 +13,10 @@
     </div>
 
     <asp:Button ID="btnSearch" runat="server" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" text="Search" OnClick="btnSearch_Click"/>
-    <button id="btnSaveSearch" type="button" class="btn btn-default" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Save Filters</button><br /><br />
+    <button id="btnNewSearch" type="button" class="btn btn-default" data-bs-toggle="modal" data-bs-target="#staticBackdrop">New Profile</button>
+    <button id="btnSaveSearch" type="button" class="btn btn-default" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="visibility:hidden">Save Filters</button><br /><br />
 
-    <asp:GridView ID="gvSearchProfiles" runat="server" AutoGenerateColumns="False" Width="100%" OnRowDataBound="gvSearchProfiles_RowDataBound" AllowSorting="True"
+    <asp:GridView ID="gvSearchProfiles" runat="server" AutoGenerateColumns="False" Width="100%" OnRowDataBound="gvSearchProfiles_RowDataBound"
         GridLines="None" class="table table-hover" OnRowCommand="gvSearchProfiles_RowCommand">
         <Columns>
             <asp:TemplateField HeaderText="UsrSearchID" Visible="false" SortExpression="UsrSearchID">

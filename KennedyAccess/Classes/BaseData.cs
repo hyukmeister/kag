@@ -1167,19 +1167,15 @@ namespace KennedyAccess.Classes
             return dtSearchProfile;
         }
 
-        public DataTable GetUserSearchProfileDetail(User user, string UsrSearchID)
+        public DataSet GetUserSearchProfileDetail(User user, string UsrSearchID)
         {
-            DataTable dtProfileDetail = null;
-            DataSet ds = (SqlHelper.ExecuteDataset(Global.dbcnn, "GetUserSearchProfileDetail",
+            DataSet dsProfileDetail = null;
+            dsProfileDetail = (SqlHelper.ExecuteDataset(Global.dbcnn, "GetUserSearchProfileDetail",
                 new SqlParameter("@FranchiseID", user.FranchiseID),
                     new SqlParameter("@UserID", user.UserID),
                     new SqlParameter("@UsrSearchID", UsrSearchID)));
 
-            if (ds != null && ds.Tables.Count > 0)
-            {
-                dtProfileDetail = ds.Tables[0];
-            }
-            return dtProfileDetail;
+            return dsProfileDetail;
         }
         public DataTable GetDS260(User user, string ApplicantID, string FamilyRelationID, string ReferenceID)
         {

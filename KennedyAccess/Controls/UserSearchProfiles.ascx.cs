@@ -21,17 +21,16 @@ namespace KennedyAccess.Controls
             user = (User)Session["User"];
             if (!Page.IsPostBack && LoadProfiles)
             {
-                DataTable employers = bd.GetEmployer(user, "0", "");
-                //ddcbEmployers.ClearAll();
-                ddcbEmployers.AddItems(employers, "EmployerName", "EmployerId");
+                bool bDefaultProfile = false;
 
-                DataTable campaigns = bd.GetCampaign(user, "0", "0", "");
-                //ddcbCampaigns.ClearAll();
-                ddcbCampaigns.AddItems(campaigns, "Description", "CampaignID");
+                //DataTable employers = bd.GetEmployer(user, "0", "");
+                //ddcbEmployers.AddItems(employers, "EmployerName", "EmployerId");
 
-                DataTable statuses = bd.GetProfile(user);
-                //ddcbStatuses.ClearAll();
-                ddcbStatuses.AddItems(statuses, "RoleSetName", "RoleSetID");
+                //DataTable campaigns = bd.GetCampaign(user, "0", "0", "");
+                //ddcbCampaigns.AddItems(campaigns, "Description", "CampaignID");
+
+                //DataTable statuses = bd.GetProfile(user);
+                //ddcbStatuses.AddItems(statuses, "RoleSetName", "RoleSetID");
 
                 // load search profiles
                 DataTable dt = bd.GetUserSearchProfile(user);
@@ -45,10 +44,24 @@ namespace KennedyAccess.Controls
                     {
                         // set dropdown checkboxes with default profile settings
                         LoadSearchProfile(dr["UsrSearchID"].ToString());
+                        bDefaultProfile = true;
                         continue;
                     }
                 }
+
+                if(!bDefaultProfile)
+                {
+                    // load all employers
+                    DataTable employers = bd.GetEmployer(user, "0", "");
+                    ddcbEmployers.AddItems(employers, "EmployerName", "EmployerId");
+
+                    // load all statuses
+                    DataTable statuses = bd.GetProfile(user);
+                    ddcbStatuses.AddItems(statuses, "RoleSetName", "RoleSetID");
+                }
             }
+            ddcbEmployers.UserControlButtonClicked += new EventHandler(PopulateddbcCampains);
+
         }
         protected void SaveSearch_Click(object sender, EventArgs e)
         {
@@ -97,31 +110,26 @@ namespace KennedyAccess.Controls
         private void LoadSearchProfile(string UsrSearchID)
         {
             // clear prev search texts
-            ddcbEmployers.Text = ddcbCampaigns.Text = ddcbStatuses.Text = string.Empty;
+            ddcbEmployers.ClearAll();
+            ddcbCampaigns.ClearAll();
+            ddcbStatuses.ClearAll();
 
-            DataTable dt = bd.GetUserSearchProfileDetail(user, UsrSearchID);
-            foreach(DataRow row in dt.Rows)
-            {
-                switch(row["RecordType"].ToString())
-                {
-                    case "Employers":
-                        SetCheckBoxValues(ddcbEmployers, row.ItemArray[2].ToString());
-                        break;
-                    case "Campaigns":
-                        SetCheckBoxValues(ddcbCampaigns, row.ItemArray[2].ToString());
-                        break;
-                    case "Status":
-                        SetCheckBoxValues(ddcbStatuses, row.ItemArray[2].ToString());
-                        break;
-                }
-            }
+            // get the default search profile
+            DataSet ds = bd.GetUserSearchProfileDetail(user, UsrSearchID);
 
-            if (ddcbEmployers.Text.Length > 0)
-                ddcbEmployers.Text = ddcbEmployers.Text.Substring(2, ddcbEmployers.Text.Length - 2);
-            if (ddcbCampaigns.Text.Length > 0)
-                ddcbCampaigns.Text = ddcbCampaigns.Text.Substring(2, ddcbCampaigns.Text.Length - 2);
-            if (ddcbStatuses.Text.Length > 0)
-                ddcbStatuses.Text = ddcbStatuses.Text.Substring(2, ddcbStatuses.Text.Length - 2);
+            ddcbEmployers.AddItems(ds.Tables[0], "EmployerName", "EmployerId");
+            ddcbEmployers.SetAllItems(true);
+            ddcbCampaigns.AddItems(ds.Tables[1], "Description", "CampaignID");
+            ddcbCampaigns.SetAllItems(true);
+            ddcbStatuses.AddItems(ds.Tables[2], "RoleSetName", "RoleSetID");
+            ddcbStatuses.SetAllItems(true);
+
+            //if (ddcbEmployers.Text.Length > 0)
+            //    ddcbEmployers.Text = ddcbEmployers.Text.Substring(2, ddcbEmployers.Text.Length - 2);
+            //if (ddcbCampaigns.Text.Length > 0)
+            //    ddcbCampaigns.Text = ddcbCampaigns.Text.Substring(2, ddcbCampaigns.Text.Length - 2);
+            //if (ddcbStatuses.Text.Length > 0)
+            //    ddcbStatuses.Text = ddcbStatuses.Text.Substring(2, ddcbStatuses.Text.Length - 2);
 
             // Search
             btnSearch_Click(null, null);
@@ -157,6 +165,24 @@ namespace KennedyAccess.Controls
                     e.Row.BackColor = Color.Silver;
                 }
             }
+        }
+
+        // do this only when creating a new profile
+        public void PopulateddbcCampains(object sender, EventArgs e)
+        {
+            // get list of selected employers
+            DataTable selectedEmps = ddcbEmployers.GetSelectedValues();
+
+            // concat employer IDs separated by ','
+            string sEmployers = string.Empty;
+            foreach(DataRow dr in selectedEmps.Rows)
+            {
+                sEmployers += "," + dr["value"].ToString();
+            }
+            sEmployers = sEmployers.Substring(1, sEmployers.Length - 1);
+
+            DataTable campaigns = bd.GetCampaign(user, "0", "0", sEmployers);
+            ddcbCampaigns.AddItems(campaigns, "Description", "CampaignID");
         }
     }
 }

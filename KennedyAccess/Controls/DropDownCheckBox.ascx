@@ -29,13 +29,12 @@ function CheckItem_<%=ControlLabel%>(checkBoxList)
     margin-right: 10px !important;
 }
 .checkboxlist label {
-    color: #ff6a00  !important;
+    color: #642a2a !important;
 }
-
 </style>
 
 <div class="form-floating mb-3;">
-    <asp:TextBox ID="txtCombo" class="form-control" runat="server" ReadOnly="true" Width="430" Font-Size="X-Small"></asp:TextBox>
+    <asp:TextBox ID="txtCombo" class="form-control" runat="server" ReadOnly="true" Width="430" Font-Size="X-Small" ></asp:TextBox>
     <label id="labLabel" runat="server" for="txtCombo">Employers</label>
 </div>
 
@@ -44,7 +43,9 @@ function CheckItem_<%=ControlLabel%>(checkBoxList)
 </mcc:PopupControlExtender>
 
 <asp:Panel ID="Panel111" runat="server" CssClass="rounded-3 panel-primary" ScrollBars="Vertical" 
-    Width="240" Height="220" BackColor="AliceBlue" BorderColor="Gray" BorderWidth="1">
-    <asp:CheckBoxList ID="chkList" runat="server" CellPadding="8" CssClass="checkboxlist" Height="220" >                                                                                                                                                                        
+    Width="430" Height="220" BackColor="AliceBlue" BorderColor="Gray" BorderWidth="1">
+    <asp:Button ID="btnDone" runat="server" class="btn btn-default" Text="Done" OnClick="btnDone_Click" Width="100%" Font-Bold="true" BackColor="gray"/>
+    <asp:CheckBoxList ID="chkList" runat="server" CellPadding="8" CssClass="checkboxlist" >                                                                                                                                                                        
     </asp:CheckBoxList>
+    <asp:Button ID="Button1" runat="server" class="btn btn-default" Text="Done" OnClick="btnDone_Click" Width="100%" Font-Bold="true" BackColor="gray"/>
 </asp:Panel>
