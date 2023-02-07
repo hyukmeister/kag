@@ -50,7 +50,7 @@
                     <asp:TableCell>
                         <br />
                         <div class="form-floating mb-3;">
-                            <asp:TextBox ID="txt" class="form-control" runat="server" placeholder="Given Name"></asp:TextBox>
+                            <asp:TextBox ID="txt2_2_AnotherGivenName" class="form-control" runat="server" placeholder="Given Name"></asp:TextBox>
                             <label for="txt2_2_AnotherGivenName" class="form-label">Given Name: </label>
                         </div>
                     </asp:TableCell>
@@ -221,7 +221,7 @@
                     <asp:TableCell ColumnSpan="4">
                         <br />
                         <div class="form-floating mb-3;">
-                            <asp:TextBox ID="txt17_1_AnyUsedPrevEmail" class="form-control" runat="server" placeholder="Phone Number"></asp:TextBox>
+                            <asp:TextBox ID="txt17_2_UsedPrevEmail" class="form-control" runat="server" placeholder="Phone Number"></asp:TextBox>
                             <label for="txt17_2_UsedPrevEmail" class="form-label">Other Email Address:  </label>
                         </div>
                     </asp:TableCell>

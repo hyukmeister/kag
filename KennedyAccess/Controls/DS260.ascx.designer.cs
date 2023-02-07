@@ -78,13 +78,13 @@ namespace KennedyAccess.Controls
         protected global::System.Web.UI.WebControls.TextBox txt2_1_AnotherSurname;
 
         /// <summary>
-        /// txt control.
+        /// txt2_2_AnotherGivenName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt;
+        protected global::System.Web.UI.WebControls.TextBox txt2_2_AnotherGivenName;
 
         /// <summary>
         /// rbl3_Gender control.
@@ -285,13 +285,13 @@ namespace KennedyAccess.Controls
         protected global::System.Web.UI.WebControls.RadioButtonList rbl17_1_AnyUsedEmail;
 
         /// <summary>
-        /// txt17_1_AnyUsedPrevEmail control.
+        /// txt17_2_UsedPrevEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt17_1_AnyUsedPrevEmail;
+        protected global::System.Web.UI.WebControls.TextBox txt17_2_UsedPrevEmail;
 
         /// <summary>
         /// txt18_SocialMediasUserID control.

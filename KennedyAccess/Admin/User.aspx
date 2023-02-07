@@ -1,6 +1,9 @@
 ﻿<%@ Page Title="User" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="User.aspx.cs" Inherits="KennedyAccess.User1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <div style="background-image: url('../images/kagimg10.jpg'); filter: blur(4px); height: 100px; width: 900px; background-size: cover; background-position: center; position: relative; opacity: 55%; top: 20px">
+        &nbsp;
+    </div>
     
     <h2><asp:Label ID="labUser" runat="server" Text=""></asp:Label></h2>
 

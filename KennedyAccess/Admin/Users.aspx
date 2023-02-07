@@ -1,6 +1,10 @@
 ﻿<%@ Page Title="Users" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Users.aspx.cs" Inherits="KennedyAccess.Users" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <div style="background-image: url('../images/kagimg10.jpg'); filter: blur(4px); height: 100px; width: 900px; background-size: cover; background-position: center; position: relative; opacity: 55%; top: 20px">
+        &nbsp;
+    </div>
+
     <h2>Users</h2>
     <div class="jumbotron" style="width: 900px;">
         <asp:Table ID="Table1" runat="server" Width="840px">
