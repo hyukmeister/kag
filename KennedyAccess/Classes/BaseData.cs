@@ -19,6 +19,7 @@ using TextMagicClient.Client;
 using static System.Net.Mime.MediaTypeNames;
 using KennedyAccess.Admin;
 using AjaxControlToolkit.Bundling;
+using AjaxControlToolkit.HtmlEditor.ToolbarButtons;
 
 namespace KennedyAccess.Classes
 {
@@ -1192,6 +1193,50 @@ namespace KennedyAccess.Classes
                 dtDS260 = ds.Tables[0];
             }
             return dtDS260;
+        }
+        public DataTable GetI485(User user, string I485ID, string ApplicantID, string FamilyRelationID, string ReferenceID)
+        {
+            DataTable dtGetI485 = null;
+            DataSet ds = (SqlHelper.ExecuteDataset(Global.dbcnn, "GetI485",
+                new SqlParameter("@FranchiseID", user.FranchiseID),
+                    new SqlParameter("@UserID", user.UserID),
+                    new SqlParameter("@I485ID", I485ID),
+                    new SqlParameter("@ApplicantID", ApplicantID),
+                    new SqlParameter("@FamilyRelationID", FamilyRelationID),
+                    new SqlParameter("@ReferenceID", ReferenceID)));
+
+            if (ds != null && ds.Tables.Count > 0)
+            {
+                dtGetI485 = ds.Tables[0];
+            }
+            return dtGetI485;
+        }
+
+        public string InsertUpdateI485_AppInfo(User user,
+            string Status, bool Active,
+            string I485ID, string ApplicantID,
+            string FamilyRelationID, string LastName, string FirstName)
+        {
+            string sResult;
+            SqlDataReader dr = SqlHelper.ExecuteReader(
+                    Global.dbcnn, "InsertUpdateI485_AppInfo",
+                    new SqlParameter("@FranchiseID", user.FranchiseID),
+                    new SqlParameter("@UserID", user.UserID),
+
+                    new SqlParameter("@Status", Status),
+                    new SqlParameter("@Active", Active),
+                    new SqlParameter("@I485ID", I485ID),
+                    new SqlParameter("@ApplicantID", ApplicantID),
+                    new SqlParameter("@FamilyRelationID", FamilyRelationID),
+                    new SqlParameter("@LastName", LastName),
+                    new SqlParameter("@FirstName", FirstName)
+                );
+
+            dr.Read();
+            sResult = dr[0].ToString();
+            dr.Close();
+
+            return sResult;
         }
     }
 }

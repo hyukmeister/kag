@@ -1,4 +1,5 @@
-﻿using System;
+﻿using iTextSharp.text.pdf;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
@@ -81,6 +82,7 @@ namespace KennedyAccess.Controls
         /// <param name="nombreCampoValor">Value Field of the OdbcDataReader to be added to each Field Name (it can be the same string of the textField)</param>
         public void AddItems(DataTable dt, string textField, string valueField)
         {
+            txtCombo.Text = string.Empty;
             ClearAll();
             int i = 0;
 
@@ -88,8 +90,9 @@ namespace KennedyAccess.Controls
             {
                 chkList.Items.Add(dr[textField].ToString());
                 chkList.Items[i].Value = dr[valueField].ToString();
+                chkList.Items[i].Selected = true;
 
-                if(i>0)
+                if (i>0)
                     txtCombo.Text += ", ";
 
                 txtCombo.Text += dr[textField].ToString();
@@ -100,12 +103,17 @@ namespace KennedyAccess.Controls
         /// <summary>
         /// Uncheck of the Items of the CheckBox
         /// </summary>
-        public void SetAllItems(bool bCheck)
+        public void SetCheckboxItems(bool bCheck)
         {
-            for (int i = 0; i < chkList.Items.Count; i++)
+            foreach (ListItem listItem in chkList.Items)
             {
-                chkList.Items[i].Selected = bCheck;
+                listItem.Selected = bCheck;
+                txtCombo.Text += ", " + listItem.Text;
             }
+            if(bCheck)
+                txtCombo.Text = txtCombo.Text.Substring(1, txtCombo.Text.Length - 1);
+            else
+                txtCombo.Text = "";
         }
 
         /// <summary>
@@ -165,6 +173,16 @@ namespace KennedyAccess.Controls
             {
                 UserControlButtonClicked(this, EventArgs.Empty);
             }
+        }
+
+        protected void btnSelectAll_Click(object sender, EventArgs e)
+        {
+            SetCheckboxItems(true);
+        }
+
+        protected void btnUncheckAll_Click(object sender, EventArgs e)
+        {
+            SetCheckboxItems(false);
         }
     }
 }

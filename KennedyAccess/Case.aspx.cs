@@ -31,6 +31,9 @@ namespace KennedyAccess
                     UserFiles.guid = guid.Text = drApplicant["guid"].ToString();
                     Page.Title = UserFiles.UserName = labApplicant.Text = drApplicant["FirstName"].ToString() + " " + drApplicant["LastName"].ToString();
                     ApplicantInfo.EnablePhotoUpload(false);
+
+                    I485.ApplicantID = labApplicantID.Text;
+                    I485.RelationshipID = "10000";
                 }
             }
             //else

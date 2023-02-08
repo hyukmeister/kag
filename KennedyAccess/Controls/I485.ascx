@@ -3,18 +3,32 @@
     <asp:Label ID="labI485_ATRPRID" runat="server" Visible="false"></asp:Label>
     <div class="jumbotron" style="width: 800px;">
         <h3>
-            <asp:Label ID="Label1" runat="server" Text="Main Applicant Information"></asp:Label></h3>
+            <asp:Label ID="Label1" runat="server" Text="Applicant Information"></asp:Label></h3>
+            <asp:Label ID="labI485ID" runat="server" Visible="false"></asp:Label>
+            <asp:Label ID="labApplicantID" runat="server" Visible="false"></asp:Label>
+            <asp:Label ID="labRelationshipID" runat="server" Visible="false"></asp:Label>
+
+        <asp:TableRow>
+            <asp:TableCell ColumnSpan="2" HorizontalAlign="Right">
+                <asp:Button ID="btnEdit" runat="server" class="btn btn-primary" Text="Edit" CausesValidation="false" UseSubmitBehavior="false" OnClick="btnEdit_Click" />
+                <asp:Button ID="btnSave" runat="server" class="btn btn-primary" Text="Save" OnClick="btnSave_Click" Visible="false" />&nbsp;
+                <asp:Button ID="btnCancel" runat="server" class="btn btn-default" Text="Cancel" CausesValidation="false" UseSubmitBehavior="false" OnClick="btnCancel_Click" Visible="false" />
+            </asp:TableCell>
+        </asp:TableRow>
+
+        <asp:CheckBox ID="cbkApplicantInfoChanged" runat="server" Checked="false" />
+
         <asp:Table ID="tblI485_ATRPR1" runat="server" class="table table-hover" Width="100%">
             <asp:TableRow>
                 <asp:TableCell>
                     <div class="form-floating mb-3;">
-                        <asp:TextBox ID="txtLastName" class="form-control" runat="server" placeholder="Last Name"></asp:TextBox>
+                        <asp:TextBox ID="txtLastName" class="form-control" runat="server" placeholder="Last Name" OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
                         <label for="txtLastName" class="form-label">Last Name</label>
                     </div>
                 </asp:TableCell>
                 <asp:TableCell >
                     <div class="form-floating mb-3;">
-                        <asp:TextBox ID="txtFirstName" class="form-control" runat="server" placeholder="First Name "></asp:TextBox>
+                        <asp:TextBox ID="txtFirstName" class="form-control" runat="server" placeholder="First Name" OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
                         <label for="txtFirstName" class="form-label">First Name</label>
                     </div>
                 </asp:TableCell>

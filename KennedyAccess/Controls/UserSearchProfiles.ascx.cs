@@ -118,11 +118,11 @@ namespace KennedyAccess.Controls
             DataSet ds = bd.GetUserSearchProfileDetail(user, UsrSearchID);
 
             ddcbEmployers.AddItems(ds.Tables[0], "EmployerName", "EmployerId");
-            ddcbEmployers.SetAllItems(true);
+            //ddcbEmployers.SetCheckboxItems(true);
             ddcbCampaigns.AddItems(ds.Tables[1], "Description", "CampaignID");
-            ddcbCampaigns.SetAllItems(true);
+            //ddcbCampaigns.SetCheckboxItems(true);
             ddcbStatuses.AddItems(ds.Tables[2], "RoleSetName", "RoleSetID");
-            ddcbStatuses.SetAllItems(true);
+            //ddcbStatuses.SetCheckboxItems(true);
 
             //if (ddcbEmployers.Text.Length > 0)
             //    ddcbEmployers.Text = ddcbEmployers.Text.Substring(2, ddcbEmployers.Text.Length - 2);
@@ -183,6 +183,15 @@ namespace KennedyAccess.Controls
 
             DataTable campaigns = bd.GetCampaign(user, "0", "0", sEmployers);
             ddcbCampaigns.AddItems(campaigns, "Description", "CampaignID");
+        }
+
+        protected void btnSaveProfile_Click(object sender, EventArgs e)
+        {
+            // get the selected row from gvSearchProfiles
+
+            // get the profileid, name, default
+
+            // update the profile with new selections
         }
     }
 }

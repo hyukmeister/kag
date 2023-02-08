@@ -43,9 +43,10 @@ function CheckItem_<%=ControlLabel%>(checkBoxList)
 </mcc:PopupControlExtender>
 
 <asp:Panel ID="Panel111" runat="server" CssClass="rounded-3 panel-primary" ScrollBars="Vertical" 
-    Width="430" Height="220" BackColor="AliceBlue" BorderColor="Gray" BorderWidth="1">
-    <asp:Button ID="btnDone" runat="server" class="btn btn-default" Text="Done" OnClick="btnDone_Click" Width="100%" Font-Bold="true" BackColor="gray"/>
+    Width="430" Height="220" BackColor="AliceBlue" BorderColor="Gray" BorderWidth="1">&nbsp;
+    <asp:Button ID="btnSelectAll" runat="server" class="btn btn-primary" Text="Check All" OnClick="btnSelectAll_Click" Width="30%" Font-Bold="true"/>&nbsp;
+    <asp:Button ID="btnUncheckAll" runat="server" class="btn btn-primary" Text="Uncheck All" OnClick="btnUncheckAll_Click" Width="30%" Font-Bold="true"/>&nbsp;
+    <asp:Button ID="btnDone" runat="server" class="btn btn-primary" Text="Done" OnClick="btnDone_Click" Width="30%" Font-Bold="true"/>
     <asp:CheckBoxList ID="chkList" runat="server" CellPadding="8" CssClass="checkboxlist" >                                                                                                                                                                        
     </asp:CheckBoxList>
-    <asp:Button ID="Button1" runat="server" class="btn btn-default" Text="Done" OnClick="btnDone_Click" Width="100%" Font-Bold="true" BackColor="gray"/>
 </asp:Panel>
