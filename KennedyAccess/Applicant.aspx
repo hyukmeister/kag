@@ -57,12 +57,12 @@
                         </div>
                       </div>
                       <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingThree">
-                          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        <h2 class="accordion-header" id="headingTwo">
+                          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                             <h5>Foreign Address</h5>
                           </button>
                         </h2>
-                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordApplicant">
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordApplicant">
                           <div class="accordion-body">
                             <uc1:Contact runat="server" ID="contApplicantOversea" ContactType="ApplicantOversea" ApplicantID=""/>
                           </div>
@@ -74,20 +74,73 @@
         </div>
 
         <asp:Panel ID="panStep2" runat="server">
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingSix">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
+                Family Members
+                </button>
+            </h2>
+            <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                    <asp:GridView ID="gvFamilyMembers" runat="server" AutoGenerateColumns="False" Width="100%" GridLines="None" class="table table-hover" 
+                        AlternatingRowStyle-CssClass="alt" OnRowEditing="gvFamilyMembers_RowEditing">
+                        <Columns>
+                            <asp:TemplateField HeaderText="Relationship">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblApplicantFamilyID" runat="server" Text='<%# Eval("ApplicantFamilyID") %>' Visible="false"></asp:Label>
+                                    <asp:Label ID="lblRelationshipID" runat="server" Text='<%# Eval("RelationshipID") %>' Visible="false"></asp:Label>
+                                    <asp:Label ID="lblRelationship" runat="server" Text='<%# Eval("Relationship") %>'></asp:Label>
+                                </ItemTemplate>
+                                <EditItemTemplate>
+                                    <asp:DropDownList ID="ddlRelationship" runat="server" DataSource='<%# GetRelationship() %>' DataTextField="Relationship" DataValueField="RelationshipID"></asp:DropDownList>
+                                </EditItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="First Name">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblFName" runat="server" Text='<%# Eval("FirstName") %>'></asp:Label>
+                                </ItemTemplate>
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="txtFName" runat="server" Text='<%# Eval("FirstName") %>'></asp:TextBox>
+                                </EditItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Last Name">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblLName" runat="server" Text='<%# Eval("LastName") %>'></asp:Label>
+                                </ItemTemplate>
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="txtFName" runat="server" Text='<%# Eval("LastName") %>'></asp:TextBox>
+                                </EditItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Middle Initial">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblMI" runat="server" Text='<%# Eval("MI") %>'></asp:Label>
+                                </ItemTemplate>
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="txtMI" runat="server" Text='<%# Eval("MI") %>'></asp:TextBox>
+                                </EditItemTemplate>
+                            </asp:TemplateField>
+                            <asp:CommandField ShowEditButton="True" ItemStyle-Width="80px" />
+                        </Columns>
+                        <HeaderStyle BackColor="dimgray" ForeColor="White"/>
+                    </asp:GridView>
+                </div>
+            </div>
+        </div>
+
         <div class="accordion-item">
             <h2 class="accordion-header" id="flush-headingThree">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
                 Work Experience
                 </button>
             </h2>
-            <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
                 <div class="accordion-body">
                     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                         <ContentTemplate>
                             <uc2:WorkExperience runat="server" ID="WorkExperience" />
                         </ContentTemplate>
                     </asp:UpdatePanel>
-
                 </div>
             </div>
         </div>

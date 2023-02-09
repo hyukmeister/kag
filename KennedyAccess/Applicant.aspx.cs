@@ -14,6 +14,7 @@ using System.Globalization;
 using iTextSharp.text.pdf;
 using KennedyAccess.Controls;
 using AjaxControlToolkit;
+using KennedyAccess.Admin;
 
 namespace KennedyAccess
 {
@@ -85,6 +86,10 @@ namespace KennedyAccess
                             ApplicantUserID = drApplicant["UserID"].ToString();
                         }
                     }
+
+                    // applicant family
+                    gvFamilyMembers.DataSource = bd.GetFamilyMember(user, labApplicantID.Text);
+                    gvFamilyMembers.DataBind();
 
                     // read only
                     SetEditVisibility(true);
@@ -375,6 +380,27 @@ namespace KennedyAccess
                     //lbPay.Visible = false;
                 }
             }
+        }
+
+        protected void gvFamilyMembers_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            gvFamilyMembers.EditIndex = e.NewEditIndex;
+        }
+
+        //protected void gvFamilyMembers_RowDataBound(object sender, GridViewRowEventArgs e)
+        //{
+        //    if (e.Row.RowType == DataControlRowType.DataRow)
+        //    {
+        //        DropDownList ddlRelationship = (DropDownList)e.Row.FindControl("ddlRelationship");
+        //        ddlRelationship.DataSource = (DataTable)Application["Relationship"];
+        //        ddlRelationship.DataTextField = "Relationship";
+        //        ddlRelationship.DataValueField = "RelationshipID";
+        //        ddlRelationship.DataBind();
+        //    }
+        //}
+        public DataTable GetRelationship()
+        {
+            return (DataTable)Application["Relationship"];
         }
     }
 }

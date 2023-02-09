@@ -51,6 +51,7 @@ namespace KennedyAccess.Classes
             httpApplication["WebForm"] = ds.Tables[5];
             httpApplication["RoleSet"] = ds.Tables[6];
             httpApplication["Status"] = ds.Tables[7];
+            httpApplication["Relationship"] = ds.Tables[8];
         }
         public int GetRecordTypeID(DataTable dt, int iFranchiseID, string sUsage, string sRecordType)
         {
@@ -1237,6 +1238,21 @@ namespace KennedyAccess.Classes
             dr.Close();
 
             return sResult;
+        }
+
+        public DataTable GetFamilyMember(User user, string ApplicantID)
+        {
+            DataTable dtFamilyMember = null;
+            DataSet ds = (SqlHelper.ExecuteDataset(Global.dbcnn, "GetFamilyMember",
+                new SqlParameter("@FranchiseID", user.FranchiseID),
+                    new SqlParameter("@UserID", user.UserID),
+                    new SqlParameter("@ApplicantID", ApplicantID)));
+
+            if (ds != null && ds.Tables.Count > 0)
+            {
+                dtFamilyMember = ds.Tables[0];
+            }
+            return dtFamilyMember;
         }
     }
 }

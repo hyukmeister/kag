@@ -8,7 +8,9 @@
     <h2><asp:Label ID="labUser" runat="server" Text=""></asp:Label></h2>
 
     <div class="jumbotron" style="width: 900px;">
-        <asp:Table ID="tabUser" runat="server" class="table table-hover" Width="840px">
+        <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+            <ContentTemplate>
+                <asp:Table ID="tabUser" runat="server" class="table table-hover" Width="840px">
             <asp:TableRow>
                 <asp:TableCell ColumnSpan="4" HorizontalAlign="Right">
                     <asp:TextBox ID="txtError" runat="server"  Visible="false" ForeColor="Red" BorderStyle="None" BackColor="Transparent" Width="450px"></asp:TextBox>
@@ -47,7 +49,10 @@
                     <asp:Label runat="server" Text="Active"></asp:Label>
                 </asp:TableCell>
                 <asp:TableCell HorizontalAlign="left">
-                    <asp:CheckBox ID="cbkActive" runat="server"></asp:CheckBox>
+                    <label class="switch" >
+                        <asp:CheckBox ID="cbkActive" runat="server" />
+                        <span class="slider round"></span>
+                    </label>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>
@@ -146,8 +151,10 @@
                 </asp:TableCell>
             </asp:TableRow>
         </asp:Table><br /><br />
-        <h3><asp:Label ID="Label2" runat="server" Text="User Roles"></asp:Label></h3>
+            </ContentTemplate>
+        </asp:UpdatePanel>
 
+        <h3><asp:Label ID="Label2" runat="server" Text="User Roles"></asp:Label></h3>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
                 <asp:Panel runat="server" ID="panUserRoleSets" Height="600px" ScrollBars="Vertical">

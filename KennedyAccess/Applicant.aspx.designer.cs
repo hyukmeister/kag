@@ -123,6 +123,15 @@ namespace KennedyAccess
         protected global::System.Web.UI.WebControls.Panel panStep2;
 
         /// <summary>
+        /// gvFamilyMembers control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvFamilyMembers;
+
+        /// <summary>
         /// UpdatePanel2 control.
         /// </summary>
         /// <remarks>

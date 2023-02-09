@@ -59,6 +59,7 @@ namespace KennedyAccess
                             labUser.Text = Page.Title = drUser["FirstName"].ToString() +" "+ drUser["LastName"].ToString() + " (" + drUser["UserName"].ToString() + ")" ;
                             lblUserID.Text = drUser["UserID"].ToString();
                             cbkActive.Checked = drUser["Active"].ToString() == "True";
+                            
                             lblRecordType.Text = drUser["RecordTypeID"].ToString();
                             lblFranchise.Text = drUser["FranchiseID"].ToString();
                             txtUserName.Text = drUser["UserName"].ToString();
@@ -148,8 +149,8 @@ namespace KennedyAccess
             btnEditUser.Visible = bLock && user.HasRole("UserEdit");
             btnCancel.Visible = btnSaveUser.Visible = !bLock;
 
-            cbkActive.Enabled = !bLock;
-            cbkActive.BorderStyle = sBorder;
+            //cbkActive.Enabled = !bLock;
+            //cbkActive.BorderStyle = sBorder;
             lblRecordType.Enabled = bLock;
             lblRecordType.BorderStyle = sBorder;
             lblFranchise.Enabled = bLock;
@@ -197,7 +198,7 @@ namespace KennedyAccess
                     sRoleSetID, cbkActive.Checked, txtValidFrom.Text, txtValidThru.Text,
                     rblAuthenticated.SelectedValue == "True", txtMobilephone.Text, txtNote.Text);
 
-                bd.ResetUserRoleSets(user, lblUserID.Text);
+                //bd.ResetUserRoleSets(user, lblUserID.Text);
 
                 LoadUserRoleSetRoles(true);
             }
