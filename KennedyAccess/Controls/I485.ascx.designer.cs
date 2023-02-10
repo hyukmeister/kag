@@ -15,24 +15,6 @@ namespace KennedyAccess.Controls
     {
 
         /// <summary>
-        /// labI485_ATRPRID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labI485_ATRPRID;
-
-        /// <summary>
-        /// Label1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
-
-        /// <summary>
         /// labI485ID control.
         /// </summary>
         /// <remarks>
@@ -51,6 +33,15 @@ namespace KennedyAccess.Controls
         protected global::System.Web.UI.WebControls.Label labApplicantID;
 
         /// <summary>
+        /// labReferenceID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label labReferenceID;
+
+        /// <summary>
         /// labRelationshipID control.
         /// </summary>
         /// <remarks>
@@ -60,49 +51,49 @@ namespace KennedyAccess.Controls
         protected global::System.Web.UI.WebControls.Label labRelationshipID;
 
         /// <summary>
-        /// btnEdit control.
+        /// cbkApplicantInfoChanged1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEdit;
+        protected global::System.Web.UI.WebControls.CheckBox cbkApplicantInfoChanged1;
 
         /// <summary>
-        /// btnSave control.
+        /// tblI485_ClientApplication1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSave;
+        protected global::System.Web.UI.WebControls.Table tblI485_ClientApplication1;
 
         /// <summary>
-        /// btnCancel control.
+        /// btnEdit1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancel;
+        protected global::System.Web.UI.WebControls.Button btnEdit1;
 
         /// <summary>
-        /// cbkApplicantInfoChanged control.
+        /// btnSave1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbkApplicantInfoChanged;
+        protected global::System.Web.UI.WebControls.Button btnSave1;
 
         /// <summary>
-        /// tblI485_ATRPR1 control.
+        /// btnCancel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table tblI485_ATRPR1;
+        protected global::System.Web.UI.WebControls.Button btnCancel1;
 
         /// <summary>
         /// txtLastName control.
@@ -510,22 +501,49 @@ namespace KennedyAccess.Controls
         protected global::System.Web.UI.WebControls.TextBox txtEADDecision;
 
         /// <summary>
-        /// labInterpreterInfo control.
+        /// cbkApplicantInfoChanged2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labInterpreterInfo;
+        protected global::System.Web.UI.WebControls.CheckBox cbkApplicantInfoChanged2;
 
         /// <summary>
-        /// tblI485_ATRPR2 control.
+        /// tblI485_ClientApplication2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table tblI485_ATRPR2;
+        protected global::System.Web.UI.WebControls.Table tblI485_ClientApplication2;
+
+        /// <summary>
+        /// btnEdit2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnEdit2;
+
+        /// <summary>
+        /// btnSave2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSave2;
+
+        /// <summary>
+        /// btnCancel2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancel2;
 
         /// <summary>
         /// rblUnderstandEngOnI_485 control.
@@ -636,22 +654,49 @@ namespace KennedyAccess.Controls
         protected global::System.Web.UI.WebControls.TextBox txtEmailOfInterp;
 
         /// <summary>
-        /// labBiographicInfo control.
+        /// cbkApplicantInfoChanged3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labBiographicInfo;
+        protected global::System.Web.UI.WebControls.CheckBox cbkApplicantInfoChanged3;
 
         /// <summary>
-        /// I485_ATRPR3 control.
+        /// tblI485_ClientApplication3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table I485_ATRPR3;
+        protected global::System.Web.UI.WebControls.Table tblI485_ClientApplication3;
+
+        /// <summary>
+        /// btnEdit3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnEdit3;
+
+        /// <summary>
+        /// btnSave3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSave3;
+
+        /// <summary>
+        /// btnCance3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCance3;
 
         /// <summary>
         /// rblEthnicity control.
@@ -735,22 +780,49 @@ namespace KennedyAccess.Controls
         protected global::System.Web.UI.WebControls.RadioButtonList rblHairColor;
 
         /// <summary>
-        /// labMainApplicantInfo control.
+        /// cbkApplicantInfoChanged4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labMainApplicantInfo;
+        protected global::System.Web.UI.WebControls.CheckBox cbkApplicantInfoChanged4;
 
         /// <summary>
-        /// I485_ATRPR4 control.
+        /// tblI485_ClientApplication4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table I485_ATRPR4;
+        protected global::System.Web.UI.WebControls.Table tblI485_ClientApplication4;
+
+        /// <summary>
+        /// btnEdit4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnEdit4;
+
+        /// <summary>
+        /// btnSave4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSave4;
+
+        /// <summary>
+        /// btnCancel4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancel4;
 
         /// <summary>
         /// cbxFilingFee14over control.
@@ -870,31 +942,49 @@ namespace KennedyAccess.Controls
         protected global::System.Web.UI.WebControls.CheckBoxList cbxTaxReturnsPast3Yrs;
 
         /// <summary>
-        /// labBackgroundInfo1 control.
+        /// cbkApplicantInfoChanged5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labBackgroundInfo1;
+        protected global::System.Web.UI.WebControls.CheckBox cbkApplicantInfoChanged5;
 
         /// <summary>
-        /// labBackgroundInfo2 control.
+        /// tblI485_ClientApplication5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labBackgroundInfo2;
+        protected global::System.Web.UI.WebControls.Table tblI485_ClientApplication5;
 
         /// <summary>
-        /// I485_ATRPR5 control.
+        /// btnEdit5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table I485_ATRPR5;
+        protected global::System.Web.UI.WebControls.Button btnEdit5;
+
+        /// <summary>
+        /// btnSave5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSave5;
+
+        /// <summary>
+        /// btnCancel5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancel5;
 
         /// <summary>
         /// rbl1_AdmissionDeniedToUS control.

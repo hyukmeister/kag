@@ -1195,15 +1195,13 @@ namespace KennedyAccess.Classes
             }
             return dtDS260;
         }
-        public DataTable GetI485(User user, string I485ID, string ApplicantID, string FamilyRelationID)
+        public DataTable GetI485(User user, string I485ID)
         {
             DataTable dtGetI485 = null;
             DataSet ds = (SqlHelper.ExecuteDataset(Global.dbcnn, "GetI485",
                 new SqlParameter("@FranchiseID", user.FranchiseID),
                     new SqlParameter("@UserID", user.UserID),
-                    new SqlParameter("@I485ID", I485ID),
-                    new SqlParameter("@ApplicantID", ApplicantID),
-                    new SqlParameter("@FamilyRelationID", FamilyRelationID)));
+                    new SqlParameter("@I485ID", I485ID)));
 
             if (ds != null && ds.Tables.Count > 0)
             {
@@ -1271,6 +1269,79 @@ namespace KennedyAccess.Classes
                     new SqlParameter("@LastName", LastName),
                     new SqlParameter("@MI", MI)
                 );
+        }
+
+        public string InsertUpdateI485_AppInfo(User user,
+            string Status, bool Active, string I485ID, string ApplicantID, string ReferenceID,
+            string FamilyRelationID, string LastName, string FirstName, string MiddleName, string MaidenName, string DateOfBirth,
+            string CityOfBirth, int CountryOfBirth, int Citizenship, string PhoneNumber,
+            string EmailAddress, string PassportNumber, string DateOfIssue, string DateOfExpiry, string IssuingCountry, string AlienNumber,
+            string SSN, string CurrLegalStatus, string CurrVisaIssued, string CurrVisaExpires, string VisaNumber, string ConsulateVisaIssued,
+            string I94Number, string ExactNameOnI94, string MostRecentEntry, string PortOfEntry, string StatusOfEntry, string NameOfMilitary,
+            string CityOfMil, string StateOfMil, int CountryOfMil, string NatureOfGroup, string InvolvementFrom,
+            string InvolvementTo, bool HaveAppliedVisa, string CityOfConsulate, int CountryOfConsulate,
+            String VisaDecision, string DecisionDate, bool HaveAppliedEAD, string USCISOffice, string EADDecision
+            )
+        {
+            string sResult;
+            SqlDataReader dr = SqlHelper.ExecuteReader(
+                    Global.dbcnn, "InsertUpdateI485_AppInfo",
+                    new SqlParameter("@FranchiseID", user.FranchiseID),
+                    new SqlParameter("@UserID", user.UserID),
+                    new SqlParameter("@Status", Status),
+                    new SqlParameter("@Active", Active),
+                    new SqlParameter("@I485ID", I485ID),
+                    new SqlParameter("@ApplicantID", ApplicantID),
+                    new SqlParameter("@ReferenceID", ReferenceID),
+                    new SqlParameter("@FamilyRelationID", FamilyRelationID),
+                    new SqlParameter("@LastName", LastName),
+                    new SqlParameter("@FirstName", FirstName),
+                    new SqlParameter("@MiddleName", MiddleName),
+                    new SqlParameter("@MaidenName", MaidenName),
+                    new SqlParameter("@DateOfBirth", DateOfBirth),
+                    new SqlParameter("@CityOfBirth", CityOfBirth),
+                    new SqlParameter("@CountryOfBirth", CountryOfBirth),
+                    new SqlParameter("@Citizenship", Citizenship),
+                    new SqlParameter("@PhoneNumber", PhoneNumber),
+                    new SqlParameter("@EmailAddress", EmailAddress),
+                    new SqlParameter("@PassportNumber", PassportNumber),
+                    new SqlParameter("@DateOfIssue", DateOfIssue),
+                    new SqlParameter("@DateOfExpiry", DateOfExpiry),
+                    new SqlParameter("@IssuingCountry", IssuingCountry),
+                    new SqlParameter("@AlienNumber", AlienNumber),
+                    new SqlParameter("@SSN", SSN),
+                    new SqlParameter("@CurrLegalStatus", CurrLegalStatus),
+                    new SqlParameter("@CurrVisaIssued", CurrVisaIssued),
+                    new SqlParameter("@CurrVisaExpires", CurrVisaExpires),
+                    new SqlParameter("@VisaNumber", VisaNumber),
+                    new SqlParameter("@ConsulateVisaIssued", ConsulateVisaIssued),
+                    new SqlParameter("@I94Number", I94Number),
+                    new SqlParameter("@ExactNameOnI94", ExactNameOnI94),
+                    new SqlParameter("@MostRecentEntry", MostRecentEntry),
+                    new SqlParameter("@PortOfEntry", PortOfEntry),
+                    new SqlParameter("@StatusOfEntry", StatusOfEntry),
+                    new SqlParameter("@NameOfMilitary", NameOfMilitary),
+                    new SqlParameter("@CityOfMil", CityOfMil),
+                    new SqlParameter("@StateOfMil", StateOfMil),
+                    new SqlParameter("@CountryOfMil", CountryOfMil),
+                    new SqlParameter("@NatureOfGroup", NatureOfGroup),
+                    new SqlParameter("@InvolvementFrom", InvolvementFrom),
+                    new SqlParameter("@InvolvementTo", InvolvementTo),
+                    new SqlParameter("@HaveAppliedVisa", HaveAppliedVisa),
+                    new SqlParameter("@CityOfConsulate", CityOfConsulate),
+                    new SqlParameter("@CountryOfConsulate", CountryOfConsulate),
+                    new SqlParameter("@VisaDecision", VisaDecision),
+                    new SqlParameter("@DecisionDate", DecisionDate),
+                    new SqlParameter("@HaveAppliedEAD", HaveAppliedEAD),
+                    new SqlParameter("@USCISOffice", USCISOffice),
+                    new SqlParameter("@EADDecision", EADDecision)
+                );
+
+            dr.Read();
+            sResult = dr[0].ToString();
+            dr.Close();
+
+            return sResult;
         }
     }
 }

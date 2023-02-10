@@ -33,7 +33,7 @@ namespace KennedyAccess
                     ApplicantInfo.EnablePhotoUpload(false);
 
                     I485.ApplicantID = labApplicantID.Text;
-                    I485.RelationshipID = "10000";
+                    I485.I485ID = "10000";
                 }
             }
             //else

@@ -1,9 +1,11 @@
-﻿using KennedyAccess.Classes;
+﻿using Antlr.Runtime.Misc;
+using KennedyAccess.Classes;
 using KennedyAccess.users;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -16,7 +18,6 @@ namespace KennedyAccess.Controls
         private User user;
         BaseData bd = new BaseData();
         public string ApplicantID;
-        public string RelationshipID;
         public string I485ID;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -27,13 +28,13 @@ namespace KennedyAccess.Controls
 
             if (!IsPostBack)
             {
-                //labApplicantID.Text = ApplicantID;
-                //labRelationshipID.Text = RelationshipID;
+                labApplicantID.Text = ApplicantID;
                 labI485ID.Text = I485ID;
+
                 //if (Session["ApplicationID"] != null && Session["ApplicationID"].ToString() !="")
                 //{
                 //labI485ID.Text = Session["I485ID"].ToString();
-                DataTable dt = bd.GetI485(user, "10001", labApplicantID.Text, labRelationshipID.Text);
+                DataTable dt = bd.GetI485(user, labI485ID.Text);
 
                 if (dt != null && dt.Rows.Count > 0)
                 {
@@ -231,6 +232,16 @@ namespace KennedyAccess.Controls
                 ddlCitizenship.DataTextField = "CountryName";
                 ddlCitizenship.DataBind();
 
+                ddlCountryOfMil.DataSource = (DataTable)Application["Country"];
+                ddlCountryOfMil.DataValueField = "CountryID";
+                ddlCountryOfMil.DataTextField = "CountryName";
+                ddlCountryOfMil.DataBind();
+
+                ddlCountryOfConsulate.DataSource = (DataTable)Application["Country"];
+                ddlCountryOfConsulate.DataValueField = "CountryID";
+                ddlCountryOfConsulate.DataTextField = "CountryName";
+                ddlCountryOfConsulate.DataBind();
+                
 
 
 
@@ -247,10 +258,19 @@ namespace KennedyAccess.Controls
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            if(cbkApplicantInfoChanged.Checked == true)
+            if(cbkApplicantInfoChanged1.Checked == true)
             {
                 //save applicant info to db
-                labI485ID.Text = bd.InsertUpdateI485_AppInfo(user, "n", true, "0", labApplicantID.Text, labRelationshipID.Text, txtLastName.Text, txtFirstName.Text);
+                labI485ID.Text = bd.InsertUpdateI485_AppInfo(user, "n", true, "0", labApplicantID.Text, labReferenceID.Text,
+                    labRelationshipID.Text, txtLastName.Text, txtFirstName.Text, txtMiddleName.Text, txtMaidenName.Text, txtDateOfBirth.Text, 
+                    txtCityOfBirth.Text, int.Parse(ddlCountryOfBirth.SelectedValue), int.Parse(ddlCitizenship.SelectedValue), txtPhoneNumber.Text, 
+                    txtEmailAddress.Text, txtPassportNumber.Text, txtDateOfIssue.Text, txtDateOfExpiry.Text, txtIssuingCountry.Text, txtAlienNumber.Text,
+                    txtSSN.Text, txtCurrLegalStatus.Text, txtCurrVisaIssued.Text, txtCurrVisaExpires.Text, txtVisaNumber.Text, txtConsulateVisaIssued.Text, 
+                    txtI94Number.Text, txtExactNameOnI94.Text, txtMostRecentEntry.Text, txtPortOfEntry.Text, txtStatusOfEntry.Text, txtNameOfMilitary.Text, 
+                    txtCityOfMil.Text, txtStateOfMil.Text, int.Parse(ddlCountryOfMil.SelectedValue), txtNatureOfGroup.Text, txtInvolvementFrom.Text, 
+                    txtInvolvementTo.Text, rblAppliedVisa.SelectedValue=="1", txtCityOfConsulate.Text, int.Parse(ddlCountryOfConsulate.SelectedValue), 
+                    rblVisaDecision.SelectedValue, txtDecisionDate.Text, rblHaveAppliedEAD.SelectedValue == "1", txtUSCISOffice.Text, txtEADDecision.Text
+                   );
             }
             SetEditVisibility(true);
         }
@@ -262,20 +282,57 @@ namespace KennedyAccess.Controls
 
         protected void ApplicantInfo_Changed(object sender, EventArgs e)
         {
-            cbkApplicantInfoChanged.Checked= true;
+            cbkApplicantInfoChanged1.Checked= true;
         }
 
         protected void SetEditVisibility(bool bLock)
         {
             BorderStyle sBorder = (bLock) ? BorderStyle.None : BorderStyle.NotSet;
 
-            btnEdit.Visible = bLock;
-            btnCancel.Visible = btnSave.Visible = !bLock;
+            btnEdit1.Visible = bLock;
+            btnCancel1.Visible = btnSave1.Visible = !bLock;
 
-            txtLastName.ReadOnly = bLock;
-            txtLastName.BorderStyle = sBorder;
-            txtFirstName.ReadOnly = bLock;
-            txtFirstName.BorderStyle = sBorder;
+            txtLastName.ReadOnly = bLock;            txtLastName.BorderStyle = sBorder;
+            txtFirstName.ReadOnly = bLock;           txtFirstName.BorderStyle = sBorder;
+            txtMiddleName.ReadOnly = bLock;          txtMiddleName.BorderStyle = sBorder;
+            txtMaidenName.ReadOnly = bLock;          txtMaidenName.BorderStyle = sBorder; 
+            txtDateOfBirth.ReadOnly = bLock;         txtDateOfBirth.BorderStyle = sBorder; 
+            txtCityOfBirth.ReadOnly = bLock;         txtCityOfBirth.BorderStyle = sBorder; 
+            ddlCountryOfBirth.Enabled = !bLock;      ddlCountryOfBirth.BorderStyle = sBorder;
+            ddlCitizenship.Enabled = !bLock;         ddlCitizenship.BorderStyle = sBorder;
+            txtPhoneNumber.ReadOnly = bLock;         txtPhoneNumber.BorderStyle = sBorder; 
+            txtEmailAddress.ReadOnly = bLock;        txtEmailAddress.BorderStyle = sBorder; 
+            txtPassportNumber.ReadOnly = bLock;      txtPassportNumber.BorderStyle = sBorder; 
+            txtDateOfIssue.ReadOnly = bLock;         txtDateOfIssue.BorderStyle = sBorder;
+            txtDateOfExpiry.ReadOnly = bLock;        txtDateOfExpiry.BorderStyle = sBorder; 
+            txtIssuingCountry.ReadOnly = bLock;      txtIssuingCountry.BorderStyle = sBorder;
+            txtAlienNumber.ReadOnly = bLock;         txtAlienNumber.BorderStyle = sBorder;
+            txtSSN.ReadOnly = bLock;                 txtSSN.BorderStyle = sBorder;
+            txtCurrLegalStatus.ReadOnly = bLock;     txtCurrLegalStatus.BorderStyle = sBorder; 
+            txtCurrVisaIssued.ReadOnly = bLock;      txtCurrVisaIssued.BorderStyle = sBorder;
+            txtCurrVisaExpires.ReadOnly = bLock;     txtCurrVisaExpires.BorderStyle = sBorder; 
+            txtVisaNumber.ReadOnly = bLock;          txtVisaNumber.BorderStyle = sBorder;
+            txtConsulateVisaIssued.ReadOnly = bLock; txtConsulateVisaIssued.BorderStyle = sBorder; 
+            txtI94Number.ReadOnly = bLock;           txtI94Number.BorderStyle = sBorder; 
+            txtExactNameOnI94.ReadOnly = bLock;      txtExactNameOnI94.BorderStyle = sBorder; 
+            txtMostRecentEntry.ReadOnly = bLock;     txtMostRecentEntry.BorderStyle = sBorder; 
+            txtPortOfEntry.ReadOnly = bLock;         txtPortOfEntry.BorderStyle = sBorder; 
+            txtStatusOfEntry.ReadOnly = bLock;       txtStatusOfEntry.BorderStyle = sBorder;
+            txtNameOfMilitary.ReadOnly = bLock;      txtNameOfMilitary.BorderStyle = sBorder; 
+            txtCityOfMil.ReadOnly = bLock;           txtCityOfMil.BorderStyle = sBorder;
+            txtStateOfMil.ReadOnly = bLock;          txtStateOfMil.BorderStyle = sBorder;
+            ddlCountryOfMil.Enabled = !bLock;        ddlCountryOfMil.BorderStyle = sBorder;
+            txtNatureOfGroup.ReadOnly = bLock;       txtNatureOfGroup.BorderStyle = sBorder;
+            txtInvolvementFrom.ReadOnly = bLock;     txtInvolvementFrom.BorderStyle = sBorder; 
+            txtInvolvementTo.ReadOnly = bLock;       txtInvolvementTo.BorderStyle = sBorder; 
+            rblAppliedVisa.Enabled = !bLock;         rblAppliedVisa.BorderStyle = sBorder;
+            txtCityOfConsulate.ReadOnly = bLock;     txtCityOfConsulate.BorderStyle = sBorder; 
+            ddlCountryOfConsulate.Enabled = !bLock;  ddlCountryOfConsulate.BorderStyle = sBorder;
+            rblVisaDecision.Enabled = !bLock;        rblVisaDecision.BorderStyle = sBorder;
+            txtDecisionDate.ReadOnly = bLock;        txtDecisionDate.BorderStyle = sBorder; 
+            rblHaveAppliedEAD.Enabled = !bLock;      rblHaveAppliedEAD.BorderStyle = sBorder;
+            txtUSCISOffice.ReadOnly = bLock;         txtUSCISOffice.BorderStyle = sBorder; 
+            txtEADDecision.ReadOnly = bLock;         txtEADDecision.BorderStyle = sBorder;
         }
     }
 }
