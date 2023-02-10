@@ -65,7 +65,7 @@
                         <ContentTemplate>
                             <div class="mb-3;" style="width:350px">
                                 <label for="ddlCountry" class="form-label">Family Member</label><br />
-                                <asp:DropDownList ID="ddlFamilyMember" class="form-select"  runat="server" Width="300px" ></asp:DropDownList>
+                                <asp:DropDownList ID="ddlFamilyMember" CssClass="btn btn-default btn-outline-secondary align-items-start text-start" runat="server" Width="300px" ></asp:DropDownList>
                             </div>
                             <uc5:i485 runat="server" id="I485" />
                         </ContentTemplate>

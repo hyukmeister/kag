@@ -48,7 +48,7 @@ namespace KennedyAccess
                     else
                     {
                         string UserID = Session["UserID"].ToString();
-                        ViewState["dtRoles"] = bd.GetRole(user, "0", "");
+                        //ViewState["dtRoles"] = bd.GetRole(user, "0", "");
 
                         DataTable dtUsr = bd.GetUsrMain(user, UserID, "");
 
@@ -58,7 +58,7 @@ namespace KennedyAccess
 
                             labUser.Text = Page.Title = drUser["FirstName"].ToString() +" "+ drUser["LastName"].ToString() + " (" + drUser["UserName"].ToString() + ")" ;
                             lblUserID.Text = drUser["UserID"].ToString();
-                            cbkActive.Checked = drUser["Active"].ToString() == "True";
+                            cbkMyActive.Checked = drUser["Active"].ToString() == "True";
                             
                             lblRecordType.Text = drUser["RecordTypeID"].ToString();
                             lblFranchise.Text = drUser["FranchiseID"].ToString();
@@ -71,7 +71,7 @@ namespace KennedyAccess
                             txtValidFrom.Text = DateTime.Parse(drUser["ValidFrom"].ToString()).ToString("yyyy-MM-dd");
                             txtValidThru.Text = DateTime.Parse(drUser["ValidThru"].ToString()).ToString("yyyy-MM-dd");
                             ddlUserType.SelectedValue = drUser["RoleSetID"].ToString();
-                            rblAuthenticated.SelectedValue = drUser["Authenticated"].ToString();
+                            cbkAuthenticated.Checked = drUser["Authenticated"].ToString() == "True";
                             txtCreateDate.Text = DateTime.Parse(drUser["CreateDate"].ToString()).ToString("yyyy-MM-dd");
                             txtModifiedDate.Text = DateTime.Parse(drUser["ModifiedDate"].ToString()).ToString("yyyy-MM-dd");
                             txtNote.Text = drUser["Note"].ToString();
@@ -146,10 +146,7 @@ namespace KennedyAccess
         {
             BorderStyle sBorder = (bLock) ? BorderStyle.None : BorderStyle.NotSet;
 
-            btnEditUser.Visible = bLock && user.HasRole("UserEdit");
-            btnCancel.Visible = btnSaveUser.Visible = !bLock;
-
-            //cbkActive.Enabled = !bLock;
+            cbkMyActive.Disabled = bLock;
             //cbkActive.BorderStyle = sBorder;
             lblRecordType.Enabled = bLock;
             lblRecordType.BorderStyle = sBorder;
@@ -173,8 +170,8 @@ namespace KennedyAccess
             txtValidThru.BorderStyle = sBorder;
             ddlUserType.Enabled = !bLock;
             ddlUserType.BorderStyle = sBorder;
-            rblAuthenticated.Enabled = !bLock;
-            rblAuthenticated.BorderStyle = sBorder;
+            cbkAuthenticated.Disabled = bLock;
+            //cbkAuthenticated.BorderStyle = sBorder;
             txtCreateDate.ReadOnly = bLock;
             txtCreateDate.BorderStyle = sBorder;
             txtModifiedDate.ReadOnly = bLock;
@@ -195,8 +192,8 @@ namespace KennedyAccess
                 string sRecordTypeID = bd.GetRecordTypeID((DataTable)Application["RecordType"], user.FranchiseID, "User", ddlUserType.SelectedItem.Text).ToString();
                 lblUserID.Text = bd.InserUpdatetUser(user.FranchiseID, user.UserID, int.Parse(lblUserID.Text), txtUserName.Text, "",
                     txtFirstName.Text, txtLastName.Text, txtEmail.Text, sRecordTypeID,
-                    sRoleSetID, cbkActive.Checked, txtValidFrom.Text, txtValidThru.Text,
-                    rblAuthenticated.SelectedValue == "True", txtMobilephone.Text, txtNote.Text);
+                    sRoleSetID, cbkMyActive.Checked, txtValidFrom.Text, txtValidThru.Text,
+                    cbkAuthenticated.Checked, txtMobilephone.Text, txtNote.Text);
 
                 //bd.ResetUserRoleSets(user, lblUserID.Text);
 

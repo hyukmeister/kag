@@ -6,7 +6,7 @@
     <asp:Label ID="labRelationshipID" runat="server" Visible="false"></asp:Label>
 
     <div class="accordion-item">
-        <asp:CheckBox ID="cbkApplicantInfoChanged1" runat="server" Checked="false" />
+        <asp:CheckBox ID="cbkApplicantInfoChanged1" runat="server" Checked="false" visible="false"/>
         <h2 class="accordion-header" id="headingI485_One">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseI485_One" aria-expanded="false" aria-controls="collapseI485_One">
                 <b>Applicant Information</b>
@@ -367,7 +367,7 @@
     </div>
     <%-----------------------------------------------------------------------------------------------------------------------------------%>
     <div class="accordion-item">
-         <asp:CheckBox ID="cbkApplicantInfoChanged2" runat="server" Checked="false" />
+         <asp:CheckBox ID="cbkApplicantInfoChanged2" runat="server" Checked="false"  visible="false"/>
         <h2 class="accordion-header" id="headingI485_Two">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseI485_Two" aria-expanded="false" aria-controls="collapseI485_Two">
                 <b>Interprer's information (If you need)</b>
@@ -479,7 +479,7 @@
     </div>
     <%-----------------------------------------------------------------------------------------------------------------------------------%>
     <div class="accordion-item">
-         <asp:CheckBox ID="cbkApplicantInfoChanged3" runat="server" Checked="false" />
+         <asp:CheckBox ID="cbkApplicantInfoChanged3" runat="server" Checked="false" visible="false"/>
         <h2 class="accordion-header" id="headingI485_Three">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseI485_Three" aria-expanded="false" aria-controls="collapseI485_Three">
                 <b>Biographic Information</b>
@@ -614,7 +614,7 @@
     </div>
     <%-----------------------------------------------------------------------------------------------------------------------------------%>
     <div class="accordion-item">
-        <asp:CheckBox ID="cbkApplicantInfoChanged4" runat="server" Checked="false" />
+        <asp:CheckBox ID="cbkApplicantInfoChanged4" runat="server" Checked="false" visible="false"/>
         <h2 class="accordion-header" id="headinghI485_Four">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseI485_Four" aria-expanded="false" aria-controls="collapseI485_Four">
                 <b>Documentation (Mandatory)</b>
@@ -785,7 +785,7 @@
     </div>
     <%-----------------------------------------------------------------------------------------------------------------------------------%>
     <div class="accordion-item">
-         <asp:CheckBox ID="cbkApplicantInfoChanged5" runat="server" Checked="false" />
+         <asp:CheckBox ID="cbkApplicantInfoChanged5" runat="server" Checked="false" visible="false"/>
         <h2 class="accordion-header" id="headingI485_Five">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseI485_Five" aria-expanded="false" aria-controls="collapseI485_Five">
                 <b>Your Background Information (Yes/No Questions)</b>

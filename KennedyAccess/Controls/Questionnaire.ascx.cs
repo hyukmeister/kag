@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 //using TextMagicClient.Model;
 
@@ -49,8 +50,8 @@ namespace KennedyAccess.Controls
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                RadioButtonList rblQType = (RadioButtonList)e.Row.FindControl("rblQustionType");
-                rblQType.SelectedValue = ((DataRowView)e.Row.DataItem)["QuestionType"].ToString();
+                HtmlInputCheckBox rblQType = (HtmlInputCheckBox)e.Row.FindControl("cbkQustionType");
+                rblQType.Checked = ((DataRowView)e.Row.DataItem)["QuestionType"].ToString()== "1";
                 //if (((DataRowView)e.Row.DataItem)["General"].ToString() == "True")
                 //{
                 //    rblQType.Enabled = false;
@@ -69,10 +70,10 @@ namespace KennedyAccess.Controls
             Control gridRow = ((System.Web.UI.Control)sender).DataItemContainer;
             Label labQID = (Label)gridRow.FindControl("labQuestionnaireID");
             TextBox txtQ = (TextBox)gridRow.FindControl("txtQuestion");
-            RadioButtonList rblQt = (RadioButtonList)gridRow.FindControl("rblQustionType");
+            HtmlInputCheckBox rblQt = (HtmlInputCheckBox)gridRow.FindControl("cbkQustionType");
             int iQuestionnaireID = int.Parse(labQID.Text);
             string sQuestionnaire = txtQ.Text;
-            string sQuestionType = rblQt.SelectedValue;
+            string sQuestionType = rblQt.Checked ? "1": "0";
 
             bd.InsertUpdateQuestionnaire(user, iQuestionnaireID, iEmployerID, labCampaignID.Text, false, 0, sQuestionnaire, sQuestionType, true);
 
@@ -80,10 +81,10 @@ namespace KennedyAccess.Controls
         protected void lnkBtnAddNew_OnClik(object sender, EventArgs e)
         {            
             bd.InsertUpdateQuestionnaire(user, 0, int.Parse(labEmployerID.Text), 
-                labCampaignID.Text, cbkGeneral.Checked, 0, txtNewQuestion.Text, rblNewQustionType.SelectedValue, true);
+                labCampaignID.Text, cbkGeneral.Checked, 0, txtNewQuestion.Text, cbkNewQustionType.Checked?"1":"0", true);
 
             txtNewQuestion.Text = "";
-            rblNewQustionType.SelectedIndex = -1;
+            //rblNewQustionType.SelectedIndex = -1;
 
             PopulateQuestionnaireGrid();
         }
@@ -93,7 +94,7 @@ namespace KennedyAccess.Controls
             Control gridRow = ((System.Web.UI.Control)sender).DataItemContainer;
             Label labQID = (Label)gridRow.FindControl("labQuestionnaireID");
             TextBox txtQ = (TextBox)gridRow.FindControl("txtQuestion");
-            RadioButtonList rblQt = (RadioButtonList)gridRow.FindControl("rblQustionType");
+            RadioButtonList rblQt = (RadioButtonList)gridRow.FindControl("cbkQustionType");
             int iQuestionnaireID = int.Parse(labQID.Text);
             string sQuestionnaire = txtQ.Text;
             string sQuestionType = rblQt.SelectedValue;

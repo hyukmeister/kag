@@ -69,22 +69,13 @@ namespace KennedyAccess.Controls
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvQuestinnaire;
 
         /// <summary>
-        /// rblNewQustionType control.
+        /// cbkNewQustionType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rblNewQustionType;
-
-        /// <summary>
-        /// rfvQType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvQType;
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox cbkNewQustionType;
 
         /// <summary>
         /// lnkBtnAddNew control.

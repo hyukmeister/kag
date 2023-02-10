@@ -15,8 +15,6 @@ namespace KennedyAccess
     public partial class WebForm3 : System.Web.UI.Page
     {
         private User user;
-        Label HQContactID;
-        Label EmployerContactID;
         BaseData bd = new BaseData();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -94,7 +92,7 @@ namespace KennedyAccess
             btnEditUser.Visible = bLock && user.HasRole("UserEdit");
             btnCancel.Visible = btnSaveUser.Visible = !bLock;
 
-            //cbkActive.Enabled = !bLock;
+            cbkActive.Disabled = bLock;
             //cbkActive.BorderStyle = sBorder;
             lblRecordType.Enabled = bLock;
             lblRecordType.BorderStyle = sBorder;
@@ -127,6 +125,7 @@ namespace KennedyAccess
             txtNote.ReadOnly = bLock;
             txtNote.BorderStyle = sBorder;
 
+            btnEnabled_Click(null,null);
             btnCancel.Visible = btnSaveUser.Visible = !bLock;
             btnEditUser.Visible = bLock && user.HasRole("UserEdit");
         }
@@ -167,5 +166,12 @@ namespace KennedyAccess
             SetEditVisibility(true);
         }
 
+        protected void btnEnabled_Click(object sender, EventArgs e)
+        {
+            toggledemo.Disabled = !toggledemo.Disabled;
+            cbkActive.Disabled = !cbkActive.Disabled;
+
+            cbkUserActive.Disabled= !cbkUserActive.Disabled;
+        }
     }
 }

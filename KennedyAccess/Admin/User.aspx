@@ -1,158 +1,159 @@
 ﻿<%@ Page Title="User" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="User.aspx.cs" Inherits="KennedyAccess.User1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+<script type='text/javascript'>
+    $('#btnAddNew').click(function () {
+        $('#divAddNew').modal('show');
+    })
+</script>
+
     <div style="background-image: url('../images/kagimg10.jpg'); filter: blur(4px); height: 100px; width: 900px; background-size: cover; background-position: center; position: relative; opacity: 55%; top: 20px">
         &nbsp;
     </div>
     
     <h2><asp:Label ID="labUser" runat="server" Text=""></asp:Label></h2>
-
     <div class="jumbotron" style="width: 900px;">
-        <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-            <ContentTemplate>
-                <asp:Table ID="tabUser" runat="server" class="table table-hover" Width="840px">
-                    <asp:TableRow>
-                        <asp:TableCell ColumnSpan="4" HorizontalAlign="Right">
-                            <asp:TextBox ID="txtError" runat="server"  Visible="false" ForeColor="Red" BorderStyle="None" BackColor="Transparent" Width="450px"></asp:TextBox>
-                            <asp:Button ID="btnEditUser" runat="server" class="btn btn-primary" Text="Edit" OnClick="btnEditUser_Click" />
-                            <asp:Button ID="btnSaveUser" runat="server" class="btn btn-primary" Text="Save" OnClick="btnSaveUser_Click" Visible="false"/>&nbsp;
-                            <asp:Button ID="btnCancel" runat="server" class="btn btn-primary" Text="Cancel" OnClick="btnCancel_Click"/>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>
-                            <asp:Label runat="server" Text="Record Type" Visible="false"></asp:Label>
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <asp:Label ID="lblRecordType" runat="server" Visible="false"></asp:Label>
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <asp:Label runat="server" Text="Franchise" Visible="false"></asp:Label>
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <asp:Label ID="lblFranchise" runat="server" Visible="false"></asp:Label>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell ColumnSpan="4" HorizontalAlign="Left" BackColor="dimgray" ForeColor="white">
-                            <h4><asp:Label ID="Label3" runat="server" Text="User Information"></asp:Label></h4>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>
-                            <asp:Label runat="server" Text="User ID"></asp:Label>
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <asp:Label ID="lblUserID" runat="server"></asp:Label>
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <asp:Label runat="server" Text="Active"></asp:Label>
-                        </asp:TableCell>
-                        <asp:TableCell HorizontalAlign="left">
-                            <label class="switch" >
-                                <asp:CheckBox ID="cbkActive" runat="server" />
-                                <span class="slider round"></span>
-                            </label>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>
-                            <asp:Label runat="server" Text="User Name"></asp:Label>
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <asp:TextBox ID="txtUserName" ReadOnly="true" Style="text-align: Left" runat="server" BorderStyle="NotSet" CssClass="form-control"></asp:TextBox>
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <asp:Label runat="server" Text="Authenticated"></asp:Label>
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <asp:RadioButtonList ID="rblAuthenticated" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" enabled="false" CssClass="form-control">
-                                <asp:ListItem Enabled="True" Text="Yes" Value="True" style="margin-right: 20px;"  />
-                                <asp:ListItem Enabled="True" Text="No" Value="False" style="margin-right: 20px;" />
-                            </asp:RadioButtonList>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>
-                            <asp:Label runat="server" Text="FirstName"></asp:Label>
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <asp:TextBox ID="txtFirstName" ReadOnly="true" Style="text-align: Left" runat="server" BorderStyle="NotSet" CssClass="form-control"></asp:TextBox>
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <asp:Label runat="server" Text="Last Name"></asp:Label>
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <asp:TextBox ID="txtLastName" ReadOnly="true" Style="text-align: Left" runat="server" CssClass="form-control"></asp:TextBox>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>
-                            <asp:Label runat="server" Text="Email"></asp:Label>
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <asp:TextBox ID="txtEmail" ReadOnly="true" Style="text-align: Left" runat="server" TextMode="Email" BorderStyle="NotSet" CssClass="form-control"></asp:TextBox>
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <asp:Label runat="server" Text="Mobilephone"></asp:Label>
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <asp:TextBox ID="txtMobilephone" ReadOnly="true" Style="text-align: Left" runat="server" TextMode="Phone" CssClass="form-control"></asp:TextBox>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>
-                            <asp:Label runat="server" Text="Valid From"></asp:Label>
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <asp:TextBox ID="txtValidFrom" ReadOnly="true" Style="text-align: left" runat="server" TextMode="Date" BorderStyle="NotSet" CssClass="form-control"></asp:TextBox>
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <asp:Label runat="server" Text="Valid Thru"></asp:Label>
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <asp:TextBox ID="txtValidThru" ReadOnly="true" Style="text-align: left" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>
-                            <asp:Label runat="server" Text="User Profile"></asp:Label>
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <asp:DropDownList ID="ddlUserType" runat="server" CssClass="btn btn-default btn-outline-secondary"></asp:DropDownList>
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <asp:Label runat="server" Text="Authentication Code"></asp:Label>
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <asp:TextBox ID="txtAuthenticationCode" ReadOnly="true" Style="text-align: Left" runat="server" BorderStyle="None" CssClass="form-control"></asp:TextBox>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>
-                            <asp:Label runat="server" Text="Created Date"></asp:Label>
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <asp:TextBox ID="txtCreateDate" ReadOnly="true" Style="text-align: left" runat="server" TextMode="Date" BorderStyle="NotSet" CssClass="form-control"></asp:TextBox>
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <asp:Label runat="server" Text="Last Modified Date"></asp:Label>
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <asp:TextBox ID="txtModifiedDate" ReadOnly="true" Style="text-align: left" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>
-                            <asp:Label runat="server" Text="Note"></asp:Label>
-                        </asp:TableCell>
-                        <asp:TableCell ColumnSpan="3">
-                            <asp:TextBox ID="txtNote" ReadOnly="true" Style="text-align: Left" runat="server" TextMode="MultiLine" Width="100%" BorderStyle="NotSet" CssClass="form-control"></asp:TextBox>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                </asp:Table><br /><br />
-            </ContentTemplate>
-        </asp:UpdatePanel>
+
+        <asp:Table ID="tabUser" runat="server" class="table table-hover" Width="840px">
+            <asp:TableRow>
+                <asp:TableCell ColumnSpan="4" HorizontalAlign="Right">
+                    <asp:TextBox ID="txtError" runat="server"  Visible="false" ForeColor="Red" BorderStyle="None" BackColor="Transparent" Width="450px"></asp:TextBox>
+                    <asp:Button ID="btnEditUser" runat="server" class="btn btn-primary" Text="Edit" OnClick="btnEditUser_Click" />
+                    <asp:Button ID="btnSaveUser" runat="server" class="btn btn-primary" Text="Save" OnClick="btnSaveUser_Click" Visible="false"/>&nbsp;
+                    <asp:Button ID="btnCancel" runat="server" class="btn btn-primary" Text="Cancel" OnClick="btnCancel_Click"/>
+                </asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow>
+                <asp:TableCell>
+                    <asp:Label runat="server" Text="Record Type" Visible="false"></asp:Label>
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:Label ID="lblRecordType" runat="server" Visible="false"></asp:Label>
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:Label runat="server" Text="Franchise" Visible="false"></asp:Label>
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:Label ID="lblFranchise" runat="server" Visible="false"></asp:Label>
+                </asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow>
+                <asp:TableCell ColumnSpan="4" HorizontalAlign="Left" BackColor="dimgray" ForeColor="white">
+                    <h4><asp:Label ID="Label3" runat="server" Text="User Information"></asp:Label></h4>
+                </asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow>
+                <asp:TableCell>
+                    <asp:Label runat="server" Text="User ID"></asp:Label>
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:Label ID="lblUserID" runat="server"></asp:Label>
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:Label runat="server" Text="Status"></asp:Label>
+                </asp:TableCell>
+                <asp:TableCell HorizontalAlign="left">
+                    <input runat="server" id="cbkMyActive" type="checkbox" checked data-toggle="toggle" data-onstyle="secondary" data-offstyle="warning" data-style="pill" data-on="Active" data-off="Inactive" data-height="30">
+                </asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow>
+                <asp:TableCell>
+                    <asp:Label runat="server" Text="User Name"></asp:Label>
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:TextBox ID="txtUserName" ReadOnly="true" Style="text-align: Left" runat="server" BorderStyle="NotSet" CssClass="form-control"></asp:TextBox>
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:Label runat="server" Text="Authenticated"></asp:Label>
+                </asp:TableCell>
+                <asp:TableCell>
+                    <%--<asp:RadioButtonList ID="rblAuthenticated" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" enabled="false" CssClass="form-control">
+                        <asp:ListItem Enabled="True" Text="Yes" Value="True" style="margin-right: 20px;"  />
+                        <asp:ListItem Enabled="True" Text="No" Value="False" style="margin-right: 20px;" />
+                    </asp:RadioButtonList>--%>
+                    <input runat="server" id="cbkAuthenticated" type="checkbox" checked data-toggle="toggle" data-onstyle="secondary" data-offstyle="warning" data-style="pill" data-on="Yes" data-off="Not Yet" data-height="30">
+                </asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow>
+                <asp:TableCell>
+                    <asp:Label runat="server" Text="FirstName"></asp:Label>
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:TextBox ID="txtFirstName" ReadOnly="true" Style="text-align: Left" runat="server" BorderStyle="NotSet" CssClass="form-control"></asp:TextBox>
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:Label runat="server" Text="Last Name"></asp:Label>
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:TextBox ID="txtLastName" ReadOnly="true" Style="text-align: Left" runat="server" CssClass="form-control"></asp:TextBox>
+                </asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow>
+                <asp:TableCell>
+                    <asp:Label runat="server" Text="Email"></asp:Label>
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:TextBox ID="txtEmail" ReadOnly="true" Style="text-align: Left" runat="server" TextMode="Email" BorderStyle="NotSet" CssClass="form-control"></asp:TextBox>
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:Label runat="server" Text="Mobilephone"></asp:Label>
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:TextBox ID="txtMobilephone" ReadOnly="true" Style="text-align: Left" runat="server" TextMode="Phone" CssClass="form-control"></asp:TextBox>
+                </asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow>
+                <asp:TableCell>
+                    <asp:Label runat="server" Text="Valid From"></asp:Label>
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:TextBox ID="txtValidFrom" ReadOnly="true" Style="text-align: left" runat="server" TextMode="Date" BorderStyle="NotSet" CssClass="form-control"></asp:TextBox>
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:Label runat="server" Text="Valid Thru"></asp:Label>
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:TextBox ID="txtValidThru" ReadOnly="true" Style="text-align: left" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
+                </asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow>
+                <asp:TableCell>
+                    <asp:Label runat="server" Text="User Profile"></asp:Label>
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:DropDownList ID="ddlUserType" runat="server" CssClass="btn btn-default btn-outline-secondary"></asp:DropDownList>
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:Label runat="server" Text="Authentication Code"></asp:Label>
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:TextBox ID="txtAuthenticationCode" ReadOnly="true" Style="text-align: Left" runat="server" BorderStyle="None" CssClass="form-control"></asp:TextBox>
+                </asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow>
+                <asp:TableCell>
+                    <asp:Label runat="server" Text="Created Date"></asp:Label>
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:TextBox ID="txtCreateDate" ReadOnly="true" Style="text-align: left" runat="server" TextMode="Date" BorderStyle="NotSet" CssClass="form-control"></asp:TextBox>
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:Label runat="server" Text="Last Modified Date"></asp:Label>
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:TextBox ID="txtModifiedDate" ReadOnly="true" Style="text-align: left" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
+                </asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow>
+                <asp:TableCell>
+                    <asp:Label runat="server" Text="Note"></asp:Label>
+                </asp:TableCell>
+                <asp:TableCell ColumnSpan="3">
+                    <asp:TextBox ID="txtNote" ReadOnly="true" Style="text-align: Left" runat="server" TextMode="MultiLine" Width="100%" BorderStyle="NotSet" CssClass="form-control"></asp:TextBox>
+                </asp:TableCell>
+            </asp:TableRow>
+        </asp:Table><br /><br />
+
 
         <h3><asp:Label ID="Label2" runat="server" Text="User Roles"></asp:Label></h3>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">

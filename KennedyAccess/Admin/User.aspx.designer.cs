@@ -24,15 +24,6 @@ namespace KennedyAccess
         protected global::System.Web.UI.WebControls.Label labUser;
 
         /// <summary>
-        /// UpdatePanel2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel2;
-
-        /// <summary>
         /// tabUser control.
         /// </summary>
         /// <remarks>
@@ -114,13 +105,13 @@ namespace KennedyAccess
         protected global::System.Web.UI.WebControls.Label lblUserID;
 
         /// <summary>
-        /// cbkActive control.
+        /// cbkMyActive control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbkActive;
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox cbkMyActive;
 
         /// <summary>
         /// txtUserName control.
@@ -132,13 +123,13 @@ namespace KennedyAccess
         protected global::System.Web.UI.WebControls.TextBox txtUserName;
 
         /// <summary>
-        /// rblAuthenticated control.
+        /// cbkAuthenticated control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rblAuthenticated;
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox cbkAuthenticated;
 
         /// <summary>
         /// txtFirstName control.

@@ -24,6 +24,24 @@ namespace KennedyAccess
         protected global::System.Web.UI.WebControls.Label labUser;
 
         /// <summary>
+        /// toggledemo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox toggledemo;
+
+        /// <summary>
+        /// btnEnabled control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnEnabled;
+
+        /// <summary>
         /// labTime control.
         /// </summary>
         /// <remarks>
@@ -31,15 +49,6 @@ namespace KennedyAccess
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label labTime;
-
-        /// <summary>
-        /// UpdatePanel1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
 
         /// <summary>
         /// ajaxTime control.
@@ -138,16 +147,16 @@ namespace KennedyAccess
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbkActive;
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox cbkActive;
 
         /// <summary>
-        /// ToggleButtonExtender1 control.
+        /// cbkUserActive control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.ToggleButtonExtender ToggleButtonExtender1;
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox cbkUserActive;
 
         /// <summary>
         /// txtUserName control.

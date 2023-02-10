@@ -29,10 +29,11 @@
         </asp:TemplateField>
         <asp:TemplateField HeaderText="Question Type" HeaderStyle-BorderStyle="None" ItemStyle-BorderStyle="None">
             <ItemTemplate>
-                <asp:RadioButtonList ID="rblQustionType" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" Width="150px">
+<%--                <asp:RadioButtonList ID="rblQustionType" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" Width="150px">
                     <asp:ListItem Enabled="True" Text="Yes/No" Value="0" style="margin-right: 20px;" />
                     <asp:ListItem Enabled="True" Text="Text" Value="1" style="margin-right: 20px;" />
-                </asp:RadioButtonList>
+                </asp:RadioButtonList>--%>
+                <input runat="server" id="cbkQustionType" type="checkbox" data-toggle="toggle" data-onstyle="secondary" data-offstyle="secondary" data-style="pill" data-on="Text" data-off="Yes/No" data-width="120" data-height="30">
             </ItemTemplate>
             <HeaderStyle BorderStyle="None"></HeaderStyle>
             <ItemStyle BorderStyle="None"></ItemStyle>
@@ -54,11 +55,11 @@
         </td>
         <td Width="30px"></td>
         <td Width="170px"><br />
-            <asp:RadioButtonList ID="rblNewQustionType" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow">
+            <%--<asp:RadioButtonList ID="rblNewQustionType" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow">
                 <asp:ListItem Enabled="True" Text="Yes/No" Value="0" style="margin-right: 20px;" Selected="True" />
                 <asp:ListItem Enabled="True" Text="Text" Value="1" style="margin-right: 20px;" />
-            </asp:RadioButtonList>
-            <asp:RequiredFieldValidator ID="rfvQType" runat="server" ValidationGroup="QuestionnaireGroup" ControlToValidate="rblNewQustionType" ErrorMessage="Type is required" ForeColor="Red"></asp:RequiredFieldValidator></td>
+            </asp:RadioButtonList>--%>
+            <input runat="server" id="cbkNewQustionType" type="checkbox" data-toggle="toggle" data-onstyle="secondary" data-offstyle="secondary" data-style="pill" data-on="Text" data-off="Yes/No" data-width="120" data-height="30">
         <td style="align-content:end">
             <asp:ImageButton ID="lnkBtnAddNew" runat="server" OnClick="lnkBtnAddNew_OnClik" Alt="Add" ImageUrl="~/images/arr017.svg"/>            
         <td>
