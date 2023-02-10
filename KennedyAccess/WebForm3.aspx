@@ -27,7 +27,7 @@
                         <asp:TextBox ID="txtError" runat="server"  Visible="false" ForeColor="Red" BorderStyle="None" BackColor="Transparent" Width="450px"></asp:TextBox>
                         <asp:Button ID="btnEditUser" runat="server" class="btn btn-default" Text="Edit" OnClick="btnEditUser_Click" />
                         <asp:Button ID="btnSaveUser" runat="server" class="btn btn-default" Text="Save" OnClick="btnSaveUser_Click" Visible="false"/>&nbsp;
-                        <asp:Button ID="btnCancel" runat="server" class="btn btn-default" Text="Cancel" OnClick="btnCancel_Click"/>
+                        <asp:Button ID="btnCancel" runat="server" class="btn btn-default" Text="Cancel" OnClick="btnCancel_Click" Visible="false"/>
                     </asp:TableCell>
                 </asp:TableRow>
                 <asp:TableRow>
@@ -61,6 +61,9 @@
                     </asp:TableCell>
                     <asp:TableCell HorizontalAlign="left">
                         <asp:CheckBox ID="cbkActive" runat="server"></asp:CheckBox>
+                        <ajaxToolkit:ToggleButtonExtender ID="ToggleButtonExtender1" runat="server" TargetControlID="cbkActive" ImageWidth="100" 
+                            ImageHeight="30" CheckedImageAlternateText="Check" UncheckedImageAlternateText="UnCheck"
+                            UncheckedImageUrl="../images/unchecked.png" CheckedImageUrl="../images/checked.png" />
                     </asp:TableCell>
                 </asp:TableRow>
                 <asp:TableRow>

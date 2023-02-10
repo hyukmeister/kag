@@ -223,6 +223,7 @@
     <Content Include="images\arr018.svg" />
     <Content Include="images\arr021.svg" />
     <Content Include="images\blank.png" />
+    <Content Include="images\checked.png" />
     <Content Include="images\cod001.svg" />
     <Content Include="images\cod002.svg" />
     <Content Include="images\cod003.svg" />
@@ -257,6 +258,7 @@
     <Content Include="images\save.png" />
     <Content Include="images\save_icon.png" />
     <Content Include="images\teh001.svg" />
+    <Content Include="images\unchecked.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />

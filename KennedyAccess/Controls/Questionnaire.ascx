@@ -22,7 +22,7 @@
         </asp:TemplateField>
         <asp:TemplateField HeaderText="Question" HeaderStyle-BorderStyle="None" ItemStyle-BorderStyle="None">
             <ItemTemplate>
-                <asp:TextBox ID="txtQuestion" runat="server" BorderWidth="0" BorderStyle="None" Text='<%# Eval("Question") %>' Width="550px" MaxLength="255" ></asp:TextBox>
+                <asp:TextBox ID="txtQuestion" runat="server" BorderWidth="0" BorderStyle="None" Text='<%# Eval("Question") %>' Width="550px" MaxLength="255" CssClass="form-control"></asp:TextBox>
             </ItemTemplate>
             <HeaderStyle BorderStyle="None"></HeaderStyle>
             <ItemStyle BorderStyle="None"></ItemStyle>
@@ -49,7 +49,7 @@
     <tr style="height:25px; background-color:gainsboro; vertical-align:middle">
         <td Width="14px"></td>
         <td Width="550px"><br />
-            <asp:TextBox ID="txtNewQuestion" runat="server" BorderWidth="0" BorderStyle="None" Text=" " Width="540px" MaxLength="255" ForeColor="Navy"></asp:TextBox>
+            <asp:TextBox ID="txtNewQuestion" runat="server" BorderWidth="0" BorderStyle="None" Text=" " Width="540px" MaxLength="255" ForeColor="Navy" CssClass="form-control"></asp:TextBox>
             <asp:RequiredFieldValidator ID="rfvQuestinnaire" runat="server" ValidationGroup="QuestionnaireGroup" ControlToValidate="txtNewQuestion" ErrorMessage="Questionnaire is required field" ForeColor="Red"></asp:RequiredFieldValidator>
         </td>
         <td Width="30px"></td>

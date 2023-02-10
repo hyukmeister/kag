@@ -25,7 +25,7 @@
             <asp:TableCell ColumnSpan="2">
                <div class="mb-3;" style="width: 420px">
                     <label for="ddlCitizenshipCountry" class="form-label">Country of Citizenship</label><br />
-                    <asp:DropDownList ID="ddlCitizenshipCountry" class="form-select" ValidationGroup="ApplicantInfo" runat="server" OnSelectedIndexChanged="ApplicantChanged" Width="300px"></asp:DropDownList>
+                    <asp:DropDownList ID="ddlCitizenshipCountry" CssClass="btn btn-default btn-outline-secondary align-items-start text-start" ValidationGroup="ApplicantInfo" runat="server" OnSelectedIndexChanged="ApplicantChanged" Width="300px"></asp:DropDownList>
                     <asp:RangeValidator ID="rvddlCitizenshipCountry" runat="server" ControlToValidate="ddlCitizenshipCountry" ErrorMessage="Country of citizenship is required" MinimumValue="10000" MaximumValue="10250" ForeColor="Red"></asp:RangeValidator>
                 </div>
             </asp:TableCell>
@@ -35,7 +35,7 @@
             <asp:TableCell ColumnSpan="2">&nbsp;
                 <div class="mb-3;" style="width: 420px">
                     <label for="ddlBirthCountry" class="form-label">Country of Birth</label><br />
-                    <asp:DropDownList ID="ddlBirthCountry" class="form-select" runat="server" ValidationGroup="ApplicantInfo" OnSelectedIndexChanged="ApplicantChanged" Width="300px"></asp:DropDownList>
+                    <asp:DropDownList ID="ddlBirthCountry" CssClass="btn btn-default btn-outline-secondary align-items-start text-start" runat="server" ValidationGroup="ApplicantInfo" OnSelectedIndexChanged="ApplicantChanged" Width="300px"></asp:DropDownList>
                     <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="ddlCitizenshipCountry" ErrorMessage="Country of birth is required" MinimumValue="10000" MaximumValue="10250" ForeColor="Red"></asp:RangeValidator>
                 </div>
             </asp:TableCell>

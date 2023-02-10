@@ -1195,7 +1195,7 @@ namespace KennedyAccess.Classes
             }
             return dtDS260;
         }
-        public DataTable GetI485(User user, string I485ID, string ApplicantID, string FamilyRelationID, string ReferenceID)
+        public DataTable GetI485(User user, string I485ID, string ApplicantID, string FamilyRelationID)
         {
             DataTable dtGetI485 = null;
             DataSet ds = (SqlHelper.ExecuteDataset(Global.dbcnn, "GetI485",
@@ -1203,8 +1203,7 @@ namespace KennedyAccess.Classes
                     new SqlParameter("@UserID", user.UserID),
                     new SqlParameter("@I485ID", I485ID),
                     new SqlParameter("@ApplicantID", ApplicantID),
-                    new SqlParameter("@FamilyRelationID", FamilyRelationID),
-                    new SqlParameter("@ReferenceID", ReferenceID)));
+                    new SqlParameter("@FamilyRelationID", FamilyRelationID)));
 
             if (ds != null && ds.Tables.Count > 0)
             {
@@ -1253,6 +1252,25 @@ namespace KennedyAccess.Classes
                 dtFamilyMember = ds.Tables[0];
             }
             return dtFamilyMember;
+        }
+
+        public void InsertUpdateFamilyMember(User user,
+            string ApplicantID, string ApplicantFamilyID, string Status, bool Active,
+            string RelationshipID, string LastName, string FirstName, string MI)
+        {
+            SqlDataReader dr = SqlHelper.ExecuteReader(
+                    Global.dbcnn, "InsertUpdateFamilyMember",
+                    new SqlParameter("@FranchiseID", user.FranchiseID),
+                    new SqlParameter("@UserID", user.UserID),
+                    new SqlParameter("@ApplicantID", ApplicantID),
+                    new SqlParameter("@ApplicantFamilyID", ApplicantFamilyID),
+                    new SqlParameter("@Status", Status),
+                    new SqlParameter("@Active", Active),
+                    new SqlParameter("@RelationshipID", RelationshipID),
+                    new SqlParameter("@FirstName", FirstName),
+                    new SqlParameter("@LastName", LastName),
+                    new SqlParameter("@MI", MI)
+                );
         }
     }
 }

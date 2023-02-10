@@ -17,6 +17,7 @@ namespace KennedyAccess.Controls
         BaseData bd = new BaseData();
         public string ApplicantID;
         public string RelationshipID;
+        public string I485ID;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -26,10 +27,13 @@ namespace KennedyAccess.Controls
 
             if (!IsPostBack)
             {
+                //labApplicantID.Text = ApplicantID;
+                //labRelationshipID.Text = RelationshipID;
+                labI485ID.Text = I485ID;
                 //if (Session["ApplicationID"] != null && Session["ApplicationID"].ToString() !="")
                 //{
                 //labI485ID.Text = Session["I485ID"].ToString();
-                DataTable dt = bd.GetI485(user, "10001", "10039", "100", "10000");
+                DataTable dt = bd.GetI485(user, "10001", labApplicantID.Text, labRelationshipID.Text);
 
                 if (dt != null && dt.Rows.Count > 0)
                 {
@@ -227,9 +231,6 @@ namespace KennedyAccess.Controls
                 ddlCitizenship.DataTextField = "CountryName";
                 ddlCitizenship.DataBind();
 
-
-                labApplicantID.Text = ApplicantID;
-                labRelationshipID.Text = RelationshipID;
 
 
 

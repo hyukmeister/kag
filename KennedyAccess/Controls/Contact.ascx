@@ -69,7 +69,7 @@
         <asp:TableCell ColumnSpan="2">
             <div class="mb-3;" style="width:350px">
                 <label for="ddlCountry" class="form-label">Country</label><br />
-                <asp:DropDownList ID="ddlCountry" class="form-select"  runat="server" Width="300px" ValidationGroup="ContactInfo" required="Country is required"></asp:DropDownList>
+                <asp:DropDownList ID="ddlCountry" CssClass="btn btn-default btn-outline-secondary align-items-start text-start" runat="server" Width="300px" ValidationGroup="ContactInfo" required="Country is required"></asp:DropDownList>
             </div>
         </asp:TableCell>
     </asp:TableRow>

@@ -63,6 +63,7 @@ namespace KennedyAccess
                             txtModifiedDate.Text = DateTime.Parse(drUser["ModifiedDate"].ToString()).ToString("yyyy-MM-dd");
                             txtNote.Text = drUser["Note"].ToString();
 
+                            SetEditVisibility(true);
                         }
 
                     }
@@ -93,8 +94,8 @@ namespace KennedyAccess
             btnEditUser.Visible = bLock && user.HasRole("UserEdit");
             btnCancel.Visible = btnSaveUser.Visible = !bLock;
 
-            cbkActive.Enabled = !bLock;
-            cbkActive.BorderStyle = sBorder;
+            //cbkActive.Enabled = !bLock;
+            //cbkActive.BorderStyle = sBorder;
             lblRecordType.Enabled = bLock;
             lblRecordType.BorderStyle = sBorder;
             lblFranchise.Enabled = bLock;
