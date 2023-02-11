@@ -1,4 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="I485.ascx.cs" Inherits="KennedyAccess.Controls.I485" %>
+<%--<asp:Content ID="I485Content" ContentPlaceHolderID="MainContent" runat="server">--%>
 <div class="accordion-group" id="I485AccordionParent">
     <asp:Label ID="labI485ID" runat="server" Visible="false"></asp:Label>
     <asp:Label ID="labApplicantID" runat="server" Visible="false"></asp:Label>
@@ -6,7 +7,7 @@
     <asp:Label ID="labRelationshipID" runat="server" Visible="false"></asp:Label>
 
     <div class="accordion-item">
-        <asp:CheckBox ID="cbkApplicantInfoChanged1" runat="server" Checked="false" visible="false"/>
+        <asp:CheckBox ID="cbkApplicantInfoChanged" runat="server" Checked="false" />
         <h2 class="accordion-header" id="headingI485_One">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseI485_One" aria-expanded="false" aria-controls="collapseI485_One">
                 <b>Applicant Information</b>
@@ -14,360 +15,368 @@
         </h2>
         <div id="collapseI485_One" class="accordion-collapse collapse" aria-labelledby="headingI485_One" data-bs-parent="#I485AccordionParent">
             <div class="accordion-body">
-                <asp:Table ID="tblI485_ClientApplication1" runat="server" class="table table-hover" Width="100%">
-                    <asp:TableRow>
-                        <asp:TableCell ColumnSpan="4" HorizontalAlign="Left">
-                            <asp:Button ID="btnEdit1" runat="server" class="btn btn-primary" Text="Edit" CausesValidation="false" UseSubmitBehavior="false" OnClick="btnEdit_Click" />
-                            <asp:Button ID="btnSave1" runat="server" class="btn btn-primary" Text="Save" OnClick="btnSave_Click" Visible="false" />&nbsp;
-                        <asp:Button ID="btnCancel1" runat="server" class="btn btn-default" Text="Cancel" CausesValidation="false" UseSubmitBehavior="false" OnClick="btnCancel_Click" Visible="false" />
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>
-                            <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtLastName" class="form-control" runat="server" placeholder="Last Name" OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
-                                <label for="txtLastName" class="form-label">Last Name</label>
-                            </div>
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtFirstName" class="form-control" runat="server" placeholder="First Name" OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
-                                <label for="txtFirstName" class="form-label">First Name</label>
-                            </div>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>
-                            <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtMiddleName" class="form-control" runat="server" placeholder="Last Name"  OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
-                                <label for="txtMiddleName" class="form-label">Middle Name </label>
-                            </div>
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <br />
-                            <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtMaidenName" class="form-control" runat="server" placeholder="First Name "  OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
-                                <label for="txtMaidenName" class="form-label">Other Names (Maiden Name) </label>
-                            </div>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>
-                            <br />
-                            <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtDateOfBirth" class="form-control" runat="server" placeholder="Date of Birth" TextMode="Date"  OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
-                                <label for="txtDateOfBirth" class="form-label">Date of Birth</label>
-                            </div>
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <br />
-                            <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtCityOfBirth" class="form-control" runat="server" placeholder="City of Birth"  OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
-                                <label for="txtCityOfBirth" class="form-label">City of Birth</label>
-                            </div>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>
-                            <br />
-                            <asp:Label class="form-label" runat="server" ID="labCountryOfBirth" HorizontalAlign="Left">Country of Birth</asp:Label><br />
-                            <asp:DropDownList ID="ddlCountryOfBirth" runat="server" Style="border-radius: 8px;" AutoPostBack="true" OnSelectedIndexChanged="ApplicantInfo_Changed">
-                            </asp:DropDownList><br />
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <br />
-                            <asp:Label class="form-label" runat="server" ID="labCitizenship" HorizontalAlign="Left">Country of Citizenship</asp:Label><br />
-                            <asp:DropDownList ID="ddlCitizenship" runat="server" Style="border-radius: 8px;" AutoPostBack="true" OnSelectedIndexChanged="ApplicantInfo_Changed">
-                            </asp:DropDownList><br />
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>
-                            <br />
-                            <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtPhoneNumber" class="form-control" runat="server" placeholder="Phone Number"  OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
-                                <label for="txtPhoneNumber" class="form-label">Phone (Cell) Number</label>
-                            </div>
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <br />
-                            <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtEmailAddress" class="form-control" runat="server" placeholder="Email Address"  OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
-                                <label for="txtEmailAddress" class="form-label">Email Address</label>
-                            </div>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>
-                            <br />
-                            <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtPassportNumber" class="form-control" runat="server" placeholder="Passport Number"  OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
-                                <label for="txtPassportNumber" class="form-label">Passport Number</label>
-                            </div>
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <br />
-                            <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtIssuingCountry" class="form-control" runat="server" placeholder="Issuing Country"  OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
-                                <label for="," class="form-label">Issuing Country</label>
-                            </div>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>
-                            <br />
-                            <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtDateOfIssue" class="form-control" runat="server" placeholder="Date Of Issue" TextMode="Date"  OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
-                                <label for="txtDateOfIssue" class="form-label">Date Of Issue </label>
-                            </div>
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <br />
-                            <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtDateOfExpiry" class="form-control" runat="server" placeholder="Date Of Expiry" TextMode="Date"  OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
-                                <label for="txtDateOfExpiry" class="form-label">Date Of Expiry</label>
-                            </div>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>
-                            <br />
-                            <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtAlienNumber" class="form-control" runat="server" placeholder="Alien Number"  OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
-                                <label for="txtAlienNumber" class="form-label">Alien Number (if any)</label>
-                            </div>
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <br />
-                            <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtSSN" class="form-control" runat="server" placeholder="SSN"  OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
-                                <label for="txtSSN" class="form-label">Social Security Number </label>
-                            </div>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell ColumnSpan="4">
-                            <br />
-                            <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtCurrLegalStatus" class="form-control" runat="server" placeholder="Current Legal Status"  OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
-                                <label for="txtCurrLegalStatus" class="form-label">Current Legal Status (Type of Visa)</label>
-                            </div>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>
-                            <br />
-                            <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtCurrVisaIssued" class="form-control" runat="server" placeholder="Current Visa Issued" TextMode="Date"  OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
-                                <label for="txtCurrVisaIssued" class="form-label">Current Visa Issued on</label>
-                            </div>
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <br />
-                            <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtCurrVisaExpires" class="form-control" runat="server" placeholder="Current Visa Expires" TextMode="Date"  OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
-                                <label for="txtCurrVisaExpires" class="form-label">Current Visa Expires on</label>
-                            </div>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>
-                            <br />
-                            <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtVisaNumber" class="form-control" runat="server" placeholder="Visa Number"  OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
-                                <label for="txtVisaNumber" class="form-label">Visa Number </label>
-                            </div>
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <br />
-                            <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtConsulateVisaIssued" class="form-control" runat="server" placeholder="SSN"  OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
-                                <label for="txtConsulateVisaIssued" class="form-label">Consulate where visa was issued  </label>
-                            </div>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>
-                            <br />
-                            <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtI94Number" class="form-control" runat="server" placeholder="I-94 Number"  OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
-                                <label for="txtI94Number" class="form-label">I-94 Number</label>
-                            </div>
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <br />
-                            <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtExactNameOnI94" class="form-control" runat="server" placeholder="Your Name exactly as it appears on your I-94 "  OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
-                                <label for="txtExactNameOnI94" class="form-label">Your Name exactly as it appears on your I-94 </label>
-                            </div>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>
-                            <br />
-                            <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtMostRecentEntry" class="form-control" runat="server" placeholder="Date of Most Recent Entry" TextMode="Date"  OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
-                                <label for="txtMostRecentEntry" class="form-label">Date of Most Recent Entry</label>
-                            </div>
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <br />
-                            <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtPortOfEntry" class="form-control" runat="server" placeholder="Port of Most Recent Entry"  OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
-                                <label for="txtPortOfEntry" class="form-label">Port of Most Recent Entry</label>
-                            </div>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell ColumnSpan="4">
-                            <br />
-                            <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtStatusOfEntry" class="form-control" runat="server" placeholder="Status of Most Recent Entry"  OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
-                                <label for="txtStatusOfEntry" class="form-label">Status of Most Recent Entry   </label>
-                            </div>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell ColumnSpan="4">
-                            <br />
-                            <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtNameOfMilitary" class="form-control" runat="server" placeholder="Name of Military Organization"  OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
-                                <label for="txtNameOfMilitary" class="form-label">Name of Military Organization</label>
-                            </div>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>
-                            <br />
-                            <div class="form-floating mb-3;"> 
-                                <asp:TextBox ID="txtCityOfMil" class="form-control" runat="server" placeholder="City or Town" OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
-                                <label for="txtCityOfMil" class="form-label">City or Town of Military </label>
-                            </div>
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <br />
-                            <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtStateOfMil" class="form-control" runat="server" placeholder="Name of Military Organization"  OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
-                                <label for="txtStateOfMil" class="form-label">State of Military </label>
-                            </div>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>
-                            <br />
-                            <asp:Label class="form-label" runat="server" ID="Label4" HorizontalAlign="Left">Country of Military </asp:Label><br />
-                            <asp:DropDownList ID="ddlCountryOfMil" runat="server" Style="border-radius: 8px;" AutoPostBack="true" OnSelectedIndexChanged="ApplicantInfo_Changed"></asp:DropDownList><br />
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <br />
-                            <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtNatureOfGroup" class="form-control" runat="server" placeholder="Nature Of Group"  OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
-                                <label for="txtNatureOfGroup" class="form-label">Nature Of Group</label>
-                            </div>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>
-                            <br />
-                            <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtInvolvementFrom" class="form-control" runat="server" placeholder="Involvement From" TextMode="Date"  OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
-                                <label for="txtInvolvementFrom" class="form-label">Military Involvement From</label>
-                            </div>
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <br />
-                            <div class="form-floating mb-3;"> 
-                                <asp:TextBox ID="txtInvolvementTo" class="form-control" runat="server" placeholder="Involvement To" TextMode="Date"  OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
-                                <label for="txtInvolvementTo" class="form-label">Military Involvement To</label>
-                            </div>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell ColumnSpan="4">
-                            <br />
-                            <label for="floatingInputGrid">
-                                Have you ever applied for an immigrant visa to obtain permanent resident status at a U.S. Embassy
-                            <br />
-                                or U.S. Consulate abroad?
-                            </label>
-                            <br />
-                            <asp:RadioButtonList ID="rblAppliedVisa" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="ApplicantInfo_Changed">
-                                <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
-                                <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
-                            </asp:RadioButtonList><br />
-                            <label for="floatingInputGrid">If yes, location of U.S. Embassy or U.S. Consulate.</label>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>
-                            <br />
-                            <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtCityOfConsulate" class="form-control" runat="server" placeholder="City of U.S. Embassy"  OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
-                                <label for="txtCityOfConsulate" class="form-label">City of U.S. Embassy</label>
-                            </div>
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <br />
-                            <asp:Label class="form-label" runat="server" ID="labCountryOfConsulate" HorizontalAlign="Left">Country of U.S. Embassy</asp:Label><br />
-                            <asp:DropDownList ID="ddlCountryOfConsulate" runat="server" Style="border-radius: 8px;" AutoPostBack="true" OnSelectedIndexChanged="ApplicantInfo_Changed">
-                            </asp:DropDownList><br />
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>
-                            <br />
-                            <label for="floatingInputGrid">Decision</label>
-                            <br />
-                            <asp:RadioButtonList ID="rblVisaDecision" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="ApplicantInfo_Changed">
-                                <asp:ListItem Enabled="True" Text="approval" Value="1" style="margin-right: 20px;" />
-                                <asp:ListItem Enabled="True" Text="refused" Value="2" style="margin-right: 20px;" />
-                                <asp:ListItem Enabled="True" Text="denied" Value="3" style="margin-right: 20px;" />
-                                <asp:ListItem Enabled="True" Text="withdrawn" Value="4" style="margin-right: 20px;" />
-                            </asp:RadioButtonList><br />
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <br />
-                            <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtDecisionDate" class="form-control" runat="server" placeholder="Decision Date" TextMode="date"  OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
-                                <label for="txtDecisionDate" class="form-label">Decision Date</label>
-                            </div>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell ColumnSpan="4">
-                            <br />
-                            <label for="floatingInputGrid">Have you ever applied for work authorization (EAD)?</label>
-                            <br />
-                            <asp:RadioButtonList ID="rblHaveAppliedEAD" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="ApplicantInfo_Changed">
-                                <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
-                                <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
-                            </asp:RadioButtonList><br />
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>
-                            <br />
-                            <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtUSCISOffice" class="form-control" runat="server" placeholder="Which USCIS Office was the application sent to:"  OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
-                                <label for="txtUSCISOffice" class="form-label">Which USCIS Office was the application sent to </label>
-                            </div>
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <br />
-                            <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtEADDecision" class="form-control" runat="server" placeholder="EAD Decision"  OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
-                                <label for="txtEADDecision" class="form-label">Decision</label>
-                            </div>
-                            <br />
-                        </asp:TableCell>
-                    </asp:TableRow>
-                </asp:Table>
+                <asp:Panel ID="panJobOpportunity" runat="server">
+                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                        <ContentTemplate>
+                            <asp:Table ID="tblI485_ClientApplication1" runat="server" class="table table-hover" Width="100%">
+                                <asp:TableRow>
+                                    <asp:TableCell ColumnSpan="2" Width="450px">
+                                    </asp:TableCell>
+                                    <asp:TableCell ColumnSpan="2" HorizontalAlign="Left">
+                                        <asp:Button ID="btnEdit1" runat="server" class="btn btn-primary" Text="Edit" CausesValidation="false" OnClick="btnEdit_AppInfoClick" />
+                                        <asp:Button ID="btnSave1" runat="server" class="btn btn-primary" Text="Save" OnClick="btnSave_AppInfoClick" Visible="false" />&nbsp;
+                                        <asp:Button ID="btnCancel1" runat="server" class="btn btn-default" Text="Cancel" CausesValidation="false" OnClientClick="return confirm('Cancel without saving?');" OnClick="btnCancel_AppInfoClick" Visible="false" />
+                                    </asp:TableCell>
+                                </asp:TableRow>
+                                <asp:TableRow>
+                                    <asp:TableCell>
+                                        <div class="form-floating mb-3;">
+                                            <asp:TextBox ID="txtLastName" class="form-control" runat="server" placeholder="Last Name" OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
+                                            <label for="txtLastName" class="form-label">Last Name</label>
+                                        </div>
+                                    </asp:TableCell>
+                                    <asp:TableCell>
+                                        <div class="form-floating mb-3;">
+                                            <asp:TextBox ID="txtFirstName" class="form-control" runat="server" placeholder="First Name" OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
+                                            <label for="txtFirstName" class="form-label">First Name</label>
+                                        </div>
+                                    </asp:TableCell>
+                                </asp:TableRow>
+                                <asp:TableRow>
+                                    <asp:TableCell>
+                                        <div class="form-floating mb-3;">
+                                            <asp:TextBox ID="txtMiddleName" class="form-control" runat="server" placeholder="Last Name" OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
+                                            <label for="txtMiddleName" class="form-label">Middle Name </label>
+                                        </div>
+                                    </asp:TableCell>
+                                    <asp:TableCell>
+                                        <br />
+                                        <div class="form-floating mb-3;">
+                                            <asp:TextBox ID="txtMaidenName" class="form-control" runat="server" placeholder="First Name " OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
+                                            <label for="txtMaidenName" class="form-label">Other Names (Maiden Name) </label>
+                                        </div>
+                                    </asp:TableCell>
+                                </asp:TableRow>
+                                <asp:TableRow>
+                                    <asp:TableCell>
+                                        <br />
+                                        <div class="form-floating mb-3;">
+                                            <asp:TextBox ID="txtDateOfBirth" class="form-control" runat="server" placeholder="Date of Birth" TextMode="Date" OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
+                                            <label for="txtDateOfBirth" class="form-label">Date of Birth</label>
+                                        </div>
+                                    </asp:TableCell>
+                                    <asp:TableCell>
+                                        <br />
+                                        <div class="form-floating mb-3;">
+                                            <asp:TextBox ID="txtCityOfBirth" class="form-control" runat="server" placeholder="City of Birth" OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
+                                            <label for="txtCityOfBirth" class="form-label">City of Birth</label>
+                                        </div>
+                                    </asp:TableCell>
+                                </asp:TableRow>
+                                <asp:TableRow>
+                                    <asp:TableCell>
+                                        <br />
+                                        <asp:Label class="form-label" runat="server" ID="labCountryOfBirth" HorizontalAlign="Left">Country of Birth</asp:Label><br />
+                                        <asp:DropDownList ID="ddlCountryOfBirth" runat="server" Style="border-radius: 8px;" AutoPostBack="true" OnSelectedIndexChanged="ApplicantInfo_Changed">
+                                        </asp:DropDownList><br />
+                                    </asp:TableCell>
+                                    <asp:TableCell>
+                                        <br />
+                                        <asp:Label class="form-label" runat="server" ID="labCitizenship" HorizontalAlign="Left">Country of Citizenship</asp:Label><br />
+                                        <asp:DropDownList ID="ddlCitizenship" runat="server" Style="border-radius: 8px;" AutoPostBack="true" OnSelectedIndexChanged="ApplicantInfo_Changed">
+                                        </asp:DropDownList><br />
+                                    </asp:TableCell>
+                                </asp:TableRow>
+                                <asp:TableRow>
+                                    <asp:TableCell>
+                                        <br />
+                                        <div class="form-floating mb-3;">
+                                            <asp:TextBox ID="txtPhoneNumber" class="form-control" runat="server" placeholder="Phone Number" OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
+                                            <label for="txtPhoneNumber" class="form-label">Phone (Cell) Number</label>
+                                        </div>
+                                    </asp:TableCell>
+                                    <asp:TableCell>
+                                        <br />
+                                        <div class="form-floating mb-3;">
+                                            <asp:TextBox ID="txtEmailAddress" class="form-control" runat="server" placeholder="Email Address" OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
+                                            <label for="txtEmailAddress" class="form-label">Email Address</label>
+                                        </div>
+                                    </asp:TableCell>
+                                </asp:TableRow>
+                                <asp:TableRow>
+                                    <asp:TableCell>
+                                        <br />
+                                        <div class="form-floating mb-3;">
+                                            <asp:TextBox ID="txtPassportNumber" class="form-control" runat="server" placeholder="Passport Number" OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
+                                            <label for="txtPassportNumber" class="form-label">Passport Number</label>
+                                        </div>
+                                    </asp:TableCell>
+                                    <asp:TableCell>
+                                        <br />
+                                        <div class="form-floating mb-3;">
+                                            <asp:TextBox ID="txtIssuingCountry" class="form-control" runat="server" placeholder="Issuing Country" OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
+                                            <label for="," class="form-label">Issuing Country</label>
+                                        </div>
+                                    </asp:TableCell>
+                                </asp:TableRow>
+                                <asp:TableRow>
+                                    <asp:TableCell>
+                                        <br />
+                                        <div class="form-floating mb-3;">
+                                            <asp:TextBox ID="txtDateOfIssue" class="form-control" runat="server" placeholder="Date Of Issue" TextMode="Date" OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
+                                            <label for="txtDateOfIssue" class="form-label">Date Of Issue </label>
+                                        </div>
+                                    </asp:TableCell>
+                                    <asp:TableCell>
+                                        <br />
+                                        <div class="form-floating mb-3;">
+                                            <asp:TextBox ID="txtDateOfExpiry" class="form-control" runat="server" placeholder="Date Of Expiry" TextMode="Date" OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
+                                            <label for="txtDateOfExpiry" class="form-label">Date Of Expiry</label>
+                                        </div>
+                                    </asp:TableCell>
+                                </asp:TableRow>
+                                <asp:TableRow>
+                                    <asp:TableCell>
+                                        <br />
+                                        <div class="form-floating mb-3;">
+                                            <asp:TextBox ID="txtAlienNumber" class="form-control" runat="server" placeholder="Alien Number" OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
+                                            <label for="txtAlienNumber" class="form-label">Alien Number (if any)</label>
+                                        </div>
+                                    </asp:TableCell>
+                                    <asp:TableCell>
+                                        <br />
+                                        <div class="form-floating mb-3;">
+                                            <asp:TextBox ID="txtSSN" class="form-control" runat="server" placeholder="SSN" OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
+                                            <label for="txtSSN" class="form-label">Social Security Number </label>
+                                        </div>
+                                    </asp:TableCell>
+                                </asp:TableRow>
+                                <asp:TableRow>
+                                    <asp:TableCell ColumnSpan="4">
+                                        <br />
+                                        <div class="form-floating mb-3;">
+                                            <asp:TextBox ID="txtCurrLegalStatus" class="form-control" runat="server" placeholder="Current Legal Status" OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
+                                            <label for="txtCurrLegalStatus" class="form-label">Current Legal Status (Type of Visa)</label>
+                                        </div>
+                                    </asp:TableCell>
+                                </asp:TableRow>
+                                <asp:TableRow>
+                                    <asp:TableCell>
+                                        <br />
+                                        <div class="form-floating mb-3;">
+                                            <asp:TextBox ID="txtCurrVisaIssued" class="form-control" runat="server" placeholder="Current Visa Issued" TextMode="Date" OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
+                                            <label for="txtCurrVisaIssued" class="form-label">Current Visa Issued on</label>
+                                        </div>
+                                    </asp:TableCell>
+                                    <asp:TableCell>
+                                        <br />
+                                        <div class="form-floating mb-3;">
+                                            <asp:TextBox ID="txtCurrVisaExpires" class="form-control" runat="server" placeholder="Current Visa Expires" TextMode="Date" OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
+                                            <label for="txtCurrVisaExpires" class="form-label">Current Visa Expires on</label>
+                                        </div>
+                                    </asp:TableCell>
+                                </asp:TableRow>
+                                <asp:TableRow>
+                                    <asp:TableCell>
+                                        <br />
+                                        <div class="form-floating mb-3;">
+                                            <asp:TextBox ID="txtVisaNumber" class="form-control" runat="server" placeholder="Visa Number" OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
+                                            <label for="txtVisaNumber" class="form-label">Visa Number </label>
+                                        </div>
+                                    </asp:TableCell>
+                                    <asp:TableCell>
+                                        <br />
+                                        <div class="form-floating mb-3;">
+                                            <asp:TextBox ID="txtConsulateVisaIssued" class="form-control" runat="server" placeholder="SSN" OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
+                                            <label for="txtConsulateVisaIssued" class="form-label">Consulate where visa was issued  </label>
+                                        </div>
+                                    </asp:TableCell>
+                                </asp:TableRow>
+                                <asp:TableRow>
+                                    <asp:TableCell>
+                                        <br />
+                                        <div class="form-floating mb-3;">
+                                            <asp:TextBox ID="txtI94Number" class="form-control" runat="server" placeholder="I-94 Number" OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
+                                            <label for="txtI94Number" class="form-label">I-94 Number</label>
+                                        </div>
+                                    </asp:TableCell>
+                                    <asp:TableCell>
+                                        <br />
+                                        <div class="form-floating mb-3;">
+                                            <asp:TextBox ID="txtExactNameOnI94" class="form-control" runat="server" placeholder="Your Name exactly as it appears on your I-94 " OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
+                                            <label for="txtExactNameOnI94" class="form-label">Your Name exactly as it appears on your I-94 </label>
+                                        </div>
+                                    </asp:TableCell>
+                                </asp:TableRow>
+                                <asp:TableRow>
+                                    <asp:TableCell>
+                                        <br />
+                                        <div class="form-floating mb-3;">
+                                            <asp:TextBox ID="txtMostRecentEntry" class="form-control" runat="server" placeholder="Date of Most Recent Entry" TextMode="Date" OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
+                                            <label for="txtMostRecentEntry" class="form-label">Date of Most Recent Entry</label>
+                                        </div>
+                                    </asp:TableCell>
+                                    <asp:TableCell>
+                                        <br />
+                                        <div class="form-floating mb-3;">
+                                            <asp:TextBox ID="txtPortOfEntry" class="form-control" runat="server" placeholder="Port of Most Recent Entry" OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
+                                            <label for="txtPortOfEntry" class="form-label">Port of Most Recent Entry</label>
+                                        </div>
+                                    </asp:TableCell>
+                                </asp:TableRow>
+                                <asp:TableRow>
+                                    <asp:TableCell ColumnSpan="4">
+                                        <br />
+                                        <div class="form-floating mb-3;">
+                                            <asp:TextBox ID="txtStatusOfEntry" class="form-control" runat="server" placeholder="Status of Most Recent Entry" OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
+                                            <label for="txtStatusOfEntry" class="form-label">Status of Most Recent Entry   </label>
+                                        </div>
+                                    </asp:TableCell>
+                                </asp:TableRow>
+                                <asp:TableRow>
+                                    <asp:TableCell ColumnSpan="4">
+                                        <br />
+                                        <div class="form-floating mb-3;">
+                                            <asp:TextBox ID="txtNameOfMilitary" class="form-control" runat="server" placeholder="Name of Military Organization" OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
+                                            <label for="txtNameOfMilitary" class="form-label">Name of Military Organization</label>
+                                        </div>
+                                    </asp:TableCell>
+                                </asp:TableRow>
+                                <asp:TableRow>
+                                    <asp:TableCell>
+                                        <br />
+                                        <div class="form-floating mb-3;">
+                                            <asp:TextBox ID="txtCityOfMil" class="form-control" runat="server" placeholder="City or Town" OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
+                                            <label for="txtCityOfMil" class="form-label">City or Town of Military </label>
+                                        </div>
+                                    </asp:TableCell>
+                                    <asp:TableCell>
+                                        <br />
+                                        <div class="form-floating mb-3;">
+                                            <asp:TextBox ID="txtStateOfMil" class="form-control" runat="server" placeholder="Name of Military Organization" OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
+                                            <label for="txtStateOfMil" class="form-label">State of Military </label>
+                                        </div>
+                                    </asp:TableCell>
+                                </asp:TableRow>
+                                <asp:TableRow>
+                                    <asp:TableCell>
+                                        <br />
+                                        <asp:Label class="form-label" runat="server" ID="Label4" HorizontalAlign="Left">Country of Military </asp:Label><br />
+                                        <asp:DropDownList ID="ddlCountryOfMil" runat="server" Style="border-radius: 8px;" AutoPostBack="true" OnSelectedIndexChanged="ApplicantInfo_Changed"></asp:DropDownList><br />
+                                    </asp:TableCell>
+                                    <asp:TableCell>
+                                        <br />
+                                        <div class="form-floating mb-3;">
+                                            <asp:TextBox ID="txtNatureOfGroup" class="form-control" runat="server" placeholder="Nature Of Group" OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
+                                            <label for="txtNatureOfGroup" class="form-label">Nature Of Group</label>
+                                        </div>
+                                    </asp:TableCell>
+                                </asp:TableRow>
+                                <asp:TableRow>
+                                    <asp:TableCell>
+                                        <br />
+                                        <div class="form-floating mb-3;">
+                                            <asp:TextBox ID="txtInvolvementFrom" class="form-control" runat="server" placeholder="Involvement From" TextMode="Date" OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
+                                            <label for="txtInvolvementFrom" class="form-label">Military Involvement From</label>
+                                        </div>
+                                    </asp:TableCell>
+                                    <asp:TableCell>
+                                        <br />
+                                        <div class="form-floating mb-3;">
+                                            <asp:TextBox ID="txtInvolvementTo" class="form-control" runat="server" placeholder="Involvement To" TextMode="Date" OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
+                                            <label for="txtInvolvementTo" class="form-label">Military Involvement To</label>
+                                        </div>
+                                    </asp:TableCell>
+                                </asp:TableRow>
+                                <asp:TableRow>
+                                    <asp:TableCell ColumnSpan="4">
+                                        <br />
+                                        <label for="floatingInputGrid">
+                                            Have you ever applied for an immigrant visa to obtain permanent resident status at a U.S. Embassy
+                                              <br />
+                                            or U.S. Consulate abroad?
+                                        </label>
+                                        <br />
+                                        <asp:RadioButtonList ID="rblAppliedVisa" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="ApplicantInfo_Changed">
+                                            <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
+                                            <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
+                                        </asp:RadioButtonList><br />
+                                        <label for="floatingInputGrid">If yes, location of U.S. Embassy or U.S. Consulate.</label>
+                                    </asp:TableCell>
+                                </asp:TableRow>
+                                <asp:TableRow>
+                                    <asp:TableCell>
+                                        <br />
+                                        <div class="form-floating mb-3;">
+                                            <asp:TextBox ID="txtCityOfConsulate" class="form-control" runat="server" placeholder="City of U.S. Embassy" OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
+                                            <label for="txtCityOfConsulate" class="form-label">City of U.S. Embassy</label>
+                                        </div>
+                                    </asp:TableCell>
+                                    <asp:TableCell>
+                                        <br />
+                                        <asp:Label class="form-label" runat="server" ID="labCountryOfConsulate" HorizontalAlign="Left">Country of U.S. Embassy</asp:Label><br />
+                                        <asp:DropDownList ID="ddlCountryOfConsulate" runat="server" Style="border-radius: 8px;" AutoPostBack="true" OnSelectedIndexChanged="ApplicantInfo_Changed">
+                                        </asp:DropDownList><br />
+                                    </asp:TableCell>
+                                </asp:TableRow>
+                                <asp:TableRow>
+                                    <asp:TableCell>
+                                        <br />
+                                        <label for="floatingInputGrid">Decision</label>
+                                        <br />
+                                        <asp:RadioButtonList ID="rblVisaDecision" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="ApplicantInfo_Changed">
+                                            <asp:ListItem Enabled="True" Text="approval" Value="1" style="margin-right: 20px;" />
+                                            <asp:ListItem Enabled="True" Text="refused" Value="2" style="margin-right: 20px;" />
+                                            <asp:ListItem Enabled="True" Text="denied" Value="3" style="margin-right: 20px;" />
+                                            <asp:ListItem Enabled="True" Text="withdrawn" Value="4" style="margin-right: 20px;" />
+                                        </asp:RadioButtonList><br />
+                                    </asp:TableCell>
+                                    <asp:TableCell>
+                                        <br />
+                                        <div class="form-floating mb-3;">
+                                            <asp:TextBox ID="txtDecisionDate" class="form-control" runat="server" placeholder="Decision Date" TextMode="date" OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
+                                            <label for="txtDecisionDate" class="form-label">Decision Date</label>
+                                        </div>
+                                    </asp:TableCell>
+                                </asp:TableRow>
+                                <asp:TableRow>
+                                    <asp:TableCell ColumnSpan="4">
+                                        <br />
+                                        <label for="floatingInputGrid">Have you ever applied for work authorization (EAD)?</label>
+                                        <br />
+                                        <asp:RadioButtonList ID="rblHaveAppliedEAD" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="ApplicantInfo_Changed">
+                                            <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
+                                            <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
+                                        </asp:RadioButtonList><br />
+                                    </asp:TableCell>
+                                </asp:TableRow>
+                                <asp:TableRow>
+                                    <asp:TableCell>
+                                        <br />
+                                        <div class="form-floating mb-3;">
+                                            <asp:TextBox ID="txtUSCISOffice" class="form-control" runat="server" placeholder="Which USCIS Office was the application sent to:" OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
+                                            <label for="txtUSCISOffice" class="form-label">Which USCIS Office was the application sent to </label>
+                                        </div>
+                                    </asp:TableCell>
+                                    <asp:TableCell>
+                                        <br />
+                                        <div class="form-floating mb-3;">
+                                            <asp:TextBox ID="txtEADDecision" class="form-control" runat="server" placeholder="EAD Decision" OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
+                                            <label for="txtEADDecision" class="form-label">Decision</label>
+                                        </div>
+                                        <br />
+                                    </asp:TableCell>
+                                </asp:TableRow>
+                            </asp:Table>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </asp:Panel>
             </div>
         </div>
     </div>
-    <%-----------------------------------------------------------------------------------------------------------------------------------%>
+    <%----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%>
     <div class="accordion-item">
-         <asp:CheckBox ID="cbkApplicantInfoChanged2" runat="server" Checked="false"  visible="false"/>
+         <asp:CheckBox ID="cbkInterpInfoChanged" runat="server" Checked="false" />
         <h2 class="accordion-header" id="headingI485_Two">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseI485_Two" aria-expanded="false" aria-controls="collapseI485_Two">
                 <b>Interprer's information (If you need)</b>
@@ -377,17 +386,19 @@
             <div class="accordion-body">
                 <asp:Table ID="tblI485_ClientApplication2" runat="server" class="table table-hover" Width="100%">
                     <asp:TableRow>
-                        <asp:TableCell ColumnSpan="4" HorizontalAlign="Left">
-                            <asp:Button ID="btnEdit2" runat="server" class="btn btn-primary" Text="Edit" CausesValidation="false" UseSubmitBehavior="false" OnClick="btnEdit_Click" />
-                            <asp:Button ID="btnSave2" runat="server" class="btn btn-primary" Text="Save" OnClick="btnSave_Click" Visible="false" />&nbsp;
-                        <asp:Button ID="btnCancel2" runat="server" class="btn btn-default" Text="Cancel" CausesValidation="false" UseSubmitBehavior="false" OnClick="btnCancel_Click" Visible="false" />
+                        <asp:TableCell ColumnSpan="2" Width="450px">
+                        </asp:TableCell>
+                        <asp:TableCell ColumnSpan="2" HorizontalAlign="Left">
+                            <asp:Button ID="btnEdit2" runat="server" class="btn btn-primary" Text="Edit" CausesValidation="false"  OnClick="btnEdit_InterpInfoClick" />
+                            <asp:Button ID="btnSave2" runat="server" class="btn btn-primary" Text="Save" OnClick="btnSave_InterpInfoClick" Visible="false" />&nbsp;
+                            <asp:Button ID="btnCancel2" runat="server" class="btn btn-default" Text="Cancel" CausesValidation="false" OnClientClick="return confirm('Cancel without saving?');" OnClick="btnCancel_InterpInfoClick" Visible="false" />
                         </asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow>
                         <asp:TableCell ColumnSpan="3">
                             <label for="floatingInputGrid">Can you read and understand English and every question on I_485 Form?</label>
                             <br />
-                            <asp:RadioButtonList ID="rblUnderstandEngOnI_485" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rblUnderstandEngOnI_485" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="InterpInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -398,14 +409,14 @@
                         <asp:TableCell>
                             <br />
                             <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtLastNameOfInterp" class="form-control" runat="server" placeholder="Last Name"></asp:TextBox>
+                                <asp:TextBox ID="txtLastNameOfInterp" class="form-control" runat="server" placeholder="Last Name" OnTextChanged="InterpInfo_Changed"></asp:TextBox>
                                 <label for="txtLastNameOfInterp" class="form-label">Last Name</label>
                             </div>
                         </asp:TableCell>
                         <asp:TableCell>
                             <br />
                             <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtGivenNameOfInterp" class="form-control" runat="server" placeholder="Given Name "></asp:TextBox>
+                                <asp:TextBox ID="txtGivenNameOfInterp" class="form-control" runat="server" placeholder="Given Name" OnTextChanged="InterpInfo_Changed"></asp:TextBox>
                                 <label for="txtGivenNameOfInterp" class="form-label">Given Name </label>
                             </div>
                         </asp:TableCell>
@@ -414,14 +425,14 @@
                         <asp:TableCell>
                             <br />
                             <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtBusinessOfInterp" class="form-control" runat="server" placeholder="Business Or Organization Name "></asp:TextBox>
+                                <asp:TextBox ID="txtBusinessOfInterp" class="form-control" runat="server" placeholder="Business Or Organization Name" OnTextChanged="InterpInfo_Changed"></asp:TextBox>
                                 <label for="txtBusinessOfInterp" class="form-label">Business Or Organization Name </label>
                             </div>
                         </asp:TableCell>
                         <asp:TableCell>
                             <br />
                             <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtStreetOfInterp" class="form-control" runat="server" placeholder="Street Number"></asp:TextBox>
+                                <asp:TextBox ID="txtStreetOfInterp" class="form-control" runat="server" placeholder="Street Number" OnTextChanged="InterpInfo_Changed"></asp:TextBox>
                                 <label for="txtStreetOfInterp" class="form-label">Street Number</label>
                             </div>
                         </asp:TableCell>
@@ -430,14 +441,14 @@
                         <asp:TableCell>
                             <br />
                             <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtCityInterp" class="form-control" runat="server" placeholder="City or Town"></asp:TextBox>
+                                <asp:TextBox ID="txtCityInterp" class="form-control" runat="server" placeholder="City or Town" OnTextChanged="InterpInfo_Changed"></asp:TextBox>
                                 <label for="txtCityInterp" class="form-label">City or Town</label>
                             </div>
                         </asp:TableCell>
                         <asp:TableCell>
                             <br />
                             <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtStateOfInterp" class="form-control" runat="server" placeholder="City or Town"></asp:TextBox>
+                                <asp:TextBox ID="txtStateOfInterp" class="form-control" runat="server" placeholder="City or Town" OnTextChanged="InterpInfo_Changed"></asp:TextBox>
                                 <label for="txtStateOfInterp" class="form-label">State</label>
                             </div>
                         </asp:TableCell>
@@ -446,14 +457,14 @@
                         <asp:TableCell>
                             <br />
                             <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtZipCodeOfInterp" class="form-control" runat="server" placeholder="Zip Code"></asp:TextBox>
+                                <asp:TextBox ID="txtZipCodeOfInterp" class="form-control" runat="server" placeholder="Zip Code" OnTextChanged="InterpInfo_Changed"></asp:TextBox>
                                 <label for="txtZipCodeOfInterp" class="form-label">Zip Code</label>
                             </div>
                         </asp:TableCell>
                         <asp:TableCell>
                             <br />
                             <asp:Label class="form-label" runat="server" ID="Label5" HorizontalAlign="Left">Country</asp:Label><br />
-                            <asp:DropDownList ID="ddlCountryOfInterp" runat="server" Style="border-radius: 8px;" Width="100%" AutoPostBack="true">
+                            <asp:DropDownList ID="ddlCountryOfInterp" runat="server" Style="border-radius: 8px;" Width="100%" AutoPostBack="true" OnSelectedIndexChanged="InterpInfo_Changed">
                             </asp:DropDownList><br />
                         </asp:TableCell>
                     </asp:TableRow>
@@ -461,14 +472,14 @@
                         <asp:TableCell>
                             <br />
                             <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtPhoneOfInterp" class="form-control" runat="server" placeholder="Telephone"></asp:TextBox>
+                                <asp:TextBox ID="txtPhoneOfInterp" class="form-control" runat="server" placeholder="Telephone" OnTextChanged="InterpInfo_Changed"></asp:TextBox>
                                 <label for="txtPhoneOfInterp" class="form-label">Daytime Telephone and Cell phone</label>
                             </div>
                         </asp:TableCell>
                         <asp:TableCell>
                             <br />
                             <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtEmailOfInterp" class="form-control" runat="server" placeholder="Email Address"></asp:TextBox>
+                                <asp:TextBox ID="txtEmailOfInterp" class="form-control" runat="server" placeholder="Email Address" OnTextChanged="InterpInfo_Changed"></asp:TextBox>
                                 <label for="txtEmailOfInterp" class="form-label">Email Address</label>
                             </div>
                         </asp:TableCell>
@@ -477,9 +488,9 @@
             </div>
         </div>
     </div>
-    <%-----------------------------------------------------------------------------------------------------------------------------------%>
+    <%----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%>
     <div class="accordion-item">
-         <asp:CheckBox ID="cbkApplicantInfoChanged3" runat="server" Checked="false" visible="false"/>
+         <asp:CheckBox ID="cbkBioInfoChanged" runat="server" Checked="false" />
         <h2 class="accordion-header" id="headingI485_Three">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseI485_Three" aria-expanded="false" aria-controls="collapseI485_Three">
                 <b>Biographic Information</b>
@@ -488,11 +499,13 @@
         <div id="collapseI485_Three" class="accordion-collapse collapse" aria-labelledby="headingI485_Three" data-bs-parent="#I485AccordionParent">
             <div class="accordion-body">
                 <asp:Table ID="tblI485_ClientApplication3" runat="server" class="table table-hover" Width="100%">
-                     <asp:TableRow>
+                    <asp:TableRow>
+                        <asp:TableCell ColumnSpan="2" Width="450px">
+                        </asp:TableCell>
                         <asp:TableCell ColumnSpan="2" HorizontalAlign="Left">
-                            <asp:Button ID="btnEdit3" runat="server" class="btn btn-primary" Text="Edit" CausesValidation="false" UseSubmitBehavior="false" OnClick="btnEdit_Click" />
-                            <asp:Button ID="btnSave3" runat="server" class="btn btn-primary" Text="Save" OnClick="btnSave_Click" Visible="false" />&nbsp;
-                        <asp:Button ID="btnCance3" runat="server" class="btn btn-default" Text="Cancel" CausesValidation="false" UseSubmitBehavior="false" OnClick="btnCancel_Click" Visible="false" />
+                            <asp:Button ID="btnEdit3" runat="server" class="btn btn-primary" Text="Edit" CausesValidation="false"  OnClick="btnEdit_BioInfoClick" />
+                            <asp:Button ID="btnSave3" runat="server" class="btn btn-primary" Text="Save" OnClick="btnSave_BioInfoClick" Visible="false" />&nbsp;
+                            <asp:Button ID="btnCancel3" runat="server" class="btn btn-default" Text="Cancel" CausesValidation="false" OnClientClick="return confirm('Cancel without saving?');" OnClick="btnCancel_BioInfoClick" Visible="false" />
                         </asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow>
@@ -501,7 +514,7 @@
                             <label for="floatingInputGrid">Ethnicity (Select one)</label>
                             <br />
                             <br />
-                            <asp:RadioButtonList ID="rblEthnicity" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow">
+                            <asp:RadioButtonList ID="rblEthnicity" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" OnSelectedIndexChanged="BioInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Hispanic or Latino " Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="Not Hispanic or Latino " Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -513,7 +526,7 @@
                             <label for="floatingInputGrid">Race (Select one)</label>
                             <br />
                             <br />
-                            <asp:RadioButtonList ID="rblRace" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow">
+                            <asp:RadioButtonList ID="rblRace" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" OnSelectedIndexChanged="BioInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="White" Value="1" style="margin-right: 30px;" />
                                 <asp:ListItem Enabled="True" Text="Asian" Value="2" style="margin-right: 30px;" />
                                 <asp:ListItem Enabled="True" Text="Black or African American" Value="3" style="margin-right: 30px;" />
@@ -529,11 +542,11 @@
                             <br />
                             <br />
                             <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtHeightFt" class="form-control" runat="server" placeholder="ft"></asp:TextBox>
+                                <asp:TextBox ID="txtHeightFt" class="form-control" runat="server" placeholder="ft" OnTextChanged="BioInfo_Changed"></asp:TextBox>
                                 <label for="txtHeightFt" class="form-label">ft.</label>
                             </div>
                             <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtHeightIn" class="form-control" runat="server" placeholder="cm"></asp:TextBox>
+                                <asp:TextBox ID="txtHeightIn" class="form-control" runat="server" placeholder="cm" OnTextChanged="BioInfo_Changed"></asp:TextBox>
                                 <label for="txtHeightIn" class="form-label">in.</label>
                             </div>
                             <br />
@@ -543,7 +556,7 @@
                             <br />
                             <br />
                             <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtHeightCm" class="form-control" runat="server" placeholder="cm"></asp:TextBox>
+                                <asp:TextBox ID="txtHeightCm" class="form-control" runat="server" placeholder="cm" OnTextChanged="BioInfo_Changed"></asp:TextBox>
                                 <label for="txtHeightCm" class="form-label">cm</label>
                             </div>
                         </asp:TableCell>
@@ -555,7 +568,7 @@
                             <br />
                             <br />
                             <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtWeightLbs" class="form-control" runat="server" placeholder="lbs"></asp:TextBox>
+                                <asp:TextBox ID="txtWeightLbs" class="form-control" runat="server" placeholder="lbs" OnTextChanged="BioInfo_Changed"></asp:TextBox>
                                 <label for="txtWeightLbs" class="form-label">lbs.</label>
                             </div>
                             <br />
@@ -565,7 +578,7 @@
                             <br />
                             <br />
                             <div class="form-floating mb-3;">
-                                <asp:TextBox ID="txtWeightKg" class="form-control" runat="server" placeholder="kg"></asp:TextBox>
+                                <asp:TextBox ID="txtWeightKg" class="form-control" runat="server" placeholder="kg" OnTextChanged="BioInfo_Changed"></asp:TextBox>
                                 <label for="txtWeightKg" class="form-label">kg</label>
                             </div>
                         </asp:TableCell>
@@ -576,7 +589,7 @@
                             <label for="floatingInputGrid">Eye Color (Select one)</label>
                             <br />
                             <br />
-                            <asp:RadioButtonList ID="rblEyeColor" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rblEyeColor" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BioInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Black" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="Blue" Value="2" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="Brown" Value="3" style="margin-right: 20px;" />
@@ -595,7 +608,7 @@
                             <label for="floatingInputGrid">Hair Color (Select one)</label>
                             <br />
                             <br />
-                            <asp:RadioButtonList ID="rblHairColor" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rblHairColor" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BioInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Bald (No hair) " Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="Black" Value="2" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="Blond" Value="3" style="margin-right: 20px;" />
@@ -612,9 +625,9 @@
             </div>
         </div>
     </div>
-    <%-----------------------------------------------------------------------------------------------------------------------------------%>
+    <%----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%>
     <div class="accordion-item">
-        <asp:CheckBox ID="cbkApplicantInfoChanged4" runat="server" Checked="false" visible="false"/>
+        <asp:CheckBox ID="cbkDocInfoChanged" runat="server" Checked="false" />
         <h2 class="accordion-header" id="headinghI485_Four">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseI485_Four" aria-expanded="false" aria-controls="collapseI485_Four">
                 <b>Documentation (Mandatory)</b>
@@ -623,13 +636,16 @@
         <div id="collapseI485_Four" class="accordion-collapse collapse" aria-labelledby="headingI485_Four" data-bs-parent="#I485AccordionParent">
             <div class="accordion-body">
                 <asp:Table ID="tblI485_ClientApplication4" runat="server" class="table table-hover" Width="100%">
-                     <asp:TableRow>
-                        <asp:TableCell ColumnSpan="2" HorizontalAlign="Left">
-                            <asp:Button ID="btnEdit4" runat="server" class="btn btn-primary" Text="Edit" CausesValidation="false" UseSubmitBehavior="false" OnClick="btnEdit_Click" />
-                            <asp:Button ID="btnSave4" runat="server" class="btn btn-primary" Text="Save" OnClick="btnSave_Click" Visible="false" />&nbsp;
-                        <asp:Button ID="btnCancel4" runat="server" class="btn btn-default" Text="Cancel" CausesValidation="false" UseSubmitBehavior="false" OnClick="btnCancel_Click" Visible="false" />
+
+                  <%-- <asp:TableRow>
+                        <asp:TableCell ColumnSpan="2" Width="450px">
                         </asp:TableCell>
-                    </asp:TableRow>
+                        <asp:TableCell ColumnSpan="2" HorizontalAlign="Left">
+                            <asp:Button ID="btnEdit4" runat="server" class="btn btn-primary" Text="Edit" CausesValidation="false"  OnClick="btnEdit_DocInfoClick" />
+                            <asp:Button ID="btnSave4" runat="server" class="btn btn-primary" Text="Save" OnClick="btnSave_DocInfoClick" Visible="false" />&nbsp;
+                            <asp:Button ID="btnCancel4" runat="server" class="btn btn-default" Text="Cancel" CausesValidation="false" OnClientClick="return confirm('Cancel without saving?');" OnClick="btnCancel_DocInfoClick" Visible="false" />
+                        </asp:TableCell>
+                    </asp:TableRow>--%>
                     <asp:TableRow>
                         <asp:TableCell ColumnSpan="3">
                         <br />
@@ -783,9 +799,9 @@
             </div>
         </div>
     </div>
-    <%-----------------------------------------------------------------------------------------------------------------------------------%>
+    <%----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%>
     <div class="accordion-item">
-         <asp:CheckBox ID="cbkApplicantInfoChanged5" runat="server" Checked="false" visible="false"/>
+         <asp:CheckBox ID="cbkApplicantInfoChanged5" runat="server" Checked="false" />
         <h2 class="accordion-header" id="headingI485_Five">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseI485_Five" aria-expanded="false" aria-controls="collapseI485_Five">
                 <b>Your Background Information (Yes/No Questions)</b>
@@ -797,9 +813,9 @@
                 <asp:Table ID="tblI485_ClientApplication5" runat="server" class="table table-hover" Width="100%">
                     <asp:TableRow>
                         <asp:TableCell ColumnSpan="2" HorizontalAlign="Left">
-                            <asp:Button ID="btnEdit5" runat="server" class="btn btn-primary" Text="Edit" CausesValidation="false" UseSubmitBehavior="false" OnClick="btnEdit_Click" />
+                            <%--<asp:Button ID="btnEdit5" runat="server" class="btn btn-primary" Text="Edit" CausesValidation="false" UseSubmitBehavior="false" OnClick="btnEdit_Click" />
                             <asp:Button ID="btnSave5" runat="server" class="btn btn-primary" Text="Save" OnClick="btnSave_Click" Visible="false" />&nbsp;
-                        <asp:Button ID="btnCancel5" runat="server" class="btn btn-default" Text="Cancel" CausesValidation="false" UseSubmitBehavior="false" OnClick="btnCancel_Click" Visible="false" />
+                        <asp:Button ID="btnCancel5" runat="server" class="btn btn-default" Text="Cancel" CausesValidation="false" UseSubmitBehavior="false" OnClick="btnCancel_Click" Visible="false" />--%>
                         </asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow>
@@ -1371,7 +1387,7 @@
                     <asp:TableRow>
                         <asp:TableCell ColumnSpan="3">
                        <label for="floatingInputGrid">41. Have you <b>EVER</b> recruited members or asked for money or things of value for a 
-                           group <br />or organization that did any of the activities described in <b>Item Number 39?</label>
+                           group <br />or organization that did any of the activities described in <b>Item Number 39?</b></label>
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
@@ -1384,7 +1400,7 @@
                     <asp:TableRow>
                         <asp:TableCell ColumnSpan="3">
                        <label for="floatingInputGrid">42. Have you <b>EVER</b> provided money, a thing of value, services or labor, 
-                           or any other <br />assistance or support for any of the activities described in <b>Item Number 39?</label>
+                           or any other <br />assistance or support for any of the activities described in <b>Item Number 39?</b></label>
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
@@ -2045,3 +2061,4 @@
     </div>
 </div>
 
+<%--</asp:Content>--%>

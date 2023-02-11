@@ -19,6 +19,8 @@ namespace KennedyAccess.Controls
         BaseData bd = new BaseData();
         public string ApplicantID;
         public string I485ID;
+        public string RelationshipID;
+        public string ReferenceID;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -30,6 +32,9 @@ namespace KennedyAccess.Controls
             {
                 labApplicantID.Text = ApplicantID;
                 labI485ID.Text = I485ID;
+                labReferenceID.Text = ReferenceID;
+                labRelationshipID.Text = RelationshipID;
+
 
                 //if (Session["ApplicationID"] != null && Session["ApplicationID"].ToString() !="")
                 //{
@@ -241,28 +246,32 @@ namespace KennedyAccess.Controls
                 ddlCountryOfConsulate.DataValueField = "CountryID";
                 ddlCountryOfConsulate.DataTextField = "CountryName";
                 ddlCountryOfConsulate.DataBind();
-                
 
+                ddlCountryOfInterp.DataSource = (DataTable)Application["Country"];
+                ddlCountryOfInterp.DataValueField = "CountryID";
+                ddlCountryOfInterp.DataTextField = "CountryName";
+                ddlCountryOfInterp.DataBind();
 
-
-
-
-                SetEditVisibility(true);
+                SetEditVisibility_AppInfo(true);
+                SetEditVisibility_InterpInfo(true);
+                SetEditVisibility_BioInfo(true);
+                //SetEditVisibility_DocInfo(true);
             }
         }
 
-        protected void btnEdit_Click(object sender, EventArgs e)
+        protected void btnEdit_AppInfoClick(object sender, EventArgs e)
         {
-            SetEditVisibility(false);
+            SetEditVisibility_AppInfo(false);
         }
 
-        protected void btnSave_Click(object sender, EventArgs e)
+        protected void btnSave_AppInfoClick(object sender, EventArgs e)
         {
-            if(cbkApplicantInfoChanged1.Checked == true)
+            if(cbkApplicantInfoChanged.Checked == true)
             {
                 //save applicant info to db
-                labI485ID.Text = bd.InsertUpdateI485_AppInfo(user, "n", true, "0", labApplicantID.Text, labReferenceID.Text,
-                    labRelationshipID.Text, txtLastName.Text, txtFirstName.Text, txtMiddleName.Text, txtMaidenName.Text, txtDateOfBirth.Text, 
+                labI485ID.Text = bd.InsertUpdateI485_AppInfo(user, "n", true, labI485ID.Text, labApplicantID.Text, "10000",//labReferenceID.Text,
+                    "10001",//labRelationshipID.Text, 
+                    txtLastName.Text, txtFirstName.Text, txtMiddleName.Text, txtMaidenName.Text, txtDateOfBirth.Text, 
                     txtCityOfBirth.Text, int.Parse(ddlCountryOfBirth.SelectedValue), int.Parse(ddlCitizenship.SelectedValue), txtPhoneNumber.Text, 
                     txtEmailAddress.Text, txtPassportNumber.Text, txtDateOfIssue.Text, txtDateOfExpiry.Text, txtIssuingCountry.Text, txtAlienNumber.Text,
                     txtSSN.Text, txtCurrLegalStatus.Text, txtCurrVisaIssued.Text, txtCurrVisaExpires.Text, txtVisaNumber.Text, txtConsulateVisaIssued.Text, 
@@ -272,20 +281,20 @@ namespace KennedyAccess.Controls
                     rblVisaDecision.SelectedValue, txtDecisionDate.Text, rblHaveAppliedEAD.SelectedValue == "1", txtUSCISOffice.Text, txtEADDecision.Text
                    );
             }
-            SetEditVisibility(true);
+            SetEditVisibility_AppInfo(true);
         }
 
-        protected void btnCancel_Click(object sender, EventArgs e)
+        protected void btnCancel_AppInfoClick(object sender, EventArgs e)
         {
-            SetEditVisibility(true);
+            SetEditVisibility_AppInfo(true);
         }
 
         protected void ApplicantInfo_Changed(object sender, EventArgs e)
         {
-            cbkApplicantInfoChanged1.Checked= true;
+            cbkApplicantInfoChanged.Checked= true;
         }
 
-        protected void SetEditVisibility(bool bLock)
+        protected void SetEditVisibility_AppInfo(bool bLock)
         {
             BorderStyle sBorder = (bLock) ? BorderStyle.None : BorderStyle.NotSet;
 
@@ -334,5 +343,196 @@ namespace KennedyAccess.Controls
             txtUSCISOffice.ReadOnly = bLock;         txtUSCISOffice.BorderStyle = sBorder; 
             txtEADDecision.ReadOnly = bLock;         txtEADDecision.BorderStyle = sBorder;
         }
+
+
+        //-------------------------------------------------------------------------------------------Update Interprer's information----------------------------------------------------------------------------------------
+
+       
+        protected void btnEdit_InterpInfoClick(object sender, EventArgs e)
+        {
+            SetEditVisibility_InterpInfo(false);
+        }
+
+        protected void btnSave_InterpInfoClick(object sender, EventArgs e)
+        {
+            if (cbkInterpInfoChanged.Checked == true)
+            {
+                //save Interpreter info to db
+                bd.UpdateI485_InterpInfo(user, labI485ID.Text, 
+                    rblUnderstandEngOnI_485.SelectedValue == "1", txtLastNameOfInterp.Text, txtGivenNameOfInterp.Text, txtBusinessOfInterp.Text,
+                    txtStreetOfInterp.Text, txtCityInterp.Text, txtStateOfInterp.Text, int.Parse(ddlCountryOfInterp.SelectedValue),
+                    txtZipCodeOfInterp.Text, txtPhoneOfInterp.Text, txtEmailOfInterp.Text
+
+                   );
+            }
+            SetEditVisibility_InterpInfo(true);
+        }
+
+
+        protected void btnCancel_InterpInfoClick(object sender, EventArgs e)
+        {
+            SetEditVisibility_InterpInfo(true);
+        }
+
+        protected void InterpInfo_Changed(object sender, EventArgs e)
+        {
+            cbkInterpInfoChanged.Checked = true;
+        }
+
+        protected void SetEditVisibility_InterpInfo(bool bLock)
+        {
+            BorderStyle sBorder = (bLock) ? BorderStyle.None : BorderStyle.NotSet;
+
+            btnEdit2.Visible = bLock;
+            btnCancel2.Visible = btnSave2.Visible = !bLock;
+
+            txtLastName.ReadOnly = bLock;
+            txtLastName.BorderStyle = sBorder;
+            txtFirstName.ReadOnly = bLock;
+            txtFirstName.BorderStyle = sBorder;
+            rblUnderstandEngOnI_485.Enabled = !bLock;
+            rblUnderstandEngOnI_485.BorderStyle = sBorder;
+            txtLastNameOfInterp.ReadOnly = bLock;
+            txtLastNameOfInterp.BorderStyle = sBorder;
+            txtGivenNameOfInterp.ReadOnly = bLock;
+            txtGivenNameOfInterp.BorderStyle = sBorder;
+            txtBusinessOfInterp.ReadOnly = bLock;
+            txtBusinessOfInterp.BorderStyle = sBorder;
+            txtStreetOfInterp.ReadOnly = bLock;
+            txtStreetOfInterp.BorderStyle = sBorder;
+            txtCityInterp.ReadOnly = bLock;
+            txtCityInterp.BorderStyle = sBorder;
+            txtStateOfInterp.ReadOnly = bLock;
+            txtStateOfInterp.BorderStyle = sBorder;
+            ddlCountryOfInterp.Enabled = !bLock;
+            ddlCountryOfInterp.BorderStyle = sBorder;
+            txtZipCodeOfInterp.ReadOnly = bLock;
+            txtZipCodeOfInterp.BorderStyle = sBorder;
+            txtPhoneOfInterp.ReadOnly = bLock;
+            txtPhoneOfInterp.BorderStyle = sBorder;
+            txtEmailOfInterp.ReadOnly = bLock;
+            txtEmailOfInterp.BorderStyle = sBorder;
+
+        }
+        //-------------------------------------------------------------------------------------------UpdateBiographic Information----------------------------------------------------------------------------------------
+
+        protected void btnEdit_BioInfoClick(object sender, EventArgs e)
+        {
+            SetEditVisibility_BioInfo(false);
+        }
+
+        protected void btnSave_BioInfoClick(object sender, EventArgs e)
+        {
+            if (cbkBioInfoChanged.Checked == true)
+            {
+                //save Interpreter info to db
+                bd.UpdateI485_BioInfo(user, labI485ID.Text,
+                    rblEthnicity.SelectedValue == "1", rblRace.SelectedValue == "1", txtHeightFt.Text, txtHeightIn.Text,
+                    txtHeightCm.Text, txtWeightLbs.Text, txtWeightKg.Text, rblEyeColor.SelectedValue == "1",
+                    rblHairColor.SelectedValue == "1"  
+
+                   );
+            }
+            SetEditVisibility_BioInfo(true);
+        }
+
+
+        protected void btnCancel_BioInfoClick(object sender, EventArgs e)
+        {
+            SetEditVisibility_BioInfo(true);
+        }
+
+        protected void BioInfo_Changed(object sender, EventArgs e)
+        {
+            cbkBioInfoChanged.Checked = true;
+        }
+
+        protected void SetEditVisibility_BioInfo(bool bLock)
+        {
+            BorderStyle sBorder = (bLock) ? BorderStyle.None : BorderStyle.NotSet;
+
+            btnEdit3.Visible = bLock;
+            btnCancel3.Visible = btnSave3.Visible = !bLock;
+
+            rblEthnicity.Enabled = !bLock;
+            rblEthnicity.BorderStyle = sBorder;
+            rblRace.Enabled = !bLock;    
+            rblRace.BorderStyle = sBorder;
+            txtHeightFt.ReadOnly = bLock;               
+            txtHeightFt.BorderStyle = sBorder;
+            txtHeightIn.ReadOnly = bLock;               
+            txtHeightIn.BorderStyle = sBorder;
+            txtHeightCm.ReadOnly = bLock;               
+            txtHeightCm.BorderStyle = sBorder;
+            txtWeightLbs.ReadOnly = bLock;              
+            txtWeightLbs.BorderStyle = sBorder;
+            txtWeightKg.ReadOnly = bLock;               
+            txtWeightKg.BorderStyle = sBorder;
+            rblEyeColor.Enabled = !bLock; 
+            rblEyeColor.BorderStyle = sBorder;
+            rblHairColor.Enabled = !bLock;
+            rblHairColor.BorderStyle = sBorder;
+
+        }
+        //-------------------------------------------------------------------------------------------UpdateDocumentation Information----------------------------------------------------------------------------------------
+
+        //protected void btnEdit_DocInfoClick(object sender, EventArgs e)
+        //{
+        //    SetEditVisibility_DocInfo(false);
+        //}
+
+        //protected void btnSave_DocInfoClick(object sender, EventArgs e)
+        //{
+        //    if (cbkDocInfoChanged.Checked == true)
+        //    {
+        //        //save Interpreter info to db
+        //        bd.UpdateI485_BioInfo(user, labI485ID.Text,
+        //            rblEthnicity.SelectedValue == "1", rblRace.SelectedValue == "1", txtHeightFt.Text, txtHeightIn.Text,
+        //            txtHeightCm.Text, txtWeightLbs.Text, txtWeightKg.Text, rblEyeColor.SelectedValue == "1",
+        //            rblHairColor.SelectedValue == "1"
+
+        //           );
+        //    }
+        //    SetEditVisibility_DocInfo(true);
+        //}
+
+
+        //protected void btnCancel_DocInfoClick(object sender, EventArgs e)
+        //{
+        //    SetEditVisibility_DocInfo(true);
+        //}
+
+        //protected void DocInfo_Changed(object sender, EventArgs e)
+        //{
+        //    cbkDocInfoChanged.Checked = true;
+        //}
+
+        //protected void SetEditVisibility_DocInfo(bool bLock)
+        //{
+        //    BorderStyle sBorder = (bLock) ? BorderStyle.None : BorderStyle.NotSet;
+
+        //    btnEdit3.Visible = bLock;
+        //    btnCancel3.Visible = btnSave3.Visible = !bLock;
+
+        //    rblEthnicity.Enabled = !bLock;
+        //    rblEthnicity.BorderStyle = sBorder;
+        //    rblRace.Enabled = !bLock;
+        //    rblRace.BorderStyle = sBorder;
+        //    txtHeightFt.ReadOnly = bLock;
+        //    txtHeightFt.BorderStyle = sBorder;
+        //    txtHeightIn.ReadOnly = bLock;
+        //    txtHeightIn.BorderStyle = sBorder;
+        //    txtHeightCm.ReadOnly = bLock;
+        //    txtHeightCm.BorderStyle = sBorder;
+        //    txtWeightLbs.ReadOnly = bLock;
+        //    txtWeightLbs.BorderStyle = sBorder;
+        //    txtWeightKg.ReadOnly = bLock;
+        //    txtWeightKg.BorderStyle = sBorder;
+        //    rblEyeColor.Enabled = !bLock;
+        //    rblEyeColor.BorderStyle = sBorder;
+        //    rblHairColor.Enabled = !bLock;
+        //    rblHairColor.BorderStyle = sBorder;
+
+        //}
     }
 }

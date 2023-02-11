@@ -1211,67 +1211,6 @@ namespace KennedyAccess.Classes
         }
 
         public string InsertUpdateI485_AppInfo(User user,
-            string Status, bool Active,
-            string I485ID, string ApplicantID,
-            string FamilyRelationID, string LastName, string FirstName)
-        {
-            string sResult;
-            SqlDataReader dr = SqlHelper.ExecuteReader(
-                    Global.dbcnn, "InsertUpdateI485_AppInfo",
-                    new SqlParameter("@FranchiseID", user.FranchiseID),
-                    new SqlParameter("@UserID", user.UserID),
-
-                    new SqlParameter("@Status", Status),
-                    new SqlParameter("@Active", Active),
-                    new SqlParameter("@I485ID", I485ID),
-                    new SqlParameter("@ApplicantID", ApplicantID),
-                    new SqlParameter("@FamilyRelationID", FamilyRelationID),
-                    new SqlParameter("@LastName", LastName),
-                    new SqlParameter("@FirstName", FirstName)
-                );
-
-            dr.Read();
-            sResult = dr[0].ToString();
-            dr.Close();
-
-            return sResult;
-        }
-
-        public DataTable GetFamilyMember(User user, string ApplicantID)
-        {
-            DataTable dtFamilyMember = null;
-            DataSet ds = (SqlHelper.ExecuteDataset(Global.dbcnn, "GetFamilyMember",
-                new SqlParameter("@FranchiseID", user.FranchiseID),
-                    new SqlParameter("@UserID", user.UserID),
-                    new SqlParameter("@ApplicantID", ApplicantID)));
-
-            if (ds != null && ds.Tables.Count > 0)
-            {
-                dtFamilyMember = ds.Tables[0];
-            }
-            return dtFamilyMember;
-        }
-
-        public void InsertUpdateFamilyMember(User user,
-            string ApplicantID, string ApplicantFamilyID, string Status, bool Active,
-            string RelationshipID, string LastName, string FirstName, string MI)
-        {
-            SqlDataReader dr = SqlHelper.ExecuteReader(
-                    Global.dbcnn, "InsertUpdateFamilyMember",
-                    new SqlParameter("@FranchiseID", user.FranchiseID),
-                    new SqlParameter("@UserID", user.UserID),
-                    new SqlParameter("@ApplicantID", ApplicantID),
-                    new SqlParameter("@ApplicantFamilyID", ApplicantFamilyID),
-                    new SqlParameter("@Status", Status),
-                    new SqlParameter("@Active", Active),
-                    new SqlParameter("@RelationshipID", RelationshipID),
-                    new SqlParameter("@FirstName", FirstName),
-                    new SqlParameter("@LastName", LastName),
-                    new SqlParameter("@MI", MI)
-                );
-        }
-
-        public string InsertUpdateI485_AppInfo(User user,
             string Status, bool Active, string I485ID, string ApplicantID, string ReferenceID,
             string FamilyRelationID, string LastName, string FirstName, string MiddleName, string MaidenName, string DateOfBirth,
             string CityOfBirth, int CountryOfBirth, int Citizenship, string PhoneNumber,
@@ -1342,6 +1281,104 @@ namespace KennedyAccess.Classes
             dr.Close();
 
             return sResult;
+        }
+
+
+        public DataTable GetFamilyMember(User user, string ApplicantID)
+        {
+            DataTable dtFamilyMember = null;
+            DataSet ds = (SqlHelper.ExecuteDataset(Global.dbcnn, "GetFamilyMember",
+                new SqlParameter("@FranchiseID", user.FranchiseID),
+                    new SqlParameter("@UserID", user.UserID),
+                    new SqlParameter("@ApplicantID", ApplicantID)));
+
+            if (ds != null && ds.Tables.Count > 0)
+            {
+                dtFamilyMember = ds.Tables[0];
+            }
+            return dtFamilyMember;
+        }
+
+        public void InsertUpdateFamilyMember(User user,
+            string ApplicantID, string ApplicantFamilyID, string Status, bool Active,
+            string RelationshipID, string LastName, string FirstName, string MI)
+        {
+            SqlDataReader dr = SqlHelper.ExecuteReader(
+                    Global.dbcnn, "InsertUpdateFamilyMember",
+                    new SqlParameter("@FranchiseID", user.FranchiseID),
+                    new SqlParameter("@UserID", user.UserID),
+                    new SqlParameter("@ApplicantID", ApplicantID),
+                    new SqlParameter("@ApplicantFamilyID", ApplicantFamilyID),
+                    new SqlParameter("@Status", Status),
+                    new SqlParameter("@Active", Active),
+                    new SqlParameter("@RelationshipID", RelationshipID),
+                    new SqlParameter("@FirstName", FirstName),
+                    new SqlParameter("@LastName", LastName),
+                    new SqlParameter("@MI", MI)
+                );
+        }
+
+        public DataTable GetFamilyI485ByApplicantID(User user, string ApplicantID)
+        {
+            DataTable dtFamilyI485 = null;
+            DataSet ds = (SqlHelper.ExecuteDataset(Global.dbcnn, "GetFamilyI485ByApplicantID",
+                new SqlParameter("@FranchiseID", user.FranchiseID),
+                    new SqlParameter("@UserID", user.UserID),
+                    new SqlParameter("@ApplicantID", ApplicantID)));
+
+            if (ds != null && ds.Tables.Count > 0)
+            {
+                dtFamilyI485 = ds.Tables[0];
+            }
+            return dtFamilyI485;
+        }
+        public void UpdateI485_InterpInfo(User user, string I485ID,
+            bool UnderstandEngOnI_485, string LastNameOfInterp, string GivenNameOfInterp, string BusinessOfInterp,
+            string StreetOfInterp, string CityInterp, string StateOfInterp, int CountryOfInterp,
+            string ZipCodeOfInterp, string PhoneOfInterp, string EmailOfInterp
+            )
+        {
+
+            SqlDataReader dr = SqlHelper.ExecuteReader(
+                 Global.dbcnn, "UpdateI485_InterpInfo",
+                 new SqlParameter("@FranchiseID", user.FranchiseID),
+                 new SqlParameter("@UserID", user.UserID),
+                 new SqlParameter("@I485ID", I485ID),
+                 new SqlParameter("@UnderstandEngOnI_485", UnderstandEngOnI_485),
+                 new SqlParameter("@LastNameOfInterp", LastNameOfInterp),
+                 new SqlParameter("@GivenNameOfInterp", GivenNameOfInterp),
+                 new SqlParameter("@BusinessOfInterp", BusinessOfInterp),
+                 new SqlParameter("@StreetOfInterp", StreetOfInterp),
+                 new SqlParameter("@CityInterp", CityInterp),
+                 new SqlParameter("@StateOfInterp", StateOfInterp),
+                 new SqlParameter("@CountryOfInterp", CountryOfInterp),
+                 new SqlParameter("@ZipCodeOfInterp", ZipCodeOfInterp),
+                 new SqlParameter("@PhoneOfInterp", PhoneOfInterp),
+                 new SqlParameter("@EmailOfInterp", EmailOfInterp)
+                );
+        }
+
+        public void UpdateI485_BioInfo(User user, string I485ID,
+           bool bEthnicity, bool sRace, string sHeightFt, string sHeightIn,
+           string sHeightCm, string sWeightLbs, string sWeightKg, bool sEyeColor,
+           bool sHairColor
+           )
+        {
+            SqlDataReader dr = SqlHelper.ExecuteReader(
+                 Global.dbcnn, "UpdateI485_BioInfo",
+                 new SqlParameter("@FranchiseID", user.FranchiseID),
+                 new SqlParameter("@UserID", user.UserID),
+                 new SqlParameter("@I485ID", I485ID),
+                 new SqlParameter("@Ethnicity", bEthnicity),
+                 new SqlParameter("@Race", sRace),
+                 new SqlParameter("@HeightFt", sHeightFt),
+                 new SqlParameter("@HeightIn", sHeightIn),
+                 new SqlParameter("@HeightCm", sHeightCm),
+                 new SqlParameter("@WeightLbs", sWeightLbs),
+                 new SqlParameter("@WeightKg", sWeightKg),
+                 new SqlParameter("@EyeColor", sEyeColor),
+                 new SqlParameter("@HairColor", sHairColor)
+                );
         }
     }
 }
