@@ -33,6 +33,15 @@ namespace KennedyAccess
         protected global::System.Web.UI.WebControls.CheckBox cbkCampaignChanged;
 
         /// <summary>
+        /// cbkPostJobValue control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbkPostJobValue;
+
+        /// <summary>
         /// labTitle control.
         /// </summary>
         /// <remarks>
@@ -330,15 +339,6 @@ namespace KennedyAccess
         protected global::System.Web.UI.WebControls.Panel panJobOpportunity;
 
         /// <summary>
-        /// UpdatePanel2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel2;
-
-        /// <summary>
         /// tabJobOpportunity control.
         /// </summary>
         /// <remarks>
@@ -348,13 +348,13 @@ namespace KennedyAccess
         protected global::System.Web.UI.WebControls.Table tabJobOpportunity;
 
         /// <summary>
-        /// rblI_34_ListJob control.
+        /// cbkI_34_ListJob control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rblI_34_ListJob;
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox cbkI_34_ListJob;
 
         /// <summary>
         /// btnSaveJobOpportunity control.

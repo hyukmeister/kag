@@ -50,7 +50,8 @@ namespace KennedyAccess
                     txtCampaignDesc.Focus();
                     labEmployerID.Text = user.ObjectID.ToString();
                     labCampaignID.Text = "0";
-                    rblI_34_ListJob.SelectedValue = "0";
+                    //rblI_34_ListJob.SelectedValue = "0";
+                    cbkI_34_ListJob.Checked = false;
 
                     PopulatePrevailingWageDDL("");
 
@@ -118,7 +119,8 @@ namespace KennedyAccess
                             rblI_31_SecondSatAdvertisement.SelectedValue = (drJob["I_31_SecondSatAdvertisement"].ToString() == "True") ? "1" : "0";
                             txtI_33_NameOfSecondSatNewspaper.Text = (drJob["I_33_NameOfSecondSatNewspaper"].ToString());
                             txtI_32_DateOfSecondSatAdvertisement.Text = (drJob["I_32_DateOfSecondSatAdvertisement"].ToString() == "") ? "" : DateTime.Parse(drJob["I_32_DateOfSecondSatAdvertisement"].ToString()).ToString("yyyy-MM-dd");
-                            rblI_34_ListJob.SelectedValue = (drJob["I_34_ListJob"].ToString() == "True") ? "1" : "0";
+                            //rblI_34_ListJob.SelectedValue = (drJob["I_34_ListJob"].ToString() == "True") ? "1" : "0";
+                            cbkI_34_ListJob.Checked = drJob["I_34_ListJob"].ToString() == "True";
 
                             DataTable dtApplicants = bd.GetApplication(user, "0", lblJobListingID.Text, "0");
                             if (dtApplicants != null && dtApplicants.Rows.Count > 0)
@@ -129,11 +131,13 @@ namespace KennedyAccess
                             {
                                 btnApplications.Text = "  Applications (0)";
                             }
+
+                            cbkPostJobValue.Checked = cbkI_34_ListJob.Checked;
                         }
                         else
                         {
                             lblJobListingID.Text = "0";
-                            rblI_34_ListJob.SelectedValue = "0";
+                            //rblI_34_ListJob.SelectedValue = "0";
                         }
                     }
 
@@ -331,8 +335,9 @@ namespace KennedyAccess
 
             if(user.HasRole("ListJobOpportunity"))
             {
-                rblI_34_ListJob.Enabled = !bLock;
-                rblI_34_ListJob.BorderStyle = sBorder;
+                //rblI_34_ListJob.Enabled = !bLock;
+                //rblI_34_ListJob.BorderStyle = sBorder;
+                cbkI_34_ListJob.Disabled= bLock;
             }
         }
 
@@ -361,7 +366,8 @@ namespace KennedyAccess
                 (rblI_31_SecondSatAdvertisement.SelectedValue == "1") ? true : false,
                 bd.EmptyToNull(txtI_32_DateOfSecondSatAdvertisement.Text),
                 txtI_33_NameOfSecondSatNewspaper.Text,
-                (rblI_34_ListJob.SelectedValue == "1") ? true : false
+                //(rblI_34_ListJob.SelectedValue == "1") ? true : false
+                cbkI_34_ListJob.Checked
                 );
             cbkJobOpportunityChanged.Checked = false;
             Session["JobListingID"] = lblJobListingID.Text = sJobOpportunityID;
@@ -373,7 +379,7 @@ namespace KennedyAccess
         }
         protected void btnSaveJobOpportunity_Click(object sender, EventArgs e)
         {
-            if (cbkJobOpportunityChanged.Checked)
+            if (cbkJobOpportunityChanged.Checked || cbkPostJobValue.Checked != cbkI_34_ListJob.Checked)
             {
                 // save job listing : Opportunity
                 InsertUpdateJobOpportunity();

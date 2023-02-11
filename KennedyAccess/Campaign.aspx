@@ -9,9 +9,9 @@
 
     <div style="background-image:url('images/kagimg10.jpg'); filter:blur(3px);height: 100px;width:900px;background-size:cover;background-position:center;position:relative; opacity:55%; top:20px">&nbsp;</div>
 
-    <asp:CheckBox ID="cbkJobOpportunityChanged" runat="server" Checked="false" Visible="false" />
+    <asp:CheckBox ID="cbkJobOpportunityChanged" runat="server" Checked="false" Visible="true" />
     <asp:CheckBox ID="cbkCampaignChanged" runat="server" Checked="false" Visible="false" />
-
+    <asp:CheckBox ID="cbkPostJobValue" runat="server" />
     <h2>
         <asp:Label ID="labTitle" runat="server" Text="Campaign & Job Information"></asp:Label></h2>
     <div class="jumbotron" style="width: 900px;">
@@ -130,7 +130,7 @@
                         <asp:Table ID="Table1" runat="server" class="table table-hover">
                             <asp:TableRow>
                                 <asp:TableCell Width="450px" HorizontalAlign="Left">
-                                    <asp:DropDownList ID="ddlPrevailingWages" runat="server" Width="220px" AutoPostBack="True" Style="border-radius: 8px;" OnSelectedIndexChanged="ddlPrevailingWages_Change"></asp:DropDownList><br />
+                                    <asp:DropDownList ID="ddlPrevailingWages" runat="server" Width="220px" CssClass="btn btn-default btn-outline-secondary align-items-start text-start" AutoPostBack="True" Style="border-radius: 8px;" OnSelectedIndexChanged="ddlPrevailingWages_Change"></asp:DropDownList><br />
                                 </asp:TableCell>
                                 <asp:TableCell  Width="450px" HorizontalAlign="Right">
                                     <asp:Button ID="btnSavePrevWage" runat="server" class="btn btn-primary" Text="Save" ValidationGroup="CampaginGroup" OnClick="btnSavePrevWage_Click" Visible="false"/>&nbsp;
@@ -154,16 +154,18 @@
                 <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushCampaign">
                     <div class="accordion-body">
                         <asp:Panel ID="panJobOpportunity" runat="server">
-                        <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-                            <ContentTemplate>
+<%--                        <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                            <ContentTemplate>--%>
                             <asp:Table ID="tabJobOpportunity" runat="server" class="table table-hover">
                                 <asp:TableRow>
                                     <asp:TableCell ColumnSpan="2">
                                         <label for="floatingInputGrid">Post Job Opportunity</label>
-                                        <asp:RadioButtonList ID="rblI_34_ListJob" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" Enabled="false" BorderStyle="None" OnSelectedIndexChanged="JobOpportunityChanged">
+                                        <%--<asp:RadioButtonList ID="rblI_34_ListJob" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" Enabled="false" BorderStyle="None" OnSelectedIndexChanged="JobOpportunityChanged">
                                             <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                             <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;"/>
-                                        </asp:RadioButtonList><br />
+                                        </asp:RadioButtonList>--%>
+                                        <input runat="server" id="cbkI_34_ListJob" type="checkbox" data-toggle="toggle" data-onstyle="secondary" data-offstyle="secondary" data-style="pill" data-on="Post" data-off="Pending" data-width="120" data-height="30" >
+                                        <br />
                                      </asp:TableCell>
                                     <asp:TableCell ColumnSpan="2" HorizontalAlign="Right">
                                         <asp:Button ID="btnSaveJobOpportunity" runat="server" class="btn btn-primary" Text="Save" OnClick="btnSaveJobOpportunity_Click" Visible="false" />
@@ -362,8 +364,8 @@
                                     </asp:TableCell>
                                 </asp:TableRow>
                             </asp:Table>
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
+<%--                            </ContentTemplate>
+                        </asp:UpdatePanel>--%>
                         </asp:Panel>
                     </div>
                 </div>

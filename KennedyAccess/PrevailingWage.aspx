@@ -23,8 +23,9 @@
                     </div>
                 </asp:TableCell>
                 <asp:TableCell ><br />    
-                    <asp:DropDownList ID="ddlEmployerList" runat="server" Enabled="false" Style="border-radius: 15px;" Width="350px"
-                        DropDownStyle="DropDown" MaxLength="8" RenderMode="Block" OnSelectedIndexChanged="ddlEmployerList_SelectedIndexChanged"></asp:DropDownList>
+                    <asp:DropDownList ID="ddlEmployerList" runat="server" Enabled="false" Style="border-radius: 10px;" Width="350px" 
+                        CssClass="btn btn-default btn-outline-secondary align-items-start text-start" DropDownStyle="DropDown" 
+                        MaxLength="8" RenderMode="Block" OnSelectedIndexChanged="ddlEmployerList_SelectedIndexChanged"></asp:DropDownList>
                     <asp:RangeValidator ID="rvEmployerList" runat="server" ErrorMessage="Employer selection is required" ForeColor="Red"
                         ControlToValidate="ddlEmployerList" MinimumValue="10000" MaximumValue="zzzzz"><br /></asp:RangeValidator>
                 </asp:TableCell>
