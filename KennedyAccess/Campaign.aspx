@@ -9,7 +9,7 @@
 
     <div style="background-image:url('images/kagimg10.jpg'); filter:blur(3px);height: 100px;width:900px;background-size:cover;background-position:center;position:relative; opacity:55%; top:20px">&nbsp;</div>
 
-    <asp:CheckBox ID="cbkJobOpportunityChanged" runat="server" Checked="false" Visible="true" />
+    <asp:CheckBox ID="cbkJobOpportunityChanged" runat="server" Checked="false" Visible="false" />
     <asp:CheckBox ID="cbkCampaignChanged" runat="server" Checked="false" Visible="false" />
     <asp:CheckBox ID="cbkPostJobValue" runat="server" />
     <h2>

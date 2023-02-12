@@ -32,27 +32,28 @@ namespace KennedyAccess
                     Page.Title = UserFiles.UserName = labApplicant.Text = drApplicant["FirstName"].ToString() + " " + drApplicant["LastName"].ToString();
                     ApplicantInfo.EnablePhotoUpload(false);
 
-                    DataTable dt = bd.GetFamilyI485ByApplicantID(user, labApplicantID.Text);
-                    if (dt.Rows.Count > 0)
-                    {
-                        DataRow dr = dt.Rows[0];
-                        ViewState["FamilyI485"] = dt;
+                    I485.ApplicantID = labApplicantID.Text;
 
-                        ddlFamilyMember.DataSource = dt;
-                        ddlFamilyMember.DataValueField = "ApplicantFamilyID";
-                        ddlFamilyMember.DataTextField = "FirstName";
-                        ddlFamilyMember.DataBind();
-                        ddlFamilyMember.SelectedIndex= 0;
+                    //DataTable dt = bd.GetFamilyI485ByApplicantID(user, labApplicantID.Text);
+                    //if (dt.Rows.Count > 0)
+                    //{
+                    //    DataRow dr = dt.Rows[0];
+                    //    ViewState["FamilyI485"] = dt;
 
-                        I485.ApplicantID = labApplicantID.Text;
-                        I485.ReferenceID = dr["ApplicantFamilyID"].ToString();
-                        I485.RelationshipID = dr["RelationshipID"].ToString();
-                        if (ddlFamilyMember.SelectedValue != "0")
-                        {
-                            I485.I485ID = ddlFamilyMember.SelectedValue;
-                        }
+                    //    ddlFamilyMember.DataSource = dt;
+                    //    ddlFamilyMember.DataValueField = "ApplicantFamilyID";
+                    //    ddlFamilyMember.DataTextField = "FirstName";
+                    //    ddlFamilyMember.DataBind();
+                    //    ddlFamilyMember.SelectedIndex= 0;
 
-                    }
+                    //    I485.ApplicantID = labApplicantID.Text;
+                    //    I485.ReferenceID = dr["ApplicantFamilyID"].ToString();
+                    //    I485.RelationshipID = dr["RelationshipID"].ToString();
+                    //    if (ddlFamilyMember.SelectedValue != "0")
+                    //    {
+                    //        I485.I485ID = ddlFamilyMember.SelectedValue;
+                    //    }
+                    //}
                 }
             }
             //else

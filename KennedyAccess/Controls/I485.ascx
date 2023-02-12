@@ -1,15 +1,22 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="I485.ascx.cs" Inherits="KennedyAccess.Controls.I485" %>
 <%--<asp:Content ID="I485Content" ContentPlaceHolderID="MainContent" runat="server">--%>
 <div class="accordion-group" id="I485AccordionParent">
-    <asp:Label ID="labI485ID" runat="server" Visible="false"></asp:Label>
     <asp:Label ID="labApplicantID" runat="server" Visible="false"></asp:Label>
+    <asp:Label ID="labI485ID" runat="server" Visible="false"></asp:Label>
     <asp:Label ID="labReferenceID" runat="server" Visible="false"></asp:Label>
     <asp:Label ID="labRelationshipID" runat="server" Visible="false"></asp:Label>
 
+    <div class="mb-3;" style="width:350px">
+        <label for="ddlCountry" class="form-label">Family Member</label><br />
+        <asp:DropDownList ID="ddlFamilyMember" CssClass="btn btn-default btn-outline-secondary align-items-start text-start" runat="server" Width="300px" OnSelectedIndexChanged="ddlFamilyMember_SelectedIndexChanged" ></asp:DropDownList>
+    </div>
+
+
     <div class="accordion-item">
-        <asp:CheckBox ID="cbkApplicantInfoChanged" runat="server" Checked="false" />
+        
         <h2 class="accordion-header" id="headingI485_One">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseI485_One" aria-expanded="false" aria-controls="collapseI485_One">
+                <asp:CheckBox ID="cbkApplicantInfoChanged" runat="server" Checked="false" />
                 <b>Applicant Information</b>
             </button>
         </h2>
@@ -20,9 +27,7 @@
                         <ContentTemplate>
                             <asp:Table ID="tblI485_ClientApplication1" runat="server" class="table table-hover" Width="100%">
                                 <asp:TableRow>
-                                    <asp:TableCell ColumnSpan="2" Width="450px">
-                                    </asp:TableCell>
-                                    <asp:TableCell ColumnSpan="2" HorizontalAlign="Left">
+                                    <asp:TableCell ColumnSpan="4" HorizontalAlign="Right">
                                         <asp:Button ID="btnEdit1" runat="server" class="btn btn-primary" Text="Edit" CausesValidation="false" OnClick="btnEdit_AppInfoClick" />
                                         <asp:Button ID="btnSave1" runat="server" class="btn btn-primary" Text="Save" OnClick="btnSave_AppInfoClick" Visible="false" />&nbsp;
                                         <asp:Button ID="btnCancel1" runat="server" class="btn btn-default" Text="Cancel" CausesValidation="false" OnClientClick="return confirm('Cancel without saving?');" OnClick="btnCancel_AppInfoClick" Visible="false" />
@@ -376,9 +381,9 @@
     </div>
     <%----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%>
     <div class="accordion-item">
-         <asp:CheckBox ID="cbkInterpInfoChanged" runat="server" Checked="false" />
         <h2 class="accordion-header" id="headingI485_Two">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseI485_Two" aria-expanded="false" aria-controls="collapseI485_Two">
+                <asp:CheckBox ID="cbkInterpInfoChanged" runat="server" Checked="false" />
                 <b>Interprer's information (If you need)</b>
             </button>
         </h2>
@@ -386,9 +391,7 @@
             <div class="accordion-body">
                 <asp:Table ID="tblI485_ClientApplication2" runat="server" class="table table-hover" Width="100%">
                     <asp:TableRow>
-                        <asp:TableCell ColumnSpan="2" Width="450px">
-                        </asp:TableCell>
-                        <asp:TableCell ColumnSpan="2" HorizontalAlign="Left">
+                        <asp:TableCell ColumnSpan="4" HorizontalAlign="Right">
                             <asp:Button ID="btnEdit2" runat="server" class="btn btn-primary" Text="Edit" CausesValidation="false"  OnClick="btnEdit_InterpInfoClick" />
                             <asp:Button ID="btnSave2" runat="server" class="btn btn-primary" Text="Save" OnClick="btnSave_InterpInfoClick" Visible="false" />&nbsp;
                             <asp:Button ID="btnCancel2" runat="server" class="btn btn-default" Text="Cancel" CausesValidation="false" OnClientClick="return confirm('Cancel without saving?');" OnClick="btnCancel_InterpInfoClick" Visible="false" />
@@ -490,9 +493,9 @@
     </div>
     <%----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%>
     <div class="accordion-item">
-         <asp:CheckBox ID="cbkBioInfoChanged" runat="server" Checked="false" />
         <h2 class="accordion-header" id="headingI485_Three">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseI485_Three" aria-expanded="false" aria-controls="collapseI485_Three">
+                <asp:CheckBox ID="cbkBioInfoChanged" runat="server" Checked="false" />
                 <b>Biographic Information</b>
             </button>
         </h2>
@@ -500,9 +503,7 @@
             <div class="accordion-body">
                 <asp:Table ID="tblI485_ClientApplication3" runat="server" class="table table-hover" Width="100%">
                     <asp:TableRow>
-                        <asp:TableCell ColumnSpan="2" Width="450px">
-                        </asp:TableCell>
-                        <asp:TableCell ColumnSpan="2" HorizontalAlign="Left">
+                        <asp:TableCell ColumnSpan="4" HorizontalAlign="Right">
                             <asp:Button ID="btnEdit3" runat="server" class="btn btn-primary" Text="Edit" CausesValidation="false"  OnClick="btnEdit_BioInfoClick" />
                             <asp:Button ID="btnSave3" runat="server" class="btn btn-primary" Text="Save" OnClick="btnSave_BioInfoClick" Visible="false" />&nbsp;
                             <asp:Button ID="btnCancel3" runat="server" class="btn btn-default" Text="Cancel" CausesValidation="false" OnClientClick="return confirm('Cancel without saving?');" OnClick="btnCancel_BioInfoClick" Visible="false" />
@@ -627,183 +628,203 @@
     </div>
     <%----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%>
     <div class="accordion-item">
-        <asp:CheckBox ID="cbkDocInfoChanged" runat="server" Checked="false" />
         <h2 class="accordion-header" id="headinghI485_Four">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseI485_Four" aria-expanded="false" aria-controls="collapseI485_Four">
+                <asp:CheckBox ID="cbkDocInfoChanged" runat="server" Checked="false" />
                 <b>Documentation (Mandatory)</b>
             </button>
         </h2>
         <div id="collapseI485_Four" class="accordion-collapse collapse" aria-labelledby="headingI485_Four" data-bs-parent="#I485AccordionParent">
             <div class="accordion-body">
-                <asp:Table ID="tblI485_ClientApplication4" runat="server" class="table table-hover" Width="100%">
-
-                  <%-- <asp:TableRow>
-                        <asp:TableCell ColumnSpan="2" Width="450px">
-                        </asp:TableCell>
-                        <asp:TableCell ColumnSpan="2" HorizontalAlign="Left">
-                            <asp:Button ID="btnEdit4" runat="server" class="btn btn-primary" Text="Edit" CausesValidation="false"  OnClick="btnEdit_DocInfoClick" />
-                            <asp:Button ID="btnSave4" runat="server" class="btn btn-primary" Text="Save" OnClick="btnSave_DocInfoClick" Visible="false" />&nbsp;
-                            <asp:Button ID="btnCancel4" runat="server" class="btn btn-default" Text="Cancel" CausesValidation="false" OnClientClick="return confirm('Cancel without saving?');" OnClick="btnCancel_DocInfoClick" Visible="false" />
-                        </asp:TableCell>
-                    </asp:TableRow>--%>
-                    <asp:TableRow>
-                        <asp:TableCell ColumnSpan="3">
-                        <br />
-                        <label for="floatingInputGrid" style="margin-right: 200px;" >Item: FOR MAIN APPLICANT AND EACH DEPENDENT</label>
-                        </asp:TableCell>
-                        <asp:TableCell>
+                <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                    <ContentTemplate>
+                        <asp:Table ID="tblI485_ClientApplication4" runat="server" class="table table-hover" Width="100%">
+                            <asp:TableRow>
+                                <asp:TableCell ColumnSpan="4" HorizontalAlign="Right">
+                                    <asp:Button ID="btnEdit4" runat="server" class="btn btn-primary" Text="Edit" CausesValidation="false" OnClick="btnEdit_DocInfoClick" />
+                                    <asp:Button ID="btnSave4" runat="server" class="btn btn-primary" Text="Save" OnClick="btnSave_DocInfoClick" Visible="false" />&nbsp;
+                                    <asp:Button ID="btnCancel4" runat="server" class="btn btn-default" Text="Cancel" CausesValidation="false" OnClientClick="return confirm('Cancel without saving?');" OnClick="btnCancel_DocInfoClick" Visible="false" />
+                                </asp:TableCell>
+                            </asp:TableRow>
+                            <asp:TableRow>
+                                <asp:TableCell ColumnSpan="2">
+                            <br />
+                            <label for="floatingInputGrid" style="margin-right: 200px;" >Item: FOR MAIN APPLICANT AND EACH DEPENDENT</label>
+                                </asp:TableCell>
+                                <asp:TableCell>
                            <br />
-                        <label for="floatingInputGrid">Original File <br />(Check off if attached)</label>
-                        <label for="floatingInputGrid" style="margin-right: 20px;" >Translated Into English <br />(Check off if attached)</label>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell ColumnSpan="3">
-                        <br />
-                        <label for="floatingInputGrid">Filing fee $1,225 USD for each person 14 and over</label>
-                        </asp:TableCell>
-                        <asp:TableCell>
+                            <label for="floatingInputGrid">Original File <br />(Check off if attached)</label>
+                                </asp:TableCell>
+                                <asp:TableCell>
+                            <label for="floatingInputGrid" style="margin-right: 20px;" >Translated Into English <br />(Check off if attached)</label>
+                                </asp:TableCell>
+                            </asp:TableRow>
+                            <asp:TableRow>
+                                <asp:TableCell ColumnSpan="2">
                             <br />
-                            <asp:CheckBoxList ID="cbxFilingFee14over" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
-                                <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 150px;" />
-                                <asp:ListItem Enabled="false" Text="N/A" Value="0" />
-                            </asp:CheckBoxList>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell ColumnSpan="3">
-                        <br />
-                        <label for="floatingInputGrid" style="margin-right: 100px;" >Filing Fee $750 USD for each person under 14</label>
-                        </asp:TableCell>
-                        <asp:TableCell>
+                            <label for="floatingInputGrid">Filing fee $1,225 USD for each person 14 and over</label>
+                                </asp:TableCell>
+                                <asp:TableCell>
+                                    <br />
+                                    <asp:CheckBox ID="cbxFilingFee14over" runat="server" OnCheckedChanged="DocInfo_Changed" />
+                                </asp:TableCell>
+                                <asp:TableCell>
+                             <br />
+                            N/A
+                                </asp:TableCell>
+                            </asp:TableRow>
+                            <asp:TableRow>
+                                <asp:TableCell ColumnSpan="2">
                             <br />
-                            <asp:CheckBoxList ID="cbxFilingFeeUnder14" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
-                                <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 150px;" />
-                                <asp:ListItem Enabled="false" Text="N/A" Value="0" />
-                            </asp:CheckBoxList>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell ColumnSpan="3">
-                        <br />
-                        <label for="floatingInputGrid" style="margin-right: 100px;" >6 Passport Sized photos (2in. x 2in.) for each person</label>
-                        </asp:TableCell>
-                        <asp:TableCell>
+                            <label for="floatingInputGrid">Filing Fee $750 USD for each person under 14</label>
+                                </asp:TableCell>
+                                <asp:TableCell>
+                                    <br />
+                                    <asp:CheckBox ID="cbxFilingFeeUnder14" runat="server" OnCheckedChanged="DocInfo_Changed" />
+                                </asp:TableCell>
+                                <asp:TableCell>
+                             <br />
+                            N/A
+                                </asp:TableCell>
+                            </asp:TableRow>
+                            <asp:TableRow>
+                                <asp:TableCell ColumnSpan="2">
                             <br />
-                            <asp:CheckBoxList ID="cbxSixPassportPhotos" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
-                                <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 150px;" />
-                                <asp:ListItem Enabled="false" Text="N/A" Value="0" />
-                            </asp:CheckBoxList>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell ColumnSpan="3">
-                        <br />
-                        <label for="floatingInputGrid" style="margin-right: 100px;">I-693 Medical Exam for each person</label>
-                        </asp:TableCell>
-                        <asp:TableCell>
+                            <label for="floatingInputGrid">6 Passport Sized photos (2in. x 2in.) for each person</label>
+                                </asp:TableCell>
+                                <asp:TableCell>
+                                    <br />
+                                    <asp:CheckBox ID="cbxSixPassportPhotos" runat="server" OnCheckedChanged="DocInfo_Changed" />
+                                </asp:TableCell>
+                                <asp:TableCell>
+                             <br />
+                              N/A
+                                </asp:TableCell>
+                            </asp:TableRow>
+                            <asp:TableRow>
+                                <asp:TableCell ColumnSpan="2">
                             <br />
-                            <asp:CheckBoxList ID="cbxI693MedicalExam" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
-                                <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 150px;" />
-                                <asp:ListItem Enabled="False" Text="N/A" Value="0" />
-                            </asp:CheckBoxList>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell ColumnSpan="3">
-                        <br />
-                        <label for="floatingInputGrid" style="margin-right: 100px;">Family Relations Certificate OR Birth Certificate of<br />
-                            Main Applicant and Birth Certificate of each Dependent Child</label>
-                        </asp:TableCell>
-                        <asp:TableCell>
+                            <label for="floatingInputGrid">I-693 Medical Exam for each person</label>
+                                </asp:TableCell>
+                                <asp:TableCell>
+                                    <br />
+                                    <asp:CheckBox ID="cbxI693MedicalExam" runat="server" OnCheckedChanged="DocInfo_Changed" />
+                                </asp:TableCell>
+                                <asp:TableCell>
+                             <br />
+                              N/A
+                                </asp:TableCell>
+                            </asp:TableRow>
+                            <asp:TableRow>
+                                <asp:TableCell ColumnSpan="2">
                             <br />
-                            <asp:CheckBoxList ID="cbxFamilyRelCert_Original" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
-                                <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 150px;" />
-                            </asp:CheckBoxList>
-                            <asp:CheckBoxList ID="cbxFamilyRelCert_Translated" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
-                                <asp:ListItem Enabled="True" Text="Yes" Value="1" />
-                            </asp:CheckBoxList>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell ColumnSpan="3">
-                        <br />
-                        <label for="floatingInputGrid" style="margin-right: 100px;">Marriage Certificate</label>
-                        </asp:TableCell>
-                        <asp:TableCell>
+                            <label for="floatingInputGrid">Family Relations Certificate OR Birth Certificate of<br />
+                            Main Applicant and Birth Certificate of each Dependent Child</label></label>
+                                </asp:TableCell>
+                                <asp:TableCell>
+                                    <br />
+                                    <asp:CheckBox ID="cbxFamilyRelCert_Original" runat="server" OnCheckedChanged="DocInfo_Changed" />
+                                </asp:TableCell>
+                                <asp:TableCell>
+                                    <br />
+                                    <asp:CheckBox ID="cbxFamilyRelCert_Translated" runat="server" OnCheckedChanged="DocInfo_Changed" />
+                                </asp:TableCell>
+                            </asp:TableRow>
+                            <asp:TableRow>
+                                <asp:TableCell ColumnSpan="2">
                             <br />
-                            <asp:CheckBoxList ID="cbxMarriageCert_Original" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
-                                <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 150px;" />
-                            </asp:CheckBoxList>
-                            <asp:CheckBoxList ID="cbxMarriageCert_Translated" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
-                                <asp:ListItem Enabled="True" Text="Yes" Value="1" />
-                            </asp:CheckBoxList>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell ColumnSpan="3">
-                        <br />
-                        <label for="floatingInputGrid" style="margin-right: 100px;">Background Check result (except minors)</label>
-                        </asp:TableCell>
-                        <asp:TableCell>
+                            <label for="floatingInputGrid">Marriage Certificate</label>
+                                </asp:TableCell>
+                                <asp:TableCell>
+                                    <br />
+                                    <asp:CheckBox ID="cbxMarriageCert_Original" runat="server" OnCheckedChanged="DocInfo_Changed" />
+                                </asp:TableCell>
+                                <asp:TableCell>
+                                    <br />
+                                    <asp:CheckBox ID="cbxMarriageCert_Translated" runat="server" OnCheckedChanged="DocInfo_Changed" />
+                                </asp:TableCell>
+                            </asp:TableRow>
+                            <asp:TableRow>
+                                <asp:TableCell ColumnSpan="2">
                             <br />
-                            <asp:CheckBoxList ID="cbxBackgroundCheck_Original" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
-                                <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 150px;" />
-                            </asp:CheckBoxList>
-                            <asp:CheckBoxList ID="cbxBackgroundCheck_Translated" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
-                                <asp:ListItem Enabled="True" Text="Yes" Value="1" />
-                            </asp:CheckBoxList>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell ColumnSpan="3">
-                        <br />
-                        <label for="floatingInputGrid" style="margin-right: 100px;">Current I-94</label>
-                        </asp:TableCell>
-                        <asp:TableCell>
+                            <label for="floatingInputGrid">Background Check result (except minors)</label>
+                                </asp:TableCell>
+                                <asp:TableCell>
+                                    <br />
+                                    <asp:CheckBox ID="cbxBackgroundCheck_Original" runat="server" OnCheckedChanged="DocInfo_Changed" />
+                                </asp:TableCell>
+                                <asp:TableCell>
+                                    <br />
+                                    <asp:CheckBox ID="cbxBackgroundCheck_Translated" runat="server" OnCheckedChanged="DocInfo_Changed" />
+                                </asp:TableCell>
+                            </asp:TableRow>
+                            <asp:TableRow>
+                                <asp:TableCell ColumnSpan="2">
                             <br />
-                            <asp:CheckBoxList ID="cbxCurrI_94" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
-                                <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 150px;" />
-                                <asp:ListItem Enabled="false" Text="N/A" Value="0" />
-                            </asp:CheckBoxList>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell ColumnSpan="3">
-                        <br />
-                        <label for="floatingInputGrid" style="margin-right: 100px;">Current Visa and all past visas</label>
-                        </asp:TableCell>
-                        <asp:TableCell>
+                            <label for="floatingInputGrid">Current I-94</label>
+                                </asp:TableCell>
+                                <asp:TableCell>
+                                    <br />
+                                    <asp:CheckBox ID="cbxCurrI_94" runat="server" OnCheckedChanged="DocInfo_Changed" />
+                                </asp:TableCell>
+                                <asp:TableCell>
+                             <br />
+                             N/A
+                                </asp:TableCell>
+                            </asp:TableRow>
+                            <asp:TableRow>
+                                <asp:TableCell ColumnSpan="2">
                             <br />
-                            <asp:CheckBoxList ID="cbxCurrVisaPastVisas" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
-                                <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 150px;" />
-                                <asp:ListItem Enabled="false" Text="N/A" Value="0" />
-                            </asp:CheckBoxList>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell ColumnSpan="3">
-                        <br />
-                        <label for="floatingInputGrid" style="margin-right: 100px;">If Applicable:<br />(1)	Personal tax returns for past three (3) years
-                            <br /> (2)	All I-20s </label>
-                        </asp:TableCell>
-                        <asp:TableCell>
+                            <label for="floatingInputGrid">Current Visa and all past visas</label>
+                                </asp:TableCell>
+                                <asp:TableCell>
+                                    <br />
+                                    <asp:CheckBox ID="cbxCurrVisaPastVisas" runat="server" OnCheckedChanged="DocInfo_Changed" />
+                                </asp:TableCell>
+                                <asp:TableCell>
+                             <br />
+                             N/A
+                                </asp:TableCell>
+                            </asp:TableRow>
+                            <asp:TableRow>
+                                <asp:TableCell ColumnSpan="2">
                             <br />
-                            <asp:CheckBoxList ID="cbxTaxReturnsPast3Yrs" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
-                                <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 150px;" />
-                                <asp:ListItem Enabled="false" Text="N/A" Value="0" />
-                            </asp:CheckBoxList>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                </asp:Table>
+                            <label for="floatingInputGrid">If Applicable:<br />Personal tax returns for past three (3) years</label>
+                                </asp:TableCell>
+                                <asp:TableCell>
+                                    <br />
+                                    <asp:CheckBox ID="cbxTaxReturnsPast3Yrs" runat="server" OnCheckedChanged="DocInfo_Changed" />
+                                </asp:TableCell>
+                                <asp:TableCell>
+                             <br />
+                             N/A
+                                </asp:TableCell>
+                            </asp:TableRow>
+                            <asp:TableRow>
+                                <asp:TableCell ColumnSpan="2">
+                            <br />
+                            <label for="floatingInputGrid">If Applicable:<br />All I-20s</label>
+                                </asp:TableCell>
+                                <asp:TableCell>
+                                    <br />
+                                    <asp:CheckBox ID="cbxI20" runat="server" OnCheckedChanged="DocInfo_Changed" />
+                                </asp:TableCell>
+                                <asp:TableCell>
+                             <br />
+                             N/A
+                                </asp:TableCell>
+                            </asp:TableRow>
+                        </asp:Table>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
             </div>
         </div>
     </div>
     <%----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%>
     <div class="accordion-item">
-         <asp:CheckBox ID="cbkApplicantInfoChanged5" runat="server" Checked="false" />
         <h2 class="accordion-header" id="headingI485_Five">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseI485_Five" aria-expanded="false" aria-controls="collapseI485_Five">
+                <asp:CheckBox ID="cbkApplicantInfoChanged5" runat="server" Checked="false" />
                 <b>Your Background Information (Yes/No Questions)</b>
                 ==>If you answer &quot;Yes,&quot; please describe the details (When, Where, Why, How, final outcome, etc.)
             </button>
@@ -812,7 +833,7 @@
             <div class="accordion-body">
                 <asp:Table ID="tblI485_ClientApplication5" runat="server" class="table table-hover" Width="100%">
                     <asp:TableRow>
-                        <asp:TableCell ColumnSpan="2" HorizontalAlign="Left">
+                         <asp:TableCell ColumnSpan="4" HorizontalAlign="Right">
                             <%--<asp:Button ID="btnEdit5" runat="server" class="btn btn-primary" Text="Edit" CausesValidation="false" UseSubmitBehavior="false" OnClick="btnEdit_Click" />
                             <asp:Button ID="btnSave5" runat="server" class="btn btn-primary" Text="Save" OnClick="btnSave_Click" Visible="false" />&nbsp;
                         <asp:Button ID="btnCancel5" runat="server" class="btn btn-default" Text="Cancel" CausesValidation="false" UseSubmitBehavior="false" OnClick="btnCancel_Click" Visible="false" />--%>

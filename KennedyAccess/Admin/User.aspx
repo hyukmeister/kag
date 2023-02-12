@@ -53,7 +53,7 @@
                     <asp:Label runat="server" Text="Status"></asp:Label>
                 </asp:TableCell>
                 <asp:TableCell HorizontalAlign="left">
-                    <input runat="server" id="cbkMyActive" type="checkbox" checked data-toggle="toggle" data-onstyle="secondary" data-offstyle="warning" data-style="pill" data-on="Active" data-off="Inactive" data-height="30">
+                    <input runat="server" id="cbkActive" type="checkbox" checked data-toggle="toggle" data-onstyle="secondary" data-offstyle="warning" data-style="pill" data-on="Active" data-off="Inactive"  data-width="100" data-height="10">
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>
@@ -71,7 +71,7 @@
                         <asp:ListItem Enabled="True" Text="Yes" Value="True" style="margin-right: 20px;"  />
                         <asp:ListItem Enabled="True" Text="No" Value="False" style="margin-right: 20px;" />
                     </asp:RadioButtonList>--%>
-                    <input runat="server" id="cbkAuthenticated" type="checkbox" checked data-toggle="toggle" data-onstyle="secondary" data-offstyle="warning" data-style="pill" data-on="Yes" data-off="Not Yet" data-height="30">
+                    <input runat="server" id="cbkAuthenticated" type="checkbox" checked data-toggle="toggle" data-onstyle="secondary" data-offstyle="warning" data-style="pill" data-on="Yes" data-off="Not Yet" data-width="100" data-height="10">
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>

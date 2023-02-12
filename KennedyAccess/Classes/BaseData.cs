@@ -1380,5 +1380,33 @@ namespace KennedyAccess.Classes
                  new SqlParameter("@HairColor", sHairColor)
                 );
         }
+        public void UpdateI485_DocInfo(User user, string I485ID,
+           bool sFilingFee14over, bool sFilingFeeUnder14, bool sSixPassportPhotos, bool sI693MedicalExam,
+           bool sFamilyRelCert_Original, bool sFamilyRelCert_Translated, bool sMarriageCert_Original,
+           bool sMarriageCert_Translated, bool sBackgroundCheck_Original, bool sBackgroundCheck_Translated,
+           bool sCurrI_94, bool sCurrVisaPastVisas, bool sTaxReturnsPast3Yrs, bool sI_20s
+           )
+        {
+            SqlDataReader dr = SqlHelper.ExecuteReader(
+                 Global.dbcnn, "UpdateI485_DocInfo",
+                 new SqlParameter("@FranchiseID", user.FranchiseID),
+                 new SqlParameter("@UserID", user.UserID),
+                 new SqlParameter("@I485ID", I485ID),
+                 new SqlParameter("@FilingFee14over", sFilingFee14over),
+                 new SqlParameter("@FilingFeeUnder14", sFilingFeeUnder14),
+                 new SqlParameter("@SixPassportPhotos", sSixPassportPhotos),
+                 new SqlParameter("@I693MedicalExam", sI693MedicalExam),
+                 new SqlParameter("@FamilyRelCert_Original", sFamilyRelCert_Original),
+                 new SqlParameter("@FamilyRelCert_Translated", sFamilyRelCert_Translated),
+                 new SqlParameter("@MarriageCert_Original", sMarriageCert_Original),
+                 new SqlParameter("@MarriageCert_Translated", sMarriageCert_Translated),
+                 new SqlParameter("@BackgroundCheck_Original", sBackgroundCheck_Original),
+                 new SqlParameter("@BackgroundCheck_Translated", sBackgroundCheck_Translated),
+                 new SqlParameter("@CurrI_94", sCurrI_94),
+                 new SqlParameter("@CurrVisaPastVisas", sCurrVisaPastVisas),
+                 new SqlParameter("@TaxReturnsPast3Yrs", sTaxReturnsPast3Yrs),
+                 new SqlParameter("@I_20s", sI_20s)
+                );
+        }
     }
 }

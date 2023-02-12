@@ -18,9 +18,6 @@ namespace KennedyAccess.Controls
         private User user;
         BaseData bd = new BaseData();
         public string ApplicantID;
-        public string I485ID;
-        public string RelationshipID;
-        public string ReferenceID;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -31,19 +28,28 @@ namespace KennedyAccess.Controls
             if (!IsPostBack)
             {
                 labApplicantID.Text = ApplicantID;
-                labI485ID.Text = I485ID;
-                labReferenceID.Text = ReferenceID;
-                labRelationshipID.Text = RelationshipID;
-
-
-                //if (Session["ApplicationID"] != null && Session["ApplicationID"].ToString() !="")
-                //{
-                //labI485ID.Text = Session["I485ID"].ToString();
-                DataTable dt = bd.GetI485(user, labI485ID.Text);
-
-                if (dt != null && dt.Rows.Count > 0)
+                DataTable dt = bd.GetFamilyI485ByApplicantID(user, labApplicantID.Text);
+                if (dt.Rows.Count > 0)
                 {
                     DataRow dr = dt.Rows[0];
+                    ViewState["FamilyI485"] = dt;
+
+                    ddlFamilyMember.DataSource = dt;
+                    ddlFamilyMember.DataValueField = "ApplicantFamilyID";
+                    ddlFamilyMember.DataTextField = "FirstName";
+                    ddlFamilyMember.DataBind();
+                    ddlFamilyMember.SelectedIndex = 0;
+
+                    labReferenceID.Text = dr["ApplicantFamilyID"].ToString();
+                    labRelationshipID.Text = dr["RelationshipID"].ToString();
+                    labI485ID.Text = dr["I485ID"].ToString();
+                }
+
+                DataTable dtI485 = bd.GetI485(user, labI485ID.Text);
+
+                if (dtI485 != null && dtI485.Rows.Count > 0)
+                {
+                    DataRow dr = dtI485.Rows[0];
                     txtLastName.Text = dr["LastName"].ToString();
                     txtFirstName.Text = dr["FirstName"].ToString();
                     txtMiddleName.Text = dr["MiddleName"].ToString();
@@ -111,22 +117,23 @@ namespace KennedyAccess.Controls
                     rblHairColor.SelectedValue = dr["HairColor"].ToString();
 
                     ////Documentation
-                    cbxFilingFee14over.Text = (dr["FilingFee14over"].ToString() == "True") ? "1" : "0";
-                    cbxFilingFeeUnder14.Text = (dr["FilingFeeUnder14"].ToString() == "True") ? "1" : "0";
-                    cbxSixPassportPhotos.Text = (dr["SixPassportPhotos"].ToString() == "True") ? "1" : "0";
-                    cbxI693MedicalExam.Text = (dr["I693MedicalExam"].ToString() == "True") ? "1" : "0";
-                    cbxFamilyRelCert_Original.Text = (dr["familyrelcert_original"].ToString() == "True") ? "1" : "0";
-                    cbxFamilyRelCert_Translated.Text = (dr["familyrelcert_translated"].ToString() == "True") ? "1" : "0";
-                    cbxMarriageCert_Original.Text = (dr["marriagecert_original"].ToString() == "True") ? "1" : "0";
-                    cbxMarriageCert_Translated.Text = (dr["marriagecert_translated"].ToString() == "True") ? "1" : "0";
-                    cbxBackgroundCheck_Original.Text = (dr["backgroundcheck_original"].ToString() == "True") ? "1" : "0";
-                    cbxBackgroundCheck_Translated.Text = (dr["backgroundcheck_translated"].ToString() == "True") ? "1" : "0";
-                    cbxCurrI_94.Text = (dr["CurrI_94"].ToString() == "True") ? "1" : "0";
-                    cbxCurrVisaPastVisas.Text = (dr["CurrVisaPastVisas"].ToString() == "True") ? "1" : "0";
-                    cbxTaxReturnsPast3Yrs.Text = (dr["TaxReturnsPast3Yrs"].ToString() == "True") ? "1" : "0";
+                    cbxFilingFee14over.Checked = dr["FilingFee14over"].ToString() == "True";
+                    cbxFilingFeeUnder14.Checked = dr["FilingFeeUnder14"].ToString() == "True";
+                    cbxSixPassportPhotos.Checked = dr["SixPassportPhotos"].ToString() == "True";
+                    cbxI693MedicalExam.Checked = dr["I693MedicalExam"].ToString() == "True";
+                    cbxFamilyRelCert_Original.Checked = dr["familyrelcert_original"].ToString() == "True";
+                    cbxFamilyRelCert_Translated.Checked = dr["familyrelcert_translated"].ToString() == "True";
+                    cbxMarriageCert_Original.Checked = dr["marriagecert_original"].ToString() == "True";
+                    cbxMarriageCert_Translated.Checked = dr["marriagecert_translated"].ToString() == "True";
+                    cbxBackgroundCheck_Original.Checked = dr["backgroundcheck_original"].ToString() == "True";
+                    cbxBackgroundCheck_Translated.Checked = dr["backgroundcheck_translated"].ToString() == "True";
+                    cbxCurrI_94.Checked = dr["CurrI_94"].ToString() == "True";
+                    cbxCurrVisaPastVisas.Checked = dr["CurrVisaPastVisas"].ToString() == "True";
+                    cbxTaxReturnsPast3Yrs.Checked = dr["TaxReturnsPast3Yrs"].ToString() == "True";
 
                     //Your Background Information
                     rbl1_AdmissionDeniedToUS.SelectedValue = (dr["1_AdmissionDeniedToUS"].ToString() == "True") ? "1" : "0";
+
                     rbl2_VisaDeniedToUS.SelectedValue = (dr["2_VisaDeniedToUS"].ToString() == "True") ? "1" : "0";
                     rbl3_WorkedUSWithoutAuthz.SelectedValue = (dr["3_WorkedUSWithoutAuthz"].ToString() == "True") ? "1" : "0";
                     rbl4_ViolatedTerms.SelectedValue = (dr["4_ViolatedTerms"].ToString() == "True") ? "1" : "0";
@@ -220,12 +227,6 @@ namespace KennedyAccess.Controls
                     rbl84_RemainedOutsideUS.SelectedValue = (dr["84_RemainedOutsideUS"].ToString() == "True") ? "1" : "0";
                     rbl85_ImmigrationStatus.SelectedValue = (dr["85_ImmigrationStatus"].ToString() == "True") ? "1" : "0";
                 }
-                else
-                {
-                    // something went wrong
-                    Response.Redirect("Default.aspx");
-                }
-                //}
 
                 ddlCountryOfBirth.DataSource = (DataTable)Application["Country"];
                 ddlCountryOfBirth.DataValueField = "CountryID";
@@ -255,7 +256,7 @@ namespace KennedyAccess.Controls
                 SetEditVisibility_AppInfo(true);
                 SetEditVisibility_InterpInfo(true);
                 SetEditVisibility_BioInfo(true);
-                //SetEditVisibility_DocInfo(true);
+                SetEditVisibility_DocInfo(true);
             }
         }
 
@@ -476,63 +477,81 @@ namespace KennedyAccess.Controls
         }
         //-------------------------------------------------------------------------------------------UpdateDocumentation Information----------------------------------------------------------------------------------------
 
-        //protected void btnEdit_DocInfoClick(object sender, EventArgs e)
-        //{
-        //    SetEditVisibility_DocInfo(false);
-        //}
+        protected void btnEdit_DocInfoClick(object sender, EventArgs e)
+        {
+            SetEditVisibility_DocInfo(false);
+        }
 
-        //protected void btnSave_DocInfoClick(object sender, EventArgs e)
-        //{
-        //    if (cbkDocInfoChanged.Checked == true)
-        //    {
-        //        //save Interpreter info to db
-        //        bd.UpdateI485_BioInfo(user, labI485ID.Text,
-        //            rblEthnicity.SelectedValue == "1", rblRace.SelectedValue == "1", txtHeightFt.Text, txtHeightIn.Text,
-        //            txtHeightCm.Text, txtWeightLbs.Text, txtWeightKg.Text, rblEyeColor.SelectedValue == "1",
-        //            rblHairColor.SelectedValue == "1"
+        protected void btnSave_DocInfoClick(object sender, EventArgs e)
+        {
+            if (cbkDocInfoChanged.Checked == true)
+            {
+                //save Interpreter info to db
+                bd.UpdateI485_DocInfo(user, labI485ID.Text,
+                    cbxFilingFee14over.Checked, cbxFilingFeeUnder14.Checked,
+                    cbxSixPassportPhotos.Checked, cbxI693MedicalExam.Checked,
+                    cbxFamilyRelCert_Original.Checked, cbxFamilyRelCert_Translated.Checked,
+                    cbxMarriageCert_Original.Checked, cbxMarriageCert_Translated.Checked,
+                    cbxBackgroundCheck_Original.Checked, cbxBackgroundCheck_Translated.Checked,
+                    cbxCurrI_94.Checked, cbxCurrVisaPastVisas.Checked,
+                    cbxTaxReturnsPast3Yrs.Checked, cbxI20.Checked
+                   );
+            }
+            SetEditVisibility_DocInfo(true);
+        }
 
-        //           );
-        //    }
-        //    SetEditVisibility_DocInfo(true);
-        //}
 
+        protected void btnCancel_DocInfoClick(object sender, EventArgs e)
+        {
+            SetEditVisibility_DocInfo(true);
+        }
 
-        //protected void btnCancel_DocInfoClick(object sender, EventArgs e)
-        //{
-        //    SetEditVisibility_DocInfo(true);
-        //}
+        protected void DocInfo_Changed(object sender, EventArgs e)
+        {
+            cbkDocInfoChanged.Checked = true;
+        }
 
-        //protected void DocInfo_Changed(object sender, EventArgs e)
-        //{
-        //    cbkDocInfoChanged.Checked = true;
-        //}
+        protected void SetEditVisibility_DocInfo(bool bLock)
+        {
+            BorderStyle sBorder = (bLock) ? BorderStyle.None : BorderStyle.NotSet;
 
-        //protected void SetEditVisibility_DocInfo(bool bLock)
-        //{
-        //    BorderStyle sBorder = (bLock) ? BorderStyle.None : BorderStyle.NotSet;
+            btnEdit4.Visible = bLock;
+            btnCancel4.Visible = btnSave4.Visible = !bLock;
 
-        //    btnEdit3.Visible = bLock;
-        //    btnCancel3.Visible = btnSave3.Visible = !bLock;
+            cbxFilingFee14over.Enabled = !bLock;           
+            cbxFilingFee14over.BorderStyle = sBorder;
+            cbxFilingFeeUnder14.Enabled = !bLock;           
+            cbxFilingFeeUnder14.BorderStyle = sBorder;
+            cbxSixPassportPhotos.Enabled = !bLock;          
+            cbxSixPassportPhotos.BorderStyle = sBorder;
+            cbxI693MedicalExam.Enabled = !bLock;            
+            cbxI693MedicalExam.BorderStyle = sBorder;
+            cbxFamilyRelCert_Original.Enabled = !bLock;     
+            cbxFamilyRelCert_Original.BorderStyle = sBorder;
+            cbxFamilyRelCert_Translated.Enabled = !bLock;   
+            cbxFamilyRelCert_Translated.BorderStyle = sBorder;
+            cbxMarriageCert_Original.Enabled = !bLock;      
+            cbxMarriageCert_Original.BorderStyle = sBorder;
+            cbxMarriageCert_Translated.Enabled = !bLock;    
+            cbxMarriageCert_Translated.BorderStyle = sBorder;
+            cbxBackgroundCheck_Original.Enabled = !bLock;   
+            cbxBackgroundCheck_Original.BorderStyle = sBorder;
+            cbxBackgroundCheck_Translated.Enabled = !bLock; 
+            cbxBackgroundCheck_Translated.BorderStyle = sBorder;
+            cbxCurrI_94.Enabled = !bLock;                   
+            cbxCurrI_94.BorderStyle = sBorder;
+            cbxCurrVisaPastVisas.Enabled = !bLock;          
+            cbxCurrVisaPastVisas.BorderStyle = sBorder;
+            cbxTaxReturnsPast3Yrs.Enabled = !bLock;         
+            cbxTaxReturnsPast3Yrs.BorderStyle = sBorder;
+            cbxI20.Enabled = !bLock;
+            cbxI20.BorderStyle = sBorder;
+            
+        }
 
-        //    rblEthnicity.Enabled = !bLock;
-        //    rblEthnicity.BorderStyle = sBorder;
-        //    rblRace.Enabled = !bLock;
-        //    rblRace.BorderStyle = sBorder;
-        //    txtHeightFt.ReadOnly = bLock;
-        //    txtHeightFt.BorderStyle = sBorder;
-        //    txtHeightIn.ReadOnly = bLock;
-        //    txtHeightIn.BorderStyle = sBorder;
-        //    txtHeightCm.ReadOnly = bLock;
-        //    txtHeightCm.BorderStyle = sBorder;
-        //    txtWeightLbs.ReadOnly = bLock;
-        //    txtWeightLbs.BorderStyle = sBorder;
-        //    txtWeightKg.ReadOnly = bLock;
-        //    txtWeightKg.BorderStyle = sBorder;
-        //    rblEyeColor.Enabled = !bLock;
-        //    rblEyeColor.BorderStyle = sBorder;
-        //    rblHairColor.Enabled = !bLock;
-        //    rblHairColor.BorderStyle = sBorder;
-
-        //}
+        protected void ddlFamilyMember_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            labI485ID.Text = ddlFamilyMember.SelectedValue.ToString();
+        }
     }
 }

@@ -105,13 +105,13 @@ namespace KennedyAccess
         protected global::System.Web.UI.WebControls.Label lblUserID;
 
         /// <summary>
-        /// cbkMyActive control.
+        /// cbkActive control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox cbkMyActive;
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox cbkActive;
 
         /// <summary>
         /// txtUserName control.

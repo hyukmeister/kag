@@ -48,55 +48,26 @@ namespace KennedyAccess
                     else
                     {
                         string UserID = Session["UserID"].ToString();
-                        //ViewState["dtRoles"] = bd.GetRole(user, "0", "");
+                        LoadUserInfo(UserID, true);
 
-                        DataTable dtUsr = bd.GetUsrMain(user, UserID, "");
+                        LoadUserRoleSetRoles(true);
 
-                        if (dtUsr.Rows.Count == 1)
-                        {
-                            DataRow drUser = dtUsr.Rows[0];
+                        // info section
+                        TabContainer tcContainer = (TabContainer)Master.FindControl("tcContainer");
+                        tcContainer.Visible = user.UserType == "System Admin";
 
-                            labUser.Text = Page.Title = drUser["FirstName"].ToString() +" "+ drUser["LastName"].ToString() + " (" + drUser["UserName"].ToString() + ")" ;
-                            lblUserID.Text = drUser["UserID"].ToString();
-                            cbkMyActive.Checked = drUser["Active"].ToString() == "True";
-                            
-                            lblRecordType.Text = drUser["RecordTypeID"].ToString();
-                            lblFranchise.Text = drUser["FranchiseID"].ToString();
-                            txtUserName.Text = drUser["UserName"].ToString();
-                            txtAuthenticationCode.Text = drUser["ValidationCode"].ToString();
-                            txtFirstName.Text = drUser["FirstName"].ToString();
-                            txtLastName.Text = drUser["LastName"].ToString();
-                            txtEmail.Text = drUser["Email"].ToString();
-                            txtMobilephone.Text = drUser["Mobilephone"].ToString();
-                            txtValidFrom.Text = DateTime.Parse(drUser["ValidFrom"].ToString()).ToString("yyyy-MM-dd");
-                            txtValidThru.Text = DateTime.Parse(drUser["ValidThru"].ToString()).ToString("yyyy-MM-dd");
-                            ddlUserType.SelectedValue = drUser["RoleSetID"].ToString();
-                            cbkAuthenticated.Checked = drUser["Authenticated"].ToString() == "True";
-                            txtCreateDate.Text = DateTime.Parse(drUser["CreateDate"].ToString()).ToString("yyyy-MM-dd");
-                            txtModifiedDate.Text = DateTime.Parse(drUser["ModifiedDate"].ToString()).ToString("yyyy-MM-dd");
-                            txtNote.Text = drUser["Note"].ToString();
-
-                            LoadUserRoleSetRoles(true);
-
-                            gvRoleSets.Columns[6].Visible = btnEditUser.Visible = user.HasRole("UserEdit");
-
-                            // info section
-                            TabContainer tcContainer = (TabContainer)Master.FindControl("tcContainer");
-                            tcContainer.Visible = user.UserType == "System Admin";
-
-                            // tab 1 : login history
-                            tcContainer.Tabs[1].HeaderText = "Logins";
-                            GridView gv1 = new GridView();
-                            gv1.ID = "gvHistory";
-                            gv1.CssClass = "table table-hover";
-                            gv1.GridLines = GridLines.None;
-                            gv1.HeaderStyle.ForeColor = System.Drawing.Color.DimGray;
-                            gv1.HeaderStyle.BackColor = System.Drawing.Color.Silver;
-                            gv1.DataSource = bd.GetLoginHistory(user.FranchiseID.ToString(), lblUserID.Text);
-                            gv1.DataBind();
-                            tcContainer.Tabs[1].Controls.Add(gv1);
-                            tcContainer.Tabs[1].Visible = true;
-                        }
+                        // tab 1 : login history
+                        tcContainer.Tabs[1].HeaderText = "Logins";
+                        GridView gv1 = new GridView();
+                        gv1.ID = "gvHistory";
+                        gv1.CssClass = "table table-hover";
+                        gv1.GridLines = GridLines.None;
+                        gv1.HeaderStyle.ForeColor = System.Drawing.Color.DimGray;
+                        gv1.HeaderStyle.BackColor = System.Drawing.Color.Silver;
+                        gv1.DataSource = bd.GetLoginHistory(user.FranchiseID.ToString(), lblUserID.Text);
+                        gv1.DataBind();
+                        tcContainer.Tabs[1].Controls.Add(gv1);
+                        tcContainer.Tabs[1].Visible = true;
 
                         SetEditVisibility(true);
                     }
@@ -109,6 +80,44 @@ namespace KennedyAccess
                         user.UserID,
                         ex.Message);
                 }
+            }
+        }
+
+        private void LoadUserInfo(string UserID, bool fromDB)
+        {
+            DataTable dtUsr;
+            if(fromDB)
+            {
+                dtUsr = bd.GetUsrMain(user, UserID, "");
+                ViewState["UserInfo"] = dtUsr;
+            }
+            else
+            {
+                dtUsr = (DataTable)ViewState["UserInfo"];
+            }
+            if (dtUsr.Rows.Count == 1)
+            {
+                DataRow drUser = dtUsr.Rows[0];
+
+                labUser.Text = Page.Title = drUser["FirstName"].ToString() + " " + drUser["LastName"].ToString() + " (" + drUser["UserName"].ToString() + ")";
+                lblUserID.Text = drUser["UserID"].ToString();
+                cbkActive.Checked = drUser["Active"].ToString() == "True";
+
+                lblRecordType.Text = drUser["RecordTypeID"].ToString();
+                lblFranchise.Text = drUser["FranchiseID"].ToString();
+                txtUserName.Text = drUser["UserName"].ToString();
+                txtAuthenticationCode.Text = drUser["ValidationCode"].ToString();
+                txtFirstName.Text = drUser["FirstName"].ToString();
+                txtLastName.Text = drUser["LastName"].ToString();
+                txtEmail.Text = drUser["Email"].ToString();
+                txtMobilephone.Text = drUser["Mobilephone"].ToString();
+                txtValidFrom.Text = DateTime.Parse(drUser["ValidFrom"].ToString()).ToString("yyyy-MM-dd");
+                txtValidThru.Text = DateTime.Parse(drUser["ValidThru"].ToString()).ToString("yyyy-MM-dd");
+                ddlUserType.SelectedValue = drUser["RoleSetID"].ToString();
+                cbkAuthenticated.Checked = drUser["Authenticated"].ToString() == "True";
+                txtCreateDate.Text = DateTime.Parse(drUser["CreateDate"].ToString()).ToString("yyyy-MM-dd");
+                txtModifiedDate.Text = DateTime.Parse(drUser["ModifiedDate"].ToString()).ToString("yyyy-MM-dd");
+                txtNote.Text = drUser["Note"].ToString();                
             }
         }
 
@@ -133,6 +142,8 @@ namespace KennedyAccess
             fRoleName.DataTextField = "RoleName";
             fRoleName.DataValueField = "RoleID";
             fRoleName.DataBind();
+
+            gvRoleSets.Columns[6].Visible = btnEditUser.Visible = user.HasRole("UserEdit");
         }
 
         protected void btnEditUser_Click(object sender, EventArgs e)
@@ -146,7 +157,7 @@ namespace KennedyAccess
         {
             BorderStyle sBorder = (bLock) ? BorderStyle.None : BorderStyle.NotSet;
 
-            cbkMyActive.Disabled = bLock;
+            cbkActive.Disabled = bLock;
             //cbkActive.BorderStyle = sBorder;
             lblRecordType.Enabled = bLock;
             lblRecordType.BorderStyle = sBorder;
@@ -192,10 +203,10 @@ namespace KennedyAccess
                 string sRecordTypeID = bd.GetRecordTypeID((DataTable)Application["RecordType"], user.FranchiseID, "User", ddlUserType.SelectedItem.Text).ToString();
                 lblUserID.Text = bd.InserUpdatetUser(user.FranchiseID, user.UserID, int.Parse(lblUserID.Text), txtUserName.Text, "",
                     txtFirstName.Text, txtLastName.Text, txtEmail.Text, sRecordTypeID,
-                    sRoleSetID, cbkMyActive.Checked, txtValidFrom.Text, txtValidThru.Text,
+                    sRoleSetID, cbkActive.Checked, txtValidFrom.Text, txtValidThru.Text,
                     cbkAuthenticated.Checked, txtMobilephone.Text, txtNote.Text);
 
-                //bd.ResetUserRoleSets(user, lblUserID.Text);
+                LoadUserInfo(lblUserID.Text, true);
 
                 LoadUserRoleSetRoles(true);
             }
@@ -211,6 +222,7 @@ namespace KennedyAccess
 
         protected void btnCancel_Click(object sender, EventArgs e)
         {
+            LoadUserInfo(lblUserID.Text, false);
             SetEditVisibility(true);
         }
 

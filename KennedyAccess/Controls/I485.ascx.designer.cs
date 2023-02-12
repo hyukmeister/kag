@@ -15,15 +15,6 @@ namespace KennedyAccess.Controls
     {
 
         /// <summary>
-        /// labI485ID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labI485ID;
-
-        /// <summary>
         /// labApplicantID control.
         /// </summary>
         /// <remarks>
@@ -31,6 +22,15 @@ namespace KennedyAccess.Controls
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label labApplicantID;
+
+        /// <summary>
+        /// labI485ID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label labI485ID;
 
         /// <summary>
         /// labReferenceID control.
@@ -49,6 +49,15 @@ namespace KennedyAccess.Controls
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label labRelationshipID;
+
+        /// <summary>
+        /// ddlFamilyMember control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlFamilyMember;
 
         /// <summary>
         /// cbkApplicantInfoChanged control.
@@ -807,6 +816,15 @@ namespace KennedyAccess.Controls
         protected global::System.Web.UI.WebControls.CheckBox cbkDocInfoChanged;
 
         /// <summary>
+        /// UpdatePanel2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel2;
+
+        /// <summary>
         /// tblI485_ClientApplication4 control.
         /// </summary>
         /// <remarks>
@@ -816,13 +834,40 @@ namespace KennedyAccess.Controls
         protected global::System.Web.UI.WebControls.Table tblI485_ClientApplication4;
 
         /// <summary>
+        /// btnEdit4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnEdit4;
+
+        /// <summary>
+        /// btnSave4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSave4;
+
+        /// <summary>
+        /// btnCancel4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancel4;
+
+        /// <summary>
         /// cbxFilingFee14over control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList cbxFilingFee14over;
+        protected global::System.Web.UI.WebControls.CheckBox cbxFilingFee14over;
 
         /// <summary>
         /// cbxFilingFeeUnder14 control.
@@ -831,7 +876,7 @@ namespace KennedyAccess.Controls
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList cbxFilingFeeUnder14;
+        protected global::System.Web.UI.WebControls.CheckBox cbxFilingFeeUnder14;
 
         /// <summary>
         /// cbxSixPassportPhotos control.
@@ -840,7 +885,7 @@ namespace KennedyAccess.Controls
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList cbxSixPassportPhotos;
+        protected global::System.Web.UI.WebControls.CheckBox cbxSixPassportPhotos;
 
         /// <summary>
         /// cbxI693MedicalExam control.
@@ -849,7 +894,7 @@ namespace KennedyAccess.Controls
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList cbxI693MedicalExam;
+        protected global::System.Web.UI.WebControls.CheckBox cbxI693MedicalExam;
 
         /// <summary>
         /// cbxFamilyRelCert_Original control.
@@ -858,7 +903,7 @@ namespace KennedyAccess.Controls
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList cbxFamilyRelCert_Original;
+        protected global::System.Web.UI.WebControls.CheckBox cbxFamilyRelCert_Original;
 
         /// <summary>
         /// cbxFamilyRelCert_Translated control.
@@ -867,7 +912,7 @@ namespace KennedyAccess.Controls
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList cbxFamilyRelCert_Translated;
+        protected global::System.Web.UI.WebControls.CheckBox cbxFamilyRelCert_Translated;
 
         /// <summary>
         /// cbxMarriageCert_Original control.
@@ -876,7 +921,7 @@ namespace KennedyAccess.Controls
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList cbxMarriageCert_Original;
+        protected global::System.Web.UI.WebControls.CheckBox cbxMarriageCert_Original;
 
         /// <summary>
         /// cbxMarriageCert_Translated control.
@@ -885,7 +930,7 @@ namespace KennedyAccess.Controls
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList cbxMarriageCert_Translated;
+        protected global::System.Web.UI.WebControls.CheckBox cbxMarriageCert_Translated;
 
         /// <summary>
         /// cbxBackgroundCheck_Original control.
@@ -894,7 +939,7 @@ namespace KennedyAccess.Controls
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList cbxBackgroundCheck_Original;
+        protected global::System.Web.UI.WebControls.CheckBox cbxBackgroundCheck_Original;
 
         /// <summary>
         /// cbxBackgroundCheck_Translated control.
@@ -903,7 +948,7 @@ namespace KennedyAccess.Controls
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList cbxBackgroundCheck_Translated;
+        protected global::System.Web.UI.WebControls.CheckBox cbxBackgroundCheck_Translated;
 
         /// <summary>
         /// cbxCurrI_94 control.
@@ -912,7 +957,7 @@ namespace KennedyAccess.Controls
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList cbxCurrI_94;
+        protected global::System.Web.UI.WebControls.CheckBox cbxCurrI_94;
 
         /// <summary>
         /// cbxCurrVisaPastVisas control.
@@ -921,7 +966,7 @@ namespace KennedyAccess.Controls
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList cbxCurrVisaPastVisas;
+        protected global::System.Web.UI.WebControls.CheckBox cbxCurrVisaPastVisas;
 
         /// <summary>
         /// cbxTaxReturnsPast3Yrs control.
@@ -930,7 +975,16 @@ namespace KennedyAccess.Controls
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList cbxTaxReturnsPast3Yrs;
+        protected global::System.Web.UI.WebControls.CheckBox cbxTaxReturnsPast3Yrs;
+
+        /// <summary>
+        /// cbxI20 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbxI20;
 
         /// <summary>
         /// cbkApplicantInfoChanged5 control.
