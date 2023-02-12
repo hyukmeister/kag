@@ -1408,5 +1408,19 @@ namespace KennedyAccess.Classes
                  new SqlParameter("@I_20s", sI_20s)
                 );
         }
+
+        public static string StringToDateFormat(Object dt)
+        {
+            string result = string.Empty;
+            try
+            {
+                result = DateTime.Parse(dt.ToString()).ToString("yyyy-MM-dd");
+            }
+            catch(Exception) 
+            {
+                //
+            } 
+            return result;
+        }
     }
 }

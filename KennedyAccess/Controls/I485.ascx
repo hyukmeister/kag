@@ -8,9 +8,8 @@
 
     <div class="mb-3;" style="width:350px">
         <label for="ddlCountry" class="form-label">Family Member</label><br />
-        <asp:DropDownList ID="ddlFamilyMember" CssClass="btn btn-default btn-outline-secondary align-items-start text-start" runat="server" Width="300px" OnSelectedIndexChanged="ddlFamilyMember_SelectedIndexChanged" ></asp:DropDownList>
+        <asp:DropDownList ID="ddlFamilyMember" CssClass="btn btn-default btn-outline-secondary align-items-start text-start" runat="server" Width="300px" AutoPostBack="true" OnSelectedIndexChanged="ddlFamilyMember_SelectedIndexChanged" ></asp:DropDownList>
     </div>
-
 
     <div class="accordion-item">
         
