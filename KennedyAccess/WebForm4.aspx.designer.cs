@@ -11,26 +11,8 @@ namespace KennedyAccess
 {
 
 
-    public partial class WebForm3
+    public partial class WebForm4
     {
-
-        /// <summary>
-        /// labUser control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labUser;
-
-        /// <summary>
-        /// UpdatePanel1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
 
         /// <summary>
         /// toggledemo control.
@@ -51,15 +33,6 @@ namespace KennedyAccess
         protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox cbkMyActive;
 
         /// <summary>
-        /// cbkMyToggle control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbkMyToggle;
-
-        /// <summary>
         /// cbkActive control.
         /// </summary>
         /// <remarks>
@@ -67,14 +40,5 @@ namespace KennedyAccess
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox cbkActive;
-
-        /// <summary>
-        /// btnEnabled control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEnabled;
     }
 }

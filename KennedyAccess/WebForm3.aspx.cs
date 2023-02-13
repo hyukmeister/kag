@@ -26,7 +26,8 @@ namespace KennedyAccess
 
         protected void btnEnabled_Click(object sender, EventArgs e)
         {
-            toggledemo.Disabled = !toggledemo.Disabled;
+            cbkActive.Disabled = !cbkActive.Disabled;
+
         }
     }
 }

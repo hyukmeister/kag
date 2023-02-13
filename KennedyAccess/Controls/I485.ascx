@@ -15,7 +15,7 @@
 
         <h2 class="accordion-header" id="headingI485_One">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseI485_One" aria-expanded="false" aria-controls="collapseI485_One">
-                <asp:CheckBox ID="cbkApplicantInfoChanged" runat="server" Checked="false" />
+                <asp:CheckBox ID="cbkApplicantInfoChanged" runat="server" Checked="false" Visible="false"/>
                 <b>Applicant Information</b>
             </button>
         </h2>
@@ -382,7 +382,7 @@
     <div class="accordion-item">
         <h2 class="accordion-header" id="headingI485_Two">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseI485_Two" aria-expanded="false" aria-controls="collapseI485_Two">
-                <asp:CheckBox ID="cbkInterpInfoChanged" runat="server" Checked="false" />
+                <asp:CheckBox ID="cbkInterpInfoChanged" runat="server" Checked="false" Visible="false"/>
                 <b>Interprer's information (If you need)</b>
             </button>
         </h2>
@@ -494,7 +494,7 @@
     <div class="accordion-item">
         <h2 class="accordion-header" id="headingI485_Three">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseI485_Three" aria-expanded="false" aria-controls="collapseI485_Three">
-                <asp:CheckBox ID="cbkBioInfoChanged" runat="server" Checked="false" />
+                <asp:CheckBox ID="cbkBioInfoChanged" runat="server" Checked="false" Visible="false"/>
                 <b>Biographic Information</b>
             </button>
         </h2>
@@ -521,7 +521,7 @@
                         </asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow>
-                        <asp:TableCell ColumnSpan="4">
+                        <asp:TableCell ColumnSpan="4" >
                             <br />
                             <label for="floatingInputGrid">Race (Select one)</label>
                             <br />
@@ -629,7 +629,7 @@
     <div class="accordion-item">
         <h2 class="accordion-header" id="headinghI485_Four">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseI485_Four" aria-expanded="false" aria-controls="collapseI485_Four">
-                <asp:CheckBox ID="cbkDocInfoChanged" runat="server" Checked="false" />
+                <asp:CheckBox ID="cbkDocInfoChanged" runat="server" Checked="false" Visible="false"/>
                 <b>Documentation (Mandatory)</b>
             </button>
         </h2>
@@ -823,19 +823,21 @@
     <div class="accordion-item">
         <h2 class="accordion-header" id="headingI485_Five">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseI485_Five" aria-expanded="false" aria-controls="collapseI485_Five">
-                <asp:CheckBox ID="cbkBackgroundInfoChanged" runat="server" Checked="false" />
+                <asp:CheckBox ID="cbkBackgroundInfoChanged" runat="server" Checked="false" Visible="false"/>
                 <b>Your Background Information (Yes/No Questions)</b>
-                ==>If you answer &quot;Yes,&quot; please describe the details (When, Where, Why, How, final outcome, etc.)
             </button>
         </h2>
         <div id="collapseI485_Five" class="accordion-collapse collapse" aria-labelledby="headingI485_Five" data-bs-parent="#I485AccordionParent">
             <div class="accordion-body">
-                <asp:Table ID="tblI485_ClientApplication5" runat="server" class="table table-hover" Width="100%">
+                <asp:Table ID="tblI485_ClientApplication5" runat="server" class="table table-hover" Width="100%" BorderStyle="Double" GridLines="Vertical">
                     <asp:TableRow>
-                        <asp:TableCell ColumnSpan="4" HorizontalAlign="Right">
+                        <asp:TableCell ColumnSpan="3">
+                             <asp:label runat="server">If you answer &quot;Yes,&quot; please describe the details(When, Where, Why, How, final outcome, etc.)</asp:label>
+                        </asp:TableCell>
+                        <asp:TableCell ColumnSpan="1" HorizontalAlign="Right" Width="200px">
                             <asp:Button ID="btnEdit5" runat="server" class="btn btn-primary" Text="Edit" CausesValidation="false" UseSubmitBehavior="false" OnClick="btnEdit_BackgroundInfoClick" />
                             <asp:Button ID="btnSave5" runat="server" class="btn btn-primary" Text="Save" OnClick="btnSave_BackgroundInfoClick" Visible="false" />&nbsp;
-                        <asp:Button ID="btnCancel5" runat="server" class="btn btn-default" Text="Cancel" CausesValidation="false" UseSubmitBehavior="false" OnClick="btnCancel_BackgroundInfoClick" Visible="false" />
+                            <asp:Button ID="btnCancel5" runat="server" class="btn btn-default" Text="Cancel" CausesValidation="false" UseSubmitBehavior="false" OnClick="btnCancel_BackgroundInfoClick" Visible="false" />
                         </asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow>
@@ -843,11 +845,11 @@
                         <br />
                         <label for="floatingInputGrid"><b>Questions</b></label>
                         </asp:TableCell>
-                        <asp:TableCell>
-                           <br />
-                        <label for="floatingInputGrid"><b>Check One</b></label> <br />
-                        <label for="floatingInputGrid"><b>Yes</b></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <label for="floatingInputGrid" style="margin-right: 20px;" ><b>No</b></label>
+                        <asp:TableCell HorizontalAlign="Center">
+                            <br />
+                            <label for="floatingInputGrid"><b>Check One</b></label> <br />
+                            <label for="floatingInputGrid"><b>Yes</b></label>
+                            <label for="floatingInputGrid" style="margin-right: 20px;" ><b>No</b></label>
                         </asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow>
@@ -855,7 +857,7 @@
                         <label for="floatingInputGrid">1. Have you EVER been denied admission to the United States? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl1_AdmissionDeniedToUS" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -867,7 +869,7 @@
                         <label for="floatingInputGrid">2. Have you EVER been denied a visa to the United States?</label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl2_VisaDeniedToUS" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -879,7 +881,7 @@
                         <label for="floatingInputGrid">3. Have you EVER worked in the United States without authorization?</label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl3_WorkedUSWithoutAuthz" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -891,7 +893,7 @@
                         <label for="floatingInputGrid">4. Have you EVER violated the terms or conditions of your nonimmigrant status?</label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl4_ViolatedTerms" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -903,7 +905,7 @@
                         <label for="floatingInputGrid">5. Are you presently or have you EVER been in removal, exclusion, rescission,<br /> or deportation proceedings?</label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell ColumnSpan="1">
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl5_InExclusion" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -915,7 +917,7 @@
                         <label for="floatingInputGrid">6. Have you EVER been issued a final order of exclusion, deportation, or removal? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl6_IssuedFinalOrderExcl" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -927,7 +929,7 @@
                         <label for="floatingInputGrid">7. Have you EVER had a prior final order of exclusion, deportation,<br /> or removal reinstated? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl7_HadPriorFinalOrderExcl" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -939,7 +941,7 @@
                         <label for="floatingInputGrid">8. Have you EVER held lawful permanent resident status which was later rescinded? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl8_LawfulResident" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -952,7 +954,7 @@
                             but failed to depart within the allotted time? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl9_GrantedDeparture" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -965,7 +967,7 @@
                             exclusion, or deportation?  </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl10_AppliedProtection" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -978,7 +980,7 @@
                             who was subject  <br /> to the two-year foreign residence requirement? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl11_A_BeenNonimmigrant" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -990,7 +992,7 @@
                         <label for="floatingInputGrid">&nbsp;&nbsp;&nbsp;&nbsp; 11b. Have you complied with the foreign residence requirement?</label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl11_B_CompliedRequirement" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1003,7 +1005,7 @@
                             of State issued <br />&nbsp;&nbsp;&nbsp;&nbsp; a favorable waiver recommendation letter for you? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl11_C_BeenGrantedWaiver" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1017,7 +1019,7 @@
                             or any official of the U.S. armed forces or U.S. Coast Guard)? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl12_BeenArrested" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1030,7 +1032,7 @@
                             charged with, or tired for that crime)? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl13_CommittedCrime" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1044,7 +1046,7 @@
                             a pardon, amnesty, a rehabilitation decree, or other act of clemency)?</label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl14_PledGuilty" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1059,7 +1061,7 @@
                             programs or classes, probation, or community service)? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl15_BeenOrderedPunished" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1072,7 +1074,7 @@
                             pre-trial diversion, deferred prosecution, deferred adjudication, <br />or any withheld adjudication)? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl16_BeenDefendant" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1085,7 +1087,7 @@
                             law or regulation of a state, the United States, or a foreign country? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl17_ViolatedRegulation" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1098,7 +1100,7 @@
                             offenses) for which the combined sentences to confinement were five years or more? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl18_ConvictedForOffenses" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1111,7 +1113,7 @@
                             controlled substances, such as chemicals, illegal drugs, or narcotics? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl19_TraffickedSubstances" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1124,7 +1126,7 @@
                             trafficking of any illegal narcotic or other controlled substances? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl20_AidedTrafficking" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1141,7 +1143,7 @@
                             or other benefit resulted from the illicit activity of your spouse or parent? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl21_FamilyTrafficked" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1154,7 +1156,7 @@
                             to engage in prostitution? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl22_EngagedInProstitution" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1167,7 +1169,7 @@
                             or imported prostitutes or persons for the purpose of prostitution?  </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl23_ProcuredProstitutes" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1179,7 +1181,7 @@
                         <label for="floatingInputGrid">24. Have you <b>EVER</b> received any proceeds or money from prostitution? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl24_ReceiveMoneyProstitution" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1193,7 +1195,7 @@
                             while in the United States? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl25_IntendToEngageGambling" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1206,7 +1208,7 @@
                             being prosecuted for a criminal offense in the United States? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl26_ExercisedImmunity" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1219,7 +1221,7 @@
                             directly carried out violations of religious freedoms? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl27_ReligiousViolations" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1232,7 +1234,7 @@
                             the trafficking of persons for commercial sex acts? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl28_InducedTrafficking" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1246,7 +1248,7 @@
                             a person for labor or services through the use of force, fraud, or coercion. </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl29_TraffickedServitude" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1260,7 +1262,7 @@
                             peonage, debt bondage, or slavery? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl30_AbettedSexActs" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1276,7 +1278,7 @@
                             the illicit activity  <br />of your spouse or parent? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl31_FamilyTrafficking" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1290,7 +1292,7 @@
                             to enter the United States to engage in such activity? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl32_MoneyLaundering" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1303,7 +1305,7 @@
                             to espionage (including spying) or sabotage in the United States?  </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl33_ViolatesEspionage" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1316,7 +1318,7 @@
                             or evades <br />any law prohibiting the export from the United States of goods, technology, <br />or sensitive information? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl34_ProhibitingExport" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1330,7 +1332,7 @@
                         or other unlawful means while in the United States? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl35_OverthrowingUSGov" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1343,7 +1345,7 @@
                            safety, or security of the United States? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl36_EndangerWelfare" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1355,7 +1357,7 @@
                        <label for="floatingInputGrid">37. Do you intend to engage in any other unlawful activity? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl37_UnlawfulActivity" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1369,7 +1371,7 @@
                            policy consequences for the United States? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl38_InAdversePolicy" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1384,7 +1386,7 @@
                            to harm another individual or cause substantial damage to property?</label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl39_CommittedCrime" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1397,7 +1399,7 @@
                            that  <br /> did any of the activities described in <b>Item Number 39?</b></label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl40_ParticipatedInGroup" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1410,7 +1412,7 @@
                            group <br />or organization that did any of the activities described in <b>Item Number 39?</b></label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl41_RecruitedMembers" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1423,7 +1425,7 @@
                            or any other <br />assistance or support for any of the activities described in <b>Item Number 39?</b></label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl42_SupportActivities" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1437,7 +1439,7 @@
                            did any of the activities described in <b>Item Number 39?</label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl43_SupportIndividual" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1449,7 +1451,7 @@
                        <label for="floatingInputGrid">44. Have you <b>EVER</b> received any type of military, paramilitary, or weapons training?</label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl44_MilitaryTraining" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1462,7 +1464,7 @@
                            <b>Item Numbers 39 - 45?</b></label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl45_IntendToEngageQ39To45" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1478,7 +1480,7 @@
                            individual or cause  <br />substantial damage to property? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl46_FamilyCommitted" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1491,7 +1493,7 @@
                            a member or a representative of a group or organization that did any of  <br />the activities described in <b>Item Number 46?</b> </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl47_FamilyParticipated" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1505,7 +1507,7 @@
                            any of the activities described in <b>Item Number 46?</b> </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl48_FamilyRecruited" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1519,7 +1521,7 @@
                            the activities described in <b>Item Number 46?</b></label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl49_FamilySupportActivity" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1533,7 +1535,7 @@
                            group, or <br />organization who did any of the activities described in <b>Item Number 46?</b></label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl50_FamilySupportIndividual" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1547,7 +1549,7 @@
                            did any of the activities described in <b>Item Number 46?</b> </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl51_FamilyMilitaryTraining" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1560,7 +1562,7 @@
                            weapons<br /> to any person who, to your knowledge, used them against another person?  </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl52_SellingWeapons" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1573,7 +1575,7 @@
                            prison camp, detention facility, labor camp, or any other situation that <br />involved detaining persons? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl53_WorkedInPrison" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1587,7 +1589,7 @@
                            any person or threatened to do so?  </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl54_AssistedUsingWeapon" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1601,7 +1603,7 @@
                            guerilla group, militia, insurgent organization, or any other armed group?  </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl55_ServedInArmedGroup" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1614,7 +1616,7 @@
                            Party or any other totalitarian party (in the United States or abroad)?  </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl56_AffiliatedCommunist" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1630,7 +1632,7 @@
                            Nazi government of Germany?  </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl57_IncitePersecution" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1644,7 +1646,7 @@
                            &nbsp;&nbsp; &nbsp;&nbsp;a. Acts involving torture or genocide? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl58_A_InvolvingGenocide" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1656,7 +1658,7 @@
                        <label for="floatingInputGrid"> &nbsp; &nbsp;&nbsp;&nbsp;b. Killing any person? b. Killing any person?  </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl58_B_KillingPerson" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1668,7 +1670,7 @@
                        <label for="floatingInputGrid">&nbsp; &nbsp;&nbsp;&nbsp;c. Intentionally and severely injuring any person?  </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl58_C_InjuringPerson" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1681,7 +1683,7 @@
                           &nbsp;&nbsp;&nbsp; &nbsp;forced or threatened?  </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl58_D_SexualContact" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1693,7 +1695,7 @@
                        <label for="floatingInputGrid">&nbsp; &nbsp;&nbsp;&nbsp;e. Limiting or denying any person’s ability to exercise religious beliefs?  </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl58_E_LimitingAbility" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1706,7 +1708,7 @@
                            of age to serve in or help an armed force or group? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl59_RecruitedPersUnder15" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1719,7 +1721,7 @@
                            to help or provide services to people in combat? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl60_UsedPersUnder15" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1732,7 +1734,7 @@
                            the U.S. Government or any state, county, city, or municipality (other than emergency <br />medical treatment)? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl61_ReceivedUSAsst" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1745,7 +1747,7 @@
                            source, including the U.S. Government or any state, county, city, or municipality (other <br />than emergency medical treatment)? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl62_LikelyToReceiveAsst" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1758,7 +1760,7 @@
                            proceeding filed against you on or after April 1, 1997? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl63_FailedToAttend" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1770,7 +1772,7 @@
                        <label for="floatingInputGrid">64. If your answer to <b>Item Number 63</b> is "Yes," do you believe you had  <br />reasonable cause? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl64_ReasonableCause" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1783,7 +1785,7 @@
                            why you had reasonable cause. </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl65_AttachWrittenStatement" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1797,7 +1799,7 @@
                            including a visa or entry into the United States? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl66_SubmittedFraudulentDoc" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1811,7 +1813,7 @@
                            United States, admission to the United States, or any other kind of immigration benefit? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl67_LiedOnApplication" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1823,7 +1825,7 @@
                        <label for="floatingInputGrid">68. Have you <b>EVER</b>  falsely claimed to be a U.S. citizen (in writing or any other way)? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl68_ClaimedUSCitizen" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1835,7 +1837,7 @@
                        <label for="floatingInputGrid">69. Have you <b>EVER</b>  been a stowaway on a vessel or aircraft arriving in the<br /> United States? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl69_StowawayOnVessel" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1848,7 +1850,7 @@
                            <br />foreign national to enter or to try to enter the United States illegally (alien smuggling)? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl70_EncouragedSmuggling" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1860,7 +1862,7 @@
                        <label for="floatingInputGrid">71. Are you under a final order of civil penalty for violating INA section 274C for use of <br />fraudulent documents? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl71_UnderPenaltyForViolating" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1874,7 +1876,7 @@
                            excluded, deported, or removed from the United States? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl72_BeenExcludedFromUS" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1886,7 +1888,7 @@
                        <label for="floatingInputGrid">73. Have you <b>EVER</b>  entered the United States without being inspected and <br />admitted or paroled? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl73_EnteredUSWithoutInsp" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1899,7 +1901,7 @@
                             &nbsp;&nbsp;&nbsp;&nbsp; a. For more than 180 days but less than a year, and then departed the United States?</label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl74_A_UnlawfullyInUS180Days" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1911,7 +1913,7 @@
                        <label for="floatingInputGrid">&nbsp;&nbsp;&nbsp;&nbsp; b. For one year or more and then departed the United States? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl74_B_UnlawfullyInUS1Year" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1926,7 +1928,7 @@
                            &nbsp;&nbsp;&nbsp;&nbsp; in the aggregate?</label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl75_A_ReenteredWOInspection" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1938,7 +1940,7 @@
                        <label for="floatingInputGrid">&nbsp;&nbsp;&nbsp;&nbsp;b. Having been deported, excluded, or removed from the United States? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl75_B_BeenDeported" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1950,7 +1952,7 @@
                        <label for="floatingInputGrid">76. Do you plan to practice polygamy in the United States? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl76_PlanPolygamy" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1964,7 +1966,7 @@
                            helpless from sickness, physical or mental disability, or infancy, as described in <br />INA section 232(c)? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl77_AccompanyForeigner" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1977,7 +1979,7 @@
                            citizen child outside the United States from a U.S. citizen who has been granted <br />custody of the child? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl78_AssistedInDetaining" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -1990,7 +1992,7 @@
                            provision, statute, ordinance, or regulation in the United States? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl79_VotedInViolation" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -2002,7 +2004,7 @@
                        <label for="floatingInputGrid">80. Have you <b>EVER</b>  renounced U.S. citizenship to avoid being taxed by the <br />United States? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl80_RenouncedUSCitizenship" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -2016,7 +2018,7 @@
                            you are a foreign national? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl81_AppliedExemption" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -2029,7 +2031,7 @@
                            ground that you are a foreign national? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl82_RelievedFromService" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -2041,7 +2043,7 @@
                        <label for="floatingInputGrid">83. Have you <b>EVER</b>  been convicted of desertion from the U.S. armed forces? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl83_ConvictedDesertion" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -2054,7 +2056,7 @@
                            or service in the U.S. armed forces in time of war or a period declared by the President to <br />be a national emergency? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl84_RemainedOutsideUS" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
@@ -2068,7 +2070,7 @@
                            lawful permanent resident, nonimmigrant, parolee, present without admission or <br />parole, or any other status)? </label>
                         <br />
                         </asp:TableCell>
-                        <asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Center">
                             <asp:RadioButtonList ID="rbl85_ImmigrationStatus" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
