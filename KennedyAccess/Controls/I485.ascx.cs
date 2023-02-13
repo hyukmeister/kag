@@ -681,7 +681,7 @@ namespace KennedyAccess.Controls
             cbxTaxReturnsPast3Yrs.Checked = dr["TaxReturnsPast3Yrs"].ToString() == "True";
 
             //Your Background Information
-            rbl1_AdmissionDeniedToUS.SelectedValue = BaseData.RadioButtonValue(dr["HairColor"], null); //(dr["1_AdmissionDeniedToUS"].ToString() == "True") ? "1" : "0";
+            rbl1_AdmissionDeniedToUS.SelectedValue = BaseData.RadioButtonValue(dr["1_AdmissionDeniedToUS"], null); //(dr["1_AdmissionDeniedToUS"].ToString() == "True") ? "1" : "0";
 
             rbl2_VisaDeniedToUS.SelectedValue = BaseData.RadioButtonValue(dr["2_VisaDeniedToUS"], null); //(dr["2_VisaDeniedToUS"].ToString() == "True") ? "1" : "0";
             rbl3_WorkedUSWithoutAuthz.SelectedValue = BaseData.RadioButtonValue(dr["3_WorkedUSWithoutAuthz"], null); //(dr["3_WorkedUSWithoutAuthz"].ToString() == "True") ? "1" : "0";

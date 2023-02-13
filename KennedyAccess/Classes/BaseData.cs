@@ -1425,9 +1425,9 @@ namespace KennedyAccess.Classes
         public static string RadioButtonValue(Object obj, string Default)
         {
             string result = Default;
-            if(obj.ToString()!=string.Empty)
+            if(obj.ToString() != string.Empty)
             {
-                result = obj.ToString();
+                result = (obj.ToString() == "True") ? "1" : "0";
             }
             return result;
         }
