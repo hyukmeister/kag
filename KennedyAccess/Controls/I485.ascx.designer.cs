@@ -987,13 +987,13 @@ namespace KennedyAccess.Controls
         protected global::System.Web.UI.WebControls.CheckBox cbxI20;
 
         /// <summary>
-        /// cbkApplicantInfoChanged5 control.
+        /// cbkBackgroundInfoChanged control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbkApplicantInfoChanged5;
+        protected global::System.Web.UI.WebControls.CheckBox cbkBackgroundInfoChanged;
 
         /// <summary>
         /// tblI485_ClientApplication5 control.
@@ -1003,6 +1003,33 @@ namespace KennedyAccess.Controls
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Table tblI485_ClientApplication5;
+
+        /// <summary>
+        /// btnEdit5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnEdit5;
+
+        /// <summary>
+        /// btnSave5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSave5;
+
+        /// <summary>
+        /// btnCancel5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancel5;
 
         /// <summary>
         /// rbl1_AdmissionDeniedToUS control.

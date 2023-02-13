@@ -6,13 +6,13 @@
     <asp:Label ID="labReferenceID" runat="server" Visible="false"></asp:Label>
     <asp:Label ID="labRelationshipID" runat="server" Visible="false"></asp:Label>
 
-    <div class="mb-3;" style="width:350px">
+    <div class="mb-3;" style="width: 350px">
         <label for="ddlCountry" class="form-label">Family Member</label><br />
-        <asp:DropDownList ID="ddlFamilyMember" CssClass="btn btn-default btn-outline-secondary align-items-start text-start" runat="server" Width="300px" AutoPostBack="true" OnSelectedIndexChanged="ddlFamilyMember_SelectedIndexChanged" ></asp:DropDownList>
+        <asp:DropDownList ID="ddlFamilyMember" CssClass="btn btn-default btn-outline-secondary align-items-start text-start" runat="server" Width="300px" AutoPostBack="true" OnSelectedIndexChanged="ddlFamilyMember_SelectedIndexChanged"></asp:DropDownList>
     </div>
 
     <div class="accordion-item">
-        
+
         <h2 class="accordion-header" id="headingI485_One">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseI485_One" aria-expanded="false" aria-controls="collapseI485_One">
                 <asp:CheckBox ID="cbkApplicantInfoChanged" runat="server" Checked="false" />
@@ -391,7 +391,7 @@
                 <asp:Table ID="tblI485_ClientApplication2" runat="server" class="table table-hover" Width="100%">
                     <asp:TableRow>
                         <asp:TableCell ColumnSpan="4" HorizontalAlign="Right">
-                            <asp:Button ID="btnEdit2" runat="server" class="btn btn-primary" Text="Edit" CausesValidation="false"  OnClick="btnEdit_InterpInfoClick" />
+                            <asp:Button ID="btnEdit2" runat="server" class="btn btn-primary" Text="Edit" CausesValidation="false" OnClick="btnEdit_InterpInfoClick" />
                             <asp:Button ID="btnSave2" runat="server" class="btn btn-primary" Text="Save" OnClick="btnSave_InterpInfoClick" Visible="false" />&nbsp;
                             <asp:Button ID="btnCancel2" runat="server" class="btn btn-default" Text="Cancel" CausesValidation="false" OnClientClick="return confirm('Cancel without saving?');" OnClick="btnCancel_InterpInfoClick" Visible="false" />
                         </asp:TableCell>
@@ -503,7 +503,7 @@
                 <asp:Table ID="tblI485_ClientApplication3" runat="server" class="table table-hover" Width="100%">
                     <asp:TableRow>
                         <asp:TableCell ColumnSpan="4" HorizontalAlign="Right">
-                            <asp:Button ID="btnEdit3" runat="server" class="btn btn-primary" Text="Edit" CausesValidation="false"  OnClick="btnEdit_BioInfoClick" />
+                            <asp:Button ID="btnEdit3" runat="server" class="btn btn-primary" Text="Edit" CausesValidation="false" OnClick="btnEdit_BioInfoClick" />
                             <asp:Button ID="btnSave3" runat="server" class="btn btn-primary" Text="Save" OnClick="btnSave_BioInfoClick" Visible="false" />&nbsp;
                             <asp:Button ID="btnCancel3" runat="server" class="btn btn-default" Text="Cancel" CausesValidation="false" OnClientClick="return confirm('Cancel without saving?');" OnClick="btnCancel_BioInfoClick" Visible="false" />
                         </asp:TableCell>
@@ -823,7 +823,7 @@
     <div class="accordion-item">
         <h2 class="accordion-header" id="headingI485_Five">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseI485_Five" aria-expanded="false" aria-controls="collapseI485_Five">
-                <asp:CheckBox ID="cbkApplicantInfoChanged5" runat="server" Checked="false" />
+                <asp:CheckBox ID="cbkBackgroundInfoChanged" runat="server" Checked="false" />
                 <b>Your Background Information (Yes/No Questions)</b>
                 ==>If you answer &quot;Yes,&quot; please describe the details (When, Where, Why, How, final outcome, etc.)
             </button>
@@ -832,10 +832,10 @@
             <div class="accordion-body">
                 <asp:Table ID="tblI485_ClientApplication5" runat="server" class="table table-hover" Width="100%">
                     <asp:TableRow>
-                         <asp:TableCell ColumnSpan="4" HorizontalAlign="Right">
-                            <%--<asp:Button ID="btnEdit5" runat="server" class="btn btn-primary" Text="Edit" CausesValidation="false" UseSubmitBehavior="false" OnClick="btnEdit_Click" />
-                            <asp:Button ID="btnSave5" runat="server" class="btn btn-primary" Text="Save" OnClick="btnSave_Click" Visible="false" />&nbsp;
-                        <asp:Button ID="btnCancel5" runat="server" class="btn btn-default" Text="Cancel" CausesValidation="false" UseSubmitBehavior="false" OnClick="btnCancel_Click" Visible="false" />--%>
+                        <asp:TableCell ColumnSpan="4" HorizontalAlign="Right">
+                            <asp:Button ID="btnEdit5" runat="server" class="btn btn-primary" Text="Edit" CausesValidation="false" UseSubmitBehavior="false" OnClick="btnEdit_BackgroundInfoClick" />
+                            <asp:Button ID="btnSave5" runat="server" class="btn btn-primary" Text="Save" OnClick="btnSave_BackgroundInfoClick" Visible="false" />&nbsp;
+                        <asp:Button ID="btnCancel5" runat="server" class="btn btn-default" Text="Cancel" CausesValidation="false" UseSubmitBehavior="false" OnClick="btnCancel_BackgroundInfoClick" Visible="false" />
                         </asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow>
@@ -856,7 +856,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl1_AdmissionDeniedToUS" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl1_AdmissionDeniedToUS" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -868,7 +868,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl2_VisaDeniedToUS" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl2_VisaDeniedToUS" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -880,7 +880,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl3_WorkedUSWithoutAuthz" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl3_WorkedUSWithoutAuthz" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -892,7 +892,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl4_ViolatedTerms" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl4_ViolatedTerms" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -904,7 +904,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell ColumnSpan="1">
-                            <asp:RadioButtonList ID="rbl5_InExclusion" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl5_InExclusion" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -916,7 +916,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl6_IssuedFinalOrderExcl" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl6_IssuedFinalOrderExcl" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -928,7 +928,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl7_HadPriorFinalOrderExcl" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl7_HadPriorFinalOrderExcl" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -940,7 +940,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl8_LawfulResident" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl8_LawfulResident" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -953,7 +953,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl9_GrantedDeparture" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl9_GrantedDeparture" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -966,7 +966,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl10_AppliedProtection" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl10_AppliedProtection" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -979,7 +979,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl11_A_BeenNonimmigrant" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl11_A_BeenNonimmigrant" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -991,7 +991,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl11_B_CompliedRequirement" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl11_B_CompliedRequirement" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1004,7 +1004,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl11_C_BeenGrantedWaiver" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl11_C_BeenGrantedWaiver" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1018,7 +1018,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl12_BeenArrested" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl12_BeenArrested" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1031,7 +1031,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl13_CommittedCrime" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl13_CommittedCrime" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1045,7 +1045,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl14_PledGuilty" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl14_PledGuilty" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1060,7 +1060,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl15_BeenOrderedPunished" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl15_BeenOrderedPunished" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1073,7 +1073,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl16_BeenDefendant" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl16_BeenDefendant" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1086,7 +1086,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl17_ViolatedRegulation" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl17_ViolatedRegulation" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1099,7 +1099,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl18_ConvictedForOffenses" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl18_ConvictedForOffenses" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1112,7 +1112,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl19_TraffickedSubstances" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl19_TraffickedSubstances" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1125,7 +1125,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl20_AidedTrafficking" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl20_AidedTrafficking" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1142,7 +1142,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl21_FamilyTrafficked" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl21_FamilyTrafficked" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1155,7 +1155,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl22_EngagedInProstitution" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl22_EngagedInProstitution" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1168,7 +1168,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl23_ProcuredProstitutes" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl23_ProcuredProstitutes" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1180,7 +1180,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl24_ReceiveMoneyProstitution" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl24_ReceiveMoneyProstitution" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1194,7 +1194,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl25_IntendToEngageGambling" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl25_IntendToEngageGambling" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1207,7 +1207,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl26_ExercisedImmunity" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl26_ExercisedImmunity" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1220,7 +1220,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl27_ReligiousViolations" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl27_ReligiousViolations" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1233,7 +1233,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl28_InducedTrafficking" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl28_InducedTrafficking" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1247,7 +1247,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl29_TraffickedServitude" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl29_TraffickedServitude" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1261,7 +1261,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl30_AbettedSexActs" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl30_AbettedSexActs" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1277,7 +1277,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl31_FamilyTrafficking" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl31_FamilyTrafficking" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1291,7 +1291,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl32_MoneyLaundering" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl32_MoneyLaundering" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1304,7 +1304,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl33_ViolatesEspionage" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl33_ViolatesEspionage" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1317,7 +1317,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl34_ProhibitingExport" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl34_ProhibitingExport" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1331,7 +1331,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl35_OverthrowingUSGov" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl35_OverthrowingUSGov" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1344,7 +1344,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl36_EndangerWelfare" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl36_EndangerWelfare" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1356,7 +1356,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl37_UnlawfulActivity" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl37_UnlawfulActivity" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1370,7 +1370,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl38_InAdversePolicy" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl38_InAdversePolicy" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1385,7 +1385,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl39_CommittedCrime" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl39_CommittedCrime" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1398,7 +1398,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl40_ParticipatedInGroup" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl40_ParticipatedInGroup" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1411,7 +1411,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl41_RecruitedMembers" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl41_RecruitedMembers" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1424,7 +1424,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl42_SupportActivities" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl42_SupportActivities" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1438,7 +1438,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl43_SupportIndividual" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl43_SupportIndividual" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1450,7 +1450,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl44_MilitaryTraining" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl44_MilitaryTraining" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1463,7 +1463,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl45_IntendToEngageQ39To45" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl45_IntendToEngageQ39To45" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1479,7 +1479,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl46_FamilyCommitted" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl46_FamilyCommitted" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1492,7 +1492,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl47_FamilyParticipated" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl47_FamilyParticipated" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1506,7 +1506,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl48_FamilyRecruited" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl48_FamilyRecruited" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1520,7 +1520,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl49_FamilySupportActivity" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl49_FamilySupportActivity" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1534,7 +1534,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl50_FamilySupportIndividual" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl50_FamilySupportIndividual" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1548,7 +1548,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl51_FamilyMilitaryTraining" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl51_FamilyMilitaryTraining" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1561,7 +1561,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl52_SellingWeapons" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl52_SellingWeapons" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1574,7 +1574,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl53_WorkedInPrison" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl53_WorkedInPrison" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1588,7 +1588,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl54_AssistedUsingWeapon" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl54_AssistedUsingWeapon" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1602,7 +1602,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl55_ServedInArmedGroup" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl55_ServedInArmedGroup" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1615,7 +1615,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl56_AffiliatedCommunist" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl56_AffiliatedCommunist" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1631,7 +1631,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl57_IncitePersecution" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl57_IncitePersecution" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1645,7 +1645,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl58_A_InvolvingGenocide" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl58_A_InvolvingGenocide" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1657,7 +1657,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl58_B_KillingPerson" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl58_B_KillingPerson" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1669,7 +1669,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl58_C_InjuringPerson" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl58_C_InjuringPerson" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1682,7 +1682,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl58_D_SexualContact" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl58_D_SexualContact" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1694,7 +1694,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl58_E_LimitingAbility" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl58_E_LimitingAbility" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1707,7 +1707,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl59_RecruitedPersUnder15" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl59_RecruitedPersUnder15" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1720,7 +1720,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl60_UsedPersUnder15" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl60_UsedPersUnder15" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1733,7 +1733,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl61_ReceivedUSAsst" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl61_ReceivedUSAsst" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1746,7 +1746,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl62_LikelyToReceiveAsst" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl62_LikelyToReceiveAsst" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1759,7 +1759,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl63_FailedToAttend" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl63_FailedToAttend" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1771,7 +1771,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl64_ReasonableCause" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl64_ReasonableCause" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1784,7 +1784,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl65_AttachWrittenStatement" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl65_AttachWrittenStatement" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1798,7 +1798,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl66_SubmittedFraudulentDoc" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl66_SubmittedFraudulentDoc" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1812,7 +1812,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl67_LiedOnApplication" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl67_LiedOnApplication" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1824,7 +1824,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl68_ClaimedUSCitizen" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl68_ClaimedUSCitizen" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1836,7 +1836,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl69_StowawayOnVessel" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl69_StowawayOnVessel" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1849,7 +1849,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl70_EncouragedSmuggling" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl70_EncouragedSmuggling" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1861,7 +1861,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl71_UnderPenaltyForViolating" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl71_UnderPenaltyForViolating" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1875,7 +1875,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl72_BeenExcludedFromUS" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl72_BeenExcludedFromUS" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1887,7 +1887,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl73_EnteredUSWithoutInsp" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl73_EnteredUSWithoutInsp" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1900,7 +1900,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl74_A_UnlawfullyInUS180Days" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl74_A_UnlawfullyInUS180Days" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1912,7 +1912,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl74_B_UnlawfullyInUS1Year" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl74_B_UnlawfullyInUS1Year" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1927,7 +1927,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl75_A_ReenteredWOInspection" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl75_A_ReenteredWOInspection" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1939,7 +1939,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl75_B_BeenDeported" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl75_B_BeenDeported" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1951,7 +1951,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl76_PlanPolygamy" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl76_PlanPolygamy" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1965,7 +1965,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl77_AccompanyForeigner" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl77_AccompanyForeigner" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1978,7 +1978,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl78_AssistedInDetaining" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl78_AssistedInDetaining" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -1991,7 +1991,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl79_VotedInViolation" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl79_VotedInViolation" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -2003,7 +2003,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl80_RenouncedUSCitizenship" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl80_RenouncedUSCitizenship" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -2017,7 +2017,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl81_AppliedExemption" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl81_AppliedExemption" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -2030,7 +2030,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl82_RelievedFromService" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl82_RelievedFromService" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -2042,7 +2042,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl83_ConvictedDesertion" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl83_ConvictedDesertion" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -2055,7 +2055,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl84_RemainedOutsideUS" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl84_RemainedOutsideUS" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />
@@ -2069,7 +2069,7 @@
                         <br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:RadioButtonList ID="rbl85_ImmigrationStatus" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None">
+                            <asp:RadioButtonList ID="rbl85_ImmigrationStatus" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" BorderStyle="None" OnSelectedIndexChanged="BackgroundInfo_Changed">
                                 <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                 <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" />
                             </asp:RadioButtonList><br />

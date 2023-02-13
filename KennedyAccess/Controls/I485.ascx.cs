@@ -45,7 +45,6 @@ namespace KennedyAccess.Controls
                     labI485ID.Text = dr["I485ID"].ToString();
                 }
 
-                PopulateI485();
 
                 ddlCountryOfBirth.DataSource = (DataTable)Application["Country"];
                 ddlCountryOfBirth.DataValueField = "CountryID";
@@ -72,10 +71,13 @@ namespace KennedyAccess.Controls
                 ddlCountryOfInterp.DataTextField = "CountryName";
                 ddlCountryOfInterp.DataBind();
 
+                PopulateI485();
+
                 SetEditVisibility_AppInfo(true);
                 SetEditVisibility_InterpInfo(true);
                 SetEditVisibility_BioInfo(true);
                 SetEditVisibility_DocInfo(true);
+                SetEditVisibility_BackgroundInfo(true);
             }
         }
 
@@ -233,7 +235,7 @@ namespace KennedyAccess.Controls
 
         }
 
-        //-------------------------------------------------------------------------------------------UpdateBiographic Information----------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------------Update Biographic Information----------------------------------------------------------------------------------------
 
         protected void btnEdit_BioInfoClick(object sender, EventArgs e)
         {
@@ -293,7 +295,7 @@ namespace KennedyAccess.Controls
             rblHairColor.BorderStyle = sBorder;
 
         }
-        //-------------------------------------------------------------------------------------------UpdateDocumentation Information----------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------------Update Documentation Information----------------------------------------------------------------------------------------
 
         protected void btnEdit_DocInfoClick(object sender, EventArgs e)
         {
@@ -367,6 +369,186 @@ namespace KennedyAccess.Controls
             
         }
 
+
+        //-------------------------------------------------------------------------------------------Update Background Information----------------------------------------------------------------------------------------
+
+        protected void btnEdit_BackgroundInfoClick(object sender, EventArgs e)
+        {
+            SetEditVisibility_BackgroundInfo(false);
+        }
+
+        protected void btnSave_BackgroundInfoClick(object sender, EventArgs e)
+        {
+            if (cbkBackgroundInfoChanged.Checked == true)
+            {
+                //save Interpreter info to db
+                bd.UpdateI485_BackgroundInfo(user, labI485ID.Text, rbl1_AdmissionDeniedToUS.SelectedValue == "1", 
+                    rbl2_VisaDeniedToUS.SelectedValue == "1", rbl3_WorkedUSWithoutAuthz.SelectedValue == "1", 
+                    rbl4_ViolatedTerms.SelectedValue == "1", rbl5_InExclusion.SelectedValue == "1",
+                    rbl6_IssuedFinalOrderExcl.SelectedValue == "1", rbl7_HadPriorFinalOrderExcl.SelectedValue == "1", 
+                    rbl8_LawfulResident.SelectedValue == "1", rbl9_GrantedDeparture.SelectedValue == "1",
+                    rbl10_AppliedProtection.SelectedValue == "1", rbl11_A_BeenNonimmigrant.SelectedValue == "1", 
+                    rbl11_B_CompliedRequirement.SelectedValue == "1", rbl11_C_BeenGrantedWaiver.SelectedValue == "1",
+                    rbl12_BeenArrested.SelectedValue == "1", rbl13_CommittedCrime.SelectedValue == "1", 
+                    rbl14_PledGuilty.SelectedValue == "1", rbl15_BeenOrderedPunished.SelectedValue == "1",
+                    rbl16_BeenDefendant.SelectedValue == "1", rbl17_ViolatedRegulation.SelectedValue == "1", 
+                    rbl18_ConvictedForOffenses.SelectedValue == "1", rbl19_TraffickedSubstances.SelectedValue == "1",
+                    rbl20_AidedTrafficking.SelectedValue == "1", rbl21_FamilyTrafficked.SelectedValue == "1", 
+                    rbl22_EngagedInProstitution.SelectedValue == "1", rbl23_ProcuredProstitutes.SelectedValue == "1",
+                    rbl24_ReceiveMoneyProstitution.SelectedValue == "1", rbl25_IntendToEngageGambling.SelectedValue == "1", 
+                    rbl26_ExercisedImmunity.SelectedValue == "1", rbl27_ReligiousViolations.SelectedValue == "1", 
+                    rbl28_InducedTrafficking.SelectedValue == "1", rbl29_TraffickedServitude.SelectedValue == "1",
+                    rbl30_AbettedSexActs.SelectedValue == "1", rbl31_FamilyTrafficking.SelectedValue == "1", 
+                    rbl32_MoneyLaundering.SelectedValue == "1", rbl33_ViolatesEspionage.SelectedValue == "1", 
+                    rbl34_ProhibitingExport.SelectedValue == "1", rbl35_OverthrowingUSGov.SelectedValue == "1", 
+                    rbl36_EndangerWelfare.SelectedValue == "1", rbl37_UnlawfulActivity.SelectedValue == "1", 
+                    rbl38_InAdversePolicy.SelectedValue == "1", rbl39_CommittedCrime.SelectedValue == "1", 
+                    rbl40_ParticipatedInGroup.SelectedValue == "1", rbl41_RecruitedMembers.SelectedValue == "1", 
+                    rbl42_SupportActivities.SelectedValue == "1",rbl43_SupportIndividual.SelectedValue == "1", 
+                    rbl44_MilitaryTraining.SelectedValue == "1", rbl45_IntendToEngageQ39To45.SelectedValue == "1",
+                    rbl46_FamilyCommitted.SelectedValue == "1", rbl47_FamilyParticipated.SelectedValue == "1", 
+                    rbl48_FamilyRecruited.SelectedValue == "1", rbl49_FamilySupportActivity.SelectedValue == "1", 
+                    rbl50_FamilySupportIndividual.SelectedValue == "1", rbl51_FamilyMilitaryTraining.SelectedValue == "1", 
+                    rbl52_SellingWeapons.SelectedValue == "1", rbl53_WorkedInPrison.SelectedValue == "1", 
+                    rbl54_AssistedUsingWeapon.SelectedValue == "1", rbl55_ServedInArmedGroup.SelectedValue == "1", 
+                    rbl56_AffiliatedCommunist.SelectedValue == "1", rbl57_IncitePersecution.SelectedValue == "1", 
+                    rbl58_A_InvolvingGenocide.SelectedValue == "1", rbl58_B_KillingPerson.SelectedValue == "1", 
+                    rbl58_C_InjuringPerson.SelectedValue == "1", rbl58_D_SexualContact.SelectedValue == "1", 
+                    rbl58_E_LimitingAbility.SelectedValue == "1", rbl59_RecruitedPersUnder15.SelectedValue == "1", 
+                    rbl60_UsedPersUnder15.SelectedValue == "1", rbl61_ReceivedUSAsst.SelectedValue == "1", 
+                    rbl62_LikelyToReceiveAsst.SelectedValue == "1", rbl63_FailedToAttend.SelectedValue == "1", 
+                    rbl64_ReasonableCause.SelectedValue == "1", rbl65_AttachWrittenStatement.SelectedValue == "1", 
+                    rbl66_SubmittedFraudulentDoc.SelectedValue == "1", rbl67_LiedOnApplication.SelectedValue == "1", 
+                    rbl68_ClaimedUSCitizen.SelectedValue == "1", rbl69_StowawayOnVessel.SelectedValue == "1", 
+                    rbl70_EncouragedSmuggling.SelectedValue == "1", rbl71_UnderPenaltyForViolating.SelectedValue == "1", 
+                    rbl72_BeenExcludedFromUS.SelectedValue == "1", rbl73_EnteredUSWithoutInsp.SelectedValue == "1",
+                    rbl74_A_UnlawfullyInUS180Days.SelectedValue == "1", rbl74_B_UnlawfullyInUS1Year.SelectedValue == "1", 
+                    rbl75_A_ReenteredWOInspection.SelectedValue == "1", rbl75_B_BeenDeported.SelectedValue == "1", 
+                    rbl76_PlanPolygamy.SelectedValue == "1", rbl77_AccompanyForeigner.SelectedValue == "1", 
+                    rbl78_AssistedInDetaining.SelectedValue == "1", rbl79_VotedInViolation.SelectedValue == "1", 
+                    rbl80_RenouncedUSCitizenship.SelectedValue == "1", rbl81_AppliedExemption.SelectedValue == "1",
+                    rbl82_RelievedFromService.SelectedValue == "1", rbl83_ConvictedDesertion.SelectedValue == "1", 
+                    rbl84_RemainedOutsideUS.SelectedValue == "1", rbl85_ImmigrationStatus.SelectedValue == "1"
+                   );
+            }
+            SetEditVisibility_BackgroundInfo(true);
+        }
+
+        protected void btnCancel_BackgroundInfoClick(object sender, EventArgs e)
+        {
+            SetEditVisibility_BackgroundInfo(true);
+        }
+
+        protected void BackgroundInfo_Changed(object sender, EventArgs e)
+        {
+            cbkBackgroundInfoChanged.Checked = true;
+        }
+
+        protected void SetEditVisibility_BackgroundInfo(bool bLock)
+        {
+            BorderStyle sBorder = (bLock) ? BorderStyle.None : BorderStyle.NotSet;
+
+            btnEdit5.Visible = bLock;
+            btnCancel5.Visible = btnSave5.Visible = !bLock;
+
+
+            rbl1_AdmissionDeniedToUS.Enabled = !bLock;              rbl1_AdmissionDeniedToUS.BorderStyle = sBorder; 
+            rbl2_VisaDeniedToUS.Enabled = !bLock;                   rbl2_VisaDeniedToUS.BorderStyle = sBorder; 
+            rbl3_WorkedUSWithoutAuthz.Enabled = !bLock;             rbl3_WorkedUSWithoutAuthz.BorderStyle = sBorder; 
+            rbl4_ViolatedTerms.Enabled = !bLock;                    rbl4_ViolatedTerms.BorderStyle = sBorder; 
+            rbl5_InExclusion.Enabled = !bLock;                      rbl5_InExclusion.BorderStyle = sBorder;
+            rbl6_IssuedFinalOrderExcl.Enabled = !bLock;             rbl6_IssuedFinalOrderExcl.BorderStyle = sBorder; 
+            rbl7_HadPriorFinalOrderExcl.Enabled = !bLock;           rbl7_HadPriorFinalOrderExcl.BorderStyle = sBorder; 
+            rbl8_LawfulResident.Enabled = !bLock;                   rbl8_LawfulResident.BorderStyle = sBorder; 
+            rbl9_GrantedDeparture.Enabled = !bLock;                 rbl9_GrantedDeparture.BorderStyle = sBorder;
+            rbl10_AppliedProtection.Enabled = !bLock;               rbl10_AppliedProtection.BorderStyle = sBorder; 
+            rbl11_A_BeenNonimmigrant.Enabled = !bLock;              rbl11_A_BeenNonimmigrant.BorderStyle = sBorder; 
+            rbl11_B_CompliedRequirement.Enabled = !bLock;           rbl11_B_CompliedRequirement.BorderStyle = sBorder; 
+            rbl11_C_BeenGrantedWaiver.Enabled = !bLock;             rbl11_C_BeenGrantedWaiver.BorderStyle = sBorder;
+            rbl12_BeenArrested.Enabled = !bLock;                    rbl12_BeenArrested.BorderStyle = sBorder; 
+            rbl13_CommittedCrime.Enabled = !bLock;                  rbl13_CommittedCrime.BorderStyle = sBorder; 
+            rbl14_PledGuilty.Enabled = !bLock;                      rbl14_PledGuilty.BorderStyle = sBorder; 
+            rbl15_BeenOrderedPunished.Enabled = !bLock;             rbl15_BeenOrderedPunished.BorderStyle = sBorder;
+            rbl16_BeenDefendant.Enabled = !bLock;                   rbl16_BeenDefendant.BorderStyle = sBorder; 
+            rbl17_ViolatedRegulation.Enabled = !bLock;              rbl17_ViolatedRegulation.BorderStyle = sBorder; 
+            rbl18_ConvictedForOffenses.Enabled = !bLock;            rbl18_ConvictedForOffenses.BorderStyle = sBorder; 
+            rbl19_TraffickedSubstances.Enabled = !bLock;            rbl19_TraffickedSubstances.BorderStyle = sBorder;
+            rbl20_AidedTrafficking.Enabled = !bLock;                rbl20_AidedTrafficking.BorderStyle = sBorder; 
+            rbl21_FamilyTrafficked.Enabled = !bLock;                rbl21_FamilyTrafficked.BorderStyle = sBorder; 
+            rbl22_EngagedInProstitution.Enabled = !bLock;           rbl22_EngagedInProstitution.BorderStyle = sBorder; 
+            rbl23_ProcuredProstitutes.Enabled = !bLock;             rbl23_ProcuredProstitutes.BorderStyle = sBorder;
+            rbl24_ReceiveMoneyProstitution.Enabled = !bLock;        rbl24_ReceiveMoneyProstitution.BorderStyle = sBorder; 
+            rbl25_IntendToEngageGambling.Enabled = !bLock;          rbl25_IntendToEngageGambling.BorderStyle = sBorder; 
+            rbl26_ExercisedImmunity.Enabled = !bLock;               rbl26_ExercisedImmunity.BorderStyle = sBorder; 
+            rbl27_ReligiousViolations.Enabled = !bLock;             rbl27_ReligiousViolations.BorderStyle = sBorder; 
+            rbl28_InducedTrafficking.Enabled = !bLock;              rbl28_InducedTrafficking.BorderStyle = sBorder; 
+            rbl29_TraffickedServitude.Enabled = !bLock;             rbl29_TraffickedServitude.BorderStyle = sBorder;
+            rbl30_AbettedSexActs.Enabled = !bLock;                  rbl30_AbettedSexActs.BorderStyle = sBorder; 
+            rbl31_FamilyTrafficking.Enabled = !bLock;               rbl31_FamilyTrafficking.BorderStyle = sBorder; 
+            rbl32_MoneyLaundering.Enabled = !bLock;                 rbl32_MoneyLaundering.BorderStyle = sBorder;
+            rbl33_ViolatesEspionage.Enabled = !bLock;               rbl33_ViolatesEspionage.BorderStyle = sBorder; 
+            rbl34_ProhibitingExport.Enabled = !bLock;               rbl34_ProhibitingExport.BorderStyle = sBorder; 
+            rbl35_OverthrowingUSGov.Enabled = !bLock;               rbl35_OverthrowingUSGov.BorderStyle = sBorder; 
+            rbl36_EndangerWelfare.Enabled = !bLock;                 rbl36_EndangerWelfare.BorderStyle = sBorder; 
+            rbl37_UnlawfulActivity.Enabled = !bLock;                rbl37_UnlawfulActivity.BorderStyle = sBorder; 
+            rbl38_InAdversePolicy.Enabled = !bLock;                 rbl38_InAdversePolicy.BorderStyle = sBorder;
+            rbl39_CommittedCrime.Enabled = !bLock;                  rbl39_CommittedCrime.BorderStyle = sBorder; 
+            rbl40_ParticipatedInGroup.Enabled = !bLock;             rbl40_ParticipatedInGroup.BorderStyle = sBorder; 
+            rbl41_RecruitedMembers.Enabled = !bLock;                rbl41_RecruitedMembers.BorderStyle = sBorder; 
+            rbl42_SupportActivities.Enabled = !bLock;               rbl42_SupportActivities.BorderStyle = sBorder;
+            rbl43_SupportIndividual.Enabled = !bLock;               rbl43_SupportIndividual.BorderStyle = sBorder; 
+            rbl44_MilitaryTraining.Enabled = !bLock;                rbl44_MilitaryTraining.BorderStyle = sBorder; 
+            rbl45_IntendToEngageQ39To45.Enabled = !bLock;           rbl45_IntendToEngageQ39To45.BorderStyle = sBorder;
+            rbl46_FamilyCommitted.Enabled = !bLock;                 rbl46_FamilyCommitted.BorderStyle = sBorder; 
+            rbl47_FamilyParticipated.Enabled = !bLock;              rbl47_FamilyParticipated.BorderStyle = sBorder; 
+            rbl48_FamilyRecruited.Enabled = !bLock;                 rbl48_FamilyRecruited.BorderStyle = sBorder; 
+            rbl49_FamilySupportActivity.Enabled = !bLock;           rbl49_FamilySupportActivity.BorderStyle = sBorder; 
+            rbl50_FamilySupportIndividual.Enabled = !bLock;         rbl50_FamilySupportIndividual.BorderStyle = sBorder; 
+            rbl51_FamilyMilitaryTraining.Enabled = !bLock;          rbl51_FamilyMilitaryTraining.BorderStyle = sBorder; 
+            rbl52_SellingWeapons.Enabled = !bLock;                  rbl52_SellingWeapons.BorderStyle = sBorder; 
+            rbl53_WorkedInPrison.Enabled = !bLock;                  rbl53_WorkedInPrison.BorderStyle = sBorder; 
+            rbl54_AssistedUsingWeapon.Enabled = !bLock;             rbl54_AssistedUsingWeapon.BorderStyle = sBorder; 
+            rbl55_ServedInArmedGroup.Enabled = !bLock;              rbl55_ServedInArmedGroup.BorderStyle = sBorder; 
+            rbl56_AffiliatedCommunist.Enabled = !bLock;             rbl56_AffiliatedCommunist.BorderStyle = sBorder; 
+            rbl57_IncitePersecution.Enabled = !bLock;               rbl57_IncitePersecution.BorderStyle = sBorder; 
+            rbl58_A_InvolvingGenocide.Enabled = !bLock;             rbl58_A_InvolvingGenocide.BorderStyle = sBorder; 
+            rbl58_B_KillingPerson.Enabled = !bLock;                 rbl58_B_KillingPerson.BorderStyle = sBorder; 
+            rbl58_C_InjuringPerson.Enabled = !bLock;                rbl58_C_InjuringPerson.BorderStyle = sBorder; 
+            rbl58_D_SexualContact.Enabled = !bLock;                 rbl58_D_SexualContact.BorderStyle = sBorder; 
+            rbl58_E_LimitingAbility.Enabled = !bLock;               rbl58_E_LimitingAbility.BorderStyle = sBorder; 
+            rbl59_RecruitedPersUnder15.Enabled = !bLock;            rbl59_RecruitedPersUnder15.BorderStyle = sBorder; 
+            rbl60_UsedPersUnder15.Enabled = !bLock;                 rbl60_UsedPersUnder15.BorderStyle = sBorder;
+            rbl61_ReceivedUSAsst.Enabled = !bLock;                  rbl61_ReceivedUSAsst.BorderStyle = sBorder; 
+            rbl62_LikelyToReceiveAsst.Enabled = !bLock;             rbl62_LikelyToReceiveAsst.BorderStyle = sBorder; 
+            rbl63_FailedToAttend.Enabled = !bLock;                  rbl63_FailedToAttend.BorderStyle = sBorder; 
+            rbl64_ReasonableCause.Enabled = !bLock;                 rbl64_ReasonableCause.BorderStyle = sBorder; 
+            rbl65_AttachWrittenStatement.Enabled = !bLock;          rbl65_AttachWrittenStatement.BorderStyle = sBorder; 
+            rbl66_SubmittedFraudulentDoc.Enabled = !bLock;          rbl66_SubmittedFraudulentDoc.BorderStyle = sBorder; 
+            rbl67_LiedOnApplication.Enabled = !bLock;               rbl67_LiedOnApplication.BorderStyle = sBorder; 
+            rbl68_ClaimedUSCitizen.Enabled = !bLock;                rbl68_ClaimedUSCitizen.BorderStyle = sBorder; 
+            rbl69_StowawayOnVessel.Enabled = !bLock;                rbl69_StowawayOnVessel.BorderStyle = sBorder; 
+            rbl70_EncouragedSmuggling.Enabled = !bLock;             rbl70_EncouragedSmuggling.BorderStyle = sBorder;
+            rbl71_UnderPenaltyForViolating.Enabled = !bLock;        rbl71_UnderPenaltyForViolating.BorderStyle = sBorder; 
+            rbl72_BeenExcludedFromUS.Enabled = !bLock;              rbl72_BeenExcludedFromUS.BorderStyle = sBorder;
+            rbl73_EnteredUSWithoutInsp.Enabled = !bLock;            rbl73_EnteredUSWithoutInsp.BorderStyle = sBorder;
+            rbl74_A_UnlawfullyInUS180Days.Enabled = !bLock;         rbl74_A_UnlawfullyInUS180Days.BorderStyle = sBorder;
+            rbl74_B_UnlawfullyInUS1Year.Enabled = !bLock;           rbl74_B_UnlawfullyInUS1Year.BorderStyle = sBorder; 
+            rbl75_A_ReenteredWOInspection.Enabled = !bLock;         rbl75_A_ReenteredWOInspection.BorderStyle = sBorder;
+            rbl75_B_BeenDeported.Enabled = !bLock;                  rbl75_B_BeenDeported.BorderStyle = sBorder; 
+            rbl76_PlanPolygamy.Enabled = !bLock;                    rbl76_PlanPolygamy.BorderStyle = sBorder; 
+            rbl77_AccompanyForeigner.Enabled = !bLock;              rbl77_AccompanyForeigner.BorderStyle = sBorder; 
+            rbl78_AssistedInDetaining.Enabled = !bLock;             rbl78_AssistedInDetaining.BorderStyle = sBorder; 
+            rbl79_VotedInViolation.Enabled = !bLock;                rbl79_VotedInViolation.BorderStyle = sBorder; 
+            rbl80_RenouncedUSCitizenship.Enabled = !bLock;          rbl80_RenouncedUSCitizenship.BorderStyle = sBorder;
+            rbl81_AppliedExemption.Enabled = !bLock;                rbl81_AppliedExemption.BorderStyle = sBorder;
+            rbl82_RelievedFromService.Enabled = !bLock;             rbl82_RelievedFromService.BorderStyle = sBorder;
+            rbl83_ConvictedDesertion.Enabled = !bLock;              rbl83_ConvictedDesertion.BorderStyle = sBorder; 
+            rbl84_RemainedOutsideUS.Enabled = !bLock;               rbl84_RemainedOutsideUS.BorderStyle = sBorder; 
+            rbl85_ImmigrationStatus.Enabled = !bLock;               rbl85_ImmigrationStatus.BorderStyle = sBorder;
+
+        }
+
+        //-------------------------------------------------------------------------------------------Populate I485----------------------------------------------------------------------------------------
         protected void ddlFamilyMember_SelectedIndexChanged(object sender, EventArgs e)
         {
             labReferenceID.Text = ddlFamilyMember.SelectedValue.ToString();
@@ -377,6 +559,13 @@ namespace KennedyAccess.Controls
             labRelationshipID.Text = drs[0]["RelationshipID"].ToString();
 
             PopulateI485();
+
+            SetEditVisibility_AppInfo(labI485ID.Text!="0");
+            SetEditVisibility_InterpInfo(labI485ID.Text != "0");
+            SetEditVisibility_BioInfo(labI485ID.Text != "0");
+            SetEditVisibility_DocInfo(labI485ID.Text != "0");
+            SetEditVisibility_BackgroundInfo(labI485ID.Text != "0");
+
         }
 
         private void PopulateI485()
@@ -400,7 +589,7 @@ namespace KennedyAccess.Controls
             txtDateOfBirth.Text = BaseData.StringToDateFormat(dr["DateOfBirth"]);
             txtCityOfBirth.Text = dr["CityOfBirth"].ToString();
             ddlCountryOfBirth.SelectedValue = dr["CountryOfBirth"].ToString()=="" ? "0" : dr["CountryOfBirth"].ToString();
-            ddlCitizenship.SelectedValue = dr["Citizenship"].ToString();
+            ddlCitizenship.SelectedValue = dr["Citizenship"].ToString()=="" ? "0" : dr["Citizenship"].ToString();
             txtPhoneNumber.Text = dr["PhoneNumber"].ToString();
             txtEmailAddress.Text = dr["EmailAddress"].ToString();
             txtPassportNumber.Text = dr["PassportNumber"].ToString();
@@ -422,14 +611,22 @@ namespace KennedyAccess.Controls
             txtNameOfMilitary.Text = dr["NameOfMilitary"].ToString();
             txtCityOfMil.Text = dr["CityOfMil"].ToString();
             txtStateOfMil.Text = dr["StateOfMil"].ToString();
-            ddlCountryOfMil.SelectedValue = dr["CountryOfMil"].ToString();
+            ddlCountryOfMil.SelectedValue = dr["CountryOfMil"].ToString()=="" ? "0" : dr["CountryOfMil"].ToString();
             txtNatureOfGroup.Text = dr["NatureOfGroup"].ToString();
             txtInvolvementFrom.Text = BaseData.StringToDateFormat(dr["InvolvementFrom"]);
             txtInvolvementTo.Text = BaseData.StringToDateFormat(dr["InvolvementTo"]);
             rblAppliedVisa.SelectedValue = (dr["HaveAppliedVisa"].ToString() == "True") ? "1" : "0";
             txtCityOfConsulate.Text = dr["CityOfConsulate"].ToString();
-            ddlCountryOfConsulate.SelectedValue = dr["CountryOfConsulate"].ToString();
-            rblVisaDecision.SelectedValue = dr["VisaDecision"].ToString();
+            ddlCountryOfConsulate.SelectedValue = dr["CountryOfConsulate"].ToString()=="" ? "0" : dr["CountryOfConsulate"].ToString();
+
+            if(dr["VisaDecision"].ToString()==String.Empty)
+            {
+                rblVisaDecision.SelectedValue = null;
+            }
+            else
+            {
+                rblVisaDecision.SelectedValue = dr["VisaDecision"].ToString();
+            }
             txtDecisionDate.Text = BaseData.StringToDateFormat(dr["DecisionDate"]);
             rblHaveAppliedEAD.SelectedValue = (dr["HaveAppliedEAD"].ToString() == "True") ? "1" : "0";
             txtUSCISOffice.Text = dr["USCISOffice"].ToString();
@@ -444,20 +641,29 @@ namespace KennedyAccess.Controls
             txtCityInterp.Text = dr["CityInterp"].ToString();
             txtStateOfInterp.Text = dr["StateOfInterp"].ToString();
             txtZipCodeOfInterp.Text = dr["ZipCodeOfInterp"].ToString();
-            ddlCountryOfInterp.SelectedValue = dr["CountryOfInterp"].ToString();
+            ddlCountryOfInterp.SelectedValue = dr["CountryOfInterp"].ToString()=="" ? "0" : dr["CountryOfInterp"].ToString();
             txtPhoneOfInterp.Text = dr["PhoneOfInterp"].ToString();
             txtEmailOfInterp.Text = dr["EmailOfInterp"].ToString();
 
             //Biographic Information
             rblEthnicity.SelectedValue = (dr["Ethnicity"].ToString() == "True") ? "1" : "0";
-            rblRace.SelectedValue = dr["Race"].ToString();
+
+            //rblRace.SelectedValue = dr["Race"].ToString();
+            if (dr["Race"].ToString() == String.Empty)
+            {
+                rblRace.SelectedValue = null;
+            }
+            else
+            {
+                rblRace.SelectedValue = dr["Race"].ToString();
+            }
             txtHeightFt.Text = dr["HeightFt"].ToString();
             txtHeightIn.Text = dr["HeightIn"].ToString();
             txtHeightCm.Text = dr["HeightCm"].ToString();
             txtWeightLbs.Text = dr["WeightLbs"].ToString();
             txtWeightKg.Text = dr["WeightKg"].ToString();
-            rblEyeColor.SelectedValue = dr["EyeColor"].ToString();
-            rblHairColor.SelectedValue = dr["HairColor"].ToString();
+            rblEyeColor.SelectedValue = BaseData.RadioButtonValue(dr["EyeColor"], null);
+            rblHairColor.SelectedValue = BaseData.RadioButtonValue(dr["HairColor"], null);
 
             ////Documentation
             cbxFilingFee14over.Checked = dr["FilingFee14over"].ToString() == "True";
@@ -475,100 +681,100 @@ namespace KennedyAccess.Controls
             cbxTaxReturnsPast3Yrs.Checked = dr["TaxReturnsPast3Yrs"].ToString() == "True";
 
             //Your Background Information
-            rbl1_AdmissionDeniedToUS.SelectedValue = (dr["1_AdmissionDeniedToUS"].ToString() == "True") ? "1" : "0";
+            rbl1_AdmissionDeniedToUS.SelectedValue = BaseData.RadioButtonValue(dr["HairColor"], null); //(dr["1_AdmissionDeniedToUS"].ToString() == "True") ? "1" : "0";
 
-            rbl2_VisaDeniedToUS.SelectedValue = (dr["2_VisaDeniedToUS"].ToString() == "True") ? "1" : "0";
-            rbl3_WorkedUSWithoutAuthz.SelectedValue = (dr["3_WorkedUSWithoutAuthz"].ToString() == "True") ? "1" : "0";
-            rbl4_ViolatedTerms.SelectedValue = (dr["4_ViolatedTerms"].ToString() == "True") ? "1" : "0";
-            rbl5_InExclusion.SelectedValue = (dr["5_InExclusion"].ToString() == "True") ? "1" : "0";
-            rbl6_IssuedFinalOrderExcl.SelectedValue = (dr["6_IssuedFinalOrderExcl"].ToString() == "True") ? "1" : "0";
-            rbl7_HadPriorFinalOrderExcl.SelectedValue = (dr["7_HadPriorFinalOrderExcl"].ToString() == "True") ? "1" : "0";
-            rbl8_LawfulResident.SelectedValue = (dr["8_LawfulResident"].ToString() == "True") ? "1" : "0";
-            rbl9_GrantedDeparture.SelectedValue = (dr["9_GrantedDeparture"].ToString() == "True") ? "1" : "0";
-            rbl10_AppliedProtection.SelectedValue = (dr["10_AppliedProtection"].ToString() == "True") ? "1" : "0";
-            rbl11_A_BeenNonimmigrant.SelectedValue = (dr["11_A_BeenNonimmigrant"].ToString() == "True") ? "1" : "0";
-            rbl11_B_CompliedRequirement.SelectedValue = (dr["11_B_CompliedRequirement"].ToString() == "True") ? "1" : "0";
-            rbl11_C_BeenGrantedWaiver.SelectedValue = (dr["11_C_BeenGrantedWaiver"].ToString() == "True") ? "1" : "0";
-            rbl12_BeenArrested.SelectedValue = (dr["12_BeenArrested"].ToString() == "True") ? "1" : "0";
-            rbl13_CommittedCrime.SelectedValue = (dr["13_CommittedCrime "].ToString() == "True") ? "1" : "0";
-            rbl14_PledGuilty.SelectedValue = (dr["14_PledGuilty"].ToString() == "True") ? "1" : "0";
-            rbl15_BeenOrderedPunished.SelectedValue = (dr["15_BeenOrderedPunished"].ToString() == "True") ? "1" : "0";
-            rbl16_BeenDefendant.SelectedValue = (dr["16_BeenDefendant"].ToString() == "True") ? "1" : "0";
-            rbl17_ViolatedRegulation.SelectedValue = (dr["17_ViolatedRegulation"].ToString() == "True") ? "1" : "0";
-            rbl18_ConvictedForOffenses.SelectedValue = (dr["18_ConvictedForOffenses "].ToString() == "True") ? "1" : "0";
-            rbl19_TraffickedSubstances.SelectedValue = (dr["19_TraffickedSubstances"].ToString() == "True") ? "1" : "0";
-            rbl20_AidedTrafficking.SelectedValue = (dr["20_AidedTrafficking"].ToString() == "True") ? "1" : "0";
-            rbl21_FamilyTrafficked.SelectedValue = (dr["21_FamilyTrafficked"].ToString() == "True") ? "1" : "0";
-            rbl22_EngagedInProstitution.SelectedValue = (dr["22_EngagedInProstitution"].ToString() == "True") ? "1" : "0";
-            rbl23_ProcuredProstitutes.SelectedValue = (dr["23_ProcuredProstitutes"].ToString() == "True") ? "1" : "0";
-            rbl24_ReceiveMoneyProstitution.SelectedValue = (dr["24_ReceiveMoneyProstitution"].ToString() == "True") ? "1" : "0";
-            rbl25_IntendToEngageGambling.SelectedValue = (dr["25_IntendToEngageGambling"].ToString() == "True") ? "1" : "0";
-            rbl26_ExercisedImmunity.SelectedValue = (dr["26_ExercisedImmunity"].ToString() == "True") ? "1" : "0";
-            rbl27_ReligiousViolations.SelectedValue = (dr["27_ReligiousViolations"].ToString() == "True") ? "1" : "0";
-            rbl28_InducedTrafficking.SelectedValue = (dr["28_InducedTrafficking"].ToString() == "True") ? "1" : "0";
-            rbl29_TraffickedServitude.SelectedValue = (dr["29_TraffickedServitude"].ToString() == "True") ? "1" : "0";
-            rbl30_AbettedSexActs.SelectedValue = (dr["30_AbettedSexActs"].ToString() == "True") ? "1" : "0";
-            rbl31_FamilyTrafficking.SelectedValue = (dr["31_FamilyTrafficking"].ToString() == "True") ? "1" : "0";
-            rbl32_MoneyLaundering.SelectedValue = (dr["32_MoneyLaundering"].ToString() == "True") ? "1" : "0";
-            rbl33_ViolatesEspionage.SelectedValue = (dr["33_ViolatesEspionage"].ToString() == "True") ? "1" : "0";
-            rbl34_ProhibitingExport.SelectedValue = (dr["34_ProhibitingExport"].ToString() == "True") ? "1" : "0";
-            rbl35_OverthrowingUSGov.SelectedValue = (dr["35_OverthrowingUSGov"].ToString() == "True") ? "1" : "0";
-            rbl36_EndangerWelfare.SelectedValue = (dr["36_EndangerWelfare"].ToString() == "True") ? "1" : "0";
-            rbl37_UnlawfulActivity.SelectedValue = (dr["37_UnlawfulActivity"].ToString() == "True") ? "1" : "0";
-            rbl38_InAdversePolicy.SelectedValue = (dr["38_InAdversePolicy"].ToString() == "True") ? "1" : "0";
-            rbl39_CommittedCrime.SelectedValue = (dr["39_CommittedCrime"].ToString() == "True") ? "1" : "0";
-            rbl40_ParticipatedInGroup.SelectedValue = (dr["40_ParticipatedInGroup"].ToString() == "True") ? "1" : "0";
-            rbl41_RecruitedMembers.SelectedValue = (dr["41_RecruitedMembers"].ToString() == "True") ? "1" : "0";
-            rbl42_SupportActivities.SelectedValue = (dr["42_SupportActivities"].ToString() == "True") ? "1" : "0";
-            rbl43_SupportIndividual.SelectedValue = (dr["43_SupportIndividual"].ToString() == "True") ? "1" : "0";
-            rbl44_MilitaryTraining.SelectedValue = (dr["44_MilitaryTraining"].ToString() == "True") ? "1" : "0";
-            rbl45_IntendToEngageQ39To45.SelectedValue = (dr["45_IntendToEngageQ39To45"].ToString() == "True") ? "1" : "0";
-            rbl46_FamilyCommitted.SelectedValue = (dr["46_FamilyCommitted"].ToString() == "True") ? "1" : "0";
-            rbl47_FamilyParticipated.SelectedValue = (dr["47_FamilyParticipated"].ToString() == "True") ? "1" : "0";
-            rbl48_FamilyRecruited.SelectedValue = (dr["48_FamilyRecruited"].ToString() == "True") ? "1" : "0";
-            rbl49_FamilySupportActivity.SelectedValue = (dr["49_FamilySupportActivity"].ToString() == "True") ? "1" : "0";
-            rbl50_FamilySupportIndividual.SelectedValue = (dr["50_FamilySupportIndividual"].ToString() == "True") ? "1" : "0";
-            rbl51_FamilyMilitaryTraining.SelectedValue = (dr["51_FamilyMilitaryTraining"].ToString() == "True") ? "1" : "0";
-            rbl52_SellingWeapons.SelectedValue = (dr["52_SellingWeapons"].ToString() == "True") ? "1" : "0";
-            rbl53_WorkedInPrison.SelectedValue = (dr["53_WorkedInPrison"].ToString() == "True") ? "1" : "0";
-            rbl54_AssistedUsingWeapon.SelectedValue = (dr["54_AssistedUsingWeapon"].ToString() == "True") ? "1" : "0";
-            rbl55_ServedInArmedGroup.SelectedValue = (dr["55_ServedInArmedGroup"].ToString() == "True") ? "1" : "0";
-            rbl56_AffiliatedCommunist.SelectedValue = (dr["56_AffiliatedCommunist"].ToString() == "True") ? "1" : "0";
-            rbl57_IncitePersecution.SelectedValue = (dr["57_IncitePersecution "].ToString() == "True") ? "1" : "0";
-            rbl58_A_InvolvingGenocide.SelectedValue = (dr["58_A_InvolvingGenocide"].ToString() == "True") ? "1" : "0";
-            rbl58_B_KillingPerson.SelectedValue = (dr["58_B_KillingPerson"].ToString() == "True") ? "1" : "0";
-            rbl58_C_InjuringPerson.SelectedValue = (dr["58_C_InjuringPerson"].ToString() == "True") ? "1" : "0";
-            rbl58_D_SexualContact.SelectedValue = (dr["58_D_SexualContact"].ToString() == "True") ? "1" : "0";
-            rbl58_E_LimitingAbility.SelectedValue = (dr["58_E_LimitingAbility"].ToString() == "True") ? "1" : "0";
-            rbl59_RecruitedPersUnder15.SelectedValue = (dr["59_RecruitedPersUnder15"].ToString() == "True") ? "1" : "0";
-            rbl60_UsedPersUnder15.SelectedValue = (dr["60_UsedPersUnder15"].ToString() == "True") ? "1" : "0";
-            rbl61_ReceivedUSAsst.SelectedValue = (dr["61_ReceivedUSAsst"].ToString() == "True") ? "1" : "0";
-            rbl62_LikelyToReceiveAsst.SelectedValue = (dr["62_LikelyToReceiveAsst"].ToString() == "True") ? "1" : "0";
-            rbl63_FailedToAttend.SelectedValue = (dr["63_FailedToAttend"].ToString() == "True") ? "1" : "0";
-            rbl64_ReasonableCause.SelectedValue = (dr["64_ReasonableCause"].ToString() == "True") ? "1" : "0";
-            rbl65_AttachWrittenStatement.SelectedValue = (dr["65_AttachWrittenStatement"].ToString() == "True") ? "1" : "0";
-            rbl66_SubmittedFraudulentDoc.SelectedValue = (dr["66_SubmittedFraudulentDoc"].ToString() == "True") ? "1" : "0";
-            rbl67_LiedOnApplication.SelectedValue = (dr["67_LiedOnApplication"].ToString() == "True") ? "1" : "0";
-            rbl68_ClaimedUSCitizen.SelectedValue = (dr["68_ClaimedUSCitizen"].ToString() == "True") ? "1" : "0";
-            rbl69_StowawayOnVessel.SelectedValue = (dr["69_StowawayOnVessel"].ToString() == "True") ? "1" : "0";
-            rbl70_EncouragedSmuggling.SelectedValue = (dr["70_EncouragedSmuggling"].ToString() == "True") ? "1" : "0";
-            rbl71_UnderPenaltyForViolating.SelectedValue = (dr["71_UnderPenaltyForViolating"].ToString() == "True") ? "1" : "0";
-            rbl72_BeenExcludedFromUS.SelectedValue = (dr["72_BeenExcludedFromUS"].ToString() == "True") ? "1" : "0";
-            rbl73_EnteredUSWithoutInsp.SelectedValue = (dr["73_EnteredUSWithoutInsp"].ToString() == "True") ? "1" : "0";
-            rbl74_A_UnlawfullyInUS180Days.SelectedValue = (dr["74_A_UnlawfullyInUS180Days"].ToString() == "True") ? "1" : "0";
-            rbl74_B_UnlawfullyInUS1Year.SelectedValue = (dr["74_B_UnlawfullyInUS1Year"].ToString() == "True") ? "1" : "0";
-            rbl75_A_ReenteredWOInspection.SelectedValue = (dr["75_A_ReenteredWOInspection"].ToString() == "True") ? "1" : "0";
-            rbl75_B_BeenDeported.SelectedValue = (dr["75_B_BeenDeported"].ToString() == "True") ? "1" : "0";
-            rbl76_PlanPolygamy.SelectedValue = (dr["76_PlanPolygamy"].ToString() == "True") ? "1" : "0";
-            rbl77_AccompanyForeigner.SelectedValue = (dr["77_AccompanyForeigner"].ToString() == "True") ? "1" : "0";
-            rbl78_AssistedInDetaining.SelectedValue = (dr["78_AssistedInDetaining"].ToString() == "True") ? "1" : "0";
-            rbl79_VotedInViolation.SelectedValue = (dr["79_VotedInViolation"].ToString() == "True") ? "1" : "0";
-            rbl80_RenouncedUSCitizenship.SelectedValue = (dr["80_RenouncedUSCitizenship"].ToString() == "True") ? "1" : "0";
-            rbl81_AppliedExemption.SelectedValue = (dr["81_AppliedExemption"].ToString() == "True") ? "1" : "0";
-            rbl82_RelievedFromService.SelectedValue = (dr["82_RelievedFromService"].ToString() == "True") ? "1" : "0";
-            rbl83_ConvictedDesertion.SelectedValue = (dr["83_ConvictedDesertion"].ToString() == "True") ? "1" : "0";
-            rbl84_RemainedOutsideUS.SelectedValue = (dr["84_RemainedOutsideUS"].ToString() == "True") ? "1" : "0";
-            rbl85_ImmigrationStatus.SelectedValue = (dr["85_ImmigrationStatus"].ToString() == "True") ? "1" : "0";
+            rbl2_VisaDeniedToUS.SelectedValue = BaseData.RadioButtonValue(dr["2_VisaDeniedToUS"], null); //(dr["2_VisaDeniedToUS"].ToString() == "True") ? "1" : "0";
+            rbl3_WorkedUSWithoutAuthz.SelectedValue = BaseData.RadioButtonValue(dr["3_WorkedUSWithoutAuthz"], null); //(dr["3_WorkedUSWithoutAuthz"].ToString() == "True") ? "1" : "0";
+            rbl4_ViolatedTerms.SelectedValue = BaseData.RadioButtonValue(dr["4_ViolatedTerms"], null); //(dr["4_ViolatedTerms"].ToString() == "True") ? "1" : "0";
+            rbl5_InExclusion.SelectedValue = BaseData.RadioButtonValue(dr["5_InExclusion"], null); //(dr["5_InExclusion"].ToString() == "True") ? "1" : "0";
+            rbl6_IssuedFinalOrderExcl.SelectedValue = BaseData.RadioButtonValue(dr["6_IssuedFinalOrderExcl"], null); //(dr["6_IssuedFinalOrderExcl"].ToString() == "True") ? "1" : "0";
+            rbl7_HadPriorFinalOrderExcl.SelectedValue = BaseData.RadioButtonValue(dr["7_HadPriorFinalOrderExcl"], null); //(dr["7_HadPriorFinalOrderExcl"].ToString() == "True") ? "1" : "0";
+            rbl8_LawfulResident.SelectedValue = BaseData.RadioButtonValue(dr["8_LawfulResident"], null); //(dr["8_LawfulResident"].ToString() == "True") ? "1" : "0";
+            rbl9_GrantedDeparture.SelectedValue = BaseData.RadioButtonValue(dr["9_GrantedDeparture"], null); //(dr["9_GrantedDeparture"].ToString() == "True") ? "1" : "0";
+            rbl10_AppliedProtection.SelectedValue = BaseData.RadioButtonValue(dr["10_AppliedProtection"], null); //(dr["10_AppliedProtection"].ToString() == "True") ? "1" : "0";
+            rbl11_A_BeenNonimmigrant.SelectedValue = BaseData.RadioButtonValue(dr["11_A_BeenNonimmigrant"], null); //(dr["11_A_BeenNonimmigrant"].ToString() == "True") ? "1" : "0";
+            rbl11_B_CompliedRequirement.SelectedValue = BaseData.RadioButtonValue(dr["11_B_CompliedRequirement"], null); //(dr["11_B_CompliedRequirement"].ToString() == "True") ? "1" : "0";
+            rbl11_C_BeenGrantedWaiver.SelectedValue = BaseData.RadioButtonValue(dr["11_C_BeenGrantedWaiver"], null); //(dr["11_C_BeenGrantedWaiver"].ToString() == "True") ? "1" : "0";
+            rbl12_BeenArrested.SelectedValue = BaseData.RadioButtonValue(dr["12_BeenArrested"], null); //(dr["12_BeenArrested"].ToString() == "True") ? "1" : "0";
+            rbl13_CommittedCrime.SelectedValue = BaseData.RadioButtonValue(dr["13_CommittedCrime"], null); //(dr["13_CommittedCrime "].ToString() == "True") ? "1" : "0";
+            rbl14_PledGuilty.SelectedValue = BaseData.RadioButtonValue(dr["14_PledGuilty"], null); //(dr["14_PledGuilty"].ToString() == "True") ? "1" : "0";
+            rbl15_BeenOrderedPunished.SelectedValue = BaseData.RadioButtonValue(dr["15_BeenOrderedPunished"], null); //(dr["15_BeenOrderedPunished"].ToString() == "True") ? "1" : "0";
+            rbl16_BeenDefendant.SelectedValue = BaseData.RadioButtonValue(dr["16_BeenDefendant"], null); //(dr["16_BeenDefendant"].ToString() == "True") ? "1" : "0";
+            rbl17_ViolatedRegulation.SelectedValue = BaseData.RadioButtonValue(dr["17_ViolatedRegulation"], null); //(dr["17_ViolatedRegulation"].ToString() == "True") ? "1" : "0";
+            rbl18_ConvictedForOffenses.SelectedValue = BaseData.RadioButtonValue(dr["18_ConvictedForOffenses"], null); //(dr["18_ConvictedForOffenses "].ToString() == "True") ? "1" : "0";
+            rbl19_TraffickedSubstances.SelectedValue = BaseData.RadioButtonValue(dr["19_TraffickedSubstances"], null); //(dr["19_TraffickedSubstances"].ToString() == "True") ? "1" : "0";
+            rbl20_AidedTrafficking.SelectedValue = BaseData.RadioButtonValue(dr["20_AidedTrafficking"], null); //(dr["20_AidedTrafficking"].ToString() == "True") ? "1" : "0";
+            rbl21_FamilyTrafficked.SelectedValue = BaseData.RadioButtonValue(dr["21_FamilyTrafficked"], null); //(dr["21_FamilyTrafficked"].ToString() == "True") ? "1" : "0";
+            rbl22_EngagedInProstitution.SelectedValue = BaseData.RadioButtonValue(dr["22_EngagedInProstitution"], null); //(dr["22_EngagedInProstitution"].ToString() == "True") ? "1" : "0";
+            rbl23_ProcuredProstitutes.SelectedValue = BaseData.RadioButtonValue(dr["23_ProcuredProstitutes"], null); //(dr["23_ProcuredProstitutes"].ToString() == "True") ? "1" : "0";
+            rbl24_ReceiveMoneyProstitution.SelectedValue = BaseData.RadioButtonValue(dr["24_ReceiveMoneyProstitution"], null); //(dr["24_ReceiveMoneyProstitution"].ToString() == "True") ? "1" : "0";
+            rbl25_IntendToEngageGambling.SelectedValue = BaseData.RadioButtonValue(dr["25_IntendToEngageGambling"], null); //(dr["25_IntendToEngageGambling"].ToString() == "True") ? "1" : "0";
+            rbl26_ExercisedImmunity.SelectedValue = BaseData.RadioButtonValue(dr["26_ExercisedImmunity"], null); //(dr["26_ExercisedImmunity"].ToString() == "True") ? "1" : "0";
+            rbl27_ReligiousViolations.SelectedValue = BaseData.RadioButtonValue(dr["27_ReligiousViolations"], null); //(dr["27_ReligiousViolations"].ToString() == "True") ? "1" : "0";
+            rbl28_InducedTrafficking.SelectedValue = BaseData.RadioButtonValue(dr["28_InducedTrafficking"], null); //(dr["28_InducedTrafficking"].ToString() == "True") ? "1" : "0";
+            rbl29_TraffickedServitude.SelectedValue = BaseData.RadioButtonValue(dr["29_TraffickedServitude"], null); //(dr["29_TraffickedServitude"].ToString() == "True") ? "1" : "0";
+            rbl30_AbettedSexActs.SelectedValue = BaseData.RadioButtonValue(dr["30_AbettedSexActs"], null); //(dr["30_AbettedSexActs"].ToString() == "True") ? "1" : "0";
+            rbl31_FamilyTrafficking.SelectedValue = BaseData.RadioButtonValue(dr["31_FamilyTrafficking"], null); //(dr["31_FamilyTrafficking"].ToString() == "True") ? "1" : "0";
+            rbl32_MoneyLaundering.SelectedValue = BaseData.RadioButtonValue(dr["32_MoneyLaundering"], null); //(dr["32_MoneyLaundering"].ToString() == "True") ? "1" : "0";
+            rbl33_ViolatesEspionage.SelectedValue = BaseData.RadioButtonValue(dr["33_ViolatesEspionage"], null); //(dr["33_ViolatesEspionage"].ToString() == "True") ? "1" : "0";
+            rbl34_ProhibitingExport.SelectedValue = BaseData.RadioButtonValue(dr["34_ProhibitingExport"], null); //(dr["34_ProhibitingExport"].ToString() == "True") ? "1" : "0";
+            rbl35_OverthrowingUSGov.SelectedValue = BaseData.RadioButtonValue(dr["35_OverthrowingUSGov"], null); //(dr["35_OverthrowingUSGov"].ToString() == "True") ? "1" : "0";
+            rbl36_EndangerWelfare.SelectedValue = BaseData.RadioButtonValue(dr["36_EndangerWelfare"], null); //(dr["36_EndangerWelfare"].ToString() == "True") ? "1" : "0";
+            rbl37_UnlawfulActivity.SelectedValue = BaseData.RadioButtonValue(dr["37_UnlawfulActivity"], null); //(dr["37_UnlawfulActivity"].ToString() == "True") ? "1" : "0";
+            rbl38_InAdversePolicy.SelectedValue = BaseData.RadioButtonValue(dr["38_InAdversePolicy"], null); //(dr["38_InAdversePolicy"].ToString() == "True") ? "1" : "0";
+            rbl39_CommittedCrime.SelectedValue = BaseData.RadioButtonValue(dr["39_CommittedCrime"], null); //(dr["39_CommittedCrime"].ToString() == "True") ? "1" : "0";
+            rbl40_ParticipatedInGroup.SelectedValue = BaseData.RadioButtonValue(dr["40_ParticipatedInGroup"], null); //(dr["40_ParticipatedInGroup"].ToString() == "True") ? "1" : "0";
+            rbl41_RecruitedMembers.SelectedValue = BaseData.RadioButtonValue(dr["41_RecruitedMembers"], null); //(dr["41_RecruitedMembers"].ToString() == "True") ? "1" : "0";
+            rbl42_SupportActivities.SelectedValue = BaseData.RadioButtonValue(dr["42_SupportActivities"], null); //(dr["42_SupportActivities"].ToString() == "True") ? "1" : "0";
+            rbl43_SupportIndividual.SelectedValue = BaseData.RadioButtonValue(dr["43_SupportIndividual"], null); //(dr["43_SupportIndividual"].ToString() == "True") ? "1" : "0";
+            rbl44_MilitaryTraining.SelectedValue = BaseData.RadioButtonValue(dr["44_MilitaryTraining"], null); //(dr["44_MilitaryTraining"].ToString() == "True") ? "1" : "0";
+            rbl45_IntendToEngageQ39To45.SelectedValue = BaseData.RadioButtonValue(dr["45_IntendToEngageQ39To45"], null); //(dr["45_IntendToEngageQ39To45"].ToString() == "True") ? "1" : "0";
+            rbl46_FamilyCommitted.SelectedValue = BaseData.RadioButtonValue(dr["46_FamilyCommitted"], null); //(dr["46_FamilyCommitted"].ToString() == "True") ? "1" : "0";
+            rbl47_FamilyParticipated.SelectedValue = BaseData.RadioButtonValue(dr["47_FamilyParticipated"], null); //(dr["47_FamilyParticipated"].ToString() == "True") ? "1" : "0";
+            rbl48_FamilyRecruited.SelectedValue = BaseData.RadioButtonValue(dr["48_FamilyRecruited"], null); //(dr["48_FamilyRecruited"].ToString() == "True") ? "1" : "0";
+            rbl49_FamilySupportActivity.SelectedValue = BaseData.RadioButtonValue(dr["49_FamilySupportActivity"], null); //(dr["49_FamilySupportActivity"].ToString() == "True") ? "1" : "0";
+            rbl50_FamilySupportIndividual.SelectedValue = BaseData.RadioButtonValue(dr["50_FamilySupportIndividual"], null); //(dr["50_FamilySupportIndividual"].ToString() == "True") ? "1" : "0";
+            rbl51_FamilyMilitaryTraining.SelectedValue = BaseData.RadioButtonValue(dr["51_FamilyMilitaryTraining"], null); //(dr["51_FamilyMilitaryTraining"].ToString() == "True") ? "1" : "0";
+            rbl52_SellingWeapons.SelectedValue = BaseData.RadioButtonValue(dr["52_SellingWeapons"], null); //(dr["52_SellingWeapons"].ToString() == "True") ? "1" : "0";
+            rbl53_WorkedInPrison.SelectedValue = BaseData.RadioButtonValue(dr["53_WorkedInPrison"], null); //(dr["53_WorkedInPrison"].ToString() == "True") ? "1" : "0";
+            rbl54_AssistedUsingWeapon.SelectedValue = BaseData.RadioButtonValue(dr["54_AssistedUsingWeapon"], null); //(dr["54_AssistedUsingWeapon"].ToString() == "True") ? "1" : "0";
+            rbl55_ServedInArmedGroup.SelectedValue = BaseData.RadioButtonValue(dr["55_ServedInArmedGroup"], null); //(dr["55_ServedInArmedGroup"].ToString() == "True") ? "1" : "0";
+            rbl56_AffiliatedCommunist.SelectedValue = BaseData.RadioButtonValue(dr["56_AffiliatedCommunist"], null); //(dr["56_AffiliatedCommunist"].ToString() == "True") ? "1" : "0";
+            rbl57_IncitePersecution.SelectedValue = BaseData.RadioButtonValue(dr["57_IncitePersecution"], null); //(dr["57_IncitePersecution "].ToString() == "True") ? "1" : "0";
+            rbl58_A_InvolvingGenocide.SelectedValue = BaseData.RadioButtonValue(dr["58_A_InvolvingGenocide"], null); //(dr["58_A_InvolvingGenocide"].ToString() == "True") ? "1" : "0";
+            rbl58_B_KillingPerson.SelectedValue = BaseData.RadioButtonValue(dr["58_B_KillingPerson"], null); //(dr["58_B_KillingPerson"].ToString() == "True") ? "1" : "0";
+            rbl58_C_InjuringPerson.SelectedValue = BaseData.RadioButtonValue(dr["58_C_InjuringPerson"], null); //(dr["58_C_InjuringPerson"].ToString() == "True") ? "1" : "0";
+            rbl58_D_SexualContact.SelectedValue = BaseData.RadioButtonValue(dr["58_D_SexualContact"], null); //(dr["58_D_SexualContact"].ToString() == "True") ? "1" : "0";
+            rbl58_E_LimitingAbility.SelectedValue = BaseData.RadioButtonValue(dr["58_E_LimitingAbility"], null); //(dr["58_E_LimitingAbility"].ToString() == "True") ? "1" : "0";
+            rbl59_RecruitedPersUnder15.SelectedValue = BaseData.RadioButtonValue(dr["59_RecruitedPersUnder15"], null); //(dr["59_RecruitedPersUnder15"].ToString() == "True") ? "1" : "0";
+            rbl60_UsedPersUnder15.SelectedValue = BaseData.RadioButtonValue(dr["60_UsedPersUnder15"], null); //(dr["60_UsedPersUnder15"].ToString() == "True") ? "1" : "0";
+            rbl61_ReceivedUSAsst.SelectedValue = BaseData.RadioButtonValue(dr["61_ReceivedUSAsst"], null); //(dr["61_ReceivedUSAsst"].ToString() == "True") ? "1" : "0";
+            rbl62_LikelyToReceiveAsst.SelectedValue = BaseData.RadioButtonValue(dr["62_LikelyToReceiveAsst"], null); //(dr["62_LikelyToReceiveAsst"].ToString() == "True") ? "1" : "0";
+            rbl63_FailedToAttend.SelectedValue = BaseData.RadioButtonValue(dr["63_FailedToAttend"], null); //(dr["63_FailedToAttend"].ToString() == "True") ? "1" : "0";
+            rbl64_ReasonableCause.SelectedValue = BaseData.RadioButtonValue(dr["64_ReasonableCause"], null); //(dr["64_ReasonableCause"].ToString() == "True") ? "1" : "0";
+            rbl65_AttachWrittenStatement.SelectedValue = BaseData.RadioButtonValue(dr["65_AttachWrittenStatement"], null); //(dr["65_AttachWrittenStatement"].ToString() == "True") ? "1" : "0";
+            rbl66_SubmittedFraudulentDoc.SelectedValue = BaseData.RadioButtonValue(dr["66_SubmittedFraudulentDoc"], null); //(dr["66_SubmittedFraudulentDoc"].ToString() == "True") ? "1" : "0";
+            rbl67_LiedOnApplication.SelectedValue = BaseData.RadioButtonValue(dr["67_LiedOnApplication"], null); //(dr["67_LiedOnApplication"].ToString() == "True") ? "1" : "0";
+            rbl68_ClaimedUSCitizen.SelectedValue = BaseData.RadioButtonValue(dr["68_ClaimedUSCitizen"], null); //(dr["68_ClaimedUSCitizen"].ToString() == "True") ? "1" : "0";
+            rbl69_StowawayOnVessel.SelectedValue = BaseData.RadioButtonValue(dr["69_StowawayOnVessel"], null); //(dr["69_StowawayOnVessel"].ToString() == "True") ? "1" : "0";
+            rbl70_EncouragedSmuggling.SelectedValue = BaseData.RadioButtonValue(dr["70_EncouragedSmuggling"], null); //(dr["70_EncouragedSmuggling"].ToString() == "True") ? "1" : "0";
+            rbl71_UnderPenaltyForViolating.SelectedValue = BaseData.RadioButtonValue(dr["71_UnderPenaltyForViolating"], null); //(dr["71_UnderPenaltyForViolating"].ToString() == "True") ? "1" : "0";
+            rbl72_BeenExcludedFromUS.SelectedValue = BaseData.RadioButtonValue(dr["72_BeenExcludedFromUS"], null); //(dr["72_BeenExcludedFromUS"].ToString() == "True") ? "1" : "0";
+            rbl73_EnteredUSWithoutInsp.SelectedValue = BaseData.RadioButtonValue(dr["73_EnteredUSWithoutInsp"], null); //(dr["73_EnteredUSWithoutInsp"].ToString() == "True") ? "1" : "0";
+            rbl74_A_UnlawfullyInUS180Days.SelectedValue = BaseData.RadioButtonValue(dr["74_A_UnlawfullyInUS180Days"], null); //(dr["74_A_UnlawfullyInUS180Days"].ToString() == "True") ? "1" : "0";
+            rbl74_B_UnlawfullyInUS1Year.SelectedValue = BaseData.RadioButtonValue(dr["74_B_UnlawfullyInUS1Year"], null); //(dr["74_B_UnlawfullyInUS1Year"].ToString() == "True") ? "1" : "0";
+            rbl75_A_ReenteredWOInspection.SelectedValue = BaseData.RadioButtonValue(dr["75_A_ReenteredWOInspection"], null); //(dr["75_A_ReenteredWOInspection"].ToString() == "True") ? "1" : "0";
+            rbl75_B_BeenDeported.SelectedValue = BaseData.RadioButtonValue(dr["75_B_BeenDeported"], null); //(dr["75_B_BeenDeported"].ToString() == "True") ? "1" : "0";
+            rbl76_PlanPolygamy.SelectedValue = BaseData.RadioButtonValue(dr["76_PlanPolygamy"], null); //(dr["76_PlanPolygamy"].ToString() == "True") ? "1" : "0";
+            rbl77_AccompanyForeigner.SelectedValue = BaseData.RadioButtonValue(dr["77_AccompanyForeigner"], null); //(dr["77_AccompanyForeigner"].ToString() == "True") ? "1" : "0";
+            rbl78_AssistedInDetaining.SelectedValue = BaseData.RadioButtonValue(dr["78_AssistedInDetaining"], null); //(dr["78_AssistedInDetaining"].ToString() == "True") ? "1" : "0";
+            rbl79_VotedInViolation.SelectedValue = BaseData.RadioButtonValue(dr["79_VotedInViolation"], null); //(dr["79_VotedInViolation"].ToString() == "True") ? "1" : "0";
+            rbl80_RenouncedUSCitizenship.SelectedValue = BaseData.RadioButtonValue(dr["80_RenouncedUSCitizenship"], null); //(dr["80_RenouncedUSCitizenship"].ToString() == "True") ? "1" : "0";
+            rbl81_AppliedExemption.SelectedValue = BaseData.RadioButtonValue(dr["81_AppliedExemption"], null); //(dr["81_AppliedExemption"].ToString() == "True") ? "1" : "0";
+            rbl82_RelievedFromService.SelectedValue = BaseData.RadioButtonValue(dr["82_RelievedFromService"], null); //(dr["82_RelievedFromService"].ToString() == "True") ? "1" : "0";
+            rbl83_ConvictedDesertion.SelectedValue = BaseData.RadioButtonValue(dr["83_ConvictedDesertion"], null); //(dr["83_ConvictedDesertion"].ToString() == "True") ? "1" : "0";
+            rbl84_RemainedOutsideUS.SelectedValue = BaseData.RadioButtonValue(dr["84_RemainedOutsideUS"], null); //(dr["84_RemainedOutsideUS"].ToString() == "True") ? "1" : "0";
+            rbl85_ImmigrationStatus.SelectedValue = BaseData.RadioButtonValue(dr["85_ImmigrationStatus"], null); //(dr["85_ImmigrationStatus"].ToString() == "True") ? "1" : "0";
         }
     }
 }
