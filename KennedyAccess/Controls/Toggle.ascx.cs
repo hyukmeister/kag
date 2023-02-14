@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RestSharp.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -49,8 +50,11 @@ namespace KennedyAccess.Controls
                 hidCheckedText.Value = CheckedText;
                 hidUncheckedText.Value = UncheckedText;
                 cbkActive.Checked = Checked;
-            }
-            labCheckbox.InnerText = cbkActive.Checked ? hidCheckedText.Value : hidUncheckedText.Value;
+                labCheckbox.InnerText = cbkActive.Checked ? hidCheckedText.Value : hidUncheckedText.Value;
+
+                
+           }
+           cbkActive.Attributes.Add("onclick", hidControlLabel.Value + "_Click(this)");
         }
     }
 }

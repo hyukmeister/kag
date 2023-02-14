@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div style="align-content:center; width: 360px;"><center>
 
-        <img alt="Kennedy Access Group" class="modal-lg" longdesc="Kennedy Access Group" src="images/kag_logo.jpg" style="height: 280px; width: 343px" />
+        <img alt="Kennedy Access Group" class="modal-lg" longdesc="Kennedy Access Group" src="images/kag_logo.png" style="height: 300px; width: 385px" />
         <br/><br/>
         <asp:Table ID="Table1" runat="server" Class="table-responsive" Width="270px" BorderWidth="0px">
         <asp:TableRow VerticalAlign="Top">

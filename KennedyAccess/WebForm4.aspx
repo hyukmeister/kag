@@ -7,6 +7,7 @@
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>                
                 <uc1:Toggle runat="server" ID="Toggle1" EnableViewState="true" />
+                <uc1:Toggle runat="server" ID="Toggle2" EnableViewState="true" />
             </ContentTemplate>
         </asp:UpdatePanel>
 
