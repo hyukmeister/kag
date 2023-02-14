@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KennedyAccess.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,6 +18,7 @@ namespace KennedyAccess
                 //Toggle1.CheckedText = "Yes";
                 //Toggle1.UncheckedText = "No";
                 Toggle1.Width = "200px";
+                Toggle1.Checked = "checked";
 
                 Toggle2.ControlLabel = "Status2";
                 Toggle2.CheckedText = "Active";
@@ -27,8 +29,8 @@ namespace KennedyAccess
                 Toggle3.UncheckedText = "False";
 
             }
-        }
 
+        }
         protected void Button1_Click(object sender, EventArgs e)
         {
 

@@ -33,33 +33,6 @@ namespace KennedyAccess
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
 
         /// <summary>
-        /// toggledemo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox toggledemo;
-
-        /// <summary>
-        /// cbkMyActive control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox cbkMyActive;
-
-        /// <summary>
-        /// cbkMyToggle control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbkMyToggle;
-
-        /// <summary>
         /// cbkActive control.
         /// </summary>
         /// <remarks>
@@ -69,13 +42,13 @@ namespace KennedyAccess
         protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox cbkActive;
 
         /// <summary>
-        /// Toggle1 control.
+        /// labCheckbox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::KennedyAccess.Controls.Toggle Toggle1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl labCheckbox;
 
         /// <summary>
         /// btnEnabled control.

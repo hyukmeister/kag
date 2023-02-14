@@ -53,6 +53,7 @@ namespace KennedyAccess.Classes
             httpApplication["Status"] = ds.Tables[7];
             httpApplication["Relationship"] = ds.Tables[8];
         }
+
         public int GetRecordTypeID(DataTable dt, int iFranchiseID, string sUsage, string sRecordType)
         {
             int iRecType = -1;
@@ -78,6 +79,7 @@ namespace KennedyAccess.Classes
             }
             return iRecType;
         }
+
         public int GetStatusID(DataTable dt, int iFranchiseID, int iRecTypeID, string sStatusText)
         {
             int iStatusID = -1;
@@ -89,6 +91,7 @@ namespace KennedyAccess.Classes
             }
             return iStatusID;
         }
+
         public string GetRecordTypeByID(DataTable dt, int iFranchiseID, int iRecordTypeID)
         {
             string sRecordType = "";
@@ -105,6 +108,7 @@ namespace KennedyAccess.Classes
 
             return sRecordType;
         }
+
         public double GetSysSettingValue(DataTable dt, int iFranchiseID, string sSysSettingName)
         {
             double result = 0;
@@ -121,6 +125,7 @@ namespace KennedyAccess.Classes
 
             return result;
         }
+
         public string GetSysSettingString(DataTable dt, int iFranchiseID, string sSysSettingName)
         {
             string result = null;
@@ -137,6 +142,7 @@ namespace KennedyAccess.Classes
 
             return result;
         }
+
         public DateTime GetSysSettingDate(DataTable dt, int iFranchiseID, string sSysSettingName)
         {
             DateTime result = DateTime.MinValue;
@@ -169,6 +175,7 @@ namespace KennedyAccess.Classes
             return dt;
         }
 
+        #region Campgin
         public string InsertUpdateCampaign(User user, int sEmployerID,
             int iCampaignID, int iAttorneyID, int iRecordTypeId, string sDateFrom,
             string DateThru, string sDescription, int PrevailingWageID,
@@ -194,6 +201,28 @@ namespace KennedyAccess.Classes
             return obj.ToString();
         }
 
+        public DataTable GetCampaign(User user, string EmployerID, string CampaignID, string Search)
+        {
+            DataTable dtCampaign = null;
+
+            DataSet ds = SqlHelperv2.ExecuteDataset(
+                    Global.dbcnn,
+                    "GetCampaign",
+                    new SqlParameter("@FranchiseID", user.FranchiseID),
+                    new SqlParameter("@UserID", user.UserID),
+                    new SqlParameter("@EmployerID", EmployerID),
+                    new SqlParameter("@CampaignID", CampaignID),
+                    new SqlParameter("@Search", Search)
+                );
+
+            if (ds != null && ds.Tables.Count > 0)
+            {
+                dtCampaign = ds.Tables[0];
+            }
+            return dtCampaign;
+        }
+        #endregion
+
         public DataTable GetUserRoles(int iFranchiseID, int iUserID, string sClientIP)
         {
             DataTable dt;
@@ -207,6 +236,7 @@ namespace KennedyAccess.Classes
 
             return dt;
         }
+
         public DataTable GetWorkExperience(int iFranchiseID, int iUserID, int iApplicantID)
         {
             DataTable dt;
@@ -220,6 +250,8 @@ namespace KennedyAccess.Classes
 
             return dt;
         }
+
+        #region Applicant & ApplicantServiceAgreement
         public DataTable GetApplicantStatus(int iFranchiseID, int iUserID, int iApplicantID)
         {
             DataTable dt;
@@ -283,6 +315,8 @@ namespace KennedyAccess.Classes
                 new SqlParameter("@ApplicantID", iApplicantID),
                 new SqlParameter("@WebForm", sWebformID));
         }
+        #endregion
+
         public DataTable GetQuestionnaire(User user, bool bGeneral, string iEmployerID, string iCampaignID)
         {
             DataTable dtQuestionnaire = (SqlHelper.ExecuteDataset(Global.dbcnn, "GetQuestionnaire",
@@ -293,6 +327,7 @@ namespace KennedyAccess.Classes
                             new SqlParameter("@CampaignID", iCampaignID))).Tables[0];
             return dtQuestionnaire;
         }
+
         public void InsertUpdateQuestionnaire(User user, int iQuestionnaireID, int iEmployerID,
             string iCampaignID, bool bGeneral, int iSort, string sQUestion, string sQuestionType, bool active)
         {
@@ -328,6 +363,7 @@ namespace KennedyAccess.Classes
 
             return dtResult;
         }
+
         public void InsertUpdateQuestionnaireResponse(User user,
             string sQuestionnaireResponseID, string sQuestionnaireID,
             string sApplicantID, string sJobListingID,
@@ -446,27 +482,6 @@ namespace KennedyAccess.Classes
             return dtJobList;
         }
 
-
-        public DataTable GetCampaign(User user, string EmployerID, string CampaignID, string Search)
-        {
-            DataTable dtCampaign = null;
-
-            DataSet ds = SqlHelperv2.ExecuteDataset(
-                    Global.dbcnn,
-                    "GetCampaign",
-                    new SqlParameter("@FranchiseID", user.FranchiseID),
-                    new SqlParameter("@UserID", user.UserID),
-                    new SqlParameter("@EmployerID", EmployerID),
-                    new SqlParameter("@CampaignID", CampaignID),
-                    new SqlParameter("@Search", Search)
-                );
-
-            if (ds != null && ds.Tables.Count > 0)
-            {
-                dtCampaign = ds.Tables[0];
-            }
-            return dtCampaign;
-        }
 
         public DataTable SetUserVerification(int iFranchiseID, int iUserID, string sEmail)
         {
@@ -592,6 +607,7 @@ namespace KennedyAccess.Classes
 
             return sResult;
         }
+
         public DataTable GetUserTrail(User user)
         {
             DataTable dtUserTrail = null;
@@ -654,6 +670,7 @@ namespace KennedyAccess.Classes
                         new SqlParameter("@FileName", fileName),
                         new SqlParameter("@FileData", imagefile));
         }
+
         public void UpdateProfilePicture(User user, string Object, string ObjectID, byte[] imagefile)
         {
             SqlHelper.ExecuteNonQuery(Global.dbcnn, "UpdateProfilePicture",
@@ -877,33 +894,6 @@ namespace KennedyAccess.Classes
             return obj.ToString();
         }
 
-        public double StringToDouble(string sValue)
-        {
-            double dResult;
-
-            double.TryParse(sValue, out dResult);
-            return dResult;
-        }
-        public int StringToInt(string sValue)
-        {
-            int iResult=0;
-
-            int.TryParse(sValue, out iResult);
-            return iResult;
-        }
-
-        public string EmptyToNull(string sParam)
-        {
-            string sResult = null;
-
-            if (sParam != string.Empty)
-            {
-                sResult = sParam;
-            }
-
-            return sResult;
-        }
-
         public DataTable GetOfferLetterInfo(User user, string ApplicationID)
         {
             DataTable dtOfferLetterInfo = null;
@@ -934,6 +924,7 @@ namespace KennedyAccess.Classes
             }
             return dtProfile;
         }
+
         public void InserUpdatetProfile(User user, bool Active,
             string RoleSetID, string RoleSetName)
         {
@@ -946,6 +937,7 @@ namespace KennedyAccess.Classes
                     new SqlParameter("@RoleSetName", RoleSetName)
                 );
         }
+
         public DataTable GetApplicationHistory(User user, string ApplicantID)
         {
             DataTable dtApplicantInfo = null;
@@ -1032,6 +1024,7 @@ namespace KennedyAccess.Classes
             }
             return dtDashboard;
         }
+
         public DataTable GetEmpUserList(User user, string ManualUserID)
         {
             DataTable dtEmployerList = null;
@@ -1130,6 +1123,7 @@ namespace KennedyAccess.Classes
 
             return obj.ToString();
         }
+
         public void InsertUpdateSearchDetails(User user, string Status,
             string UsrSearchID, string UsrSearchDetailID, string RecordType, 
             string IntValue, string StrValue)
@@ -1146,6 +1140,7 @@ namespace KennedyAccess.Classes
                     new SqlParameter("@StrValue", StrValue)
                 );
         }
+
         public void WriteAuditTrail(User user, string RecordTypeID, string SystemLog)
         {
             SqlHelperv2.ExecuteNonQuery(Global.dbcnn, "WriteAuditTrail",
@@ -1179,6 +1174,9 @@ namespace KennedyAccess.Classes
 
             return dsProfileDetail;
         }
+
+        #region DS260
+       
         public DataTable GetDS260(User user, string ApplicantID, string FamilyRelationID, string ReferenceID)
         {
             DataTable dtDS260 = null;
@@ -1195,6 +1193,75 @@ namespace KennedyAccess.Classes
             }
             return dtDS260;
         }
+
+        public string InsertUpdateDS260(User user, string Status, bool Active, 
+            string sDS260ID, string sApplicantID, string sFamilyRelationID, string sReferenceID, string s1_Surname,
+            string s1_1_GivenName, string s1_2_FullNameInNative, bool b2_AnotherName, string s2_1_AnotherSurname,
+            string s2_2_AnotherGivenName, bool b3_Gender, string s4_MaritalStatus, string s5_DateOfBirth, string s6_CityOfBirth, 
+            string s7_StateOfBirth, int i8_CountryOfBirth, int  i9_Nationality, string s10_CurrPPNo, int i10_1_CountryPPIssued, 
+            string s10_2_DatePPIssued, string s10_3_DatePPExpires, bool b11_HavePrevNationalities, string s14_PrimaryPhone, 
+            string s15_SecondaryPhone, string s16_WorkPhone, bool b16_1_AnyUsedPhone, string s16_2_UsedPrevPhone, 
+            string s17_PrimaryEmail, bool b17_1_AnyUsedEmail, string s17_2_UsedPrevEmail, string s18_SocialMediasUserID,
+            bool b18_1_ShareInfoSocialMedia, string s18_2_OtherSocialMedias, string s18_3_OtherUserID, 
+            bool b19_CurrAddSameMailingAdd, bool b20_HaveAddInUS, bool b20_1_UseKAGAddress, bool b21_MailingAddSame
+            )
+        {
+            string sResult;
+        SqlDataReader dr = SqlHelper.ExecuteReader(
+                Global.dbcnn, "InsertUpdateDS260",
+                new SqlParameter("@FranchiseID", user.FranchiseID),
+                new SqlParameter("@UserID", user.UserID),
+                new SqlParameter("@Status", Status),
+                new SqlParameter("@Active", Active),
+                new SqlParameter("@DS260ID", sDS260ID),
+                new SqlParameter("@ApplicantID", sApplicantID),
+                new SqlParameter("@FamilyRelationID", sFamilyRelationID),
+                new SqlParameter("@ReferenceID", sReferenceID),
+                new SqlParameter("@1_Surname", s1_Surname),
+                new SqlParameter("@1_1_GivenName", s1_1_GivenName),
+                new SqlParameter("@1_2_FullNameInNative", s1_2_FullNameInNative),
+                new SqlParameter("@2_AnotherName", b2_AnotherName),
+                new SqlParameter("@2_1_AnotherSurname", s2_1_AnotherSurname),
+                new SqlParameter("@2_2_AnotherGivenName", s2_2_AnotherGivenName),
+                new SqlParameter("@3_Gender", b3_Gender),
+                new SqlParameter("@4_MaritalStatus", s4_MaritalStatus),
+                new SqlParameter("@5_DateOfBirth", s5_DateOfBirth),
+                new SqlParameter("@6_CityOfBirth", s6_CityOfBirth),
+                new SqlParameter("@7_StateOfBirth", s7_StateOfBirth),
+                new SqlParameter("@8_CountryOfBirth", i8_CountryOfBirth),
+                new SqlParameter("@9_Nationality", i9_Nationality),
+                new SqlParameter("@10_CurrPPNo", s10_CurrPPNo),
+                new SqlParameter("@10_1_CountryPPIssued", i10_1_CountryPPIssued),
+                new SqlParameter("@10_2_DatePPIssued", s10_2_DatePPIssued),
+                new SqlParameter("@10_3_DatePPExpires", s10_3_DatePPExpires),
+                new SqlParameter("@11_HavePrevNationalities", b11_HavePrevNationalities),
+                new SqlParameter("@14_PrimaryPhone", s14_PrimaryPhone),
+                new SqlParameter("@15_SecondaryPhone", s15_SecondaryPhone),
+                new SqlParameter("@16_WorkPhone", s16_WorkPhone),
+                new SqlParameter("@16_1_AnyUsedPhone", b16_1_AnyUsedPhone),
+                new SqlParameter("@16_2_UsedPrevPhone", s16_2_UsedPrevPhone),
+                new SqlParameter("@17_PrimaryEmail", s17_PrimaryEmail),
+                new SqlParameter("@17_1_AnyUsedEmail", b17_1_AnyUsedEmail),
+                new SqlParameter("@17_2_UsedPrevEmail", s17_2_UsedPrevEmail),
+                new SqlParameter("@18_SocialMediasUserID", s18_SocialMediasUserID),
+                new SqlParameter("@18_1_ShareInfoSocialMedia", b18_1_ShareInfoSocialMedia),
+                new SqlParameter("@18_2_OtherSocialMedias", s18_2_OtherSocialMedias),
+                new SqlParameter("@18_3_OtherUserID", s18_3_OtherUserID),
+                new SqlParameter("@19_CurrAddSameMailingAdd", b19_CurrAddSameMailingAdd),
+                new SqlParameter("@20_HaveAddInUS", b20_HaveAddInUS),
+                new SqlParameter("@20_1_UseKAGAddress", b20_1_UseKAGAddress),
+                new SqlParameter("@21_MailingAddSame", b21_MailingAddSame)
+                       );
+
+            dr.Read();
+            sResult = dr[0].ToString();
+            dr.Close();
+
+            return sResult;
+        }
+        #endregion
+
+        #region I485 & FamilyMember
         public DataTable GetI485(User user, string I485ID)
         {
             DataTable dtGetI485 = null;
@@ -1283,55 +1350,6 @@ namespace KennedyAccess.Classes
             return sResult;
         }
 
-
-        public DataTable GetFamilyMember(User user, string ApplicantID)
-        {
-            DataTable dtFamilyMember = null;
-            DataSet ds = (SqlHelper.ExecuteDataset(Global.dbcnn, "GetFamilyMember",
-                new SqlParameter("@FranchiseID", user.FranchiseID),
-                    new SqlParameter("@UserID", user.UserID),
-                    new SqlParameter("@ApplicantID", ApplicantID)));
-
-            if (ds != null && ds.Tables.Count > 0)
-            {
-                dtFamilyMember = ds.Tables[0];
-            }
-            return dtFamilyMember;
-        }
-
-        public void InsertUpdateFamilyMember(User user,
-            string ApplicantID, string ApplicantFamilyID, string Status, bool Active,
-            string RelationshipID, string LastName, string FirstName, string MI)
-        {
-            SqlDataReader dr = SqlHelper.ExecuteReader(
-                    Global.dbcnn, "InsertUpdateFamilyMember",
-                    new SqlParameter("@FranchiseID", user.FranchiseID),
-                    new SqlParameter("@UserID", user.UserID),
-                    new SqlParameter("@ApplicantID", ApplicantID),
-                    new SqlParameter("@ApplicantFamilyID", ApplicantFamilyID),
-                    new SqlParameter("@Status", Status),
-                    new SqlParameter("@Active", Active),
-                    new SqlParameter("@RelationshipID", RelationshipID),
-                    new SqlParameter("@FirstName", FirstName),
-                    new SqlParameter("@LastName", LastName),
-                    new SqlParameter("@MI", MI)
-                );
-        }
-
-        public DataTable GetFamilyI485ByApplicantID(User user, string ApplicantID)
-        {
-            DataTable dtFamilyI485 = null;
-            DataSet ds = (SqlHelper.ExecuteDataset(Global.dbcnn, "GetFamilyI485ByApplicantID",
-                new SqlParameter("@FranchiseID", user.FranchiseID),
-                    new SqlParameter("@UserID", user.UserID),
-                    new SqlParameter("@ApplicantID", ApplicantID)));
-
-            if (ds != null && ds.Tables.Count > 0)
-            {
-                dtFamilyI485 = ds.Tables[0];
-            }
-            return dtFamilyI485;
-        }
         public void UpdateI485_InterpInfo(User user, string I485ID,
             bool UnderstandEngOnI_485, string LastNameOfInterp, string GivenNameOfInterp, string BusinessOfInterp,
             string StreetOfInterp, string CityInterp, string StateOfInterp, int CountryOfInterp,
@@ -1359,9 +1377,9 @@ namespace KennedyAccess.Classes
         }
 
         public void UpdateI485_BioInfo(User user, string I485ID,
-           bool bEthnicity, bool sRace, string sHeightFt, string sHeightIn,
-           string sHeightCm, string sWeightLbs, string sWeightKg, bool sEyeColor,
-           bool sHairColor
+           bool bEthnicity, string sRace, string sHeightFt, string sHeightIn,
+           string sHeightCm, string sWeightLbs, string sWeightKg, string sEyeColor,
+           string sHairColor
            )
         {
             SqlDataReader dr = SqlHelper.ExecuteReader(
@@ -1380,6 +1398,7 @@ namespace KennedyAccess.Classes
                  new SqlParameter("@HairColor", sHairColor)
                 );
         }
+
         public void UpdateI485_DocInfo(User user, string I485ID,
            bool sFilingFee14over, bool sFilingFeeUnder14, bool sSixPassportPhotos, bool sI693MedicalExam,
            bool sFamilyRelCert_Original, bool sFamilyRelCert_Translated, bool sMarriageCert_Original,
@@ -1409,28 +1428,6 @@ namespace KennedyAccess.Classes
                 );
         }
 
-        public static string StringToDateFormat(Object dt)
-        {
-            string result = string.Empty;
-            try
-            {
-                result = DateTime.Parse(dt.ToString()).ToString("yyyy-MM-dd");
-            }
-            catch(Exception) 
-            {
-                //
-            } 
-            return result;
-        }
-        public static string StringToDefault(Object obj, string Default)
-        {
-            string result = Default;
-            if(obj.ToString() != string.Empty)
-            {
-                result = obj.ToString();
-            }
-            return result;
-        }
         public void UpdateI485_BackgroundInfo(User user, string I485ID, bool b1_AdmissionDeniedToUS,
             bool b2_VisaDeniedToUS, bool b3_WorkedUSWithoutAuthz, bool b4_ViolatedTerms, bool b5_InExclusion,
             bool b6_IssuedFinalOrderExcl, bool b7_HadPriorFinalOrderExcl, bool b8_LawfulResident, bool b9_GrantedDeparture,
@@ -1558,7 +1555,59 @@ namespace KennedyAccess.Classes
 
                 );
             }
-        
+
+
+        public DataTable GetFamilyMember(User user, string ApplicantID)
+        {
+            DataTable dtFamilyMember = null;
+            DataSet ds = (SqlHelper.ExecuteDataset(Global.dbcnn, "GetFamilyMember",
+                new SqlParameter("@FranchiseID", user.FranchiseID),
+                    new SqlParameter("@UserID", user.UserID),
+                    new SqlParameter("@ApplicantID", ApplicantID)));
+
+            if (ds != null && ds.Tables.Count > 0)
+            {
+                dtFamilyMember = ds.Tables[0];
+            }
+            return dtFamilyMember;
+        }
+
+        public void InsertUpdateFamilyMember(User user,
+            string ApplicantID, string ApplicantFamilyID, string Status, bool Active,
+            string RelationshipID, string LastName, string FirstName, string MI)
+        {
+            SqlDataReader dr = SqlHelper.ExecuteReader(
+                    Global.dbcnn, "InsertUpdateFamilyMember",
+                    new SqlParameter("@FranchiseID", user.FranchiseID),
+                    new SqlParameter("@UserID", user.UserID),
+                    new SqlParameter("@ApplicantID", ApplicantID),
+                    new SqlParameter("@ApplicantFamilyID", ApplicantFamilyID),
+                    new SqlParameter("@Status", Status),
+                    new SqlParameter("@Active", Active),
+                    new SqlParameter("@RelationshipID", RelationshipID),
+                    new SqlParameter("@FirstName", FirstName),
+                    new SqlParameter("@LastName", LastName),
+                    new SqlParameter("@MI", MI)
+                );
+        }
+
+        public DataTable GetFamilyI485ByApplicantID(User user, string ApplicantID)
+        {
+            DataTable dtFamilyI485 = null;
+            DataSet ds = (SqlHelper.ExecuteDataset(Global.dbcnn, "GetFamilyI485ByApplicantID",
+                new SqlParameter("@FranchiseID", user.FranchiseID),
+                    new SqlParameter("@UserID", user.UserID),
+                    new SqlParameter("@ApplicantID", ApplicantID)));
+
+            if (ds != null && ds.Tables.Count > 0)
+            {
+                dtFamilyI485 = ds.Tables[0];
+            }
+            return dtFamilyI485;
+        }
+        #endregion
+
+        #region functions
         public static string BoolToDefault(Object obj, string Default)
         {
             string result = Default;
@@ -1568,5 +1617,59 @@ namespace KennedyAccess.Classes
             }
             return result;
         }
+
+        public double StringToDouble(string sValue)
+        {
+            double dResult;
+
+            double.TryParse(sValue, out dResult);
+            return dResult;
+        }
+
+        public int StringToInt(string sValue)
+        {
+            int iResult = 0;
+
+            int.TryParse(sValue, out iResult);
+            return iResult;
+        }
+
+        public string EmptyToNull(string sParam)
+        {
+            string sResult = null;
+
+            if (sParam != string.Empty)
+            {
+                sResult = sParam;
+            }
+
+            return sResult;
+        }
+
+
+        public static string StringToDateFormat(Object dt)
+        {
+            string result = string.Empty;
+            try
+            {
+                result = DateTime.Parse(dt.ToString()).ToString("yyyy-MM-dd");
+            }
+            catch (Exception)
+            {
+                //
+            }
+            return result;
+        }
+
+        public static string StringToDefault(Object obj, string Default)
+        {
+            string result = Default;
+            if (obj.ToString() != string.Empty)
+            {
+                result = obj.ToString();
+            }
+            return result;
+        }
+        #endregion
     }
 }

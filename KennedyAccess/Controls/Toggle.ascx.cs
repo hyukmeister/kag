@@ -13,16 +13,36 @@ namespace KennedyAccess.Controls
         public string CheckedText { get; set; }
         public string UncheckedText { get; set; }
         public string Width { get; set; }
+        public string Checked { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (CheckedText is null)
-                CheckedText = "Yes";
-            if (UncheckedText is null)
-                UncheckedText = "No";
-            if (Width is null)
-                Width = "100px";
+            if (!IsPostBack)
+            {
+                hidControlLabel.Value = ControlLabel;
 
+                if (CheckedText is null)
+                    CheckedText = "Yes";
+                hidCheckedText.Value = CheckedText;
+                if (UncheckedText is null)
+                    UncheckedText = "No";
+                hidUncheckedText.Value = UncheckedText;
+                if (Width is null)
+                    Width = "100px";
+                hidWidth.Value = Width;
+                if (Checked is null)
+                    Checked = "";
+                hidChecked.Value = Checked;
+            }
+            else
+            {
+                ControlLabel = hidControlLabel.Value;
+                CheckedText = hidCheckedText.Value;
+                UncheckedText = hidUncheckedText.Value;
+                //Width = hidWidth.Value;
+                //Checked = hidChecked.Value;
+
+            }
         }
     }
 }
