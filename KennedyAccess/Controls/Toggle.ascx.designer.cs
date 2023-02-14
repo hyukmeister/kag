@@ -42,30 +42,21 @@ namespace KennedyAccess.Controls
         protected global::System.Web.UI.WebControls.HiddenField hidUncheckedText;
 
         /// <summary>
-        /// hidWidth control.
+        /// cbkActive control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hidWidth;
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox cbkActive;
 
         /// <summary>
-        /// hidChecked control.
+        /// labCheckbox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hidChecked;
-
-        /// <summary>
-        /// cbkMyTogle control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbkMyTogle;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl labCheckbox;
     }
 }

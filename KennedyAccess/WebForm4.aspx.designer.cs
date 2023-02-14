@@ -15,6 +15,15 @@ namespace KennedyAccess
     {
 
         /// <summary>
+        /// UpdatePanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+
+        /// <summary>
         /// Toggle1 control.
         /// </summary>
         /// <remarks>
@@ -22,24 +31,6 @@ namespace KennedyAccess
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::KennedyAccess.Controls.Toggle Toggle1;
-
-        /// <summary>
-        /// Toggle2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::KennedyAccess.Controls.Toggle Toggle2;
-
-        /// <summary>
-        /// Toggle3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::KennedyAccess.Controls.Toggle Toggle3;
 
         /// <summary>
         /// Button1 control.

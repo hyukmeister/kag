@@ -21,10 +21,7 @@ namespace KennedyAccess
         {
             if (!IsPostBack)
             {
-                //Toggle1.ControlLabel = "Status";
-                //Toggle1.CheckedText = "Active";
-                //Toggle1.UncheckedText = "Inactive";
-
+                cbkActive.Checked= true;
             }
         }
 
@@ -32,7 +29,6 @@ namespace KennedyAccess
         {
             cbkActive.Disabled = !cbkActive.Disabled;
             labCheckbox.InnerText = cbkActive.Checked ? "active" : "inactive";
-            //labCheckbox.InnerText = "active";
         }
     }
 }
