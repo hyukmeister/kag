@@ -69,6 +69,15 @@ namespace KennedyAccess
         protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox cbkActive;
 
         /// <summary>
+        /// Toggle1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::KennedyAccess.Controls.Toggle Toggle1;
+
+        /// <summary>
         /// btnEnabled control.
         /// </summary>
         /// <remarks>

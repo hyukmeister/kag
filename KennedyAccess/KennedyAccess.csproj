@@ -209,6 +209,7 @@
     <Content Include="Controls\PrevWage.ascx" />
     <Content Include="Controls\ProfilePicture.ascx" />
     <Content Include="Controls\Questionnaire.ascx" />
+    <Content Include="Controls\Toggle.ascx" />
     <Content Include="Controls\UserFiles.ascx" />
     <Content Include="Controls\UserSearchProfiles.ascx" />
     <Content Include="Controls\WorkExperience.ascx" />
@@ -613,6 +614,13 @@
     </Compile>
     <Compile Include="Controls\Questionnaire.ascx.designer.cs">
       <DependentUpon>Questionnaire.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Toggle.ascx.cs">
+      <DependentUpon>Toggle.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Toggle.ascx.designer.cs">
+      <DependentUpon>Toggle.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controls\UserFiles.ascx.cs">
       <DependentUpon>UserFiles.ascx</DependentUpon>

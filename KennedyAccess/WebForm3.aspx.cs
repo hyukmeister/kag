@@ -1,5 +1,6 @@
 ﻿using KennedyAccess.Admin;
 using KennedyAccess.Classes;
+using KennedyAccess.Controls;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -20,6 +21,9 @@ namespace KennedyAccess
         {
             if (!IsPostBack)
             {
+                Toggle1.ControlLabel = "Status";
+                Toggle1.CheckedText = "Active";
+                Toggle1.UncheckedText = "Inactive";
 
             }
         }
@@ -27,6 +31,9 @@ namespace KennedyAccess
         protected void btnEnabled_Click(object sender, EventArgs e)
         {
             cbkActive.Disabled = !cbkActive.Disabled;
+            cbkActive.Value = cbkActive.Checked ? "active":"inactive";
+
+
 
         }
     }

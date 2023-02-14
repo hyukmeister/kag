@@ -246,11 +246,11 @@ namespace KennedyAccess.Controls
         {
             if (cbkBioInfoChanged.Checked == true)
             {
-                //save Interpreter info to db
+                //save Biographic info to db
                 bd.UpdateI485_BioInfo(user, labI485ID.Text,
-                    rblEthnicity.SelectedValue == "1", rblRace.SelectedValue == "1", txtHeightFt.Text, txtHeightIn.Text,
-                    txtHeightCm.Text, txtWeightLbs.Text, txtWeightKg.Text, rblEyeColor.SelectedValue == "1",
-                    rblHairColor.SelectedValue == "1"  
+                    rblEthnicity.SelectedValue == "1", rblRace.SelectedValue, txtHeightFt.Text, txtHeightIn.Text,
+                    txtHeightCm.Text, txtWeightLbs.Text, txtWeightKg.Text, rblEyeColor.SelectedValue,
+                    rblHairColor.SelectedValue  
 
                    );
             }
@@ -306,7 +306,7 @@ namespace KennedyAccess.Controls
         {
             if (cbkDocInfoChanged.Checked == true)
             {
-                //save Interpreter info to db
+                //save Documentaion info to db
                 bd.UpdateI485_DocInfo(user, labI485ID.Text,
                     cbxFilingFee14over.Checked, cbxFilingFeeUnder14.Checked,
                     cbxSixPassportPhotos.Checked, cbxI693MedicalExam.Checked,
@@ -381,7 +381,7 @@ namespace KennedyAccess.Controls
         {
             if (cbkBackgroundInfoChanged.Checked == true)
             {
-                //save Interpreter info to db
+                //save Background info to db
                 bd.UpdateI485_BackgroundInfo(user, labI485ID.Text, rbl1_AdmissionDeniedToUS.SelectedValue == "1", 
                     rbl2_VisaDeniedToUS.SelectedValue == "1", rbl3_WorkedUSWithoutAuthz.SelectedValue == "1", 
                     rbl4_ViolatedTerms.SelectedValue == "1", rbl5_InExclusion.SelectedValue == "1",
@@ -615,25 +615,25 @@ namespace KennedyAccess.Controls
             txtNatureOfGroup.Text = dr["NatureOfGroup"].ToString();
             txtInvolvementFrom.Text = BaseData.StringToDateFormat(dr["InvolvementFrom"]);
             txtInvolvementTo.Text = BaseData.StringToDateFormat(dr["InvolvementTo"]);
-            rblAppliedVisa.SelectedValue = (dr["HaveAppliedVisa"].ToString() == "True") ? "1" : "0";
+            rblAppliedVisa.SelectedValue = BaseData.BoolToDefault(dr["HaveAppliedVisa"], null);  
             txtCityOfConsulate.Text = dr["CityOfConsulate"].ToString();
             ddlCountryOfConsulate.SelectedValue = dr["CountryOfConsulate"].ToString()=="" ? "0" : dr["CountryOfConsulate"].ToString();
-
-            if(dr["VisaDecision"].ToString()==String.Empty)
-            {
-                rblVisaDecision.SelectedValue = null;
-            }
-            else
-            {
-                rblVisaDecision.SelectedValue = dr["VisaDecision"].ToString();
-            }
+            rblVisaDecision.SelectedValue = BaseData.StringToDefault(dr["VisaDecision"], null);
+            //if(dr["VisaDecision"].ToString()==String.Empty)
+            //{
+            //    rblVisaDecision.SelectedValue = null;
+            //}
+            //else
+            //{
+            //    rblVisaDecision.SelectedValue = dr["VisaDecision"].ToString();
+            //}
             txtDecisionDate.Text = BaseData.StringToDateFormat(dr["DecisionDate"]);
-            rblHaveAppliedEAD.SelectedValue = (dr["HaveAppliedEAD"].ToString() == "True") ? "1" : "0";
+            rblHaveAppliedEAD.SelectedValue = BaseData.BoolToDefault(dr["HaveAppliedEAD"], null);  
             txtUSCISOffice.Text = dr["USCISOffice"].ToString();
             txtEADDecision.Text = dr["EADDecision"].ToString();
 
             //Interprer's information
-            rblUnderstandEngOnI_485.SelectedValue = (dr["UnderstandEngOnI_485"].ToString() == "True") ? "1" : "0";
+            rblUnderstandEngOnI_485.SelectedValue = BaseData.BoolToDefault(dr["UnderstandEngOnI_485"], null); 
             txtLastNameOfInterp.Text = dr["LastNameOfInterp"].ToString();
             txtGivenNameOfInterp.Text = dr["GivenNameOfInterp"].ToString();
             txtBusinessOfInterp.Text = dr["BusinessOfInterp"].ToString();
@@ -646,17 +646,17 @@ namespace KennedyAccess.Controls
             txtEmailOfInterp.Text = dr["EmailOfInterp"].ToString();
 
             //Biographic Information
-            rblEthnicity.SelectedValue = BaseData.BoolToDefault(dr["Ethnicity"], null);//(dr["Ethnicity"].ToString() == "True") ? "1" : "0";
-
-            //rblRace.SelectedValue = dr["Race"].ToString();
-            if (dr["Race"].ToString() == String.Empty)
-            {
-                rblRace.SelectedValue = null;
-            }
-            else
-            {
-                rblRace.SelectedValue = dr["Race"].ToString();
-            }
+            rblEthnicity.SelectedValue = BaseData.BoolToDefault(dr["Ethnicity"], null);
+            rblRace.SelectedValue = BaseData.StringToDefault(dr["Race"], null);
+            ////rblRace.SelectedValue = dr["Race"].ToString();
+            //if (dr["Race"].ToString() == String.Empty)
+            //{
+            //    rblRace.SelectedValue = null;
+            //}
+            //else
+            //{
+            //    rblRace.SelectedValue = dr["Race"].ToString();
+            //}
             txtHeightFt.Text = dr["HeightFt"].ToString();
             txtHeightIn.Text = dr["HeightIn"].ToString();
             txtHeightCm.Text = dr["HeightCm"].ToString();
@@ -681,100 +681,101 @@ namespace KennedyAccess.Controls
             cbxTaxReturnsPast3Yrs.Checked = dr["TaxReturnsPast3Yrs"].ToString() == "True";
             cbxI20.Checked = dr["I_20s"].ToString() == "True";
 
+
             //Your Background Information
-            rbl1_AdmissionDeniedToUS.SelectedValue = BaseData.StringToDefault(dr["1_AdmissionDeniedToUS"], null); 
-            rbl2_VisaDeniedToUS.SelectedValue = BaseData.StringToDefault(dr["2_VisaDeniedToUS"], null); 
-            rbl3_WorkedUSWithoutAuthz.SelectedValue = BaseData.StringToDefault(dr["3_WorkedUSWithoutAuthz"], null); 
-            rbl4_ViolatedTerms.SelectedValue = BaseData.StringToDefault(dr["4_ViolatedTerms"], null);
-            rbl5_InExclusion.SelectedValue = BaseData.StringToDefault(dr["5_InExclusion"], null); 
-            rbl6_IssuedFinalOrderExcl.SelectedValue = BaseData.StringToDefault(dr["6_IssuedFinalOrderExcl"], null); 
-            rbl7_HadPriorFinalOrderExcl.SelectedValue = BaseData.StringToDefault(dr["7_HadPriorFinalOrderExcl"], null); 
-            rbl8_LawfulResident.SelectedValue = BaseData.StringToDefault(dr["8_LawfulResident"], null); 
-            rbl9_GrantedDeparture.SelectedValue = BaseData.StringToDefault(dr["9_GrantedDeparture"], null); 
-            rbl10_AppliedProtection.SelectedValue = BaseData.StringToDefault(dr["10_AppliedProtection"], null); 
-            rbl11_A_BeenNonimmigrant.SelectedValue = BaseData.StringToDefault(dr["11_A_BeenNonimmigrant"], null); 
-            rbl11_B_CompliedRequirement.SelectedValue = BaseData.StringToDefault(dr["11_B_CompliedRequirement"], null); 
-            rbl11_C_BeenGrantedWaiver.SelectedValue = BaseData.StringToDefault(dr["11_C_BeenGrantedWaiver"], null); 
-            rbl12_BeenArrested.SelectedValue = BaseData.StringToDefault(dr["12_BeenArrested"], null); 
-            rbl13_CommittedCrime.SelectedValue = BaseData.StringToDefault(dr["13_CommittedCrime"], null); 
-            rbl14_PledGuilty.SelectedValue = BaseData.StringToDefault(dr["14_PledGuilty"], null); 
-            rbl15_BeenOrderedPunished.SelectedValue = BaseData.StringToDefault(dr["15_BeenOrderedPunished"], null); 
-            rbl16_BeenDefendant.SelectedValue = BaseData.StringToDefault(dr["16_BeenDefendant"], null); 
-            rbl17_ViolatedRegulation.SelectedValue = BaseData.StringToDefault(dr["17_ViolatedRegulation"], null); 
-            rbl18_ConvictedForOffenses.SelectedValue = BaseData.StringToDefault(dr["18_ConvictedForOffenses"], null);
-            rbl19_TraffickedSubstances.SelectedValue = BaseData.StringToDefault(dr["19_TraffickedSubstances"], null); 
-            rbl20_AidedTrafficking.SelectedValue = BaseData.StringToDefault(dr["20_AidedTrafficking"], null); 
-            rbl21_FamilyTrafficked.SelectedValue = BaseData.StringToDefault(dr["21_FamilyTrafficked"], null); 
-            rbl22_EngagedInProstitution.SelectedValue = BaseData.StringToDefault(dr["22_EngagedInProstitution"], null); 
-            rbl23_ProcuredProstitutes.SelectedValue = BaseData.StringToDefault(dr["23_ProcuredProstitutes"], null); 
-            rbl24_ReceiveMoneyProstitution.SelectedValue = BaseData.StringToDefault(dr["24_ReceiveMoneyProstitution"], null); 
-            rbl25_IntendToEngageGambling.SelectedValue = BaseData.StringToDefault(dr["25_IntendToEngageGambling"], null); 
-            rbl26_ExercisedImmunity.SelectedValue = BaseData.StringToDefault(dr["26_ExercisedImmunity"], null); 
-            rbl27_ReligiousViolations.SelectedValue = BaseData.StringToDefault(dr["27_ReligiousViolations"], null); 
-            rbl28_InducedTrafficking.SelectedValue = BaseData.StringToDefault(dr["28_InducedTrafficking"], null);
-            rbl29_TraffickedServitude.SelectedValue = BaseData.StringToDefault(dr["29_TraffickedServitude"], null); 
-            rbl30_AbettedSexActs.SelectedValue = BaseData.StringToDefault(dr["30_AbettedSexActs"], null); 
-            rbl31_FamilyTrafficking.SelectedValue = BaseData.StringToDefault(dr["31_FamilyTrafficking"], null);
-            rbl32_MoneyLaundering.SelectedValue = BaseData.StringToDefault(dr["32_MoneyLaundering"], null); 
-            rbl33_ViolatesEspionage.SelectedValue = BaseData.StringToDefault(dr["33_ViolatesEspionage"], null);
-            rbl34_ProhibitingExport.SelectedValue = BaseData.StringToDefault(dr["34_ProhibitingExport"], null); 
-            rbl35_OverthrowingUSGov.SelectedValue = BaseData.StringToDefault(dr["35_OverthrowingUSGov"], null); 
-            rbl36_EndangerWelfare.SelectedValue = BaseData.StringToDefault(dr["36_EndangerWelfare"], null); 
-            rbl37_UnlawfulActivity.SelectedValue = BaseData.StringToDefault(dr["37_UnlawfulActivity"], null); 
-            rbl38_InAdversePolicy.SelectedValue = BaseData.StringToDefault(dr["38_InAdversePolicy"], null);
-            rbl39_CommittedCrime.SelectedValue = BaseData.StringToDefault(dr["39_CommittedCrime"], null); 
-            rbl40_ParticipatedInGroup.SelectedValue = BaseData.StringToDefault(dr["40_ParticipatedInGroup"], null); 
-            rbl41_RecruitedMembers.SelectedValue = BaseData.StringToDefault(dr["41_RecruitedMembers"], null); 
-            rbl42_SupportActivities.SelectedValue = BaseData.StringToDefault(dr["42_SupportActivities"], null);
-            rbl43_SupportIndividual.SelectedValue = BaseData.StringToDefault(dr["43_SupportIndividual"], null); 
-            rbl44_MilitaryTraining.SelectedValue = BaseData.StringToDefault(dr["44_MilitaryTraining"], null); 
-            rbl45_IntendToEngageQ39To45.SelectedValue = BaseData.StringToDefault(dr["45_IntendToEngageQ39To45"], null); 
-            rbl46_FamilyCommitted.SelectedValue = BaseData.StringToDefault(dr["46_FamilyCommitted"], null);
-            rbl47_FamilyParticipated.SelectedValue = BaseData.StringToDefault(dr["47_FamilyParticipated"], null);
-            rbl48_FamilyRecruited.SelectedValue = BaseData.StringToDefault(dr["48_FamilyRecruited"], null); 
-            rbl49_FamilySupportActivity.SelectedValue = BaseData.StringToDefault(dr["49_FamilySupportActivity"], null); 
-            rbl50_FamilySupportIndividual.SelectedValue = BaseData.StringToDefault(dr["50_FamilySupportIndividual"], null); 
-            rbl51_FamilyMilitaryTraining.SelectedValue = BaseData.StringToDefault(dr["51_FamilyMilitaryTraining"], null); 
-            rbl52_SellingWeapons.SelectedValue = BaseData.StringToDefault(dr["52_SellingWeapons"], null); 
-            rbl53_WorkedInPrison.SelectedValue = BaseData.StringToDefault(dr["53_WorkedInPrison"], null); 
-            rbl54_AssistedUsingWeapon.SelectedValue = BaseData.StringToDefault(dr["54_AssistedUsingWeapon"], null);
-            rbl55_ServedInArmedGroup.SelectedValue = BaseData.StringToDefault(dr["55_ServedInArmedGroup"], null);
-            rbl56_AffiliatedCommunist.SelectedValue = BaseData.StringToDefault(dr["56_AffiliatedCommunist"], null);
-            rbl57_IncitePersecution.SelectedValue = BaseData.StringToDefault(dr["57_IncitePersecution"], null);
-            rbl58_A_InvolvingGenocide.SelectedValue = BaseData.StringToDefault(dr["58_A_InvolvingGenocide"], null);
-            rbl58_B_KillingPerson.SelectedValue = BaseData.StringToDefault(dr["58_B_KillingPerson"], null); 
-            rbl58_C_InjuringPerson.SelectedValue = BaseData.StringToDefault(dr["58_C_InjuringPerson"], null); 
-            rbl58_D_SexualContact.SelectedValue = BaseData.StringToDefault(dr["58_D_SexualContact"], null); 
-            rbl58_E_LimitingAbility.SelectedValue = BaseData.StringToDefault(dr["58_E_LimitingAbility"], null); 
-            rbl59_RecruitedPersUnder15.SelectedValue = BaseData.StringToDefault(dr["59_RecruitedPersUnder15"], null); 
-            rbl60_UsedPersUnder15.SelectedValue = BaseData.StringToDefault(dr["60_UsedPersUnder15"], null); 
-            rbl61_ReceivedUSAsst.SelectedValue = BaseData.StringToDefault(dr["61_ReceivedUSAsst"], null); 
-            rbl62_LikelyToReceiveAsst.SelectedValue = BaseData.StringToDefault(dr["62_LikelyToReceiveAsst"], null); 
-            rbl63_FailedToAttend.SelectedValue = BaseData.StringToDefault(dr["63_FailedToAttend"], null); 
-            rbl64_ReasonableCause.SelectedValue = BaseData.StringToDefault(dr["64_ReasonableCause"], null); 
-            rbl65_AttachWrittenStatement.SelectedValue = BaseData.StringToDefault(dr["65_AttachWrittenStatement"], null); 
-            rbl66_SubmittedFraudulentDoc.SelectedValue = BaseData.StringToDefault(dr["66_SubmittedFraudulentDoc"], null); 
-            rbl67_LiedOnApplication.SelectedValue = BaseData.StringToDefault(dr["67_LiedOnApplication"], null); 
-            rbl68_ClaimedUSCitizen.SelectedValue = BaseData.StringToDefault(dr["68_ClaimedUSCitizen"], null); 
-            rbl69_StowawayOnVessel.SelectedValue = BaseData.StringToDefault(dr["69_StowawayOnVessel"], null); 
-            rbl70_EncouragedSmuggling.SelectedValue = BaseData.StringToDefault(dr["70_EncouragedSmuggling"], null); 
-            rbl71_UnderPenaltyForViolating.SelectedValue = BaseData.StringToDefault(dr["71_UnderPenaltyForViolating"], null); 
-            rbl72_BeenExcludedFromUS.SelectedValue = BaseData.StringToDefault(dr["72_BeenExcludedFromUS"], null); 
-            rbl73_EnteredUSWithoutInsp.SelectedValue = BaseData.StringToDefault(dr["73_EnteredUSWithoutInsp"], null); 
-            rbl74_A_UnlawfullyInUS180Days.SelectedValue = BaseData.StringToDefault(dr["74_A_UnlawfullyInUS180Days"], null); 
-            rbl74_B_UnlawfullyInUS1Year.SelectedValue = BaseData.StringToDefault(dr["74_B_UnlawfullyInUS1Year"], null);
-            rbl75_A_ReenteredWOInspection.SelectedValue = BaseData.StringToDefault(dr["75_A_ReenteredWOInspection"], null); 
-            rbl75_B_BeenDeported.SelectedValue = BaseData.StringToDefault(dr["75_B_BeenDeported"], null); 
-            rbl76_PlanPolygamy.SelectedValue = BaseData.StringToDefault(dr["76_PlanPolygamy"], null);
-            rbl77_AccompanyForeigner.SelectedValue = BaseData.StringToDefault(dr["77_AccompanyForeigner"], null); 
-            rbl78_AssistedInDetaining.SelectedValue = BaseData.StringToDefault(dr["78_AssistedInDetaining"], null);
-            rbl79_VotedInViolation.SelectedValue = BaseData.StringToDefault(dr["79_VotedInViolation"], null); 
-            rbl80_RenouncedUSCitizenship.SelectedValue = BaseData.StringToDefault(dr["80_RenouncedUSCitizenship"], null); 
-            rbl81_AppliedExemption.SelectedValue = BaseData.StringToDefault(dr["81_AppliedExemption"], null); 
-            rbl82_RelievedFromService.SelectedValue = BaseData.StringToDefault(dr["82_RelievedFromService"], null);
-            rbl83_ConvictedDesertion.SelectedValue = BaseData.StringToDefault(dr["83_ConvictedDesertion"], null); 
-            rbl84_RemainedOutsideUS.SelectedValue = BaseData.StringToDefault(dr["84_RemainedOutsideUS"], null); 
-            rbl85_ImmigrationStatus.SelectedValue = BaseData.StringToDefault(dr["85_ImmigrationStatus"], null); 
+            rbl1_AdmissionDeniedToUS.SelectedValue = BaseData.BoolToDefault(dr["1_AdmissionDeniedToUS"], null); 
+            rbl2_VisaDeniedToUS.SelectedValue = BaseData.BoolToDefault(dr["2_VisaDeniedToUS"], null); 
+            rbl3_WorkedUSWithoutAuthz.SelectedValue = BaseData.BoolToDefault(dr["3_WorkedUSWithoutAuthz"], null); 
+            rbl4_ViolatedTerms.SelectedValue = BaseData.BoolToDefault(dr["4_ViolatedTerms"], null);
+            rbl5_InExclusion.SelectedValue = BaseData.BoolToDefault(dr["5_InExclusion"], null); 
+            rbl6_IssuedFinalOrderExcl.SelectedValue = BaseData.BoolToDefault(dr["6_IssuedFinalOrderExcl"], null); 
+            rbl7_HadPriorFinalOrderExcl.SelectedValue = BaseData.BoolToDefault(dr["7_HadPriorFinalOrderExcl"], null); 
+            rbl8_LawfulResident.SelectedValue = BaseData.BoolToDefault(dr["8_LawfulResident"], null); 
+            rbl9_GrantedDeparture.SelectedValue = BaseData.BoolToDefault(dr["9_GrantedDeparture"], null); 
+            rbl10_AppliedProtection.SelectedValue = BaseData.BoolToDefault(dr["10_AppliedProtection"], null); 
+            rbl11_A_BeenNonimmigrant.SelectedValue = BaseData.BoolToDefault(dr["11_A_BeenNonimmigrant"], null); 
+            rbl11_B_CompliedRequirement.SelectedValue = BaseData.BoolToDefault(dr["11_B_CompliedRequirement"], null); 
+            rbl11_C_BeenGrantedWaiver.SelectedValue = BaseData.BoolToDefault(dr["11_C_BeenGrantedWaiver"], null); 
+            rbl12_BeenArrested.SelectedValue = BaseData.BoolToDefault(dr["12_BeenArrested"], null); 
+            rbl13_CommittedCrime.SelectedValue = BaseData.BoolToDefault(dr["13_CommittedCrime"], null); 
+            rbl14_PledGuilty.SelectedValue = BaseData.BoolToDefault(dr["14_PledGuilty"], null); 
+            rbl15_BeenOrderedPunished.SelectedValue = BaseData.BoolToDefault(dr["15_BeenOrderedPunished"], null); 
+            rbl16_BeenDefendant.SelectedValue = BaseData.BoolToDefault(dr["16_BeenDefendant"], null); 
+            rbl17_ViolatedRegulation.SelectedValue = BaseData.BoolToDefault(dr["17_ViolatedRegulation"], null); 
+            rbl18_ConvictedForOffenses.SelectedValue = BaseData.BoolToDefault(dr["18_ConvictedForOffenses"], null);
+            rbl19_TraffickedSubstances.SelectedValue = BaseData.BoolToDefault(dr["19_TraffickedSubstances"], null); 
+            rbl20_AidedTrafficking.SelectedValue = BaseData.BoolToDefault(dr["20_AidedTrafficking"], null); 
+            rbl21_FamilyTrafficked.SelectedValue = BaseData.BoolToDefault(dr["21_FamilyTrafficked"], null); 
+            rbl22_EngagedInProstitution.SelectedValue = BaseData.BoolToDefault(dr["22_EngagedInProstitution"], null); 
+            rbl23_ProcuredProstitutes.SelectedValue = BaseData.BoolToDefault(dr["23_ProcuredProstitutes"], null); 
+            rbl24_ReceiveMoneyProstitution.SelectedValue = BaseData.BoolToDefault(dr["24_ReceiveMoneyProstitution"], null); 
+            rbl25_IntendToEngageGambling.SelectedValue = BaseData.BoolToDefault(dr["25_IntendToEngageGambling"], null); 
+            rbl26_ExercisedImmunity.SelectedValue = BaseData.BoolToDefault(dr["26_ExercisedImmunity"], null); 
+            rbl27_ReligiousViolations.SelectedValue = BaseData.BoolToDefault(dr["27_ReligiousViolations"], null); 
+            rbl28_InducedTrafficking.SelectedValue = BaseData.BoolToDefault(dr["28_InducedTrafficking"], null);
+            rbl29_TraffickedServitude.SelectedValue = BaseData.BoolToDefault(dr["29_TraffickedServitude"], null); 
+            rbl30_AbettedSexActs.SelectedValue = BaseData.BoolToDefault(dr["30_AbettedSexActs"], null); 
+            rbl31_FamilyTrafficking.SelectedValue = BaseData.BoolToDefault(dr["31_FamilyTrafficking"], null);
+            rbl32_MoneyLaundering.SelectedValue = BaseData.BoolToDefault(dr["32_MoneyLaundering"], null); 
+            rbl33_ViolatesEspionage.SelectedValue = BaseData.BoolToDefault(dr["33_ViolatesEspionage"], null);
+            rbl34_ProhibitingExport.SelectedValue = BaseData.BoolToDefault(dr["34_ProhibitingExport"], null); 
+            rbl35_OverthrowingUSGov.SelectedValue = BaseData.BoolToDefault(dr["35_OverthrowingUSGov"], null); 
+            rbl36_EndangerWelfare.SelectedValue = BaseData.BoolToDefault(dr["36_EndangerWelfare"], null); 
+            rbl37_UnlawfulActivity.SelectedValue = BaseData.BoolToDefault(dr["37_UnlawfulActivity"], null); 
+            rbl38_InAdversePolicy.SelectedValue = BaseData.BoolToDefault(dr["38_InAdversePolicy"], null);
+            rbl39_CommittedCrime.SelectedValue = BaseData.BoolToDefault(dr["39_CommittedCrime"], null); 
+            rbl40_ParticipatedInGroup.SelectedValue = BaseData.BoolToDefault(dr["40_ParticipatedInGroup"], null); 
+            rbl41_RecruitedMembers.SelectedValue = BaseData.BoolToDefault(dr["41_RecruitedMembers"], null); 
+            rbl42_SupportActivities.SelectedValue = BaseData.BoolToDefault(dr["42_SupportActivities"], null);
+            rbl43_SupportIndividual.SelectedValue = BaseData.BoolToDefault(dr["43_SupportIndividual"], null); 
+            rbl44_MilitaryTraining.SelectedValue = BaseData.BoolToDefault(dr["44_MilitaryTraining"], null); 
+            rbl45_IntendToEngageQ39To45.SelectedValue = BaseData.BoolToDefault(dr["45_IntendToEngageQ39To45"], null); 
+            rbl46_FamilyCommitted.SelectedValue = BaseData.BoolToDefault(dr["46_FamilyCommitted"], null);
+            rbl47_FamilyParticipated.SelectedValue = BaseData.BoolToDefault(dr["47_FamilyParticipated"], null);
+            rbl48_FamilyRecruited.SelectedValue = BaseData.BoolToDefault(dr["48_FamilyRecruited"], null); 
+            rbl49_FamilySupportActivity.SelectedValue = BaseData.BoolToDefault(dr["49_FamilySupportActivity"], null); 
+            rbl50_FamilySupportIndividual.SelectedValue = BaseData.BoolToDefault(dr["50_FamilySupportIndividual"], null); 
+            rbl51_FamilyMilitaryTraining.SelectedValue = BaseData.BoolToDefault(dr["51_FamilyMilitaryTraining"], null); 
+            rbl52_SellingWeapons.SelectedValue = BaseData.BoolToDefault(dr["52_SellingWeapons"], null); 
+            rbl53_WorkedInPrison.SelectedValue = BaseData.BoolToDefault(dr["53_WorkedInPrison"], null); 
+            rbl54_AssistedUsingWeapon.SelectedValue = BaseData.BoolToDefault(dr["54_AssistedUsingWeapon"], null);
+            rbl55_ServedInArmedGroup.SelectedValue = BaseData.BoolToDefault(dr["55_ServedInArmedGroup"], null);
+            rbl56_AffiliatedCommunist.SelectedValue = BaseData.BoolToDefault(dr["56_AffiliatedCommunist"], null);
+            rbl57_IncitePersecution.SelectedValue = BaseData.BoolToDefault(dr["57_IncitePersecution"], null);
+            rbl58_A_InvolvingGenocide.SelectedValue = BaseData.BoolToDefault(dr["58_A_InvolvingGenocide"], null);
+            rbl58_B_KillingPerson.SelectedValue = BaseData.BoolToDefault(dr["58_B_KillingPerson"], null); 
+            rbl58_C_InjuringPerson.SelectedValue = BaseData.BoolToDefault(dr["58_C_InjuringPerson"], null); 
+            rbl58_D_SexualContact.SelectedValue = BaseData.BoolToDefault(dr["58_D_SexualContact"], null); 
+            rbl58_E_LimitingAbility.SelectedValue = BaseData.BoolToDefault(dr["58_E_LimitingAbility"], null); 
+            rbl59_RecruitedPersUnder15.SelectedValue = BaseData.BoolToDefault(dr["59_RecruitedPersUnder15"], null); 
+            rbl60_UsedPersUnder15.SelectedValue = BaseData.BoolToDefault(dr["60_UsedPersUnder15"], null); 
+            rbl61_ReceivedUSAsst.SelectedValue = BaseData.BoolToDefault(dr["61_ReceivedUSAsst"], null); 
+            rbl62_LikelyToReceiveAsst.SelectedValue = BaseData.BoolToDefault(dr["62_LikelyToReceiveAsst"], null); 
+            rbl63_FailedToAttend.SelectedValue = BaseData.BoolToDefault(dr["63_FailedToAttend"], null); 
+            rbl64_ReasonableCause.SelectedValue = BaseData.BoolToDefault(dr["64_ReasonableCause"], null); 
+            rbl65_AttachWrittenStatement.SelectedValue = BaseData.BoolToDefault(dr["65_AttachWrittenStatement"], null); 
+            rbl66_SubmittedFraudulentDoc.SelectedValue = BaseData.BoolToDefault(dr["66_SubmittedFraudulentDoc"], null); 
+            rbl67_LiedOnApplication.SelectedValue = BaseData.BoolToDefault(dr["67_LiedOnApplication"], null); 
+            rbl68_ClaimedUSCitizen.SelectedValue = BaseData.BoolToDefault(dr["68_ClaimedUSCitizen"], null); 
+            rbl69_StowawayOnVessel.SelectedValue = BaseData.BoolToDefault(dr["69_StowawayOnVessel"], null); 
+            rbl70_EncouragedSmuggling.SelectedValue = BaseData.BoolToDefault(dr["70_EncouragedSmuggling"], null); 
+            rbl71_UnderPenaltyForViolating.SelectedValue = BaseData.BoolToDefault(dr["71_UnderPenaltyForViolating"], null); 
+            rbl72_BeenExcludedFromUS.SelectedValue = BaseData.BoolToDefault(dr["72_BeenExcludedFromUS"], null); 
+            rbl73_EnteredUSWithoutInsp.SelectedValue = BaseData.BoolToDefault(dr["73_EnteredUSWithoutInsp"], null); 
+            rbl74_A_UnlawfullyInUS180Days.SelectedValue = BaseData.BoolToDefault(dr["74_A_UnlawfullyInUS180Days"], null); 
+            rbl74_B_UnlawfullyInUS1Year.SelectedValue = BaseData.BoolToDefault(dr["74_B_UnlawfullyInUS1Year"], null);
+            rbl75_A_ReenteredWOInspection.SelectedValue = BaseData.BoolToDefault(dr["75_A_ReenteredWOInspection"], null); 
+            rbl75_B_BeenDeported.SelectedValue = BaseData.BoolToDefault(dr["75_B_BeenDeported"], null); 
+            rbl76_PlanPolygamy.SelectedValue = BaseData.BoolToDefault(dr["76_PlanPolygamy"], null);
+            rbl77_AccompanyForeigner.SelectedValue = BaseData.BoolToDefault(dr["77_AccompanyForeigner"], null); 
+            rbl78_AssistedInDetaining.SelectedValue = BaseData.BoolToDefault(dr["78_AssistedInDetaining"], null);
+            rbl79_VotedInViolation.SelectedValue = BaseData.BoolToDefault(dr["79_VotedInViolation"], null); 
+            rbl80_RenouncedUSCitizenship.SelectedValue = BaseData.BoolToDefault(dr["80_RenouncedUSCitizenship"], null); 
+            rbl81_AppliedExemption.SelectedValue = BaseData.BoolToDefault(dr["81_AppliedExemption"], null); 
+            rbl82_RelievedFromService.SelectedValue = BaseData.BoolToDefault(dr["82_RelievedFromService"], null);
+            rbl83_ConvictedDesertion.SelectedValue = BaseData.BoolToDefault(dr["83_ConvictedDesertion"], null); 
+            rbl84_RemainedOutsideUS.SelectedValue = BaseData.BoolToDefault(dr["84_RemainedOutsideUS"], null); 
+            rbl85_ImmigrationStatus.SelectedValue = BaseData.BoolToDefault(dr["85_ImmigrationStatus"], null); 
         }
     }
 }

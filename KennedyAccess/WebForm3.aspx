@@ -1,12 +1,29 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="WebForm3.aspx.cs" Inherits="KennedyAccess.WebForm3" %>
 
+<%@ Register Src="~/Controls/Toggle.ascx" TagPrefix="uc1" TagName="Toggle" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+
     <link href="Content/bootstrap4-toggle.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
     <script type="text/javascript">
         Sys.WebForms.PageRequestManager.getInstance().add_endRequest(function () {
+
+            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(function () {
+                $(function () {
+                    $('.toggle').bootstrapToggle();
+                });
+            });
+
             $(function () {
-                $('.toggle').bootstrapToggle();
+                $CheckboxClick();
+            });
+        });
+
+        Sys.Application.add_load(function () {
+            $(function () {
+                $CheckboxClick();
             });
         });
     </script>
@@ -18,10 +35,10 @@
             tb2.textContent = tb1.checked ? 'Active' : 'Inactive'; 
         });
 
-        function CheckboxClick() {
-            var tb1 = document.getElementById('<%=cbkActive.ClientID%>');
+        function CheckboxClick(sender) {
+            //var tb1 = document.getElementById('<%=cbkActive.ClientID%>');
             var tb2 = document.getElementById('labCheckbox');
-            tb2.textContent = tb1.checked ? 'Active' : 'Inactive'; 
+            tb2.textContent = sender.checked ? 'Active' : 'Inactive'; 
         }
     </script>
     <h2><asp:Label ID="labUser" runat="server" Text="Toggle Checkbox"></asp:Label></h2>
@@ -40,7 +57,7 @@
                     </div>
                 </div>
                 <br />
-                    
+                <uc1:Toggle runat="server" id="Toggle1" />
                 <asp:Button ID="btnEnabled" runat="server" class="btn btn-primary" OnClick="btnEnabled_Click" Text="Switch"/>
             </ContentTemplate>
         </asp:UpdatePanel>

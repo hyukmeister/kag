@@ -11,6 +11,26 @@ namespace KennedyAccess
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                Toggle1.ControlLabel = "Status1";
+                //Toggle1.CheckedText = "Yes";
+                //Toggle1.UncheckedText = "No";
+                Toggle1.Width = "200px";
+
+                Toggle2.ControlLabel = "Status2";
+                Toggle2.CheckedText = "Active";
+                Toggle2.UncheckedText = "Inactive";
+
+                Toggle3.ControlLabel = "Status3";
+                Toggle3.CheckedText = "True";
+                Toggle3.UncheckedText = "False";
+
+            }
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
 
         }
     }

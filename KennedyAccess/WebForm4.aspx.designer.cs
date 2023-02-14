@@ -15,30 +15,39 @@ namespace KennedyAccess
     {
 
         /// <summary>
-        /// toggledemo control.
+        /// Toggle1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox toggledemo;
+        protected global::KennedyAccess.Controls.Toggle Toggle1;
 
         /// <summary>
-        /// cbkMyActive control.
+        /// Toggle2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox cbkMyActive;
+        protected global::KennedyAccess.Controls.Toggle Toggle2;
 
         /// <summary>
-        /// cbkActive control.
+        /// Toggle3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox cbkActive;
+        protected global::KennedyAccess.Controls.Toggle Toggle3;
+
+        /// <summary>
+        /// Button1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button1;
     }
 }
