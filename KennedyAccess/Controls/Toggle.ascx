@@ -13,6 +13,8 @@
 <asp:HiddenField runat="server" ID="hidControlLabel" />
 <asp:HiddenField runat="server" ID="hidCheckedText" />
 <asp:HiddenField runat="server" ID="hidUncheckedText" />
+<asp:HiddenField runat="server" ID="hidChecked" />
+<asp:HiddenField runat="server" ID="hidEnable" />
 
 <div class="form-switch">
     <input runat="Server" id="cbkActive" class="form-check-input" type="checkbox" role="switch" style="width:80px;height:35px" onclick="CheckboxClick(this)" />

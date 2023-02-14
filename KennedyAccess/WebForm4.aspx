@@ -10,6 +10,7 @@
             </ContentTemplate>
         </asp:UpdatePanel>
 
-    <asp:Button ID="Button1" runat="server" Text="Switch" OnClick="Button1_Click" />
+    <asp:Button ID="Button1" runat="server" Text="Enable" OnClick="Button1_Click" />
+    <asp:Button ID="Button2" runat="server" Text="Switch" OnClick="Button2_Click" />
 </asp:Content>
 

@@ -18,7 +18,8 @@ namespace KennedyAccess
                 Toggle1.CheckedText = "Yes";
                 Toggle1.UncheckedText = "No";
                 Toggle1.Width = "200px";
-                Toggle1.Checked = false;
+                Toggle1.Checked = true;
+                Toggle1.Disable = false;
 
                 //Toggle2.ControlLabel = "Status2";
                 //Toggle2.CheckedText = "Active";
@@ -33,8 +34,14 @@ namespace KennedyAccess
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Toggle1.Checked = !Toggle1.Checked;
+            //Toggle1.Checked = !Toggle1.Checked;
             //Toggle1.Checked = Toggle1.Checked ? Toggle1.CheckedText : Toggle1.UncheckedText;
+            Toggle1.Disable = !Toggle1.Disable;
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Toggle1.Checked = !Toggle1.Checked;
         }
     }
 }
