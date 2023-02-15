@@ -240,13 +240,22 @@ namespace KennedyAccess.Controls
         protected global::System.Web.UI.WebControls.TextBox txtPassportNumber;
 
         /// <summary>
-        /// txtIssuingCountry control.
+        /// Label1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtIssuingCountry;
+        protected global::System.Web.UI.WebControls.Label Label1;
+
+        /// <summary>
+        /// ddlIssuingCountry control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlIssuingCountry;
 
         /// <summary>
         /// txtDateOfIssue control.

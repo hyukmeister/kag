@@ -115,13 +115,21 @@
                                             <label for="txtPassportNumber" class="form-label">Passport Number</label>
                                         </div>
                                     </asp:TableCell>
-                                    <asp:TableCell>
+
+                                      <asp:TableCell>
+                                        <br />
+                                        <asp:Label class="form-label" runat="server" ID="Label1" HorizontalAlign="Left">Issuing Country</asp:Label><br />
+                                        <asp:DropDownList ID="ddlIssuingCountry" runat="server" Style="border-radius: 8px;" AutoPostBack="true" OnSelectedIndexChanged="ApplicantInfo_Changed"></asp:DropDownList><br />
+                                    </asp:TableCell> 
+                                    
+
+<%--                                    <asp:TableCell>
                                         <br />
                                         <div class="form-floating mb-3;">
                                             <asp:TextBox ID="txtIssuingCountry" class="form-control" runat="server" placeholder="Issuing Country" OnTextChanged="ApplicantInfo_Changed"></asp:TextBox>
                                             <label for="," class="form-label">Issuing Country</label>
                                         </div>
-                                    </asp:TableCell>
+                                    </asp:TableCell>--%>
                                 </asp:TableRow>
                                 <asp:TableRow>
                                     <asp:TableCell>

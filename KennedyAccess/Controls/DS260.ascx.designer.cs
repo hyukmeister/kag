@@ -15,6 +15,24 @@ namespace KennedyAccess.Controls
     {
 
         /// <summary>
+        /// labDS260_VEA control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label labDS260_VEA;
+
+        /// <summary>
+        /// cbkDS260Changed control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbkDS260Changed;
+
+        /// <summary>
         /// labDS260ID control.
         /// </summary>
         /// <remarks>
@@ -24,6 +42,33 @@ namespace KennedyAccess.Controls
         protected global::System.Web.UI.WebControls.Label labDS260ID;
 
         /// <summary>
+        /// labApplicantID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label labApplicantID;
+
+        /// <summary>
+        /// labReferenceID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label labReferenceID;
+
+        /// <summary>
+        /// labRelationshipID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label labRelationshipID;
+
+        /// <summary>
         /// tblDS260_VEA control.
         /// </summary>
         /// <remarks>
@@ -31,6 +76,33 @@ namespace KennedyAccess.Controls
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Table tblDS260_VEA;
+
+        /// <summary>
+        /// btnEdit1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnEdit1;
+
+        /// <summary>
+        /// btnSave1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSave1;
+
+        /// <summary>
+        /// btnCancel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancel1;
 
         /// <summary>
         /// txt1_Surname control.

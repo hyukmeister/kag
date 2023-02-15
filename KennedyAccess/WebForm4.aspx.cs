@@ -15,11 +15,13 @@ namespace KennedyAccess
             if (!IsPostBack)
             {
                 Toggle1.ControlLabel = "Status1";
-                Toggle1.CheckedText = "I love Eunsook";
-                Toggle1.UncheckedText = "No";
+                Toggle1.CheckedText = "Eunsook";
+                Toggle1.UncheckedText = "Hyuk";
                 Toggle1.Width = "300px";
                 Toggle1.Checked = true;
                 Toggle1.Disable = true;
+                Toggle1.CheckedColor = "yellow";
+                Toggle1.UncheckedColor = "red";
 
                 Toggle2.ControlLabel = "Status2";
                 Toggle2.CheckedText = "Active";

@@ -56,6 +56,11 @@ namespace KennedyAccess.Controls
                 ddlCitizenship.DataTextField = "CountryName";
                 ddlCitizenship.DataBind();
 
+                ddlIssuingCountry.DataSource = (DataTable)Application["Country"];
+                ddlIssuingCountry.DataValueField = "CountryID";
+                ddlIssuingCountry.DataTextField = "CountryName";
+                ddlIssuingCountry.DataBind();
+
                 ddlCountryOfMil.DataSource = (DataTable)Application["Country"];
                 ddlCountryOfMil.DataValueField = "CountryID";
                 ddlCountryOfMil.DataTextField = "CountryName";
@@ -95,13 +100,14 @@ namespace KennedyAccess.Controls
                     "10001",//labRelationshipID.Text, 
                     txtLastName.Text, txtFirstName.Text, txtMiddleName.Text, txtMaidenName.Text, txtDateOfBirth.Text, 
                     txtCityOfBirth.Text, int.Parse(ddlCountryOfBirth.SelectedValue), int.Parse(ddlCitizenship.SelectedValue), txtPhoneNumber.Text, 
-                    txtEmailAddress.Text, txtPassportNumber.Text, txtDateOfIssue.Text, txtDateOfExpiry.Text, txtIssuingCountry.Text, txtAlienNumber.Text,
+                    txtEmailAddress.Text, txtPassportNumber.Text, txtDateOfIssue.Text, txtDateOfExpiry.Text, ddlIssuingCountry.SelectedValue, txtAlienNumber.Text,
                     txtSSN.Text, txtCurrLegalStatus.Text, txtCurrVisaIssued.Text, txtCurrVisaExpires.Text, txtVisaNumber.Text, txtConsulateVisaIssued.Text, 
                     txtI94Number.Text, txtExactNameOnI94.Text, txtMostRecentEntry.Text, txtPortOfEntry.Text, txtStatusOfEntry.Text, txtNameOfMilitary.Text, 
                     txtCityOfMil.Text, txtStateOfMil.Text, int.Parse(ddlCountryOfMil.SelectedValue), txtNatureOfGroup.Text, txtInvolvementFrom.Text, 
                     txtInvolvementTo.Text, rblAppliedVisa.SelectedValue=="1", txtCityOfConsulate.Text, int.Parse(ddlCountryOfConsulate.SelectedValue), 
                     rblVisaDecision.SelectedValue, txtDecisionDate.Text, rblHaveAppliedEAD.SelectedValue == "1", txtUSCISOffice.Text, txtEADDecision.Text
                    );
+                cbkApplicantInfoChanged.Checked = false;
             }
             SetEditVisibility_AppInfo(true);
         }
@@ -135,8 +141,8 @@ namespace KennedyAccess.Controls
             txtEmailAddress.ReadOnly = bLock;        txtEmailAddress.BorderStyle = sBorder; 
             txtPassportNumber.ReadOnly = bLock;      txtPassportNumber.BorderStyle = sBorder; 
             txtDateOfIssue.ReadOnly = bLock;         txtDateOfIssue.BorderStyle = sBorder;
-            txtDateOfExpiry.ReadOnly = bLock;        txtDateOfExpiry.BorderStyle = sBorder; 
-            txtIssuingCountry.ReadOnly = bLock;      txtIssuingCountry.BorderStyle = sBorder;
+            txtDateOfExpiry.ReadOnly = bLock;        txtDateOfExpiry.BorderStyle = sBorder;
+            ddlIssuingCountry.Enabled = bLock;       ddlIssuingCountry.BorderStyle = sBorder;
             txtAlienNumber.ReadOnly = bLock;         txtAlienNumber.BorderStyle = sBorder;
             txtSSN.ReadOnly = bLock;                 txtSSN.BorderStyle = sBorder;
             txtCurrLegalStatus.ReadOnly = bLock;     txtCurrLegalStatus.BorderStyle = sBorder; 
@@ -182,8 +188,8 @@ namespace KennedyAccess.Controls
                     rblUnderstandEngOnI_485.SelectedValue == "1", txtLastNameOfInterp.Text, txtGivenNameOfInterp.Text, txtBusinessOfInterp.Text,
                     txtStreetOfInterp.Text, txtCityInterp.Text, txtStateOfInterp.Text, int.Parse(ddlCountryOfInterp.SelectedValue),
                     txtZipCodeOfInterp.Text, txtPhoneOfInterp.Text, txtEmailOfInterp.Text
-
                    );
+                cbkInterpInfoChanged.Checked = false;
             }
             SetEditVisibility_InterpInfo(true);
         }
@@ -251,8 +257,8 @@ namespace KennedyAccess.Controls
                     rblEthnicity.SelectedValue == "1", rblRace.SelectedValue, txtHeightFt.Text, txtHeightIn.Text,
                     txtHeightCm.Text, txtWeightLbs.Text, txtWeightKg.Text, rblEyeColor.SelectedValue,
                     rblHairColor.SelectedValue  
-
                    );
+                cbkBioInfoChanged.Checked = false;
             }
             SetEditVisibility_BioInfo(true);
         }
@@ -316,6 +322,7 @@ namespace KennedyAccess.Controls
                     cbxCurrI_94.Checked, cbxCurrVisaPastVisas.Checked,
                     cbxTaxReturnsPast3Yrs.Checked, cbxI20.Checked
                    );
+                cbkDocInfoChanged.Checked = false;
             }
             SetEditVisibility_DocInfo(true);
         }
@@ -430,6 +437,7 @@ namespace KennedyAccess.Controls
                     rbl82_RelievedFromService.SelectedValue == "1", rbl83_ConvictedDesertion.SelectedValue == "1", 
                     rbl84_RemainedOutsideUS.SelectedValue == "1", rbl85_ImmigrationStatus.SelectedValue == "1"
                    );
+                cbkBackgroundInfoChanged.Checked = false;
             }
             SetEditVisibility_BackgroundInfo(true);
         }
@@ -593,7 +601,7 @@ namespace KennedyAccess.Controls
             txtPhoneNumber.Text = dr["PhoneNumber"].ToString();
             txtEmailAddress.Text = dr["EmailAddress"].ToString();
             txtPassportNumber.Text = dr["PassportNumber"].ToString();
-            txtIssuingCountry.Text = dr["IssuingCountry"].ToString();
+            ddlIssuingCountry.SelectedValue = dr["CountryOfMil"].ToString() == "" ? "0" : dr["IssuingCountry"].ToString();
             txtDateOfIssue.Text = BaseData.StringToDateFormat(dr["DateOfIssue"]);
             txtDateOfExpiry.Text = BaseData.StringToDateFormat(dr["DateOfExpiry"]);
             txtAlienNumber.Text = dr["AlienNumber"].ToString();

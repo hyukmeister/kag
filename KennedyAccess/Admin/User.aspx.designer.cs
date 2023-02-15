@@ -111,7 +111,7 @@ namespace KennedyAccess
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox cbkActive;
+        protected global::KennedyAccess.Controls.Toggle cbkActive;
 
         /// <summary>
         /// txtUserName control.
@@ -129,7 +129,7 @@ namespace KennedyAccess
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox cbkAuthenticated;
+        protected global::KennedyAccess.Controls.Toggle cbkAuthenticated;
 
         /// <summary>
         /// txtFirstName control.
@@ -247,15 +247,6 @@ namespace KennedyAccess
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
-
-        /// <summary>
-        /// panUserRoleSets control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel panUserRoleSets;
 
         /// <summary>
         /// gvRoleSets control.

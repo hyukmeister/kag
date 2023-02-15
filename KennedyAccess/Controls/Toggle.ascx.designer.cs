@@ -51,6 +51,24 @@ namespace KennedyAccess.Controls
         protected global::System.Web.UI.WebControls.HiddenField hidWidth;
 
         /// <summary>
+        /// hidCheckedColor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hidCheckedColor;
+
+        /// <summary>
+        /// hidUncheckedColor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hidUncheckedColor;
+
+        /// <summary>
         /// hidChecked control.
         /// </summary>
         /// <remarks>

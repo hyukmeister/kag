@@ -14,6 +14,8 @@ namespace KennedyAccess.Controls
         public string CheckedText { get; set; }
         public string UncheckedText { get; set; }
         public string Width { get; set; }
+        public string CheckedColor { get; set; }
+        public string UncheckedColor { get; set; }
         public bool Checked 
         { 
             get
@@ -51,10 +53,17 @@ namespace KennedyAccess.Controls
                 hidCheckedText.Value = CheckedText;
                 if (UncheckedText is null)
                     UncheckedText = "No";
+                hidUncheckedText.Value = UncheckedText;
                 if (Width is null)
                     Width = "100px";
                 hidWidth.Value = Width;
-                hidUncheckedText.Value = UncheckedText;
+                if (CheckedColor is null)
+                    CheckedColor = "orange";
+                hidCheckedColor.Value = CheckedColor;
+                if (UncheckedColor is null)
+                    UncheckedColor = "silver";
+                hidUncheckedColor.Value = UncheckedColor;                
+                
                 cbkActive.Checked = Checked;
                 labCheckbox.InnerText = cbkActive.Checked ? hidCheckedText.Value : hidUncheckedText.Value;            
             }

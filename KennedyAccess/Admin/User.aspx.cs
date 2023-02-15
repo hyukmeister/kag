@@ -157,7 +157,11 @@ namespace KennedyAccess
         {
             BorderStyle sBorder = (bLock) ? BorderStyle.None : BorderStyle.NotSet;
 
-            cbkActive.Disabled = bLock;
+            cbkActive.ControlLabel = "Active";
+            cbkActive.CheckedText = "Active";
+            cbkActive.UncheckedText = "Inactive";
+            cbkActive.Disable = bLock;
+
             //cbkActive.BorderStyle = sBorder;
             lblRecordType.Enabled = bLock;
             lblRecordType.BorderStyle = sBorder;
@@ -181,8 +185,10 @@ namespace KennedyAccess
             txtValidThru.BorderStyle = sBorder;
             ddlUserType.Enabled = !bLock;
             ddlUserType.BorderStyle = sBorder;
-            cbkAuthenticated.Disabled = bLock;
-            //cbkAuthenticated.BorderStyle = sBorder;
+            cbkAuthenticated.ControlLabel = "Authenticated";
+            cbkAuthenticated.CheckedText = "Yes";
+            cbkAuthenticated.UncheckedText = "No";
+            cbkAuthenticated.Disable = bLock;
             txtCreateDate.ReadOnly = bLock;
             txtCreateDate.BorderStyle = sBorder;
             txtModifiedDate.ReadOnly = bLock;
