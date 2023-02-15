@@ -45,16 +45,20 @@ namespace KennedyAccess.Controls
         {
             if (!IsPostBack)
             {
-                
                 hidControlLabel.Value = ControlLabel;
+                if (CheckedText is null)
+                    CheckedText = "Yes";
                 hidCheckedText.Value = CheckedText;
+                if (UncheckedText is null)
+                    UncheckedText = "No";
+                if (Width is null)
+                    Width = "100px";
+                hidWidth.Value = Width;
                 hidUncheckedText.Value = UncheckedText;
                 cbkActive.Checked = Checked;
-                labCheckbox.InnerText = cbkActive.Checked ? hidCheckedText.Value : hidUncheckedText.Value;
-
-                
-           }
-           cbkActive.Attributes.Add("onclick", hidControlLabel.Value + "_Click(this)");
+                labCheckbox.InnerText = cbkActive.Checked ? hidCheckedText.Value : hidUncheckedText.Value;            
+            }
+            cbkActive.Attributes.Add("onclick", hidControlLabel.Value + "_Click(this)");
         }
     }
 }

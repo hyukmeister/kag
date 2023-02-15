@@ -15,20 +15,26 @@ namespace KennedyAccess
             if (!IsPostBack)
             {
                 Toggle1.ControlLabel = "Status1";
-                Toggle1.CheckedText = "Yes";
+                Toggle1.CheckedText = "I love Eunsook";
                 Toggle1.UncheckedText = "No";
-                Toggle1.Width = "200px";
+                Toggle1.Width = "300px";
                 Toggle1.Checked = true;
-                Toggle1.Disable = false;
+                Toggle1.Disable = true;
 
                 Toggle2.ControlLabel = "Status2";
                 Toggle2.CheckedText = "Active";
                 Toggle2.UncheckedText = "Inactive";
                 Toggle2.Checked = true;
 
-                //Toggle3.ControlLabel = "Status3";
-                //Toggle3.CheckedText = "True";
-                //Toggle3.UncheckedText = "False";
+                Toggle3.ControlLabel = "Status3";                
+                Toggle3.Checked= true;
+
+                Toggle4.ControlLabel = "Status4";
+                Toggle4.CheckedText = "Approved";
+                Toggle4.UncheckedText = "Dinied";
+
+                Toggle4.Checked = false;
+
             }
 
         }

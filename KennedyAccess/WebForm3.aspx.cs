@@ -21,14 +21,14 @@ namespace KennedyAccess
         {
             if (!IsPostBack)
             {
-                cbkActive.Checked= true;
+                //cbkActive.Checked= true;
             }
         }
 
         protected void btnEnabled_Click(object sender, EventArgs e)
         {
-            cbkActive.Disabled = !cbkActive.Disabled;
-            labCheckbox.InnerText = cbkActive.Checked ? "active" : "inactive";
+            //cbkActive.Disabled = !cbkActive.Disabled;
+            //labCheckbox.InnerText = cbkActive.Checked ? "active" : "inactive";
         }
     }
 }

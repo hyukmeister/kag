@@ -33,22 +33,22 @@ namespace KennedyAccess
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
 
         /// <summary>
-        /// cbkActive control.
+        /// toggledemo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox cbkActive;
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox toggledemo;
 
         /// <summary>
-        /// labCheckbox control.
+        /// cbkMyActive control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl labCheckbox;
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox cbkMyActive;
 
         /// <summary>
         /// btnEnabled control.
