@@ -49,5 +49,12 @@ namespace KennedyAccess
         {
             Toggle1.Checked = !Toggle1.Checked;
         }
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine(Toggle1.Checked);
+            Console.WriteLine(Toggle2.Checked);
+            Console.WriteLine(Toggle3.Checked);
+            Console.WriteLine(Toggle4.Checked);
+        }
     }
 }

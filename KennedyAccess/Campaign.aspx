@@ -11,7 +11,7 @@
 
     <asp:CheckBox ID="cbkJobOpportunityChanged" runat="server" Checked="false" Visible="false" />
     <asp:CheckBox ID="cbkCampaignChanged" runat="server" Checked="false" Visible="false" />
-    <asp:CheckBox ID="cbkPostJobValue" runat="server" />
+    <asp:CheckBox ID="cbkPostJobValue" runat="server"  Visible="false"/>
     <h2>
         <asp:Label ID="labTitle" runat="server" Text="Campaign & Job Information"></asp:Label></h2>
     <div class="jumbotron" style="width: 900px;">
@@ -154,8 +154,8 @@
                 <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushCampaign">
                     <div class="accordion-body">
                         <asp:Panel ID="panJobOpportunity" runat="server">
-<%--                        <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-                            <ContentTemplate>--%>
+                        <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                            <ContentTemplate>
                             <asp:Table ID="tabJobOpportunity" runat="server" class="table table-hover">
                                 <asp:TableRow>
                                     <asp:TableCell ColumnSpan="2">
@@ -364,8 +364,8 @@
                                     </asp:TableCell>
                                 </asp:TableRow>
                             </asp:Table>
-<%--                            </ContentTemplate>
-                        </asp:UpdatePanel>--%>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
                         </asp:Panel>
                     </div>
                 </div>

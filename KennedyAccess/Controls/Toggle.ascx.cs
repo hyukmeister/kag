@@ -20,12 +20,11 @@ namespace KennedyAccess.Controls
         { 
             get
             {
-                bool bChecked = bool.Parse(hidChecked.Value);
-                return bChecked;
+                return cbkActive.Checked;
             }
             set
             {
-                hidChecked.Value = value.ToString();
+                //hidChecked.Value = value.ToString();
                 cbkActive.Checked = value;
             }
         }

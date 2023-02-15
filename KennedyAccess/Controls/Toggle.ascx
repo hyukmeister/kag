@@ -1,8 +1,9 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Toggle.ascx.cs" Inherits="KennedyAccess.Controls.Toggle" %>
 <script type="text/javascript">
     $(document).ready(function () {
+        var tb1 = document.getElementById('<%=cbkActive.ClientID%>');
         var tb2 = document.getElementById('<%=labCheckbox.ClientID%>');
-        tb2.textContent = sender.checked ? '<%=hidCheckedText.Value%>' : '<%=hidUncheckedText.Value%>';
+        tb2.textContent = tb1.checked ? '<%=hidCheckedText.Value%>' : '<%=hidUncheckedText.Value%>';
     });
     function <%=hidControlLabel.Value%>_Click(sender) {
         var tb2 = document.getElementById('<%=labCheckbox.ClientID%>');
@@ -16,7 +17,7 @@
 <asp:HiddenField runat="server" ID="hidWidth" />
 <asp:HiddenField runat="server" ID="hidCheckedColor" />
 <asp:HiddenField runat="server" ID="hidUncheckedColor" />
-<asp:HiddenField runat="server" ID="hidChecked" />
+<%--<asp:HiddenField runat="server" ID="hidChecked" />--%>
 <asp:HiddenField runat="server" ID="hidEnable" />
 
 <div class="form-switch">
