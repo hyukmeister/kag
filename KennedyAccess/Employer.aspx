@@ -18,8 +18,8 @@
                     <asp:Table ID="tabEmployer" runat="server" class="table table-responsive table-hover">
                         <asp:TableRow>
                             <asp:TableCell ColumnSpan="2" HorizontalAlign="Left">
-                                <asp:Label ID="Label1" runat="server" Text="User Name"></asp:Label>
-                                <asp:DropDownList ID="ddlUserName" class="form-select" runat="server" Width="300px" Enabled="false"></asp:DropDownList>
+                                <asp:Label ID="Label1" runat="server" Text="User Name "></asp:Label>
+                                <asp:DropDownList ID="ddlUserName" CssClass="btn btn-default btn-outline-secondary align-items-start text-start" runat="server" Width="250px" Enabled="false"></asp:DropDownList>
                             </asp:TableCell>
                             <asp:TableCell ColumnSpan="2" HorizontalAlign="Right">
                                 <asp:Button ID="btnEditEmployer" runat="server" class="btn btn-primary" Text="Edit" CausesValidation="false" UseSubmitBehavior="false" OnClick="btnEditEmployer_Click" />

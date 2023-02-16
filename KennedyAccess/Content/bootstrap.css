@@ -10894,5 +10894,12 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.rounded-corners {
+    border: 1px solid black;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    overflow: hidden;
+}
 
 /*# sourceMappingURL=bootstrap.css.map */

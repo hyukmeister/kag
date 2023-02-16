@@ -363,7 +363,7 @@ namespace KennedyAccess
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox cbkI_34_ListJob;
+        protected global::KennedyAccess.Controls.Toggle cbkI_34_ListJob;
 
         /// <summary>
         /// btnSaveJobOpportunity control.

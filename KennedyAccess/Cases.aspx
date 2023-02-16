@@ -18,8 +18,8 @@
             </asp:TableRow>
             <asp:TableRow>
                 <asp:TableCell ColumnSpan="2">
-                    <asp:GridView ID="gvCases" runat="server" AutoGenerateColumns="False" Width="100%"
-                        GridLines="None" class="table table-hover" OnRowCommand="CaseGridview_RowCommand" AllowSorting="True" OnSorting="gvCases_Sorting">
+                    <asp:GridView ID="gvCases" runat="server" AutoGenerateColumns="False" Width="100%" OnRowCommand="CaseGridview_RowCommand"
+                        GridLines="None" class="table table-hover rounded-corners" AllowSorting="True" OnSorting="gvCases_Sorting">
                         <Columns>
                             <asp:TemplateField HeaderText="Case Id" Visible="true" SortExpression="CaseId">
                                 <ItemTemplate>

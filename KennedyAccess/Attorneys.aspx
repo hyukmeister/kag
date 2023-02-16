@@ -15,7 +15,7 @@
             </asp:TableRow>
             <asp:TableRow>
                 <asp:TableCell ColumnSpan="2">
-                    <asp:GridView ID="gvAttorneys" runat="server" AutoGenerateColumns="False" class="table table-hover"
+                    <asp:GridView ID="gvAttorneys" runat="server" AutoGenerateColumns="False" class="table table-hover rounded-corners"
                         GridLines="None" Style="border-radius: 15px;" CellPadding="4" OnRowCommand="gvAttorneys_RowCommand">
                         <Columns>
                             <asp:TemplateField HeaderText="Attorney ID">

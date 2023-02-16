@@ -18,7 +18,7 @@
         </tr>
     </table>
 
-        <asp:Table ID="tabApplicant" runat="server" class="table table-responsive table-hover" style="width: 900px;">
+    <asp:Table ID="tabApplicant" runat="server" class="table table-responsive table-hover" style="width: 900px;">
         <asp:TableRow>
             <asp:TableCell></asp:TableCell>
             <asp:TableCell>
@@ -29,10 +29,9 @@
                 <asp:Button ID="btnCancel" runat="server" class="btn btn-primary" Text="Cancel" UseSubmitBehavior="false" CausesValidation="false" OnClick="btnCancel_Click" Visible="false"/>
             </asp:TableCell>
         </asp:TableRow>
-        </asp:Table>
+    </asp:Table>
 
     <uc4:ApplicantInfo runat="server" id="ApplicantInfo" />
-
 
     <div class="accordion" id="accordionFlushExample" style="width: 900px;">
         <div class="accordion-item">

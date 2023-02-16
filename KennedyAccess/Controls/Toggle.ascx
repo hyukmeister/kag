@@ -20,7 +20,7 @@
 <asp:HiddenField runat="server" ID="hidEnable" />
 
 <div class="form-switch">
-    <input runat="Server" id="cbkActive" class="form-check-input" type="checkbox" role="switch" style='height:35px;width:100px'/>
+    <input runat="Server" id="cbkActive" class="form-check-input" type="checkbox" role="switch" style="height:35px;width:100px"/>
     <div class="not-clickable" style="pointer-events: none;left:-25px;top:-30px;position:relative;" >
         <label id="labCheckbox" runat="server" class="form-check-label fw-bold" for="cbkActive" />
     </div>

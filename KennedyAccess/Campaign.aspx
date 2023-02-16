@@ -4,6 +4,7 @@
 <%@ Register Src="~/Controls/Questionnaire.ascx" TagPrefix="uc2" TagName="Questionnaire" %>
 <%@ Register Src="~/Controls/PrevWage.ascx" TagPrefix="uc3" TagName="PrevWage" %>
 <%@ Register Src="~/Controls/Attachments.ascx" TagPrefix="uc4" TagName="Attachments" %>
+<%@ Register Src="~/Controls/Toggle.ascx" TagPrefix="uc5" TagName="Toggle" %>
 
 <asp:Content ID="Campaign" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -160,11 +161,7 @@
                                 <asp:TableRow>
                                     <asp:TableCell ColumnSpan="2">
                                         <label for="floatingInputGrid">Post Job Opportunity</label>
-                                        <%--<asp:RadioButtonList ID="rblI_34_ListJob" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" Enabled="false" BorderStyle="None" OnSelectedIndexChanged="JobOpportunityChanged">
-                                            <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
-                                            <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;"/>
-                                        </asp:RadioButtonList>--%>
-                                        <input runat="server" id="cbkI_34_ListJob" type="checkbox" data-toggle="toggle" data-onstyle="secondary" data-offstyle="secondary" data-style="pill" data-on="Post" data-off="Pending" data-width="120" data-height="30" >
+                                        <uc5:Toggle runat="server" ID="cbkI_34_ListJob" ControlLabel="PostJob" CheckedText="Post" UncheckedText="Pending"/>
                                         <br />
                                      </asp:TableCell>
                                     <asp:TableCell ColumnSpan="2" HorizontalAlign="Right">

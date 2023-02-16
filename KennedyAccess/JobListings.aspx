@@ -15,9 +15,8 @@
             <asp:TableRow>
                 <asp:TableCell ColumnSpan="2">
                     <asp:GridView ID="gvJobListings" runat="server" AutoGenerateColumns="False" 
-                        GridLines="None" class="table table-hover" OnRowDataBound="gvJobListings_RowDataBound"
-                        Style="border-radius: 15px;" CellPadding="4" OnRowCommand="gvJobListings_RowCommand" 
-                        AllowSorting="True" OnSorting="gvJobListings_Sorting">
+                        GridLines="None" class="table table-hover rounded-corners" OnRowDataBound="gvJobListings_RowDataBound"
+                        CellPadding="4" OnRowCommand="gvJobListings_RowCommand" AllowSorting="True" OnSorting="gvJobListings_Sorting">
                         <Columns>
                             <asp:TemplateField HeaderText="JobListing ID" SortExpression="JobListingID">
                                 <ItemTemplate>

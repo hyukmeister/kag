@@ -18,7 +18,7 @@
             </asp:TableRow>
             <asp:TableRow>
                 <asp:TableCell ColumnSpan="2">
-                    <asp:GridView ID="gvUsers" runat="server" AutoGenerateColumns="False" class="table table-hover"
+                    <asp:GridView ID="gvUsers" runat="server" AutoGenerateColumns="False" class="table table-hover rounded-corners"
                         GridLines="None" Style="border-radius: 15px;" CellPadding="4" OnRowCommand="gvUser_RowCommand"
                         AllowSorting="True" OnSorting="gvUsers_Sorting">
                         <Columns>

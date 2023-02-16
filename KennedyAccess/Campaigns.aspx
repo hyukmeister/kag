@@ -18,7 +18,7 @@
                 <asp:TableCell ColumnSpan="2">
                     <asp:Panel runat="server" ID="panCampaigns" Height="600px" ScrollBars="Vertical">
                         <asp:GridView ID="gvCampaigns" runat="server" AutoGenerateColumns="False" 
-                            class="table table-hover" GridLines="None" Style="border-radius: 15px;"
+                            class="table table-hover rounded-corners" GridLines="None"
                             CellPadding="4" OnRowCommand="gvCampaign_RowCommand" EmptyDataText="No Campaign found" 
                             AllowSorting="True" OnSorting="gvCampaigns_Sorting">
                             <Columns>

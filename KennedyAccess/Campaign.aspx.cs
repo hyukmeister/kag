@@ -337,7 +337,7 @@ namespace KennedyAccess
             {
                 //rblI_34_ListJob.Enabled = !bLock;
                 //rblI_34_ListJob.BorderStyle = sBorder;
-                cbkI_34_ListJob.Disabled= bLock;
+                cbkI_34_ListJob.Disable= bLock;
             }
         }
 

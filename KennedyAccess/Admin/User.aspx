@@ -3,11 +3,6 @@
 <%@ Register Src="~/Controls/Toggle.ascx" TagPrefix="uc1" TagName="Toggle" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-<script type='text/javascript'>
-    $('#btnAddNew').click(function () {
-        $('#divAddNew').modal('show');
-    })
-</script>
 
     <div style="background-image: url('../images/kagimg10.jpg'); filter: blur(4px); height: 100px; width: 900px; background-size: cover; background-position: center; position: relative; opacity: 55%; top: 20px">
         &nbsp;
@@ -40,7 +35,7 @@
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>
-                <asp:TableCell ColumnSpan="4" HorizontalAlign="Left" BackColor="dimgray" ForeColor="white">
+                <asp:TableCell ColumnSpan="4" HorizontalAlign="Left" BackColor="dimgray" ForeColor="white" class="rounded-corners">
                     <h4><asp:Label ID="Label3" runat="server" Text="User Information"></asp:Label></h4>
                 </asp:TableCell>
             </asp:TableRow>
@@ -163,7 +158,7 @@
                     <Columns>
                     <asp:TemplateField HeaderText="Active" >
                         <ItemTemplate>
-                            <uc1:Toggle runat="server" ID="cbkActive" Checked='<%# Eval("Active") %>' CheckedText="Active" UncheckedText="Inactive" Disable="true"/>
+                            <uc1:Toggle runat="server" ID="cbkActive" ControlLabel="RoleStatus" Checked='<%# Eval("Active") %>' CheckedText="Active" UncheckedText="Inactive" Disable="true"/>
                         </ItemTemplate>
                         <EditItemTemplate>
                             <asp:Label ID="LabRoleID" runat="server" Text='<%# Eval("RoleID") %>' Visible="false"></asp:Label>
@@ -172,7 +167,7 @@
                             <asp:CheckBox ID="cbkActive" Runat="server" Checked='<%# Eval("Active") %>' />
                         </EditItemTemplate>
                         <FooterTemplate>
-                            <uc1:Toggle runat="server" ID="fActive" Checked='false' CheckedText="Active" UncheckedText="Inactive" Disable="false"/>
+                            <uc1:Toggle runat="server" ID="fActive" ControlLabel="RoleStatus" Checked='false' CheckedText="Active" UncheckedText="Inactive" Disable="false"/>
                         </FooterTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Manual" ItemStyle-HorizontalAlign="Center" >
@@ -199,13 +194,13 @@
                             <asp:Label ID="Label1" runat="server" Text='<%# Eval("ValidFrom") %>'></asp:Label>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="txtValidFrom" Runat="server" Width="140px" Text='<%# Eval("ValidFrom") %>' TextMode="Date"></asp:TextBox>
+                            <asp:TextBox ID="txtValidFrom" Runat="server" Width="100px" Text='<%# Eval("ValidFrom") %>' TextMode="Date"></asp:TextBox>
                         </EditItemTemplate>
                         <FooterTemplate>
                             <asp:TextBox ID="fDateFrom" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
                         </FooterTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Valid Thru" FooterStyle-Width="180px">
+                    <asp:TemplateField HeaderText="Valid Thru" FooterStyle-Width="100px">
                         <ItemTemplate>
                             <asp:Label ID="labValidThru" runat="server" Text='<%# Eval("ValidThru") %>'></asp:Label>
                         </ItemTemplate>

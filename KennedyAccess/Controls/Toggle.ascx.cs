@@ -64,8 +64,8 @@ namespace KennedyAccess.Controls
                 hidUncheckedColor.Value = UncheckedColor;                
                 
                 cbkActive.Checked = Checked;
-                labCheckbox.InnerText = cbkActive.Checked ? hidCheckedText.Value : hidUncheckedText.Value;            
             }
+            labCheckbox.InnerText = cbkActive.Checked ? hidCheckedText.Value : hidUncheckedText.Value;
             cbkActive.Attributes.Add("onclick", hidControlLabel.Value + "_Click(this)");
         }
     }
