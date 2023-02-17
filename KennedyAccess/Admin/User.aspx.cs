@@ -74,10 +74,12 @@ namespace KennedyAccess
                 }
                 catch (Exception ex)
                 {
+                    int iRecordTypeID = bd.GetRecordTypeID((DataTable)Application["RecordType"], user.FranchiseID, "Object", "AuditTrail");
                     //Console.WriteLine(ex.Message);
                     SqlHelperv2.ExecuteNonQuery(Global.dbcnn, "WriteAuditTrail",
                         user.FranchiseID,
                         user.UserID,
+                        iRecordTypeID,
                         ex.Message);
                 }
             }
@@ -117,6 +119,7 @@ namespace KennedyAccess
                 cbkAuthenticated.Checked = drUser["Authenticated"].ToString() == "True";
                 txtCreateDate.Text = DateTime.Parse(drUser["CreateDate"].ToString()).ToString("yyyy-MM-dd");
                 txtModifiedDate.Text = DateTime.Parse(drUser["ModifiedDate"].ToString()).ToString("yyyy-MM-dd");
+                cbkAgreeToTextMsg.Checked = drUser["AgreeToTextMsg"].ToString() == "True";
                 txtNote.Text = drUser["Note"].ToString();                
             }
         }
@@ -134,16 +137,20 @@ namespace KennedyAccess
                 dt = (DataTable)ViewState["dtUserRolesetRoles"];
             }
 
-            gvRoleSets.DataSource = dt;
-            gvRoleSets.DataBind();
+            if(dt.Rows.Count > 0)
+            {
+                gvRoleSets.DataSource = dt;
+                gvRoleSets.DataBind();
 
-            DropDownList fRoleName = (DropDownList)gvRoleSets.FooterRow.FindControl("fRoleName");
-            fRoleName.DataSource = (DataTable)ViewState["dtRoles"];
-            fRoleName.DataTextField = "RoleName";
-            fRoleName.DataValueField = "RoleID";
-            fRoleName.DataBind();
+                DropDownList fRoleName = (DropDownList)gvRoleSets.FooterRow.FindControl("fRoleName");
+                fRoleName.DataSource = GetRoles();
+                fRoleName.DataTextField = "RoleName";
+                fRoleName.DataValueField = "RoleID";
+                fRoleName.DataBind();
 
-            gvRoleSets.Columns[6].Visible = btnEditUser.Visible = user.HasRole("UserEdit");
+                gvRoleSets.Columns[6].Visible = btnEditUser.Visible = user.HasRole("UserEdit");
+            }
+
         }
 
         protected void btnEditUser_Click(object sender, EventArgs e)
@@ -152,6 +159,20 @@ namespace KennedyAccess
             SetEditVisibility(false);
         }
 
+        private DataTable GetRoles()
+        {
+            DataTable dt = null;
+            if(ViewState["dtRoles"] is null)
+            {
+                ViewState["dtRoles"] = dt = bd.GetRole(user, "0", "");
+            }
+            else
+            {
+                dt = (DataTable)ViewState["dtRoles"];
+            }
+
+            return dt;
+        }
 
         private void SetEditVisibility(bool bLock)
         {
@@ -185,14 +206,15 @@ namespace KennedyAccess
             txtValidThru.BorderStyle = sBorder;
             ddlUserType.Enabled = !bLock;
             ddlUserType.BorderStyle = sBorder;
-            cbkAuthenticated.ControlLabel = "Authenticated";
-            cbkAuthenticated.CheckedText = "Yes";
-            cbkAuthenticated.UncheckedText = "No";
+            //cbkAuthenticated.ControlLabel = "Authenticated";
+            //cbkAuthenticated.CheckedText = "Yes";
+            //cbkAuthenticated.UncheckedText = "No";
             cbkAuthenticated.Disable = bLock;
             txtCreateDate.ReadOnly = bLock;
             txtCreateDate.BorderStyle = sBorder;
             txtModifiedDate.ReadOnly = bLock;
             txtModifiedDate.BorderStyle = sBorder;
+            cbkAgreeToTextMsg.Disable= bLock;
             txtNote.ReadOnly = bLock;
             txtNote.BorderStyle = sBorder;
 
@@ -210,7 +232,7 @@ namespace KennedyAccess
                 lblUserID.Text = bd.InserUpdatetUser(user.FranchiseID, user.UserID, int.Parse(lblUserID.Text), txtUserName.Text, "",
                     txtFirstName.Text, txtLastName.Text, txtEmail.Text, sRecordTypeID,
                     sRoleSetID, cbkActive.Checked, txtValidFrom.Text, txtValidThru.Text,
-                    cbkAuthenticated.Checked, txtMobilephone.Text, txtNote.Text);
+                    cbkAuthenticated.Checked, txtMobilephone.Text, txtNote.Text, cbkAgreeToTextMsg.Checked);
 
                 LoadUserInfo(lblUserID.Text, true);
 

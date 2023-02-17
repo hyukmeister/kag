@@ -16,7 +16,7 @@
             <asp:TableRow>
                 <asp:TableCell ColumnSpan="2">
                     <asp:GridView ID="gvAgents" runat="server" AutoGenerateColumns="False" class="table table-hover rounded-corners"
-                       GridLines="None" Style="border-radius: 15px;" OnRowCommand="gvAgents_RowCommand">
+                       GridLines="None" OnRowCommand="gvAgents_RowCommand" ShowFooter="true">
 
                         <Columns>
                             <asp:TemplateField HeaderText="Agent ID">
@@ -49,6 +49,7 @@
                             </asp:ButtonField>
                         </Columns>
                         <HeaderStyle BackColor="dimgray" ForeColor="White"/>
+                        <FooterStyle BackColor="dimgray"/>
                     </asp:GridView>
                 </asp:TableCell>
             </asp:TableRow>

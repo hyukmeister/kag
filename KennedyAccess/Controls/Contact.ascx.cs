@@ -26,20 +26,20 @@ namespace KennedyAccess.Controls
         {
             user = (User)Session["User"];
 
-            if(intReferencerID > 0)
+            if (intReferencerID > 0)
             {
                 labObjectID.Text = intReferencerID.ToString();
             }
 
             // if first load and contact type is defined
-            if ((!Page.IsPostBack && ContactType != null) || (ContactType=="WorkExperience" && labObjectID.Text == "")) 
+            if ((!Page.IsPostBack && ContactType != null) || (ContactType == "WorkExperience" && labObjectID.Text == ""))
             {
                 ddlCountry.DataSource = (DataTable)Application["Country"];
                 ddlCountry.DataValueField = "CountryID";
                 ddlCountry.DataTextField = "CountryName";
                 ddlCountry.DataBind();
                 iRecordTypeID = bd.GetRecordTypeID((DataTable)Application["RecordType"], user.FranchiseID, "Contact", ContactType);
-                 
+
                 if (ContactType == "Employer" || ContactType == "Applicant" || ContactType == "ApplicantOversea" || ContactType == "Agent")
                 {
                     TREmployerName.Visible = false;
@@ -101,67 +101,77 @@ namespace KennedyAccess.Controls
 
         public void btnSave_Click(object sender, EventArgs e)
         {
-            string sContactID;
-            sContactID = (labContactID.Text == "") ? "-1" : labContactID.Text;
+            if (cbkContactChanged.Checked)
+            {
+                string sContactID;
+                sContactID = (labContactID.Text == "") ? "-1" : labContactID.Text;
 
-            iRecordTypeID = bd.GetRecordTypeID((DataTable)Application["RecordType"], user.FranchiseID, "Contact", ContactType);
-            if (intReferencerID > 0)
-            {
-                labObjectID.Text = intReferencerID.ToString();
-            }
-            if (sContactID == "-1")
-            {
-                // insert new contact
-                SqlDataReader dr = SqlHelper.ExecuteReader(
-                    Global.dbcnn, "[InsertContact]",
-                    new SqlParameter("@FranchiseID", user.FranchiseID),
-                    new SqlParameter("@RecordTypeID", iRecordTypeID),
-                    new SqlParameter("@ReferenceID", labObjectID.Text),
-                    new SqlParameter("@UserID", user.UserID),
-                    new SqlParameter("@EmployerName", txtEmployerName.Text),
-                    new SqlParameter("@FirstName", txtFirstName.Text),
-                    new SqlParameter("@LastName", txtLastName.Text),
-                    new SqlParameter("@MI", txtMI.Text),
-                    new SqlParameter("@Address1", txtAddress1.Text),
-                    new SqlParameter("@Address2", txtAddress2.Text),
-                    new SqlParameter("@City", txtCity.Text),
-                    new SqlParameter("@StateProvince", txtStateProvince.Text),
-                    new SqlParameter("@Country", int.Parse(ddlCountry.SelectedValue)),
-                    new SqlParameter("@PostalCode", txtPostalCode.Text),
-                    new SqlParameter("@PhoneNumber", txtPhoneNumber.Text),
-                    new SqlParameter("@Extention", txtExtention.Text),
-                    new SqlParameter("@Email", txtEmail.Text));
-                dr.Read();
-                sContactID = dr[0].ToString();
-                dr.Close();
-                labContactID.Text = sContactID;
-            }
-            else
-            {
-                // update contact
-                SqlHelper.ExecuteNonQuery(
-                    Global.dbcnn, "[UpdateContact]",
-                    new SqlParameter("@ContactID", labContactID.Text),
-                    new SqlParameter("@FranchiseID", user.FranchiseID),
-                    new SqlParameter("@RecordTypeID", iRecordTypeID),
-                    new SqlParameter("@ReferenceID", intReferencerID),
-                    new SqlParameter("@UserID", user.UserID),
-                    new SqlParameter("@EmployerName", txtEmployerName.Text),
-                    new SqlParameter("@FirstName", txtFirstName.Text),
-                    new SqlParameter("@LastName", txtLastName.Text),
-                    new SqlParameter("@MI", txtMI.Text),
-                    new SqlParameter("@Address1", txtAddress1.Text),
-                    new SqlParameter("@Address2", txtAddress2.Text),
-                    new SqlParameter("@City", txtCity.Text),
-                    new SqlParameter("@StateProvince", txtStateProvince.Text),
-                    new SqlParameter("@Country", int.Parse(ddlCountry.SelectedValue)),
-                    new SqlParameter("@PostalCode", txtPostalCode.Text),
-                    new SqlParameter("@PhoneNumber", txtPhoneNumber.Text),
-                    new SqlParameter("@Extention", txtExtention.Text),
-                    new SqlParameter("@Email", txtEmail.Text));
+                iRecordTypeID = bd.GetRecordTypeID((DataTable)Application["RecordType"], user.FranchiseID, "Contact", ContactType);
+                if (intReferencerID > 0)
+                {
+                    labObjectID.Text = intReferencerID.ToString();
+                }
+                if (sContactID == "-1")
+                {
+                    // insert new contact
+                    SqlDataReader dr = SqlHelper.ExecuteReader(
+                        Global.dbcnn, "[InsertContact]",
+                        new SqlParameter("@FranchiseID", user.FranchiseID),
+                        new SqlParameter("@RecordTypeID", iRecordTypeID),
+                        new SqlParameter("@ReferenceID", labObjectID.Text),
+                        new SqlParameter("@UserID", user.UserID),
+                        new SqlParameter("@EmployerName", txtEmployerName.Text),
+                        new SqlParameter("@FirstName", txtFirstName.Text),
+                        new SqlParameter("@LastName", txtLastName.Text),
+                        new SqlParameter("@MI", txtMI.Text),
+                        new SqlParameter("@Address1", txtAddress1.Text),
+                        new SqlParameter("@Address2", txtAddress2.Text),
+                        new SqlParameter("@City", txtCity.Text),
+                        new SqlParameter("@StateProvince", txtStateProvince.Text),
+                        new SqlParameter("@Country", int.Parse(ddlCountry.SelectedValue)),
+                        new SqlParameter("@PostalCode", txtPostalCode.Text),
+                        new SqlParameter("@PhoneNumber", txtPhoneNumber.Text),
+                        new SqlParameter("@Extention", txtExtention.Text),
+                        new SqlParameter("@Email", txtEmail.Text));
+                    dr.Read();
+                    sContactID = dr[0].ToString();
+                    dr.Close();
+                    labContactID.Text = sContactID;
+                }
+                else
+                {
+                    // update contact
+                    SqlHelper.ExecuteNonQuery(
+                        Global.dbcnn, "[UpdateContact]",
+                        new SqlParameter("@ContactID", labContactID.Text),
+                        new SqlParameter("@FranchiseID", user.FranchiseID),
+                        new SqlParameter("@RecordTypeID", iRecordTypeID),
+                        new SqlParameter("@ReferenceID", labObjectID.Text),
+                        new SqlParameter("@UserID", user.UserID),
+                        new SqlParameter("@EmployerName", txtEmployerName.Text),
+                        new SqlParameter("@FirstName", txtFirstName.Text),
+                        new SqlParameter("@LastName", txtLastName.Text),
+                        new SqlParameter("@MI", txtMI.Text),
+                        new SqlParameter("@Address1", txtAddress1.Text),
+                        new SqlParameter("@Address2", txtAddress2.Text),
+                        new SqlParameter("@City", txtCity.Text),
+                        new SqlParameter("@StateProvince", txtStateProvince.Text),
+                        new SqlParameter("@Country", int.Parse(ddlCountry.SelectedValue)),
+                        new SqlParameter("@PostalCode", txtPostalCode.Text),
+                        new SqlParameter("@PhoneNumber", txtPhoneNumber.Text),
+                        new SqlParameter("@Extention", txtExtention.Text),
+                        new SqlParameter("@Email", txtEmail.Text));
+                }
+                cbkContactChanged.Checked = false;
             }
         }
-        public void SetEditability(bool bLock)
+
+        protected void Contact_Changed(object sender, EventArgs e)
+        {
+            cbkContactChanged.Checked = true;
+        }
+
+            public void SetEditability(bool bLock)
         {
             BorderStyle sBorder = (bLock) ? BorderStyle.None : BorderStyle.NotSet;
             txtEmployerName.ReadOnly = bLock;
@@ -190,6 +200,11 @@ namespace KennedyAccess.Controls
             txtExtention.BorderStyle = sBorder;
             txtEmail.ReadOnly = bLock;
             txtEmail.BorderStyle = sBorder;
+        }
+
+        protected void txtFirstName_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

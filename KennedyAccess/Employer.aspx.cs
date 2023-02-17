@@ -19,6 +19,7 @@ namespace KennedyAccess
         Label HQContactID;
         Label EmployerContactID;
         BaseData bd = new BaseData();
+        int empID;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -162,50 +163,56 @@ namespace KennedyAccess
         }
         protected void btnSaveEmployer_Click(object sender, EventArgs e)
         {
-            int empID = (txtEmployerID.Text == "") ? 0 : int.Parse(txtEmployerID.Text);
-            bool bAlienOwnership = (rblAlienOwnership.SelectedValue == "1") ? true : false;
-            int nubEmp = int.Parse(txtNumEmployee.Text);
-            int yearBusiness = int.Parse(txtYearBusiness.Text);
-
-            if (empID == 0)
+            if (cbkEmployerChanged.Checked)
             {
-                SqlDataReader dr = SqlHelper.ExecuteReader(
-                    Global.dbcnn, "InsertEmployer",
-                    new SqlParameter("@FranchiseID", user.FranchiseID),
-                    new SqlParameter("@UserID", user.UserID),
-                    new SqlParameter("@NumEmployees", nubEmp),
-                    new SqlParameter("@YearBusiness", yearBusiness),
-                    new SqlParameter("@FEIN", txtFEIN.Text),
-                    new SqlParameter("@NAICSCode", txtNAICSCode.Text),
-                    new SqlParameter("@AlienOwnership", bAlienOwnership),
-                    new SqlParameter("@Description", txtEmployerDesc.Text),
-                    new SqlParameter("@WebsiteInfo", txtWebsiteInfo.Text)
-                    );
-                dr.Read();
-                empID = int.Parse(dr[0].ToString());
-                dr.Close();
+                empID = (txtEmployerID.Text == "") ? 0 : int.Parse(txtEmployerID.Text);
+                bool bAlienOwnership = (rblAlienOwnership.SelectedValue == "1") ? true : false;
+                int nubEmp = int.Parse(txtNumEmployee.Text);
+                int yearBusiness = int.Parse(txtYearBusiness.Text);
 
-                Session["EmployerID"] = txtEmployerID.Text = empID.ToString();
-                user.ObjectID = empID;
+                if (empID == 0)
+                {
+                    SqlDataReader dr = SqlHelper.ExecuteReader(
+                        Global.dbcnn, "InsertEmployer",
+                        new SqlParameter("@FranchiseID", user.FranchiseID),
+                        new SqlParameter("@UserID", user.UserID),
+                        new SqlParameter("@NumEmployees", nubEmp),
+                        new SqlParameter("@YearBusiness", yearBusiness),
+                        new SqlParameter("@FEIN", txtFEIN.Text),
+                        new SqlParameter("@NAICSCode", txtNAICSCode.Text),
+                        new SqlParameter("@AlienOwnership", bAlienOwnership),
+                        new SqlParameter("@Description", txtEmployerDesc.Text),
+                        new SqlParameter("@WebsiteInfo", txtWebsiteInfo.Text)
+                        );
+                    dr.Read();
+                    empID = int.Parse(dr[0].ToString());
+                    dr.Close();
 
-                // set visibilities
-                panStep2.Visible = true;
-            }
-            else
-            {                
-                SqlHelper.ExecuteNonQuery(
-                    Global.dbcnn, "UpdateEmployer",
-                    new SqlParameter("@FranchiseID", user.FranchiseID),
-                    new SqlParameter("@UserID", user.UserID),
-                    new SqlParameter("@EmployerID", empID),
-                    new SqlParameter("@NumEmployees", nubEmp),
-                    new SqlParameter("@YearBusiness", yearBusiness),
-                    new SqlParameter("@FEIN", txtFEIN.Text),
-                    new SqlParameter("@NAICSCode", txtNAICSCode.Text),
-                    new SqlParameter("@AlienOwnership", bAlienOwnership),
-                    new SqlParameter("@ManualUserID", ddlUserName.SelectedValue),
-                    new SqlParameter("@Description", txtEmployerDesc.Text),
-                    new SqlParameter("@WebsiteInfo", txtWebsiteInfo.Text));
+                    Session["EmployerID"] = txtEmployerID.Text = empID.ToString();
+                    user.ObjectID = empID;
+
+                    // set visibilities
+                    panStep2.Visible = true;
+                }
+
+
+                else
+                {
+                    SqlHelper.ExecuteNonQuery(
+                        Global.dbcnn, "UpdateEmployer",
+                        new SqlParameter("@FranchiseID", user.FranchiseID),
+                        new SqlParameter("@UserID", user.UserID),
+                        new SqlParameter("@EmployerID", empID),
+                        new SqlParameter("@NumEmployees", nubEmp),
+                        new SqlParameter("@YearBusiness", yearBusiness),
+                        new SqlParameter("@FEIN", txtFEIN.Text),
+                        new SqlParameter("@NAICSCode", txtNAICSCode.Text),
+                        new SqlParameter("@AlienOwnership", bAlienOwnership),
+                        new SqlParameter("@ManualUserID", ddlUserName.SelectedValue),
+                        new SqlParameter("@Description", txtEmployerDesc.Text),
+                        new SqlParameter("@WebsiteInfo", txtWebsiteInfo.Text));
+                }
+                cbkEmployerChanged.Checked = false;
             }
 
             // set employerid to contact control

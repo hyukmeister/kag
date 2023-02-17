@@ -14,7 +14,7 @@
             </asp:TableRow>
             <asp:TableRow>
                 <asp:TableCell ColumnSpan="2">
-                    <asp:GridView ID="gvJobListings" runat="server" AutoGenerateColumns="False" 
+                    <asp:GridView ID="gvJobListings" runat="server" AutoGenerateColumns="False" ShowFooter="true"
                         GridLines="None" class="table table-hover rounded-corners" OnRowDataBound="gvJobListings_RowDataBound"
                         CellPadding="4" OnRowCommand="gvJobListings_RowCommand" AllowSorting="True" OnSorting="gvJobListings_Sorting">
                         <Columns>
@@ -54,6 +54,7 @@
                             </asp:ButtonField>
                         </Columns>
                         <HeaderStyle BackColor="dimgray" ForeColor="White"/>
+                        <FooterStyle BackColor="dimgray"/>
                     </asp:GridView>
                 </asp:TableCell>
             </asp:TableRow>

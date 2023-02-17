@@ -17,7 +17,7 @@
         </asp:TableRow>
         <asp:TableRow>
             <asp:TableCell ColumnSpan="2">
-                <asp:GridView ID="gvApplicants" runat="server" AutoGenerateColumns="False" Width="100%" OnSorting="gvApplicants_Sorting"
+                <asp:GridView ID="gvApplicants" runat="server" AutoGenerateColumns="False" Width="100%" OnSorting="gvApplicants_Sorting" ShowFooter="true"
                     GridLines="None" class="table table-hover rounded-corners" onrowcommand="ApplicantGridview_RowCommand" AllowSorting="True" >
                     <Columns>
                         <asp:TemplateField HeaderText="Applicant Id" Visible="true" SortExpression="ApplicantId">
@@ -50,6 +50,7 @@
                         </asp:ButtonField>
                     </Columns>
                     <HeaderStyle BackColor="dimgray" ForeColor="White"/>
+                    <FooterStyle BackColor="dimgray"/>
                 </asp:GridView>
             </asp:TableCell>
         </asp:TableRow>

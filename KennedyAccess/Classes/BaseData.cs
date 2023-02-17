@@ -580,7 +580,7 @@ namespace KennedyAccess.Classes
 
         public string InserUpdatetUser(int FranchiseID, int UserID, int UserUsrMainID, string UserName,
             string Password, string UserFirstName, string UserLastName, string Email, string RecordTypeID, string RoleSetID,
-            bool Active, string ValidFrom, string ValidThru, bool Authenticated, string Mobilephone, string note)
+            bool Active, string ValidFrom, string ValidThru, bool Authenticated, string Mobilephone, string note, bool AgreeToTextMsg)
         {
             string sResult;
             SqlDataReader dr = SqlHelper.ExecuteReader(
@@ -600,7 +600,8 @@ namespace KennedyAccess.Classes
                 new SqlParameter("@ValidThru", ValidThru),
                 new SqlParameter("@Authenticated", Authenticated),
                 new SqlParameter("@Mobilephone", Mobilephone),
-                new SqlParameter("@note", note));
+                new SqlParameter("@note", note),
+                new SqlParameter("@AgreeToTextMsg", AgreeToTextMsg));
             dr.Read();
             sResult = dr[0].ToString();
             dr.Close();

@@ -42,6 +42,15 @@ namespace KennedyAccess.Controls
         protected global::System.Web.UI.WebControls.Button btnSave;
 
         /// <summary>
+        /// cbkContactChanged control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbkContactChanged;
+
+        /// <summary>
         /// Table2 control.
         /// </summary>
         /// <remarks>

@@ -10896,9 +10896,9 @@ textarea.form-control-lg {
 }
 .rounded-corners {
     border: 1px solid black;
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    border-radius: 8px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
     overflow: hidden;
 }
 

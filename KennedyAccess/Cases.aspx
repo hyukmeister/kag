@@ -19,7 +19,7 @@
             <asp:TableRow>
                 <asp:TableCell ColumnSpan="2">
                     <asp:GridView ID="gvCases" runat="server" AutoGenerateColumns="False" Width="100%" OnRowCommand="CaseGridview_RowCommand"
-                        GridLines="None" class="table table-hover rounded-corners" AllowSorting="True" OnSorting="gvCases_Sorting">
+                        GridLines="None" class="table table-hover rounded-corners" AllowSorting="True" OnSorting="gvCases_Sorting" ShowFooter="true">
                         <Columns>
                             <asp:TemplateField HeaderText="Case Id" Visible="true" SortExpression="CaseId">
                                 <ItemTemplate>
@@ -51,6 +51,7 @@
                             </asp:ButtonField>
                         </Columns>
                         <HeaderStyle BackColor="dimgray" ForeColor="White" />
+                        <FooterStyle BackColor="dimgray"/>
                     </asp:GridView>
                 </asp:TableCell>
             </asp:TableRow>

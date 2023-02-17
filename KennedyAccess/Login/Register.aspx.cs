@@ -73,7 +73,7 @@ namespace KennedyAccess.users
                     sUserID = bd.InserUpdatetUser(1000, -1, -1, txtUserName.Text, hashpass,
                         txtFirstName.Text, txtLastName.Text, txtEmail.Text, ddlUserType.SelectedValue,
                         sRoleSetID, bActive, DateTime.Today.AddDays(-1).ToShortDateString(), "9999-12-31",
-                        false, sInternationalCode + txtMobilephone.Text, "");
+                        false, sInternationalCode + txtMobilephone.Text, "", cbkAgreeToTextMsg.Checked);
                 }
             }
             catch (Exception ex)

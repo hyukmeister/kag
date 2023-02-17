@@ -15,9 +15,9 @@
         <asp:TableRow>
             <asp:TableCell ColumnSpan="2">
                 
-                <asp:GridView ID="gvApplications" runat="server" AutoGenerateColumns="False" 
+                <asp:GridView ID="gvApplications" runat="server" AutoGenerateColumns="False" ShowFooter="true"
                     GridLines="None" class="table table-hover" EmptyDataText="No Application found"
-                    style="border-radius:15px;" OnRowCommand="gvApplications_RowCommand" AllowSorting="True" OnSorting="gvApplications_Sorting">
+                    OnRowCommand="gvApplications_RowCommand" AllowSorting="True" OnSorting="gvApplications_Sorting">
                     <Columns>
                         <asp:TemplateField HeaderText="Application Id" Visible="false">
                             <ItemTemplate>
@@ -55,6 +55,7 @@
                         </asp:ButtonField>
                     </Columns>
                     <HeaderStyle BackColor="dimgray" ForeColor="White"/>
+                    <FooterStyle BackColor="dimgray"/>
                 </asp:GridView>
             </asp:TableCell>
         </asp:TableRow>

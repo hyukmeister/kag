@@ -19,7 +19,7 @@
                     <asp:GridView ID="gvPrevailingWages" runat="server" AutoGenerateColumns="False" 
                         class="table table-hover rounded-corners" GridLines="None" CellPadding="4"
                         OnRowCommand="gvPrevailingWages_RowCommand" EmptyDataText="No Prevailing Wages found"
-                        AllowSorting="True" OnSorting="gvPrevailingWages_Sorting" >
+                        AllowSorting="True" OnSorting="gvPrevailingWages_Sorting" ShowFooter="true" >
                         <Columns>
                             <asp:TemplateField HeaderText="PrevailingWagesID" Visible="false">
                                 <ItemTemplate>
@@ -55,6 +55,7 @@
                             </asp:ButtonField>
                         </Columns>
                         <HeaderStyle BackColor="dimgray" ForeColor="White"/>
+                        <FooterStyle BackColor="dimgray"/>
                     </asp:GridView>
                 </asp:TableCell>
             </asp:TableRow>

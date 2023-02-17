@@ -35,7 +35,7 @@
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>
-                <asp:TableCell ColumnSpan="4" HorizontalAlign="Left" BackColor="dimgray" ForeColor="white" class="rounded-corners">
+                <asp:TableCell ColumnSpan="4" HorizontalAlign="Left" BackColor="dimgray" ForeColor="white" class="rounded-corners" BorderStyle="None">
                     <h4><asp:Label ID="Label3" runat="server" Text="User Information"></asp:Label></h4>
                 </asp:TableCell>
             </asp:TableRow>
@@ -137,6 +137,19 @@
                     <asp:TextBox ID="txtModifiedDate" ReadOnly="true" Style="text-align: left" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
+
+
+            <asp:TableRow>
+                <asp:TableCell>
+                    <asp:Label runat="server" Text="Consent to Mobile Texting"></asp:Label>
+                </asp:TableCell>
+                <asp:TableCell ColumnSpan="3">
+                    <uc1:Toggle runat="server" ID="cbkAgreeToTextMsg" ControlLabel="ConsentText" CheckedText="Yes" UncheckedText="No" Disable="true"/>
+                    <asp:Label runat="server" ID="CheckBox1" Text=" By Checking this box, I agree to receive important text messages." />
+                </asp:TableCell>
+            </asp:TableRow>
+
+
             <asp:TableRow>
                 <asp:TableCell>
                     <asp:Label runat="server" Text="Note"></asp:Label>
@@ -153,7 +166,7 @@
             <ContentTemplate>
                 <asp:GridView ID="gvRoleSets" runat="server" AutoGenerateColumns="False" class="table table-hover"  
                 GridLines="None" CellPadding="4" OnRowEditing="gvRoleSets_RowEditing" ShowFooter="True" 
-                OnRowDeleting="gvRoleSets_RowDeleting" OnRowDeleted="gvRoleSets_RowDeleted"
+                OnRowDeleting="gvRoleSets_RowDeleting" OnRowDeleted="gvRoleSets_RowDeleted" EmptyDataText="User Roles not found"
                 OnRowCancelingEdit="gvRoleSets_RowCancelingEdit" OnRowUpdating="gvRoleSets_RowUpdating" >
                     <Columns>
                     <asp:TemplateField HeaderText="Active" >
@@ -164,7 +177,7 @@
                             <asp:Label ID="LabRoleID" runat="server" Text='<%# Eval("RoleID") %>' Visible="false"></asp:Label>
                             <asp:Label ID="labRoleRelID" runat="server" Text='<%# Eval("RoleRelID") %>' Visible="false"></asp:Label>
                             <asp:Label ID="lblRecordType" runat="server" Text='<%# Eval("RecordType") %>' Visible="false"></asp:Label>
-                            <asp:CheckBox ID="cbkActive" Runat="server" Checked='<%# Eval("Active") %>' />
+                            <uc1:Toggle runat="server" ID="cbkActive" ControlLabel="RoleStatus" Checked='<%# Eval("Active") %>' CheckedText="Active" UncheckedText="Inactive" Disable="false"/>
                         </EditItemTemplate>
                         <FooterTemplate>
                             <uc1:Toggle runat="server" ID="fActive" ControlLabel="RoleStatus" Checked='false' CheckedText="Active" UncheckedText="Inactive" Disable="false"/>
@@ -180,7 +193,7 @@
                             <asp:Label ID="lblRoleName" runat="server" Text='<%# Eval("RoleName") %>'></asp:Label>
                         </ItemTemplate>
                         <FooterTemplate>
-                            <asp:DropDownList ID="fRoleName" runat="server" CssClass="btn btn-default btn-outline-primary"></asp:DropDownList>
+                            <asp:DropDownList ID="fRoleName" runat="server" CssClass="btn btn-default btn-outline-secondary align-items-start text-start"></asp:DropDownList>
                             <asp:TextBox ID="txtRoleError" runat="server"  Visible="false" ForeColor="Red" BorderStyle="None" BackColor="Transparent"></asp:TextBox>
                         </FooterTemplate>
                     </asp:TemplateField>

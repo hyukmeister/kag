@@ -19,7 +19,7 @@
                         <asp:TableRow>
                             <asp:TableCell ColumnSpan="2" HorizontalAlign="Left">
                                 <asp:Label ID="Label1" runat="server" Text="User Name "></asp:Label>
-                                <asp:DropDownList ID="ddlUserName" CssClass="btn btn-default btn-outline-secondary align-items-start text-start" runat="server" Width="250px" Enabled="false"></asp:DropDownList>
+                                <asp:DropDownList ID="ddlUserName" CssClass="btn btn-default btn-outline-secondary align-items-start text-start" runat="server" Width="250px" Enabled="false" OnSelectedIndexChanged="EmployerChanged"></asp:DropDownList>
                             </asp:TableCell>
                             <asp:TableCell ColumnSpan="2" HorizontalAlign="Right">
                                 <asp:Button ID="btnEditEmployer" runat="server" class="btn btn-primary" Text="Edit" CausesValidation="false" UseSubmitBehavior="false" OnClick="btnEditEmployer_Click" />
@@ -87,7 +87,7 @@
                                 or sole proprietorship in which the alien has an ownership interest, or there is a familial relationship between the owners,
                                 stockholders, corporate officers, incorporators, or partners, and the alien."></asp:Label></asp:TableCell>
                             <asp:TableCell HorizontalAlign="Center" Style="width: 25%"><br />
-                                <asp:RadioButtonList ID="rblAlienOwnership" runat="server" RepeatLayout="Flow" Enabled="false" BorderStyle="None" Style="width: 100%" OnCheckedChanged="EmployerChanged">
+                                <asp:RadioButtonList ID="rblAlienOwnership" runat="server" RepeatLayout="Flow" Enabled="false" BorderStyle="None" Style="width: 100%" OnSelectedIndexChanged="EmployerChanged">
                                     <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
                                     <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" Selected="True" />
                                 </asp:RadioButtonList><br />
@@ -96,7 +96,7 @@
                         <asp:TableRow>
                             <asp:TableCell ColumnSpan="4">
                                 <div class="form-floating mb-3;">
-                                    <asp:TextBox ID="txtEmployerDesc" class="form-control" runat="server" TextMode="MultiLine" Rows="5" placeholder="Campaign Description" Width="100%" ReadOnly="true" BorderStyle="None"></asp:TextBox>
+                                    <asp:TextBox ID="txtEmployerDesc" class="form-control" runat="server" TextMode="MultiLine" Rows="5" placeholder="Campaign Description" Width="100%" ReadOnly="true" BorderStyle="None" OnCheckedChanged="EmployerChanged"></asp:TextBox>
                                     <label for="txtEmployerDesc">Description</label>
                                 </div>
                             </asp:TableCell>
@@ -104,7 +104,7 @@
                         <asp:TableRow>
                             <asp:TableCell ColumnSpan="4">
                                 <div class="form-floating mb-3;">
-                                    <asp:TextBox ID="txtWebsiteInfo" class="form-control" runat="server" TextMode="MultiLine" Rows="5" placeholder="Campaign Description" Width="100%" ReadOnly="true" BorderStyle="None"></asp:TextBox>
+                                    <asp:TextBox ID="txtWebsiteInfo" class="form-control" runat="server" TextMode="MultiLine" Rows="5" placeholder="Campaign Description" Width="100%" ReadOnly="true" BorderStyle="None" OnCheckedChanged="EmployerChanged"></asp:TextBox>
                                     <label for="txtWebsiteInfo">Website Information</label>
                                 </div>
                             </asp:TableCell>
