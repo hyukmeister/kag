@@ -53,6 +53,7 @@ namespace KennedyAccess
                 }
             }
         }
+
         private void SetEditVisibility(bool bLock)
         {
             BorderStyle sBorder = (bLock) ? BorderStyle.None : BorderStyle.NotSet;
@@ -73,32 +74,44 @@ namespace KennedyAccess
         }
         protected void btnSaveAttorney_Click(object sender, EventArgs e)
         {
-            int atnyID = (lblAttorneyID.Text == "") ? 0 : int.Parse(lblAttorneyID.Text);
-
-            DataSet ds = SqlHelper.ExecuteDataset(
-                    Global.dbcnn, "InsertUpdateAttorney",
-                    new SqlParameter("@FranchiseID", user.FranchiseID),
-                    new SqlParameter("@UserID", user.UserID),
-                    new SqlParameter("@AttorneyID", atnyID),
-                    new SqlParameter("@FEIN", txtFEIN.Text)
-                    );
-            if (ds != null)
+            if (cbkAttorneyChanged.Checked)
             {
-                DataTable dt = ds.Tables[0];
-                DataRow dr = dt.Rows[0];
+                int atnyID = (lblAttorneyID.Text == "") ? 0 : int.Parse(lblAttorneyID.Text);
 
-                atnyID = int.Parse(dr[0].ToString());
+                DataSet ds = SqlHelper.ExecuteDataset(
+                        Global.dbcnn, "InsertUpdateAttorney",
+                        new SqlParameter("@FranchiseID", user.FranchiseID),
+                        new SqlParameter("@UserID", user.UserID),
+                        new SqlParameter("@AttorneyID", atnyID),
+                        new SqlParameter("@FEIN", txtFEIN.Text)
+                        );
+                if (ds != null)
+                {
+                    DataTable dt = ds.Tables[0];
+                    DataRow dr = dt.Rows[0];
+
+                    atnyID = int.Parse(dr[0].ToString());
+                }
+
+                lblAttorneyID.Text = atnyID.ToString();
+                AttorneyContact.intReferencerID = atnyID;
+
+                // reset AttorneyChanged checkbox
+                cbkAttorneyChanged.Checked = false;
+
             }
+                // save Attorney contact
+                AttorneyContact.btnSave_Click(sender, e);
 
-            lblAttorneyID.Text = atnyID.ToString();
-            AttorneyContact.intReferencerID = atnyID;
-
-            // save Attorney contact
-            AttorneyContact.btnSave_Click(sender, e);
-
-            // reset editability
-            SetEditVisibility(true);
+                // reset editability
+                SetEditVisibility(true);
         }
+
+        protected void Attorney_Changed(object sender, EventArgs e)
+        {
+            cbkAttorneyChanged.Checked = true;
+        }
+
         protected void btnCancel_Click(object sender, EventArgs e)
         {
             if (lblAttorneyID.Text == "")

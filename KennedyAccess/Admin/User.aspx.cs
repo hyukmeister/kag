@@ -11,6 +11,7 @@ using Antlr.Runtime.Misc;
 using KennedyAccess.Classes;
 using AjaxControlToolkit;
 using TextMagicClient.Model;
+using KennedyAccess.Controls;
 
 namespace KennedyAccess
 {
@@ -206,9 +207,9 @@ namespace KennedyAccess
             txtValidThru.BorderStyle = sBorder;
             ddlUserType.Enabled = !bLock;
             ddlUserType.BorderStyle = sBorder;
-            //cbkAuthenticated.ControlLabel = "Authenticated";
-            //cbkAuthenticated.CheckedText = "Yes";
-            //cbkAuthenticated.UncheckedText = "No";
+            cbkAuthenticated.ControlLabel = "Authenticated";
+            cbkAuthenticated.CheckedText = "Yes";
+            cbkAuthenticated.UncheckedText = "No";
             cbkAuthenticated.Disable = bLock;
             txtCreateDate.ReadOnly = bLock;
             txtCreateDate.BorderStyle = sBorder;
@@ -263,6 +264,11 @@ namespace KennedyAccess
             DataRow row = (DataRow)dt.Rows[e.NewEditIndex];
 
             GridViewRow grow = gvRoleSets.Rows[e.NewEditIndex];
+            //Toggle chkActive = (Toggle)grow.Cells[0].Controls[7];
+            //chkActive.ControlLabel = chkActive.ClientID;
+            //chkActive.CheckedText = "Active";
+            //chkActive.UncheckedText = "Inactive";
+            //chkActive.Checked = BaseData.BoolToDefault(row["Active"],"0") == "1";
             ((TextBox)grow.Cells[4].Controls[1]).Text = DateTime.Parse(row["ValidFrom"].ToString()).ToString("yyyy-MM-dd");
             ((TextBox)grow.Cells[5].Controls[1]).Text = DateTime.Parse(row["ValidThru"].ToString()).ToString("yyyy-MM-dd");
         }
@@ -279,7 +285,7 @@ namespace KennedyAccess
             int idx = gvRoleSets.EditIndex;
             string RoleRelID = ((Label)(gvRoleSets.Rows[idx].Cells[0].Controls[3])).Text;
             Label LabRoleID = (Label)gvRoleSets.Rows[idx].Cells[0].Controls[1];
-            CheckBox cbkActive = (CheckBox)gvRoleSets.Rows[idx].Cells[0].Controls[7];
+            Toggle cbkActive = (Toggle)gvRoleSets.Rows[idx].Cells[0].Controls[7];
             TextBox txtValidFrom = (TextBox)gvRoleSets.Rows[idx].Cells[4].Controls[1];
             TextBox txtValidThru = (TextBox)gvRoleSets.Rows[idx].Cells[5].Controls[1];
             RoleRelID = bd.InsertUpdateUserRoleSets(user, lblUserID.Text, RoleRelID, 

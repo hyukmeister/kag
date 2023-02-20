@@ -18,10 +18,22 @@ namespace KennedyAccess
         BaseData bd = new BaseData();
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session.Clear();
             if(!Page.IsPostBack)
             {
-                Session.Abandon();
+                if (Session["user"]!=null)
+                {
+
+                    User user = (User)Session["User"];
+                    if (user != null)
+                    {
+                        BaseData bd = new BaseData();
+                        string recordtypeid = bd.GetRecordTypeID((DataTable)Application["RecordType"], user.FranchiseID, "User", "Login").ToString();
+                        bd.WriteAuditTrail(user, recordtypeid, "User logged out");
+                    }
+
+                    Session.Clear();
+                    Session.Abandon();
+                }
             }
         }
         protected void btnLogin_Click(object sender, EventArgs e)

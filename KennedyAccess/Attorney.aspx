@@ -63,7 +63,7 @@
             <asp:TableRow>
                 <asp:TableCell><asp:Label runat="server" Text="FEIN"></asp:Label></asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtFEIN" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtFEIN" runat="server" OnTextChanged="Attorney_Changed"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell>
                 </asp:TableCell>

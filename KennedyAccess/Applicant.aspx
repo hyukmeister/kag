@@ -84,9 +84,9 @@
                 <div class="accordion-body">
                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>
-                            <asp:GridView ID="gvFamilyMembers" runat="server" AutoGenerateColumns="False" Width="100%" GridLines="None" class="table table-hover" 
-                                AlternatingRowStyle-CssClass="alt" OnRowEditing="gvFamilyMembers_RowEditing" OnRowCancelingEdit="gvFamilyMembers_RowCancelingEdit" 
-                                OnRowUpdating="gvFamilyMembers_RowUpdating" ShowFooter="true">
+                            <asp:GridView ID="gvFamilyMembers" runat="server" AutoGenerateColumns="False" Width="100%" GridLines="None" 
+                                OnRowEditing="gvFamilyMembers_RowEditing" OnRowCancelingEdit="gvFamilyMembers_RowCancelingEdit" 
+                                OnRowUpdating="gvFamilyMembers_RowUpdating" ShowFooter="true" class="table table-hover rounded-corners">
                                 <Columns>
                                     <asp:TemplateField HeaderText="Relationship">
                                         <ItemTemplate>
@@ -95,10 +95,10 @@
                                         </ItemTemplate>
                                         <EditItemTemplate>
                                             <asp:Label ID="lblApplicantFamilyID" runat="server" Text='<%# Eval("ApplicantFamilyID") %>' Visible="false"></asp:Label>
-                                            <asp:DropDownList ID="ddlRelationship" runat="server" DataSource='<%# GetRelationship() %>' DataTextField="Relationship" DataValueField="RelationshipID" CssClass="btn btn-default btn-outline-primary"></asp:DropDownList>
+                                            <asp:DropDownList ID="ddlRelationship" runat="server" DataSource='<%# GetRelationship() %>' DataTextField="Relationship" DataValueField="RelationshipID" CssClass="btn btn-default"></asp:DropDownList>
                                         </EditItemTemplate>
                                         <FooterTemplate>
-                                            <asp:DropDownList ID="fddlRelationship" runat="server" CssClass="btn btn-default btn-outline-secondary"></asp:DropDownList>
+                                            <asp:DropDownList ID="fddlRelationship" runat="server" CssClass="form-control btn-default btn-outline-default align-items-start text-start"></asp:DropDownList>
                                         </FooterTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="First Name">
@@ -123,21 +123,26 @@
                                             <asp:TextBox ID="ftxtLName" runat="server" MaxLength="32" CssClass="form-control" Width="180px"></asp:TextBox>
                                         </FooterTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Middle Initial" ControlStyle-Width="160px" FooterStyle-Wrap="false">
+                                    <asp:TemplateField HeaderText="Middle Initial" FooterStyle-Height="20px" HeaderStyle-Width="120px" FooterStyle-Wrap="false">
                                         <ItemTemplate>
-                                            <asp:Label ID="lblMI" runat="server" Text='<%# Eval("MI") %>' Width="75px"></asp:Label>
+                                            <asp:Label ID="lblMI" runat="server" Text='<%# Eval("MI") %>' Width="85px"></asp:Label>
                                         </ItemTemplate>
                                         <EditItemTemplate>
                                             <asp:TextBox ID="txtMI" runat="server" Text='<%# Eval("MI") %>' CssClass="form-control" Width="75px"></asp:TextBox>
                                         </EditItemTemplate>
                                         <FooterTemplate>
-                                            <asp:TextBox ID="ftxtMI" runat="server" MaxLength="2" Width="50px" CssClass="form-control"></asp:TextBox>&nbsp;
-                                            <asp:ImageButton ID="btnNewMember" runat="server" OnClick="btnNewMember_Click" AlternateText="Save" ImageAlign="Top" Height="25px" ImageUrl="~/images/save_icon.png"/>
+                                            <table>
+                                                <tr>
+                                                    <td><asp:TextBox ID="ftxtMI" runat="server" MaxLength="2" Width="30px" CssClass="form-control"></asp:TextBox></td>
+                                                    <td>&nbsp;<asp:ImageButton ID="btnNewMember" runat="server" class="position-sticky" OnClick="btnNewMember_Click" AlternateText="Save" Height="35px" ImageUrl="~/images/save_icon.png"/></td>
+                                                </tr>
+                                            </table>
                                         </FooterTemplate>
                                     </asp:TemplateField>
                                     <asp:CommandField ShowEditButton="True" ItemStyle-Width="80px" />
                                 </Columns>
                                 <HeaderStyle BackColor="dimgray" ForeColor="White"/>
+                                <FooterStyle BackColor="dimgray"/>
                             </asp:GridView>
                         </ContentTemplate>
                     </asp:UpdatePanel>

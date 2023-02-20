@@ -20,7 +20,7 @@
                 <asp:TableCell ColumnSpan="2">
                     <asp:GridView ID="gvUsers" runat="server" AutoGenerateColumns="False" class="table table-hover rounded-corners"
                         GridLines="None" Style="border-radius: 15px;" CellPadding="4" OnRowCommand="gvUser_RowCommand"
-                        AllowSorting="True" OnSorting="gvUsers_Sorting">
+                        AllowSorting="True" OnSorting="gvUsers_Sorting" ShowFooter="true">
                         <Columns>
                             <asp:TemplateField HeaderText="User ID" Visible="false">
                                 <ItemTemplate>
@@ -67,6 +67,7 @@
                             </asp:ButtonField>
                         </Columns>
                         <HeaderStyle BackColor="dimgray" ForeColor="White"/>
+                        <footerstyle BackColor="dimgray" ForeColor="White"/>
                     </asp:GridView>
                 </asp:TableCell>
             </asp:TableRow>

@@ -50,7 +50,7 @@
                     <asp:Label runat="server" Text="Status"></asp:Label>
                 </asp:TableCell>
                 <asp:TableCell HorizontalAlign="left">
-                    <uc1:Toggle runat="server" ID="cbkActive" />
+                    <uc1:Toggle runat="server" ID="cbkActive" ControlLabel = "Active" CheckedText = "Active" UncheckedText = "Inactive"/>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>
@@ -64,7 +64,7 @@
                     <asp:Label runat="server" Text="Authenticated"></asp:Label>
                 </asp:TableCell>
                 <asp:TableCell>
-                    <uc1:Toggle runat="server" ID="cbkAuthenticated" />
+                    <uc1:Toggle runat="server" ID="cbkAuthenticated" ControlLabel = "Authenticated" CheckedText = "Yes" UncheckedText = "No"/>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>
@@ -165,19 +165,19 @@
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
                 <asp:GridView ID="gvRoleSets" runat="server" AutoGenerateColumns="False" class="table table-hover"  
-                GridLines="None" CellPadding="4" OnRowEditing="gvRoleSets_RowEditing" ShowFooter="True" 
+                GridLines="None" CellPadding="4" OnRowEditing="gvRoleSets_RowEditing" ShowFooter="True" Width="700px"
                 OnRowDeleting="gvRoleSets_RowDeleting" OnRowDeleted="gvRoleSets_RowDeleted" EmptyDataText="User Roles not found"
                 OnRowCancelingEdit="gvRoleSets_RowCancelingEdit" OnRowUpdating="gvRoleSets_RowUpdating" >
                     <Columns>
                     <asp:TemplateField HeaderText="Active" >
                         <ItemTemplate>
-                            <uc1:Toggle runat="server" ID="cbkActive" ControlLabel="RoleStatus" Checked='<%# Eval("Active") %>' CheckedText="Active" UncheckedText="Inactive" Disable="true"/>
+                            <uc1:Toggle runat="server" ID="cbkActive" ControlLabel='<%# "Stat"+ Eval("RoleRelID") %>' Checked='<%# Eval("Active") %>' CheckedText="Active" UncheckedText="Inactive" Disable="true"/>
                         </ItemTemplate>
                         <EditItemTemplate>
                             <asp:Label ID="LabRoleID" runat="server" Text='<%# Eval("RoleID") %>' Visible="false"></asp:Label>
                             <asp:Label ID="labRoleRelID" runat="server" Text='<%# Eval("RoleRelID") %>' Visible="false"></asp:Label>
                             <asp:Label ID="lblRecordType" runat="server" Text='<%# Eval("RecordType") %>' Visible="false"></asp:Label>
-                            <uc1:Toggle runat="server" ID="cbkActive" ControlLabel="RoleStatus" Checked='<%# Eval("Active") %>' CheckedText="Active" UncheckedText="Inactive" Disable="false"/>
+                            <uc1:Toggle runat="server" ID="cbkActive" ControlLabel='<%# "Stat"+ Eval("RoleRelID") %>' Checked='<%# Eval("Active") %>' CheckedText="Active" UncheckedText="Inactive" Disable="false"/>
                         </EditItemTemplate>
                         <FooterTemplate>
                             <uc1:Toggle runat="server" ID="fActive" ControlLabel="RoleStatus" Checked='false' CheckedText="Active" UncheckedText="Inactive" Disable="false"/>
@@ -188,12 +188,12 @@
                             <asp:CheckBox ID="cbkManual" Runat="server" Checked='<%# Eval("Manual") %>' enabled="false"/>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Role Name" ItemStyle-Width="10px">
+                    <asp:TemplateField HeaderText="Role Name" >
                         <ItemTemplate>
                             <asp:Label ID="lblRoleName" runat="server" Text='<%# Eval("RoleName") %>'></asp:Label>
                         </ItemTemplate>
                         <FooterTemplate>
-                            <asp:DropDownList ID="fRoleName" runat="server" CssClass="btn btn-default btn-outline-secondary align-items-start text-start"></asp:DropDownList>
+                            <asp:DropDownList ID="fRoleName" runat="server" CssClass="btn btn-default btn-outline-secondary align-items-start text-start" Width="180px"></asp:DropDownList>
                             <asp:TextBox ID="txtRoleError" runat="server"  Visible="false" ForeColor="Red" BorderStyle="None" BackColor="Transparent"></asp:TextBox>
                         </FooterTemplate>
                     </asp:TemplateField>
@@ -210,18 +210,18 @@
                             <asp:TextBox ID="txtValidFrom" Runat="server" Width="100px" Text='<%# Eval("ValidFrom") %>' TextMode="Date"></asp:TextBox>
                         </EditItemTemplate>
                         <FooterTemplate>
-                            <asp:TextBox ID="fDateFrom" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
+                            <asp:TextBox ID="fDateFrom" runat="server" TextMode="Date" CssClass="form-control" Width="120px"></asp:TextBox>
                         </FooterTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Valid Thru" FooterStyle-Width="100px">
+                    <asp:TemplateField HeaderText="Valid Thru">
                         <ItemTemplate>
                             <asp:Label ID="labValidThru" runat="server" Text='<%# Eval("ValidThru") %>'></asp:Label>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="txtValidThru" Runat="server" Width="140px" Text='<%# Eval("ValidThru") %>' TextMode="Date"></asp:TextBox>
+                            <asp:TextBox ID="txtValidThru" Runat="server" Width="100px" Text='<%# Eval("ValidThru") %>' TextMode="Date"></asp:TextBox>
                         </EditItemTemplate>
                         <FooterTemplate>
-                            <asp:TextBox ID="fDateThru" runat="server" TextMode="Date" Width="120px" CssClass="form-control"></asp:TextBox>&nbsp;
+                            <asp:TextBox ID="fDateThru" runat="server" TextMode="Date" CssClass="form-control" Width="120px"></asp:TextBox>&nbsp;
                             <asp:ImageButton ID="NewRole" runat="server" OnClick="NewRole_Click" AlternateText="Save" ImageAlign="Top" Height="25px" ImageUrl="~/images/save_icon.png"/>
                         </FooterTemplate>
                     </asp:TemplateField>

@@ -100,7 +100,7 @@ namespace KennedyAccess
             {
                 BaseData bd = new BaseData();
                 string recordtypeid = bd.GetRecordTypeID((DataTable)Application["RecordType"], user.FranchiseID, "User", "Login").ToString();
-                bd.WriteAuditTrail(user, recordtypeid, "User logged out");
+                bd.WriteAuditTrail(user, recordtypeid, "User session timed out");
             }
         }
         private string RemoveSalt(string sSaltedString)
