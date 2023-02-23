@@ -650,8 +650,8 @@ progress {
   margin-left: auto;
 }
 .container .dropzone {
-    border:2px dashed blue;
-    height:120px;
+    border:0px none;
+    height:100px;
 }
 @media (min-width: 576px) {
   .container-sm, .container {

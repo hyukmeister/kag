@@ -69,15 +69,7 @@ namespace KennedyAccess
 
                         //txtUser.Text = dr["UserID"].ToString();
                         labEmployer.Text = Page.Title = dr["EmployerName"].ToString();
-                        txtNumEmployee.Text = dr["NumEmployees"].ToString();
-                        txtYearBusiness.Text = dr["YearBusiness"].ToString();
-                        txtFEIN.Text = dr["FEIN"].ToString();
-                        txtNAICSCode.Text = dr["NAICSCode"].ToString();
-                        rblAlienOwnership.SelectedValue = "0";
-                        //cbkAlienOwnership.Checked = Convert.ToBoolean(dr["AlienOwnership"]);
-                        txtEmployerDesc.Text = dr["Description"].ToString();
-                        txtWebsiteInfo.Text = dr["WebsiteInfo"].ToString();
-
+                        
                         SetEditVisibility(true);
 
                         DataTable dt = bd.GetCampaign(user, employerid.ToString(), "0", "");
@@ -117,18 +109,6 @@ namespace KennedyAccess
                             labPrevWage.Text += ")";
                         }
 
-                        // profile picture control
-                        ProfilePicture.sObject = "Employer";
-                        ProfilePicture.sObjectID = txtEmployerID.Text;
-                        ProfilePicture.bShowButtons = true;
-
-                        // populate user name ddl
-                        ddlUserName.DataSource = bd.GetEmpUserList(user, dr["UserId"].ToString());
-                        ddlUserName.DataTextField = "UserName";
-                        ddlUserName.DataValueField = "UserID";
-                        ddlUserName.DataBind();
-                        ddlUserName.SelectedValue = dr["UserId"].ToString();
-
                         panFiles.Visible = user.HasRole("EmployerFiles");
 
                         UserFiles.UserName = labEmployer.Text;
@@ -165,25 +145,12 @@ namespace KennedyAccess
         {
             if (cbkEmployerChanged.Checked)
             {
-                empID = (txtEmployerID.Text == "") ? 0 : int.Parse(txtEmployerID.Text);
-                bool bAlienOwnership = (rblAlienOwnership.SelectedValue == "1") ? true : false;
-                int nubEmp = int.Parse(txtNumEmployee.Text);
-                int yearBusiness = int.Parse(txtYearBusiness.Text);
-
                 if (empID == 0)
                 {
                     SqlDataReader dr = SqlHelper.ExecuteReader(
                         Global.dbcnn, "InsertEmployer",
                         new SqlParameter("@FranchiseID", user.FranchiseID),
-                        new SqlParameter("@UserID", user.UserID),
-                        new SqlParameter("@NumEmployees", nubEmp),
-                        new SqlParameter("@YearBusiness", yearBusiness),
-                        new SqlParameter("@FEIN", txtFEIN.Text),
-                        new SqlParameter("@NAICSCode", txtNAICSCode.Text),
-                        new SqlParameter("@AlienOwnership", bAlienOwnership),
-                        new SqlParameter("@Description", txtEmployerDesc.Text),
-                        new SqlParameter("@WebsiteInfo", txtWebsiteInfo.Text)
-                        );
+                        new SqlParameter("@UserID", user.UserID));
                     dr.Read();
                     empID = int.Parse(dr[0].ToString());
                     dr.Close();
@@ -195,25 +162,18 @@ namespace KennedyAccess
                     panStep2.Visible = true;
                 }
 
-
                 else
                 {
                     SqlHelper.ExecuteNonQuery(
                         Global.dbcnn, "UpdateEmployer",
                         new SqlParameter("@FranchiseID", user.FranchiseID),
                         new SqlParameter("@UserID", user.UserID),
-                        new SqlParameter("@EmployerID", empID),
-                        new SqlParameter("@NumEmployees", nubEmp),
-                        new SqlParameter("@YearBusiness", yearBusiness),
-                        new SqlParameter("@FEIN", txtFEIN.Text),
-                        new SqlParameter("@NAICSCode", txtNAICSCode.Text),
-                        new SqlParameter("@AlienOwnership", bAlienOwnership),
-                        new SqlParameter("@ManualUserID", ddlUserName.SelectedValue),
-                        new SqlParameter("@Description", txtEmployerDesc.Text),
-                        new SqlParameter("@WebsiteInfo", txtWebsiteInfo.Text));
+                        new SqlParameter("@EmployerID", empID));
                 }
                 cbkEmployerChanged.Checked = false;
             }
+
+            EmployerInfo.SaveEmployerInfo(sender, e);
 
             // set employerid to contact control
             EmployerContact.intReferencerID = Headquarter.intReferencerID = empID;
@@ -281,25 +241,9 @@ namespace KennedyAccess
             btnEditEmployer.Visible = bLock && user.HasRole("EmployerEdit");
             btnCancel.Visible = btnSaveEmployer.Visible = !bLock;
 
-            //txtEmployerName.ReadOnly = bLock;
-            txtNumEmployee.ReadOnly = bLock;
-            txtNumEmployee.BorderStyle = sBorder;
-            txtYearBusiness.ReadOnly = bLock;
-            txtYearBusiness.BorderStyle = sBorder;
-            txtFEIN.ReadOnly = bLock;
-            txtFEIN.BorderStyle = sBorder;
-            txtNAICSCode.ReadOnly = bLock;
-            txtNAICSCode.BorderStyle = sBorder;
-            rblAlienOwnership.Enabled = !bLock;
-            rblAlienOwnership.BorderStyle = sBorder;
+            EmployerInfo.SetEditVisibility(bLock);
             btnCancel.Visible = btnSaveEmployer.Visible = !bLock;
             btnEditEmployer.Visible = bLock;
-            txtEmployerDesc.ReadOnly = bLock;
-            txtEmployerDesc.BorderStyle = sBorder;
-            txtWebsiteInfo.ReadOnly = bLock;
-            txtWebsiteInfo.BorderStyle = sBorder;
-
-            ddlUserName.Enabled = !bLock && user.HasRole("SystemAdmin");
         }
         protected void EmployerChanged(object sender, EventArgs e)
         {

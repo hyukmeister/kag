@@ -128,6 +128,9 @@ namespace KennedyAccess
                     gv2.DataBind();
                     tcContainer.Tabs[1].Controls.Add(gv2);
                     tcContainer.Tabs[1].Visible = true;
+
+
+                    ApplicantFamily.ApplicantID = labApplicantID.Text;
                 }
 
                 // applicant progress
@@ -314,26 +317,24 @@ namespace KennedyAccess
         }
         protected void btnSaveApplicant_Click(object sender, EventArgs e)
         {
-            if (cbkApplicantChanged.Checked)
-            { 
-                //iApplicantID = int.Parse(labApplicantID.Text);
-                // save data
-                iApplicantID = (labApplicantID.Text == "") ? 0 : int.Parse(labApplicantID.Text);
+            //iApplicantID = int.Parse(labApplicantID.Text);
+            // save data
+            iApplicantID = (labApplicantID.Text == "") ? 0 : int.Parse(labApplicantID.Text);
 
-                // set contact reference id
-                Session["ApplicantID"] = user.ObjectID = contApplicantContact.intReferencerID = contApplicantOversea.intReferencerID = iApplicantID;
+            iApplicantID = ApplicantInfo.SaveApplicant();
+            labApplicantID.Text = iApplicantID.ToString();
 
-                // to pass ApplicantID to controls: attachment 
-                contAttachments.RecordTypeID = bd.GetRecordTypeID((DataTable)Application["RecordType"], user.FranchiseID, "Object", "Applicant").ToString();
-                contAttachments.ReferenceID = iApplicantID.ToString();
-                ((Label)contAttachments.FindControl("LabReferenceID")).Text = iApplicantID.ToString();
+            // set contact reference id
+            Session["ApplicantID"] = user.ObjectID = contApplicantContact.intReferencerID = contApplicantOversea.intReferencerID = iApplicantID;
 
-                // set work experience reference id
-                WorkExperience.iApplicantID = iApplicantID;
-                ((Label)WorkExperience.FindControl("txtApplicantID")).Text = iApplicantID.ToString();
+            // to pass ApplicantID to controls: attachment 
+            contAttachments.RecordTypeID = bd.GetRecordTypeID((DataTable)Application["RecordType"], user.FranchiseID, "Object", "Applicant").ToString();
+            contAttachments.ReferenceID = labApplicantID.Text;
+            ((Label)contAttachments.FindControl("LabReferenceID")).Text = labApplicantID.Text;
 
-                labApplicantID.Text = iApplicantID.ToString();
-            }
+            // set work experience reference id
+            WorkExperience.iApplicantID = iApplicantID;
+            ((Label)WorkExperience.FindControl("txtApplicantID")).Text = labApplicantID.Text;
 
             // save applicant current contact
             contApplicantContact.btnSave_Click(sender, e);
@@ -344,12 +345,7 @@ namespace KennedyAccess
             // go to read only mode
             SetEditVisibility(true);
 
-            cbkApplicantChanged.Checked = false;
             panStep2.Visible = true;
-        }
-        protected void ApplicantChanged(object sender, EventArgs e)
-        {
-            cbkApplicantChanged.Checked = true;
         }
         protected void btnCancel_Click(object sender, EventArgs e)
         {

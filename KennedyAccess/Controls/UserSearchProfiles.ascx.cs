@@ -23,15 +23,6 @@ namespace KennedyAccess.Controls
             {
                 bool bDefaultProfile = false;
 
-                //DataTable employers = bd.GetEmployer(user, "0", "");
-                //ddcbEmployers.AddItems(employers, "EmployerName", "EmployerId");
-
-                //DataTable campaigns = bd.GetCampaign(user, "0", "0", "");
-                //ddcbCampaigns.AddItems(campaigns, "Description", "CampaignID");
-
-                //DataTable statuses = bd.GetProfile(user);
-                //ddcbStatuses.AddItems(statuses, "RoleSetName", "RoleSetID");
-
                 // load search profiles
                 DataTable dt = bd.GetUserSearchProfile(user);
                 gvSearchProfiles.DataSource = dt;

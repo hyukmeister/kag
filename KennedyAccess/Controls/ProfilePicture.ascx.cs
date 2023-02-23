@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -58,6 +59,9 @@ namespace KennedyAccess.Controls
                 int len = pictureUpload.PostedFile.ContentLength;
 
                 byte[] imagefile = new byte[len];
+                pictureUpload.PostedFile.InputStream.Seek(0, SeekOrigin.Begin);
+                pictureUpload.PostedFile.InputStream.Read(imagefile, 0, Convert.ToInt32(len));
+
                 pictureUpload.PostedFile.InputStream.Read(imagefile, 0, len);
 
                 bd.UpdateProfilePicture(user, labObject.Text, labObjectID.Text, imagefile);

@@ -200,13 +200,16 @@
     <Content Include="Content\bootstrap4-toggle.css" />
     <Content Include="Content\bootstrap4-toggle.min.css" />
     <Content Include="Content\dropzone.min.css" />
+    <Content Include="Controls\ApplicantFamily.ascx" />
     <Content Include="Controls\ApplicantInfo.ascx" />
     <Content Include="Controls\Attachments.ascx" />
     <Content Include="Controls\Contact.ascx" />
     <Content Include="Controls\DropDownCheckBox.ascx" />
     <Content Include="Controls\DS260.ascx" />
+    <Content Include="Controls\EmployerInfo.ascx" />
     <Content Include="Controls\I485.ascx" />
     <Content Include="Controls\PrevWage.ascx" />
+    <Content Include="Controls\ProfilePhoto.ascx" />
     <Content Include="Controls\ProfilePicture.ascx" />
     <Content Include="Controls\Questionnaire.ascx" />
     <Content Include="Controls\Toggle.ascx" />
@@ -552,6 +555,13 @@
     <Compile Include="Classes\employer.cs" />
     <Compile Include="Classes\SqlHelperv2.cs" />
     <Compile Include="Classes\user.cs" />
+    <Compile Include="Controls\ApplicantFamily.ascx.cs">
+      <DependentUpon>ApplicantFamily.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ApplicantFamily.ascx.designer.cs">
+      <DependentUpon>ApplicantFamily.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ApplicantInfo.ascx.cs">
       <DependentUpon>ApplicantInfo.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -587,6 +597,13 @@
     <Compile Include="Controls\DS260.ascx.designer.cs">
       <DependentUpon>DS260.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\EmployerInfo.ascx.cs">
+      <DependentUpon>EmployerInfo.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\EmployerInfo.ascx.designer.cs">
+      <DependentUpon>EmployerInfo.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\I485.ascx.cs">
       <DependentUpon>I485.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -600,6 +617,13 @@
     </Compile>
     <Compile Include="Controls\PrevWage.ascx.designer.cs">
       <DependentUpon>PrevWage.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ProfilePhoto.ascx.cs">
+      <DependentUpon>ProfilePhoto.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ProfilePhoto.ascx.designer.cs">
+      <DependentUpon>ProfilePhoto.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controls\ProfilePicture.ascx.cs">
       <DependentUpon>ProfilePicture.ascx</DependentUpon>

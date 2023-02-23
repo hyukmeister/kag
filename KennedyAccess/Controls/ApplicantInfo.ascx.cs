@@ -108,5 +108,19 @@ namespace KennedyAccess.Controls
         {
             ProfilePicture.UploadButtonVisible(bShow);
         }
+
+
+        public int SaveApplicant()
+        {
+            int iApplicantID = 0;
+            if (cbkApplicantChanged.Checked)
+            {
+                int iRecordTypeID = bd.GetRecordTypeID((DataTable)Application["RecordType"], user.FranchiseID, "Contact", "Applicant");
+                iApplicantID = bd.InsertUpdateApplicant(user, bd.StringToInt(labApplicantID.Text), iRecordTypeID, "u", true,
+                    int.Parse(ddlCitizenshipCountry.SelectedValue), int.Parse(ddlBirthCountry.SelectedValue), txtDateOfBirth.Text, txtAdmissionClass.Text,
+                    txtAlienRegistration.Text, txtAlienAdmission.Text, true);
+            }
+            return iApplicantID;
+        }
     }
 }

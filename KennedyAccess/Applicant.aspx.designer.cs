@@ -15,15 +15,6 @@ namespace KennedyAccess
     {
 
         /// <summary>
-        /// cbkApplicantChanged control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbkApplicantChanged;
-
-        /// <summary>
         /// labApplicantID control.
         /// </summary>
         /// <remarks>
@@ -139,6 +130,15 @@ namespace KennedyAccess
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvFamilyMembers;
+
+        /// <summary>
+        /// ApplicantFamily control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::KennedyAccess.Controls.ApplicantFamily ApplicantFamily;
 
         /// <summary>
         /// UpdatePanel2 control.

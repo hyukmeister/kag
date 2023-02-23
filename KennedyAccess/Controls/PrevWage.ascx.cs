@@ -74,17 +74,25 @@ namespace KennedyAccess.Controls
 
         public void btnSavePrevailingWage_Click(object sender, EventArgs e)
         {
-            int iRecordTypeID = bd.GetRecordTypeID((DataTable)Application["RecordType"], user.FranchiseID, "Object", "PrevailingWage");
+            if(cbkPreWageChanged.Checked)
+            { 
+                int iRecordTypeID = bd.GetRecordTypeID((DataTable)Application["RecordType"], user.FranchiseID, "Object", "PrevailingWage");
 
-            PrevailingWageID = bd.InsertUpdatePrevailingWage(user, txtPrevailingWageID.Text, "n", true, iRecordTypeID, EmployerID,
-                txtWageTrackingNum.Text, txtSOCOESCode.Text, txtOccupationTitle.Text, txtSkillLevel.Text, txtPrevailingWage.Text,
-                rblRatePeriod.SelectedValue, rblWageSource.SelectedValue, txtSource.Text, txtDateDetermined.Text, txtDateExpiration.Text,
-                txtI_5_AdditionalRecruitment.Text, txtJobTitle.Text, txtJobDuties.Text);
+                PrevailingWageID = bd.InsertUpdatePrevailingWage(user, txtPrevailingWageID.Text, "n", true, iRecordTypeID, EmployerID,
+                    txtWageTrackingNum.Text, txtSOCOESCode.Text, txtOccupationTitle.Text, txtSkillLevel.Text, txtPrevailingWage.Text,
+                    rblRatePeriod.SelectedValue, rblWageSource.SelectedValue, txtSource.Text, txtDateDetermined.Text, txtDateExpiration.Text,
+                    txtI_5_AdditionalRecruitment.Text, txtJobTitle.Text, txtJobDuties.Text);
 
-            txtPrevailingWageID.Text = PrevailingWageID;
-            SetEditVisibility(true);
+                txtPrevailingWageID.Text = PrevailingWageID;
+                cbkPreWageChanged.Checked=false;
+                SetEditVisibility(true);
+            }
         }
 
+        protected void PreWage_Changed(object sender, EventArgs e)
+        {
+            cbkPreWageChanged.Checked = true;
+        }
         public void PopulatePrevailingWageInfo(User user, string sPrevWageID)
         {
             if (sPrevWageID == "0" || sPrevWageID == "")

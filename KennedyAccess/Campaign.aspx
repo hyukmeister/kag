@@ -20,11 +20,9 @@
         <asp:CheckBox ID="cbActive" runat="server" Visible="false" />
 
         <asp:Table ID="tabCampaign" runat="server" class="table table-hover">
-            <asp:TableRow BackColor="dimgray">
+            <asp:TableRow BackColor="dimgray" CssClass="rounded-corners">
                 <asp:TableCell ColumnSpan="2" Width="450px">
-                    <div class="mb-3;">
                     <label class="form-label" HorizontalAlign="Left" style="font-size:22px; color:white;">&nbsp;Campaign Information</label>
-                    </div>
                 </asp:TableCell>
                 <asp:TableCell ColumnSpan="2" Width="450px" HorizontalAlign="Right">
                     <asp:Button ID="btnEditCampaign" runat="server" class="btn btn-primary" CausesValidation="false" Text="Edit" OnClick="btnEditCampaign_Click" />
@@ -241,14 +239,7 @@
                                         </div>
                                     </asp:TableCell>
                                 </asp:TableRow>
-                              <%--  <asp:TableRow>
-                                    <asp:TableCell ColumnSpan="4">
-                                        <div class="form-floating mb-3;">
-                                            <asp:TextBox ID="TextBox1" class="form-control" runat="server" TextMode="MultiLine" Rows="5" placeholder="Campaign Description" Width="100%" ValidationGroup="JOValidation" ReadOnly="true" BorderStyle="None"></asp:TextBox>
-                                            <label for="txtCampaignDesc">Campaign Description</label>
-                                        </div>
-                                    </asp:TableCell>
-                                </asp:TableRow>--%>
+
                                 <asp:TableRow>
                                     <asp:TableCell ColumnSpan="4">
                                         <label for="floatingInputGrid">Is there a Sunday edition of the newspaper in the area of intended employment?</label><br />
@@ -377,9 +368,6 @@
                 <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushCampaign">
                     <div class="accordion-body">
                         <uc4:Attachments runat="server" ID="contAttachments" />
-
-
-
                     </div>
                 </div>
             </div>

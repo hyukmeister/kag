@@ -23,15 +23,15 @@ namespace KennedyAccess.Controls
         private string iv = "SapphireConsulti";
         protected void Page_Load(object sender, EventArgs e)
         {
+            user = (User)Session["User"];
+
             if (!this.IsPostBack)
             {
                 LabGuid.Text = guid;
                 rootFolder = "~/UserFiles/" + LabGuid.Text + "/ ";
 
                 labUserName.Text = UserName;
-                user = (User)Session["User"];
                 
-
                 // create the root folder if necessary
                 CreateFolder(Server.MapPath(rootFolder));
 

@@ -5,7 +5,7 @@
     <asp:Label ID="LabGuid" runat="server" Visible="false"></asp:Label>
     <asp:Label runat="server" ID="labRecordTypeID" Visible="false"></asp:Label>
 
-    <asp:Table ID="tblAttachment" runat="server" class="table" Width="850px">
+    <asp:Table ID="tblAttachment" runat="server" class="table rounded-corners" Width="850px">
         <asp:TableRow BackColor="#B5B5B5" Height="30px">
             <asp:TableCell Width="300px" HorizontalAlign="Right">
                 <button id="btnNewFolder" runat="server" type="button" class="btn btn-default" data-bs-toggle="modal" data-bs-target="#myNewFolderModal">New</button>&nbsp;
@@ -33,7 +33,11 @@
                     <NodeStyle Font-Names="Tahoma" Font-Size="10pt" ForeColor="Black" HorizontalPadding="2px"
                         NodeSpacing="0px" VerticalPadding="2px"></NodeStyle>
                 </asp:TreeView>
-                <div id="dZUpload" class="container dropzone" >
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow VerticalAlign="Top" BackColor="#edf2f2">
+            <asp:TableCell VerticalAlign="Top" ColumnSpan="2">
+                <div id="dZUserFileUpload" class="container dropzone" >
                     <div class="dz-default dz-message" style="width:100%;height:100%;vertical-align:middle;align-content:center;"><span>Drop Files Here</span></div>
                 </div>
             </asp:TableCell>

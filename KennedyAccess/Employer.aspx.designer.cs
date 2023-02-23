@@ -51,24 +51,6 @@ namespace KennedyAccess
         protected global::System.Web.UI.WebControls.Table tabEmployer;
 
         /// <summary>
-        /// Label1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
-
-        /// <summary>
-        /// ddlUserName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlUserName;
-
-        /// <summary>
         /// btnEditEmployer control.
         /// </summary>
         /// <remarks>
@@ -123,76 +105,13 @@ namespace KennedyAccess
         protected global::System.Web.UI.WebControls.Label txtFranchise;
 
         /// <summary>
-        /// ProfilePicture control.
+        /// EmployerInfo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::KennedyAccess.Controls.ProfilePicture ProfilePicture;
-
-        /// <summary>
-        /// txtFEIN control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFEIN;
-
-        /// <summary>
-        /// txtNAICSCode control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNAICSCode;
-
-        /// <summary>
-        /// txtYearBusiness control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtYearBusiness;
-
-        /// <summary>
-        /// txtNumEmployee control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNumEmployee;
-
-        /// <summary>
-        /// rblAlienOwnership control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rblAlienOwnership;
-
-        /// <summary>
-        /// txtEmployerDesc control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmployerDesc;
-
-        /// <summary>
-        /// txtWebsiteInfo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtWebsiteInfo;
+        protected global::KennedyAccess.Controls.EmployerInfo EmployerInfo;
 
         /// <summary>
         /// Headquarter control.

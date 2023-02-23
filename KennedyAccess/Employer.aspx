@@ -3,8 +3,8 @@
 <%@ Register Src="~/Controls/Contact.ascx" TagPrefix="uc1" TagName="Contact" %>
 <%@ Register Src="~/Controls/Questionnaire.ascx" TagPrefix="uc2" TagName="Questionnaire" %>
 <%@ Register Src="~/Controls/Attachments.ascx" TagPrefix="uc3" TagName="Attachments" %>
-<%@ Register Src="~/Controls/ProfilePicture.ascx" TagPrefix="uc4" TagName="ProfilePicture" %>
 <%@ Register Src="~/Controls/UserFiles.ascx" TagPrefix="uc5" TagName="UserFiles" %>
+<%@ Register Src="~/Controls/EmployerInfo.ascx" TagPrefix="uc6" TagName="EmployerInfo" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <asp:CheckBox ID="cbkEmployerChanged" runat="server" Checked="false" Visible="false" />
@@ -17,17 +17,14 @@
                 <asp:TableCell>
                     <asp:Table ID="tabEmployer" runat="server" class="table table-responsive table-hover">
                         <asp:TableRow>
-                            <asp:TableCell ColumnSpan="2" HorizontalAlign="Left">
-                                <asp:Label ID="Label1" runat="server" Text="User Name "></asp:Label>
-                                <asp:DropDownList ID="ddlUserName" CssClass="btn btn-default btn-outline-secondary align-items-start text-start" runat="server" Width="250px" Enabled="false" OnSelectedIndexChanged="EmployerChanged"></asp:DropDownList>
-                            </asp:TableCell>
+
                             <asp:TableCell ColumnSpan="2" HorizontalAlign="Right">
                                 <asp:Button ID="btnEditEmployer" runat="server" class="btn btn-primary" Text="Edit" CausesValidation="false" UseSubmitBehavior="false" OnClick="btnEditEmployer_Click" />
                                 <asp:Button ID="btnSaveEmployer" runat="server" class="btn btn-primary" Text="Save" OnClick="btnSaveEmployer_Click" Visible="false" />&nbsp;
                                 <asp:Button ID="btnCancel" runat="server" class="btn btn-default" Text="Cancel" CausesValidation="false" UseSubmitBehavior="false" OnClick="btnCancel_Click" Visible="false" />
                             </asp:TableCell>
                         </asp:TableRow>
-                        <asp:TableRow Visible="false">
+                       <asp:TableRow Visible="false">
                             <asp:TableCell><asp:Label runat="server" Text="Employer ID"></asp:Label></asp:TableCell>
                             <asp:TableCell>
                                 <asp:Label ID="txtEmployerID" runat="server"></asp:Label>
@@ -47,72 +44,15 @@
                         </asp:TableRow>
 
                         <asp:TableRow>
-                            <asp:TableCell ColumnSpan="2" Style="width: 50%" RowSpan="4">
-                                <uc4:ProfilePicture runat="server" ID="ProfilePicture" />
-                            </asp:TableCell>
-                            <asp:TableCell ColumnSpan="2" Style="width: 50%">
-                                <div class="form-floating mb-3;" style="width: 100%">
-                                    <asp:TextBox ID="txtFEIN" class="form-control" runat="server" placeholder="Years in Business" OnTextChanged="EmployerChanged" required="true"></asp:TextBox>
-                                    <label for="txtFEIN">FEIN</label>
-                                </div>
-                            </asp:TableCell>
-                        </asp:TableRow>
-                        <asp:TableRow>
-                            <asp:TableCell ColumnSpan="2" Style="width: 50%">
-                                <div class="form-floating mb-3;" style="width: 100%">
-                                    <asp:TextBox ID="txtNAICSCode" class="form-control" runat="server" placeholder="NAICS Code" OnTextChanged="EmployerChanged" required="true"></asp:TextBox>
-                                    <label for="txtNAICSCode">NAICS Code</label>
-                                </div>
-                            </asp:TableCell>
-                        </asp:TableRow>
-
-                        <asp:TableRow>
-                            <asp:TableCell ColumnSpan="2" Style="width: 50%">
-                                <div class="form-floating mb-3;" style="width: 100%">
-                                    <asp:TextBox ID="txtYearBusiness" class="form-control" runat="server" TextMode="Number" placeholder="Years in Business" OnTextChanged="EmployerChanged" required></asp:TextBox>
-                                    <label for="txtYearBusiness">Years in Business</label>
-                                </div>
-                            </asp:TableCell>
-                        </asp:TableRow>
-                        <asp:TableRow>
-                            <asp:TableCell ColumnSpan="2" Style="width: 50%">
-                                <div class="form-floating mb-3;" style="width: 100%">
-                                    <asp:TextBox ID="txtNumEmployee" class="form-control" runat="server" TextMode="Number" placeholder="Number of Employees" OnTextChanged="EmployerChanged" required></asp:TextBox>
-                                    <label for="txtNumEmployee">Number of Employees</label>
-                                </div>
-                            </asp:TableCell>
-                        </asp:TableRow>
-                        <asp:TableRow>
-                            <asp:TableCell ColumnSpan="3" Style="width: 75%"><asp:Label runat="server" style="width: 100%" Text="Employer is closely held corporation, partnership, 
-                                or sole proprietorship in which the alien has an ownership interest, or there is a familial relationship between the owners,
-                                stockholders, corporate officers, incorporators, or partners, and the alien."></asp:Label></asp:TableCell>
-                            <asp:TableCell HorizontalAlign="Center" Style="width: 25%"><br />
-                                <asp:RadioButtonList ID="rblAlienOwnership" runat="server" RepeatLayout="Flow" Enabled="false" BorderStyle="None" Style="width: 100%" OnSelectedIndexChanged="EmployerChanged">
-                                    <asp:ListItem Enabled="True" Text="Yes" Value="1" style="margin-right: 20px;" />
-                                    <asp:ListItem Enabled="True" Text="No" Value="0" style="margin-right: 20px;" Selected="True" />
-                                </asp:RadioButtonList><br />
-                            </asp:TableCell>
-                        </asp:TableRow>
-                        <asp:TableRow>
-                            <asp:TableCell ColumnSpan="4">
-                                <div class="form-floating mb-3;">
-                                    <asp:TextBox ID="txtEmployerDesc" class="form-control" runat="server" TextMode="MultiLine" Rows="5" placeholder="Campaign Description" Width="100%" ReadOnly="true" BorderStyle="None" OnCheckedChanged="EmployerChanged"></asp:TextBox>
-                                    <label for="txtEmployerDesc">Description</label>
-                                </div>
-                            </asp:TableCell>
-                        </asp:TableRow>
-                        <asp:TableRow>
-                            <asp:TableCell ColumnSpan="4">
-                                <div class="form-floating mb-3;">
-                                    <asp:TextBox ID="txtWebsiteInfo" class="form-control" runat="server" TextMode="MultiLine" Rows="5" placeholder="Campaign Description" Width="100%" ReadOnly="true" BorderStyle="None" OnCheckedChanged="EmployerChanged"></asp:TextBox>
-                                    <label for="txtWebsiteInfo">Website Information</label>
-                                </div>
+                            <asp:TableCell ColumnSpan="4" RowSpan="4">
+                                <uc6:EmployerInfo runat="server" id="EmployerInfo" />
                             </asp:TableCell>
                         </asp:TableRow>
                     </asp:Table>
                 </asp:TableCell>
             </asp:TableRow>
         </asp:Table>
+    
         <div class="accordion" id="accordionFlushExample">
             <div class="accordion-item">
                 <h2 class="accordion-header" id="flush-headingZero">

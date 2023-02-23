@@ -3,11 +3,11 @@
 <%@ Register Src="~/Controls/WorkExperience.ascx" TagPrefix="uc2" TagName="WorkExperience" %>
 <%@ Register Src="~/Controls/Contact.ascx" TagPrefix="uc1" TagName="Contact" %>
 <%@ Register Src="~/Controls/Attachments.ascx" TagPrefix="att" TagName="Attachments" %>
-<%@ Register Src="~/Controls/ProfilePicture.ascx" TagPrefix="us3" TagName="ProfilePicture" %>
 <%@ Register Src="~/Controls/ApplicantInfo.ascx" TagPrefix="uc4" TagName="ApplicantInfo" %>
+<%@ Register Src="~/Controls/ApplicantFamily.ascx" TagPrefix="uc5" TagName="ApplicantFamily" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:CheckBox ID="cbkApplicantChanged" runat="server" Checked="false" Visible="false"/>
+    
     <asp:Label ID="labApplicantID" runat="server" Visible="false"></asp:Label>
 
     <script src="https://www.paypal.com/sdk/js?client-id=AepfpfwepHHb_K-Ob9k_ocTwZqHQGYpKa8HUnDDnUtwv7qZHhg30N6kW0dQo7BIUq3CE6iQ0oztHezNz&components=buttons"></script>
@@ -146,6 +146,13 @@
                             </asp:GridView>
                         </ContentTemplate>
                     </asp:UpdatePanel>
+
+
+                    <uc5:ApplicantFamily runat="server" id="ApplicantFamily" />
+
+
+
+
                 </div>
             </div>
         </div>
