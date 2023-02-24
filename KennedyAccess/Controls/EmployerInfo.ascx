@@ -1,7 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="EmployerInfo.ascx.cs" Inherits="KennedyAccess.Controls.EmployerInfo" %>
 <%@ Register Src="~/Controls/ProfilePicture.ascx" TagPrefix="uc1" TagName="ProfilePicture" %>
-<%--<%@ Register Src="~/Controls/ProfilePhoto.ascx" TagPrefix="uc2" TagName="ProfilePhoto" %>--%>
-
 
 <asp:CheckBox ID="cbkEmployerInfoChanged" runat="server" Checked="false" Visible="false" />
 <asp:HiddenField runat="server" ID="hidEmployerInfoID" />
@@ -16,7 +14,6 @@
     <asp:TableRow>
         <asp:TableCell ColumnSpan="2" Style="width: 50%" RowSpan="4">
             <uc1:ProfilePicture runat="server" ID="ProfilePicture" />
-<%--            <uc2:ProfilePhoto runat="server" id="ProfilePhoto" />--%>
         </asp:TableCell>
         <asp:TableCell ColumnSpan="2" Style="width: 50%">
             <div class="form-floating mb-3;" style="width: 100%">

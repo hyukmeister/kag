@@ -25,14 +25,13 @@ namespace KennedyAccess
 
             if (!Page.IsPostBack)
             {
-                DataTable dtJobListings = (SqlHelper.ExecuteDataset(Global.dbcnn, "GetJoblistingOutline",
-                        new SqlParameter("@FranchiseID", user.FranchiseID),
-                        new SqlParameter("@UserID", user.UserID),
-                        new SqlParameter("@CampaignID", 0))).Tables[0];
-                gvJobListings.DataSource = bd.GetJoblistingOutline(user,"0","0");
+                DataTable dtJobListings = bd.GetJoblistingOutline(user, "0", "0"); 
+                //(SqlHelper.ExecuteDataset(Global.dbcnn, "GetJoblistingOutline",
+                //        new SqlParameter("@FranchiseID", user.FranchiseID),
+                //        new SqlParameter("@UserID", user.UserID),
+                //        new SqlParameter("@CampaignID", 0))).Tables[0];
+                gvJobListings.DataSource = ViewState["dtJobListings"] = dtJobListings;
                 gvJobListings.DataBind();
-
-                ViewState["dtJobListings"] = dtJobListings;
 
                 if(user.UserType=="Applicant")
                 {

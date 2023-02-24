@@ -68,12 +68,6 @@ namespace KennedyAccess.Controls
                     ProfilePicture.sObject = "Employer";
                     ProfilePicture.sObjectID = hidEmployerInfoID.Value;
                     ProfilePicture.bShowButtons = true;
-
-                    //// profile picture control
-                    //ProfilePhoto.sObject = "Employer";
-                    //ProfilePhoto.sObjectID = hidEmployerInfoID.Value;
-                    //ProfilePhoto.bShowButtons = true;
-                    //ProfilePhoto.UploadPhotoVisible(false);
                 }
             }
         }

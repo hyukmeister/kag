@@ -69,10 +69,10 @@ namespace KennedyAccess
 
                         // offer letter
                         string sStatusText = dr["StatusText"].ToString();
-                        btnOfferLetter.Visible = sStatusText.Contains("Employer Approved");
+                        btnOfferLetter.Visible = sStatusText.Contains("Approved");
 
                         // withdraw button
-                        btnWithdraw.Visible = (sStatusText.Contains("Employer Approved") || sStatusText.Contains("Job Applied"));
+                        btnWithdraw.Visible = (sStatusText.Contains("Approved") || sStatusText.Contains("Job Applied"));
 
                         DataRow drOfferLetter = bd.GetOfferLetter(user, dr["ApplicationID"].ToString());
                         if (drOfferLetter != null)
@@ -168,6 +168,10 @@ namespace KennedyAccess
             int sApplicationStatusID = bd.GetStatusID((DataTable)Application["Status"], user.FranchiseID, sRecordTypeID, "Job Offer Accepted");
 
             bd.InsertUpdateApplication(user, labApplicationID.Text, "0", sApplicationStatusID, "0", "u", true, txtAcceptance.Text);
+
+            btnApply.Visible = btnOfferLetter.Visible = btnWithdraw.Visible = false;
+
+            // insert a new case record here
         }
 
         protected void btnWithdraw_Click(object sender, EventArgs e)
