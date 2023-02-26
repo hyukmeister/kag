@@ -255,8 +255,12 @@
     <Content Include="images\imgEdit.png" />
     <Content Include="images\kagimg1.jpg" />
     <Content Include="images\kagimg10.jpg" />
+    <Content Include="images\kagimg17.jpg" />
     <Content Include="images\kagimg2.jpg" />
+    <Content Include="images\kagimg25.jpg" />
+    <Content Include="images\kagimg2_1.jpg" />
     <Content Include="images\kagimg9.jpg" />
+    <Content Include="images\kag_logo.png" />
     <Content Include="images\lay001.svg" />
     <Content Include="images\logout.png" />
     <Content Include="images\map009.svg" />

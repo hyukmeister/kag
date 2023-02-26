@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="Applications" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Applications.aspx.cs" Inherits="KennedyAccess.Applications" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <div style="background-image:url('images/kagimg2_1.jpg'); filter:blur(3px);height: 100px;width:900px;background-size:cover;background-position:center;position:relative; opacity:55%; top:20px">&nbsp;</div>
     <h2><asp:Label id="labCampaigns" runat="server">Applications</asp:Label></h2>
     <div class="jumbotron" style="width:900px;">
         <asp:Table ID="Table1" runat="server" Width="100%">
@@ -16,7 +17,7 @@
             <asp:TableCell ColumnSpan="2">
                 
                 <asp:GridView ID="gvApplications" runat="server" AutoGenerateColumns="False" ShowFooter="true"
-                    GridLines="None" class="table table-hover" EmptyDataText="No Application found"
+                    GridLines="None" class="table table-hover rounded-corners" EmptyDataText="No Application found" 
                     OnRowCommand="gvApplications_RowCommand" AllowSorting="True" OnSorting="gvApplications_Sorting">
                     <Columns>
                         <asp:TemplateField HeaderText="Application Id" Visible="false">

@@ -137,7 +137,7 @@ namespace KennedyAccess
             }
 
             // save applicaton info
-            int iRecType = bd.GetRecordTypeID((DataTable)Application["RecordType"], user.FranchiseID, "User", "Applicant");
+            int iRecType = bd.GetRecordTypeID((DataTable)Application["RecordType"], user.FranchiseID, "Object", "Application");
             int iStatusID = bd.GetStatusID((DataTable)Application["Status"], user.FranchiseID, iRecType, "Job Applied");
 
             string ApplicationID = bd.InsertUpdateApplication(user, bd.StringToInt(labApplicationID.Text).ToString(), sJobListingID, iStatusID, sApplicantID, "n", true, "Job Applied");
@@ -164,7 +164,7 @@ namespace KennedyAccess
 
         protected void btnAccept_Click(object sender, EventArgs e)
         {
-            int sRecordTypeID = bd.GetRecordTypeID((DataTable)Application["RecordType"], user.FranchiseID, "User", "Applicant");
+            int sRecordTypeID = bd.GetRecordTypeID((DataTable)Application["RecordType"], user.FranchiseID, "Object", "Application");
             int sApplicationStatusID = bd.GetStatusID((DataTable)Application["Status"], user.FranchiseID, sRecordTypeID, "Job Offer Accepted");
 
             bd.InsertUpdateApplication(user, labApplicationID.Text, "0", sApplicationStatusID, "0", "u", true, txtAcceptance.Text);
@@ -177,7 +177,7 @@ namespace KennedyAccess
         protected void btnWithdraw_Click(object sender, EventArgs e)
         {
             // set application status to withdrawn
-            int sRecordTypeID = bd.GetRecordTypeID((DataTable)Application["RecordType"], user.FranchiseID, "User", "Applicant");
+            int sRecordTypeID = bd.GetRecordTypeID((DataTable)Application["RecordType"], user.FranchiseID, "Object", "Application");
             int sApplicationStatusID = bd.GetStatusID((DataTable)Application["Status"], user.FranchiseID, sRecordTypeID, "Applicant Withdrawn");
 
             bd.InsertUpdateApplication(user, labApplicationID.Text, "0", sApplicationStatusID, user.ObjectID.ToString(), "u", true, "Withdrawn by user");

@@ -41,11 +41,11 @@ namespace KennedyAccess
                 else
                 {
                     gvJobListings.Columns[4].Visible = true;
-                    gvJobListings.Columns[5].Visible = false;
+                    //gvJobListings.Columns[5].Visible = false;
                 }
             }
 
-            gvJobListings.Columns[6].Visible = user.HasRole("JobListing");
+            //gvJobListings.Columns[6].Visible = user.HasRole("JobListing");
 
         }
         protected void btnSearchJobListing_Click(object sender, EventArgs e)
