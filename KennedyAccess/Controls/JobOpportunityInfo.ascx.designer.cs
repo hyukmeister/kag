@@ -7,84 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KennedyAccess
+namespace KennedyAccess.Controls
 {
 
 
-    public partial class Campaign
+    public partial class JobOpportunityInfo
     {
 
         /// <summary>
-        /// cbkJobOpportunityChanged control.
+        /// cbkJobOpportunityInfoChanged control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbkJobOpportunityChanged;
-
-        /// <summary>
-        /// cbkCampaignChanged control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbkCampaignChanged;
-
-        /// <summary>
-        /// cbkPostJobValue control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbkPostJobValue;
-
-        /// <summary>
-        /// labTitle control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labTitle;
-
-        /// <summary>
-        /// lblJobListingID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblJobListingID;
-
-        /// <summary>
-        /// labCampaignID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labCampaignID;
-
-        /// <summary>
-        /// labEmployerID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labEmployerID;
-
-        /// <summary>
-        /// txtEmployerName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtEmployerName;
+        protected global::System.Web.UI.WebControls.CheckBox cbkJobOpportunityInfoChanged;
 
         /// <summary>
         /// cbActive control.
@@ -96,246 +33,228 @@ namespace KennedyAccess
         protected global::System.Web.UI.WebControls.CheckBox cbActive;
 
         /// <summary>
-        /// tabCampainControl control.
+        /// labCampaignID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table tabCampainControl;
+        protected global::System.Web.UI.WebControls.Label labCampaignID;
 
         /// <summary>
-        /// btnEditCampaign control.
+        /// lblJobListingInfoID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEditCampaign;
+        protected global::System.Web.UI.WebControls.Label lblJobListingInfoID;
 
         /// <summary>
-        /// btnSaveCampaign control.
+        /// tabJobOpportunityInfo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSaveCampaign;
+        protected global::System.Web.UI.WebControls.Table tabJobOpportunityInfo;
 
         /// <summary>
-        /// btnCancel control.
+        /// cbkI_34_ListJob control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancel;
+        protected global::KennedyAccess.Controls.Toggle cbkI_34_ListJob;
 
         /// <summary>
-        /// CampaignInfo control.
+        /// txtWorkAddress1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::KennedyAccess.Controls.CampaignInfo CampaignInfo;
+        protected global::System.Web.UI.WebControls.TextBox txtWorkAddress1;
 
         /// <summary>
-        /// accordionFlushCampaign control.
+        /// txtWorkAddress2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl accordionFlushCampaign;
+        protected global::System.Web.UI.WebControls.TextBox txtWorkAddress2;
 
         /// <summary>
-        /// UpdatePanel1 control.
+        /// txtWorkCity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        protected global::System.Web.UI.WebControls.TextBox txtWorkCity;
 
         /// <summary>
-        /// Table1 control.
+        /// ddlWorkState control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table Table1;
+        protected global::System.Web.UI.WebControls.DropDownList ddlWorkState;
 
         /// <summary>
-        /// ddlPrevailingWages control.
+        /// txtWorkPostalCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlPrevailingWages;
+        protected global::System.Web.UI.WebControls.TextBox txtWorkPostalCode;
 
         /// <summary>
-        /// btnSavePrevWage control.
+        /// txtI_6_StartDateForSWA control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSavePrevWage;
+        protected global::System.Web.UI.WebControls.TextBox txtI_6_StartDateForSWA;
 
         /// <summary>
-        /// btnEditPrevWage control.
+        /// txtI_7_EndDateForSWA control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEditPrevWage;
+        protected global::System.Web.UI.WebControls.TextBox txtI_7_EndDateForSWA;
 
         /// <summary>
-        /// Button1 control.
+        /// txtFilingDatePosted control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.TextBox txtFilingDatePosted;
 
         /// <summary>
-        /// contPrevWage control.
+        /// txtFilingDateRemoved control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::KennedyAccess.Controls.PrevWage contPrevWage;
+        protected global::System.Web.UI.WebControls.TextBox txtFilingDateRemoved;
 
         /// <summary>
-        /// panJobOpportunity control.
+        /// rblI_8_SundayNewspaper control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel panJobOpportunity;
+        protected global::System.Web.UI.WebControls.RadioButtonList rblI_8_SundayNewspaper;
 
         /// <summary>
-        /// UpdatePanel2 control.
+        /// txtI_9_NameOfNewspaper control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel2;
+        protected global::System.Web.UI.WebControls.TextBox txtI_9_NameOfNewspaper;
 
         /// <summary>
-        /// tabJobOpportunity control.
+        /// txtI_10_FirstAdvertisementDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table tabJobOpportunity;
+        protected global::System.Web.UI.WebControls.TextBox txtI_10_FirstAdvertisementDate;
 
         /// <summary>
-        /// btnSaveJobOpportunity control.
+        /// rblI_11_SecondAdvertisement control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSaveJobOpportunity;
+        protected global::System.Web.UI.WebControls.RadioButtonList rblI_11_SecondAdvertisement;
 
         /// <summary>
-        /// btnCancelJobOpportunity control.
+        /// txtI_27_NameOfSecondNewspaper control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancelJobOpportunity;
+        protected global::System.Web.UI.WebControls.TextBox txtI_27_NameOfSecondNewspaper;
 
         /// <summary>
-        /// btnEditJobOpportunity control.
+        /// txtI_12_DateOfSecondAdvertisement control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEditJobOpportunity;
+        protected global::System.Web.UI.WebControls.TextBox txtI_12_DateOfSecondAdvertisement;
 
         /// <summary>
-        /// JobOpportunityInfo control.
+        /// rblI_28_SaturdayNewspaper control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::KennedyAccess.Controls.JobOpportunityInfo JobOpportunityInfo;
+        protected global::System.Web.UI.WebControls.RadioButtonList rblI_28_SaturdayNewspaper;
 
         /// <summary>
-        /// contAttachments control.
+        /// txtI_29_NameOfSaturdayNewspaper control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::KennedyAccess.Controls.Attachments contAttachments;
+        protected global::System.Web.UI.WebControls.TextBox txtI_29_NameOfSaturdayNewspaper;
 
         /// <summary>
-        /// Questionnaire control.
+        /// txtI_30_SaturdayAdvertisementDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::KennedyAccess.Controls.Questionnaire Questionnaire;
+        protected global::System.Web.UI.WebControls.TextBox txtI_30_SaturdayAdvertisementDate;
 
         /// <summary>
-        /// btnApplications control.
+        /// rblI_31_SecondSatAdvertisement control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnApplications;
+        protected global::System.Web.UI.WebControls.RadioButtonList rblI_31_SecondSatAdvertisement;
 
         /// <summary>
-        /// divOL control.
+        /// txtI_33_NameOfSecondSatNewspaper control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divOL;
+        protected global::System.Web.UI.WebControls.TextBox txtI_33_NameOfSecondSatNewspaper;
 
         /// <summary>
-        /// txtOfferLetter control.
+        /// txtI_32_DateOfSecondSatAdvertisement control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOfferLetter;
-
-        /// <summary>
-        /// btnSaveOfferLetter control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSaveOfferLetter;
-
-        /// <summary>
-        /// HtmlEditorExtender1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.HtmlEditorExtender HtmlEditorExtender1;
+        protected global::System.Web.UI.WebControls.TextBox txtI_32_DateOfSecondSatAdvertisement;
     }
 }

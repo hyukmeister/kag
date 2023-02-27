@@ -5,21 +5,28 @@
 <%@ Register Src="~/Controls/PrevWage.ascx" TagPrefix="uc3" TagName="PrevWage" %>
 <%@ Register Src="~/Controls/Attachments.ascx" TagPrefix="uc4" TagName="Attachments" %>
 <%@ Register Src="~/Controls/Toggle.ascx" TagPrefix="uc5" TagName="Toggle" %>
+<%@ Register Src="~/Controls/CampaignInfo.ascx" TagPrefix="uc6" TagName="CampaignInfo" %>
+<%@ Register Src="~/Controls/JobOpportunityInfo.ascx" TagPrefix="uc7" TagName="JobOpportunityInfo" %>
+
+
 
 <asp:Content ID="Campaign" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div style="background-image:url('images/kagimg10.jpg'); filter:blur(3px);height: 100px;width:900px;background-size:cover;background-position:center;position:relative; opacity:55%; top:20px">&nbsp;</div>
+    <div style="background-image: url('images/kagimg10.jpg'); filter: blur(3px); height: 100px; width: 900px; background-size: cover; background-position: center; position: relative; opacity: 55%; top: 20px">&nbsp;</div>
 
     <asp:CheckBox ID="cbkJobOpportunityChanged" runat="server" Checked="false" Visible="false" />
     <asp:CheckBox ID="cbkCampaignChanged" runat="server" Checked="false" Visible="false" />
-    <asp:CheckBox ID="cbkPostJobValue" runat="server"  Visible="false"/>
+    <asp:CheckBox ID="cbkPostJobValue" runat="server" Visible="false" />
     <h2>
         <asp:Label ID="labTitle" runat="server" Text="Campaign & Job Information"></asp:Label></h2>
     <div class="jumbotron" style="width: 900px;">
         <asp:Label ID="lblJobListingID" runat="server" Visible="false">0</asp:Label>
-        <asp:CheckBox ID="cbActive" runat="server" Visible="false" />
+        <asp:Label ID="labCampaignID" runat="server" Visible="false"></asp:Label>
+        <asp:Label ID="labEmployerID" runat="server" Visible="false"></asp:Label>
+        <asp:Label ID="txtEmployerName" runat="server"></asp:Label>
 
-        <asp:Table ID="tabCampaign" runat="server" class="table table-hover">
+        <asp:CheckBox ID="cbActive" runat="server" Visible="false" />
+        <asp:Table ID="tabCampainControl" runat="server" class="table table-hover">
             <asp:TableRow BackColor="dimgray" CssClass="rounded-corners">
                 <asp:TableCell ColumnSpan="2" Width="450px">
                     <label class="form-label" HorizontalAlign="Left" style="font-size:22px; color:white;">&nbsp;Campaign Information</label>
@@ -28,8 +35,35 @@
                     <asp:Button ID="btnEditCampaign" runat="server" class="btn btn-primary" CausesValidation="false" Text="Edit" OnClick="btnEditCampaign_Click" />
                     <asp:Button ID="btnSaveCampaign" runat="server" class="btn btn-primary" Text="Save" ValidationGroup="CampaginGroup" OnClick="btnSaveCampaign_Click" Visible="false" />&nbsp;
                     <asp:Button ID="btnCancel" runat="server" class="btn btn-primary" Text="Cancel" CausesValidation="false" OnClientClick="return confirm('Cancel without saving?');" OnClick="btnCancel_Click" Visible="false" /><br />
-                </asp:TableCell>  
+                </asp:TableCell>
             </asp:TableRow>
+
+
+           <%--  <asp:TableRow>
+                <asp:TableCell ColumnSpan="2">
+                    <div class="form-floating mb-3;" id="divCampaignStartDate" Width="450px">
+                        <asp:TextBox ID="txtCampaignStartDate" class="form-control" runat="server" placeholder="Campaign Start Date" BorderStyle="None" TextMode="Date" 
+                            ValidationGroup="CampaginGroup" AutoPostBack="true" OnTextChanged="txtCampaignStartDate_TextChanged" visible="false"></asp:TextBox>
+                        <label for="txtCampaignStartDate">Campaign Start Date</label>
+                        <asp:RequiredFieldValidator ID="rfvCampaignStartDate" runat="server" ErrorMessage="Campaign Start Date is rquired" ForeColor="Red" ControlToValidate="txtCampaignStartDate" ValidationGroup="CampaginGroup"></asp:RequiredFieldValidator>
+                    </div>
+                </asp:TableCell>
+                <asp:TableCell ColumnSpan="2">
+                    <div class="form-floating mb-3;" Width="450px">
+                        <asp:TextBox ID="txtCampaignEndDate" class="form-control" runat="server" placeholder="Campaign End Date" BorderStyle="None" TextMode="Date" 
+                            ValidationGroup="CampaginGroup" OnTextChanged="txtCampaignStartDate_TextChanged" visible="false"></asp:TextBox>
+                        <label for="txtCampaignEndDate">Campaign End Date</label>
+                        <asp:RequiredFieldValidator ID="rfvCampaignEndDate" runat="server" ErrorMessage="Campaign End Date is rquired" ForeColor="Red" ControlToValidate="txtCampaignEndDate" ValidationGroup="CampaginGroup"></asp:RequiredFieldValidator>
+                    </div>
+                </asp:TableCell>
+            </asp:TableRow>--%>
+        </asp:Table>
+         <uc6:CampaignInfo runat="server" ID="CampaignInfo" />
+        <br />
+        <br />
+        <%--  </asp:Table>
+        <asp:Table ID="tabCampaign" runat="server" class="table table-hover">
+           
             <asp:TableRow ID="trEmployerList">
                 <asp:TableCell HorizontalAlign="Left" Width="225px">
                     <div class="mb-3;"><br />  
@@ -111,8 +145,8 @@
                     <asp:RequiredFieldValidator ID="rfvOfferWagePeriod" runat="server" ErrorMessage="Wage Period is rquired" ForeColor="Red" ControlToValidate="rblOfferWagePeriod" ValidationGroup="CampaginGroup"></asp:RequiredFieldValidator>
                 </asp:TableCell>
             </asp:TableRow>
-        </asp:Table><br /><br />    
-        
+        </asp:Table><br /><br />  --%>  
+       
         <!----- accordion ------>
         <div class="accordion" runat="server" id="accordionFlushCampaign">
 
@@ -157,18 +191,18 @@
                             <ContentTemplate>
                             <asp:Table ID="tabJobOpportunity" runat="server" class="table table-hover">
                                 <asp:TableRow>
-                                    <asp:TableCell ColumnSpan="2">
-                                        <label for="floatingInputGrid">Post Job Opportunity</label>
+                                    <%-- <asp:TableCell ColumnSpan="2">
+                                       <label for="floatingInputGrid">Post Job Opportunity</label>
                                         <uc5:Toggle runat="server" ID="cbkI_34_ListJob" ControlLabel="PostJob" CheckedText="Post" UncheckedText="Pending"/>
                                         <br />
-                                     </asp:TableCell>
-                                    <asp:TableCell ColumnSpan="2" HorizontalAlign="Right">
+                                     </asp:TableCell>--%>
+                                    <asp:TableCell ColumnSpan="4" HorizontalAlign="Right">
                                         <asp:Button ID="btnSaveJobOpportunity" runat="server" class="btn btn-primary" Text="Save" OnClick="btnSaveJobOpportunity_Click" Visible="false" />
                                         <asp:Button ID="btnCancelJobOpportunity" runat="server" class="btn btn-default" CausesValidation="false" Text="Cancel" OnClick="btnCancelJobOpportunity_Click" Visible="false" />&nbsp;
                                         <asp:Button ID="btnEditJobOpportunity" runat="server" class="btn btn-primary" CausesValidation="false" Text="Edit" OnClick="btnEditJobOpportunity_Click" />
                                     </asp:TableCell>
                                 </asp:TableRow>
-                                <asp:TableRow>
+                             <%--   <asp:TableRow>
                                     <asp:TableCell ColumnSpan="2">
                                         <br />
                                         <div class="form-floating mb-3;" >
@@ -349,6 +383,11 @@
                                             <asp:TextBox ID="txtI_32_DateOfSecondSatAdvertisement" class="form-control" runat="server" placeholder="Date of second advertisement: " ReadOnly="true" BorderStyle="None" TextMode="Date" OnTextChanged="JobOpportunityChanged"></asp:TextBox>
                                             <label for="txtI_32_DateOfSecondSatAdvertisement">Date of second Saturday advertisement </label>
                                         </div>
+                                    </asp:TableCell>
+                                </asp:TableRow>--%>
+                                <asp:TableRow>
+                                    <asp:TableCell>
+                                        <uc7:JobOpportunityInfo runat="server" ID="JobOpportunityInfo" />
                                     </asp:TableCell>
                                 </asp:TableRow>
                             </asp:Table>

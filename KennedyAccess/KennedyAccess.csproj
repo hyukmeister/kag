@@ -203,11 +203,13 @@
     <Content Include="Controls\ApplicantFamily.ascx" />
     <Content Include="Controls\ApplicantInfo.ascx" />
     <Content Include="Controls\Attachments.ascx" />
+    <Content Include="Controls\CampaignInfo.ascx" />
     <Content Include="Controls\Contact.ascx" />
     <Content Include="Controls\DropDownCheckBox.ascx" />
     <Content Include="Controls\DS260.ascx" />
     <Content Include="Controls\EmployerInfo.ascx" />
     <Content Include="Controls\I485.ascx" />
+    <Content Include="Controls\JobOpportunityInfo.ascx" />
     <Content Include="Controls\PrevWage.ascx" />
     <Content Include="Controls\ProfilePhoto.ascx" />
     <Content Include="Controls\ProfilePicture.ascx" />
@@ -580,6 +582,13 @@
     <Compile Include="Controls\Attachments.ascx.designer.cs">
       <DependentUpon>Attachments.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\CampaignInfo.ascx.cs">
+      <DependentUpon>CampaignInfo.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\CampaignInfo.ascx.designer.cs">
+      <DependentUpon>CampaignInfo.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Contact.ascx.cs">
       <DependentUpon>Contact.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -614,6 +623,13 @@
     </Compile>
     <Compile Include="Controls\I485.ascx.designer.cs">
       <DependentUpon>I485.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JobOpportunityInfo.ascx.cs">
+      <DependentUpon>JobOpportunityInfo.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\JobOpportunityInfo.ascx.designer.cs">
+      <DependentUpon>JobOpportunityInfo.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controls\PrevWage.ascx.cs">
       <DependentUpon>PrevWage.ascx</DependentUpon>
