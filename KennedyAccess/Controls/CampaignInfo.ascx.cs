@@ -1,4 +1,5 @@
 ﻿using KennedyAccess.Classes;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -14,7 +15,7 @@ namespace KennedyAccess.Controls
     {
         private User user;
         private int employerid = 0;
-        private int campaignid;
+        private string campaignid;
         BaseData bd = new BaseData();
         public string sCampaignStartDate;
         protected void Page_Load(object sender, EventArgs e)
@@ -22,13 +23,13 @@ namespace KennedyAccess.Controls
             Page.MaintainScrollPositionOnPostBack = true;
 
             user = (User)Session["User"];
-            campaignid = int.Parse(Session["CampaignID"].ToString());
+            campaignid = Session["CampaignID"].ToString();
 
             if (!Page.IsPostBack)
             {
-                if (campaignid == -1)
+                if (campaignid == "-1")
                 {
-                    Page.Title = "New Campaign";
+                    labTitle.Text = Page.Title = "New Campaign";
                     // new employer; enable edit
                     SetEditVisibilityCampaignInfo(false);
 
@@ -38,28 +39,9 @@ namespace KennedyAccess.Controls
                 }
                 else
                 {
+                    labCampaignID.Text = campaignid;
                     // load campaigns for employer
-                    DataTable dtCampaign = bd.GetCampaign(user, employerid.ToString(), campaignid.ToString(), "");
-
-                    if (dtCampaign.Rows.Count == 1)
-                    {
-                        DataRow dr = dtCampaign.Rows[0];
-
-                        Page.Title = dr["Description"].ToString();
-                        trEmployerList.Visible = user.UserType != "Employer";
-
-                        // populate campaign fields
-                        labEmployerID.Text = dr["EmployerID"].ToString();
-                        txtEmployerName.Text = dr["EmployerName"].ToString();
-                        labCampaignID.Text = dr["CampaignID"].ToString();
-                        txtCampaignDesc.Text = dr["Description"].ToString();
-                        txtCampaignStartDate.Text = DateTime.Parse(dr["DateFrom"].ToString()).ToString("yyyy-MM-dd");
-                        txtCampaignEndDate.Text = DateTime.Parse(dr["DateThru"].ToString()).ToString("yyyy-MM-dd");
-                        txtOfferWageFrom.Text = dr["G_1A_OfferedWageFrom"].ToString();
-                        txtOfferWageTo.Text = dr["G_1B_OfferedWageTo"].ToString();
-                        rblOfferWagePeriod.SelectedValue = dr["G_1C_Per"].ToString();
-                       
-                    }
+                    LoadCampaignInfo(campaignid, true);  
 
                     SetEditVisibilityCampaignInfo(true);
                 }
@@ -115,6 +97,9 @@ namespace KennedyAccess.Controls
         {
             BorderStyle sBorder = (bLock) ? BorderStyle.None : BorderStyle.NotSet;
 
+            btnEditCampaign.Visible = bLock && user.HasRole("CampaignEdit");
+            btnCancel.Visible = btnSaveCampaign.Visible = !bLock;
+
             txtCampaignDesc.ReadOnly = bLock;
             txtCampaignDesc.BorderStyle = sBorder;
             txtCampaignStartDate.ReadOnly = bLock;
@@ -129,7 +114,7 @@ namespace KennedyAccess.Controls
             rblOfferWagePeriod.BorderStyle = sBorder;
         }
 
-        protected void CampaignInfoChanged(object sender, EventArgs e)
+        public void CampaignInfoChanged(object sender, EventArgs e)
         {
             cbkCampaignInfoChanged.Checked = true;
         }
@@ -145,6 +130,65 @@ namespace KennedyAccess.Controls
 
             Session["EmployerID"] = labEmployerID.Text = ddlEmployerList.SelectedValue;
 
+        }
+
+        public void btnEditCampaign_Click(object sender, EventArgs e)
+        {
+            // edit campaign
+            SetEditVisibilityCampaignInfo(false);
+        }
+
+        protected void btnCancel_Click(object sender, EventArgs e)
+        {
+            if (labCampaignID.Text == "0")
+            {
+                Response.Redirect("Campaigns.aspx");
+            }
+            else
+            {
+                LoadCampaignInfo(campaignid.ToString(), false);
+                SetEditVisibilityCampaignInfo(true);
+            }
+        }
+
+        public void btnSaveCampaign_Click(object sender, EventArgs e)
+        {
+            labCampaignID.Text = SaveCampaignInfo().ToString();
+            LoadCampaignInfo(labCampaignID.Text, true);
+            
+        }
+
+        private void LoadCampaignInfo(string sCampaignID, bool fromDB)
+        {
+            DataTable dtCampaign;
+            if (fromDB)
+            {
+                dtCampaign = bd.GetCampaign(user, "0", sCampaignID, "");
+                ViewState["CampaignInfo"] = dtCampaign;
+            }
+            else
+            {
+                dtCampaign = (DataTable)ViewState["CampaignInfo"];
+            }
+            if (dtCampaign.Rows.Count == 1)
+            {
+                DataRow dr = dtCampaign.Rows[0];
+
+                labTitle.Text = Page.Title = dr["Description"].ToString();
+                trEmployerList.Visible = user.UserType != "Employer";
+
+                // populate campaign fields
+                labEmployerID.Text = dr["EmployerID"].ToString();
+                txtEmployerName.Text = dr["EmployerName"].ToString();
+                labCampaignID.Text = dr["CampaignID"].ToString();
+                txtCampaignDesc.Text = dr["Description"].ToString();
+                txtCampaignStartDate.Text = DateTime.Parse(dr["DateFrom"].ToString()).ToString("yyyy-MM-dd");
+                txtCampaignEndDate.Text = DateTime.Parse(dr["DateThru"].ToString()).ToString("yyyy-MM-dd");
+                txtOfferWageFrom.Text = dr["G_1A_OfferedWageFrom"].ToString();
+                txtOfferWageTo.Text = dr["G_1B_OfferedWageTo"].ToString();
+                rblOfferWagePeriod.SelectedValue = dr["G_1C_Per"].ToString();
+
+            }
         }
     }
 }

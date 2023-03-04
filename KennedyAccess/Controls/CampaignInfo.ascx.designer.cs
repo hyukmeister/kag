@@ -24,6 +24,15 @@ namespace KennedyAccess.Controls
         protected global::System.Web.UI.WebControls.CheckBox cbkCampaignInfoChanged;
 
         /// <summary>
+        /// labTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label labTitle;
+
+        /// <summary>
         /// tabCampaign control.
         /// </summary>
         /// <remarks>
@@ -31,6 +40,33 @@ namespace KennedyAccess.Controls
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Table tabCampaign;
+
+        /// <summary>
+        /// btnEditCampaign control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnEditCampaign;
+
+        /// <summary>
+        /// btnSaveCampaign control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSaveCampaign;
+
+        /// <summary>
+        /// btnCancel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancel;
 
         /// <summary>
         /// trEmployerList control.

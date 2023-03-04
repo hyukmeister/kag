@@ -72,16 +72,22 @@
                 <asp:TableCell ColumnSpan="2">
                     <asp:Table Id="tabNewRole" runat="server" Width="100%">
                         <asp:TableRow VerticalAlign="Top">
-                            <asp:TableCell Width="10%"><asp:DropDownList ID="ddlRoleSet" runat="server"></asp:DropDownList></asp:TableCell>
-                            <asp:TableCell Width="10%"><asp:DropDownList ID="ddlRole" runat="server"></asp:DropDownList></asp:TableCell>
+                            <asp:TableCell Width="10%"><asp:DropDownList ID="ddlRoleSet" runat="server" CssClass="btn btn-default btn-outline-secondary align-items-start text-start"></asp:DropDownList></asp:TableCell>
+                            <asp:TableCell Width="10%"><asp:DropDownList ID="ddlRole" runat="server" CssClass="btn btn-default btn-outline-secondary align-items-start text-start"></asp:DropDownList></asp:TableCell>
                             <asp:TableCell Width="185px">
-                                <asp:TextBox ID="txtValidFrom" runat="server" TextMode="Date"></asp:TextBox><br />
-                                <asp:RequiredFieldValidator ID="rfvtxtValidFrom" runat="server" ControlToValidate="txtValidFrom" ValidationGroup="NewRole" ErrorMessage="Valid From Date is required" ForeColor="Red"></asp:RequiredFieldValidator>
+                                <div class="form-floating mb-3;">
+                                    <asp:TextBox ID="fTxtValidFrom" class="form-control" runat="server" placeholder="Valid From" ReadOnly="true" BorderStyle="None" TextMode="Date" Width="150px"></asp:TextBox>
+                                    <label for="fTxtValidFrom">Valid From</label>
+                                </div>
+                                <asp:RequiredFieldValidator ID="rfvtxtValidFrom" runat="server" ControlToValidate="fTxtValidFrom" ValidationGroup="NewRole" ErrorMessage="Valid From Date is required" ForeColor="Red"></asp:RequiredFieldValidator>
                             </asp:TableCell>
                             
-                            <asp:TableCell Width="300px">
-                                <asp:TextBox ID="txtValidThru" runat="server" TextMode="Date"></asp:TextBox><br />
-                                <asp:RequiredFieldValidator ID="rfvlabValidThru" runat="server" ControlToValidate="txtValidThru" ValidationGroup="NewRole" ErrorMessage="Valid Thru Date is required" ForeColor="Red"></asp:RequiredFieldValidator>
+                            <asp:TableCell>
+                                <div class="form-floating mb-3;">
+                                    <asp:TextBox ID="fTxtValidThru" class="form-control" runat="server" placeholder="Valid From" ReadOnly="true" BorderStyle="None" TextMode="Date" Width="150px"></asp:TextBox>
+                                    <label for="fTxtValidThru">Valid Thru</label>
+                                </div>
+                                <asp:RequiredFieldValidator ID="rfvlabValidThru" runat="server" ControlToValidate="fTxtValidThru" ValidationGroup="NewRole" ErrorMessage="Valid Thru Date is required" ForeColor="Red"></asp:RequiredFieldValidator>
                             </asp:TableCell>
                             <asp:TableCell Width="80px"><asp:Button ID="btnSaveRoleSet" runat="server" class="btn btn-primary" Text="Save" ValidationGroup="NewRole" OnClick="btnSaveRoleSet_Click"/></asp:TableCell>
                         </asp:TableRow>

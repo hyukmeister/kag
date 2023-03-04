@@ -1,7 +1,18 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="CampaignInfo.ascx.cs" Inherits="KennedyAccess.Controls.CampaignInfo" %>
 <asp:CheckBox ID="cbkCampaignInfoChanged" runat="server" Checked="false" Visible="false" />
-
+ <h2>
+    <asp:Label ID="labTitle" runat="server" Text="Campaign & Job Information"></asp:Label></h2>
 <asp:Table ID="tabCampaign" runat="server" class="table table-hover">
+    <asp:TableRow BackColor="dimgray" CssClass="rounded-corners">
+        <asp:TableCell ColumnSpan="2" Width="450px">
+             <label class="form-label" HorizontalAlign="Left" style="font-size:22px; color:white;">&nbsp;Campaign Information</label>
+        </asp:TableCell>
+        <asp:TableCell ColumnSpan="2" Width="450px" HorizontalAlign="Right">
+            <asp:Button ID="btnEditCampaign" runat="server" class="btn btn-primary" CausesValidation="false" Text="Edit" OnClick="btnEditCampaign_Click" />
+            <asp:Button ID="btnSaveCampaign" runat="server" class="btn btn-primary" Text="Save" ValidationGroup="CampaginGroup" OnClick="btnSaveCampaign_Click" Visible="false" />&nbsp;
+            <asp:Button ID="btnCancel" runat="server" class="btn btn-primary" Text="Cancel" CausesValidation="false" OnClientClick="return confirm('Cancel without saving?');" OnClick="btnCancel_Click" Visible="false" /><br />
+        </asp:TableCell>
+    </asp:TableRow>
     <asp:TableRow ID="trEmployerList">
         <asp:TableCell HorizontalAlign="Left" Width="225px">
             <div class="mb-3;">

@@ -18,8 +18,6 @@ namespace KennedyAccess.Admin
         BaseData bd = new BaseData();
         protected void Page_Load(object sender, EventArgs e)
         {
-            Page.MaintainScrollPositionOnPostBack = true;
-
             user = (User)Session["User"];
             if (user == null || !user.HasRole("RoleSets"))
                 Response.Redirect("../Default.aspx");
@@ -67,8 +65,8 @@ namespace KennedyAccess.Admin
         {
             string sRoleSetID = ddlRoleSet.SelectedValue;
             string sRoleID = ddlRole.SelectedValue;
-            string sValidFrom = txtValidFrom.Text;
-            string sValidThru = txtValidThru.Text;
+            string sValidFrom = fTxtValidFrom.Text;
+            string sValidThru = fTxtValidThru.Text;
 
             bd.InsertUpdateRoleSetRoleRel(user, "0", sRoleSetID, sRoleID, true, sValidFrom, sValidThru);
 
@@ -106,6 +104,7 @@ namespace KennedyAccess.Admin
 
             //reload rolesetroles data
             LoadRoleSetRoles("", true);
+            gvRoleSets.EditIndex = -1;
         }
     }
 }

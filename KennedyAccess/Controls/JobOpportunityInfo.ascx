@@ -1,16 +1,22 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="JobOpportunityInfo.ascx.cs" Inherits="KennedyAccess.Controls.JobOpportunityInfo" %>
 <%@ Register Src="~/Controls/Toggle.ascx" TagPrefix="uc5" TagName="Toggle" %>
 <asp:CheckBox ID="cbkJobOpportunityInfoChanged" runat="server" Checked="false" Visible="false" />
+<asp:CheckBox ID="cbkPostJobValue" runat="server" Visible="false" />
 <asp:CheckBox ID="cbActive" runat="server" Visible="false" />
 <asp:Label ID="labCampaignID" runat="server" Visible="false"></asp:Label>
-<asp:Label ID="lblJobListingInfoID" runat="server" Visible="false">0</asp:Label>
+<asp:Label ID="labJobListingInfoID" runat="server" Visible="false">0</asp:Label>
 
-<asp:Table ID="tabJobOpportunityInfo" runat="server" class="table table-hover">
+<asp:Table ID="tabJobOpportunityInfo" runat="server" Width="100%" class="table table-hover">
     <asp:TableRow>
-        <asp:TableCell ColumnSpan="4">
+        <asp:TableCell ColumnSpan="2">
             <label for="floatingInputGrid">Post Job Opportunity</label>
-            <uc5:toggle runat="server" id="cbkI_34_ListJob" controllabel="PostJob" checkedtext="Post" uncheckedtext="Pending" />
+            <uc5:Toggle runat="server" ID="cbkI_34_ListJob" ControlLabel="PostJob" CheckedText="Post" UncheckedText="Pending" />
             <br />
+        </asp:TableCell>
+        <asp:TableCell HorizontalAlign="Right" ColumnSpan="2">
+            <asp:Button ID="btnSaveJobOpportunity" runat="server" class="btn btn-primary" Text="Save" OnClick="btnSaveJobOpportunity_Click" Visible="false" />
+            <asp:Button ID="btnCancelJobOpportunity" runat="server" class="btn btn-default" CausesValidation="false" Text="Cancel" OnClientClick="return confirm('Cancel without saving?');" OnClick="btnCancelJobOpportunity_Click" Visible="false" />&nbsp;
+            <asp:Button ID="btnEditJobOpportunity" runat="server" class="btn btn-primary" CausesValidation="false" Text="Edit" OnClick="btnEditJobOpportunity_Click" />
         </asp:TableCell>
     </asp:TableRow>
     <asp:TableRow>

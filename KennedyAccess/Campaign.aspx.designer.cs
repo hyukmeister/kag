@@ -42,15 +42,6 @@ namespace KennedyAccess
         protected global::System.Web.UI.WebControls.CheckBox cbkPostJobValue;
 
         /// <summary>
-        /// labTitle control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labTitle;
-
-        /// <summary>
         /// lblJobListingID control.
         /// </summary>
         /// <remarks>
@@ -103,33 +94,6 @@ namespace KennedyAccess
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Table tabCampainControl;
-
-        /// <summary>
-        /// btnEditCampaign control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEditCampaign;
-
-        /// <summary>
-        /// btnSaveCampaign control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSaveCampaign;
-
-        /// <summary>
-        /// btnCancel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancel;
 
         /// <summary>
         /// CampaignInfo control.
@@ -195,13 +159,13 @@ namespace KennedyAccess
         protected global::System.Web.UI.WebControls.Button btnEditPrevWage;
 
         /// <summary>
-        /// Button1 control.
+        /// btnCancelPrevWage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button btnCancelPrevWage;
 
         /// <summary>
         /// contPrevWage control.
@@ -213,15 +177,6 @@ namespace KennedyAccess
         protected global::KennedyAccess.Controls.PrevWage contPrevWage;
 
         /// <summary>
-        /// panJobOpportunity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel panJobOpportunity;
-
-        /// <summary>
         /// UpdatePanel2 control.
         /// </summary>
         /// <remarks>
@@ -229,42 +184,6 @@ namespace KennedyAccess
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel2;
-
-        /// <summary>
-        /// tabJobOpportunity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Table tabJobOpportunity;
-
-        /// <summary>
-        /// btnSaveJobOpportunity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSaveJobOpportunity;
-
-        /// <summary>
-        /// btnCancelJobOpportunity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancelJobOpportunity;
-
-        /// <summary>
-        /// btnEditJobOpportunity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEditJobOpportunity;
 
         /// <summary>
         /// JobOpportunityInfo control.

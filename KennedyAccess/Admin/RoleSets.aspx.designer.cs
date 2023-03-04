@@ -87,13 +87,13 @@ namespace KennedyAccess.Admin
         protected global::System.Web.UI.WebControls.DropDownList ddlRole;
 
         /// <summary>
-        /// txtValidFrom control.
+        /// fTxtValidFrom control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtValidFrom;
+        protected global::System.Web.UI.WebControls.TextBox fTxtValidFrom;
 
         /// <summary>
         /// rfvtxtValidFrom control.
@@ -105,13 +105,13 @@ namespace KennedyAccess.Admin
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvtxtValidFrom;
 
         /// <summary>
-        /// txtValidThru control.
+        /// fTxtValidThru control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtValidThru;
+        protected global::System.Web.UI.WebControls.TextBox fTxtValidThru;
 
         /// <summary>
         /// rfvlabValidThru control.

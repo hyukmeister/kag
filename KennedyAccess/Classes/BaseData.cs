@@ -178,7 +178,7 @@ namespace KennedyAccess.Classes
         #region Campgin
         public string InsertUpdateCampaign(User user, int sEmployerID,
             int iCampaignID, int iAttorneyID, int iRecordTypeId, string sDateFrom,
-            string DateThru, string sDescription, int PrevailingWageID,
+            string DateThru, string sDescription, //int PrevailingWageID,
             double G_1A_OfferedWageFrom, double G_1B_OfferedWageTo, string G_1C_Per)
         {
             var obj = SqlHelperv2.ExecuteScalar(
@@ -192,7 +192,7 @@ namespace KennedyAccess.Classes
                         new SqlParameter("@DateFrom", sDateFrom),
                         new SqlParameter("@DateThru", DateThru),
                         new SqlParameter("@Description", sDescription),
-                        new SqlParameter("@PrevailingWageID", PrevailingWageID),
+                        //new SqlParameter("@PrevailingWageID", PrevailingWageID),
                         new SqlParameter("@G_1A_OfferedWageFrom", G_1A_OfferedWageFrom),
                         new SqlParameter("@G_1B_OfferedWageTo", G_1B_OfferedWageTo),
                         new SqlParameter("@G_1C_Per", G_1C_Per)

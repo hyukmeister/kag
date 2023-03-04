@@ -41,7 +41,7 @@ namespace KennedyAccess
 
                 // load info bar
                 TabContainer tcContainer = (TabContainer)Master.FindControl("tcContainer");
-                tcContainer.Visible = user.UserType == "System Admin";
+                tcContainer.Visible = (user.UserType == "System Admin" || user.UserType == "Campaign Team" || user.UserType == "Campaign Team");
 
                 // tab 1 : application history
                 tcContainer.Tabs[1].HeaderText = "Search Profiles";

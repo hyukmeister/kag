@@ -22,6 +22,7 @@ namespace KennedyAccess.Controls
             //JobListingID = int.Parse(Session["JobListingID"].ToString());
             if (!Page.IsPostBack)
             {
+                labCampaignID.Text = CampaignID;
                 ddlWorkState.DataSource = (DataTable)Application["State"];
                 ddlWorkState.DataValueField = "StateID";
                 ddlWorkState.DataTextField = "StateFull";
@@ -38,54 +39,22 @@ namespace KennedyAccess.Controls
                 }
                 else
                 {
+
                     // load Job Listing for employer
-                    DataTable dtJob = bd.GetJoblisting(user, CampaignID, "0", "0");
-                    if (dtJob != null && dtJob.Rows.Count > 0)
-                    {
-                        DataRow drJob = dtJob.Rows[0];
-                        // populate wage info
-                        lblJobListingInfoID.Text = drJob["JobListingID"].ToString();
-                        cbActive.Checked = drJob["Active"].ToString() == "True";
-                        txtWorkAddress1.Text = drJob["H_1_Address1"].ToString();
-                        txtWorkAddress2.Text = drJob["H_1A_Address2"].ToString();
-                        txtWorkCity.Text = drJob["H_2A_City"].ToString();
-                        ddlWorkState.SelectedValue = drJob["H_2B_State"].ToString();
-                        txtWorkPostalCode.Text = drJob["H_2C_Postalcode"].ToString();
-                        txtI_6_StartDateForSWA.Text = (drJob["I_6_StartDateForSWA"].ToString() == "") ? "" : DateTime.Parse(drJob["I_6_StartDateForSWA"].ToString()).ToString("yyyy-MM-dd");
-                        txtI_7_EndDateForSWA.Text = (drJob["I_7_EndDateForSWA"].ToString() == "") ? "" : DateTime.Parse(drJob["I_7_EndDateForSWA"].ToString()).ToString("yyyy-MM-dd");
-                        txtFilingDatePosted.Text = (drJob["FilingDatePosted"].ToString() == "") ? "" : DateTime.Parse(drJob["FilingDatePosted"].ToString()).ToString("yyyy-MM-dd");
-                        txtFilingDateRemoved.Text = (drJob["FilingDateRemoved"].ToString() == "") ? "" : DateTime.Parse(drJob["FilingDateRemoved"].ToString()).ToString("yyyy-MM-dd");
-                        rblI_8_SundayNewspaper.SelectedValue = (drJob["I_8_SundayNewspaper"].ToString() == "True") ? "1" : "0";
-                        txtI_9_NameOfNewspaper.Text = drJob["I_9_NameOfNewspaper"].ToString();
-                        txtI_10_FirstAdvertisementDate.Text = (drJob["I_10_FirstAdvertisementDate"].ToString() == "") ? "" : DateTime.Parse(drJob["I_10_FirstAdvertisementDate"].ToString()).ToString("yyyy-MM-dd");
-                        rblI_11_SecondAdvertisement.SelectedValue = (drJob["I_11_SecondAdvertisement"].ToString() == "True") ? "1" : "0";
-                        txtI_12_DateOfSecondAdvertisement.Text = (drJob["I_12_DateOfSecondAdvertisement"].ToString() == "") ? "" : DateTime.Parse(drJob["I_12_DateOfSecondAdvertisement"].ToString()).ToString("yyyy-MM-dd");
-                        txtI_27_NameOfSecondNewspaper.Text = drJob["I_27_NameOfSecondNewspaper"].ToString();
-                        rblI_28_SaturdayNewspaper.SelectedValue = (drJob["I_28_SaturdayNewspaper"].ToString() == "True") ? "1" : "0";
-                        txtI_29_NameOfSaturdayNewspaper.Text = drJob["I_29_NameOfSaturdayNewspaper"].ToString();
-                        txtI_30_SaturdayAdvertisementDate.Text = (drJob["I_30_SaturdayAdvertisementDate"].ToString() == "") ? "" : DateTime.Parse(drJob["I_30_SaturdayAdvertisementDate"].ToString()).ToString("yyyy-MM-dd");
-                        rblI_31_SecondSatAdvertisement.SelectedValue = (drJob["I_31_SecondSatAdvertisement"].ToString() == "True") ? "1" : "0";
-                        txtI_33_NameOfSecondSatNewspaper.Text = (drJob["I_33_NameOfSecondSatNewspaper"].ToString());
-                        txtI_32_DateOfSecondSatAdvertisement.Text = (drJob["I_32_DateOfSecondSatAdvertisement"].ToString() == "") ? "" : DateTime.Parse(drJob["I_32_DateOfSecondSatAdvertisement"].ToString()).ToString("yyyy-MM-dd");
-                        cbkI_34_ListJob.Checked = drJob["I_34_ListJob"].ToString() == "True";
-                   
-                    }
-                    else
-                    {
-                        lblJobListingInfoID.Text = "0";
-                    }
+                    LoadJobOpportunityInfo(CampaignID, true);
+
+                    SetEditVisibilityJobOpportunityInfo(true);
                 }
-                SetEditVisibilityJobOpportunityInfo(true);
             }
         }
 
         public void SaveJobOpportunityInfo()
         {
-           if (cbkJobOpportunityInfoChanged.Checked)
+           if (cbkJobOpportunityInfoChanged.Checked || cbkPostJobValue.Checked != cbkI_34_ListJob.Checked)
             {
                 int iRecordTypeID = bd.GetRecordTypeID((DataTable)Application["RecordType"], user.FranchiseID, "Object", "Job Listing");
                 string sJobOpportunityID = bd.InsertUpdateJobOpportunity(user,
-                    labCampaignID.Text, lblJobListingInfoID.Text, iRecordTypeID.ToString(), "u", true,
+                    labCampaignID.Text, labJobListingInfoID.Text, iRecordTypeID.ToString(), "u", true,
                     txtWorkAddress1.Text, txtWorkAddress2.Text, txtWorkCity.Text,
                     ddlWorkState.SelectedValue, txtWorkPostalCode.Text,
                     bd.EmptyToNull(txtI_6_StartDateForSWA.Text),
@@ -107,7 +76,7 @@ namespace KennedyAccess.Controls
                     cbkI_34_ListJob.Checked
                     );
                 cbkJobOpportunityInfoChanged.Checked = false;
-                Session["JobListingID"] = lblJobListingInfoID.Text = sJobOpportunityID;
+                Session["JobListingID"] = labJobListingInfoID.Text = sJobOpportunityID;
 
             }
             SetEditVisibilityJobOpportunityInfo(true);
@@ -115,6 +84,9 @@ namespace KennedyAccess.Controls
 
         public void SetEditVisibilityJobOpportunityInfo(bool bLock)
         {
+            btnEditJobOpportunity.Visible = bLock;
+            btnCancelJobOpportunity.Visible = btnSaveJobOpportunity.Visible = !bLock;
+
             BorderStyle sBorder = (bLock) ? BorderStyle.None : BorderStyle.NotSet;
             txtWorkAddress1.ReadOnly = bLock;
             txtWorkAddress1.BorderStyle = sBorder;
@@ -161,8 +133,6 @@ namespace KennedyAccess.Controls
 
             if (user.HasRole("ListJobOpportunity"))
             {
-                //rblI_34_ListJob.Enabled = !bLock;
-                //rblI_34_ListJob.BorderStyle = sBorder;
                 cbkI_34_ListJob.Disable = bLock;
             }
         }
@@ -170,6 +140,70 @@ namespace KennedyAccess.Controls
         protected void JobOpportunityInfoChanged(object sender, EventArgs e)
         {
             cbkJobOpportunityInfoChanged.Checked = true;
+        }
+
+        protected void btnEditJobOpportunity_Click(object sender, EventArgs e)
+        {
+            SetEditVisibilityJobOpportunityInfo(false);
+        }
+        protected void btnSaveJobOpportunity_Click(object sender, EventArgs e)
+        {
+            // save job listing : Opportunity
+            SaveJobOpportunityInfo();
+
+             LoadJobOpportunityInfo(labCampaignID.Text, true);
+            // save job listing : Recruitment Information
+            //UpdateRecruitmentInfo();
+        }
+
+        protected void btnCancelJobOpportunity_Click(object sender, EventArgs e)
+        {
+            LoadJobOpportunityInfo(CampaignID, false);
+            SetEditVisibilityJobOpportunityInfo(true);
+        }
+
+        private void LoadJobOpportunityInfo(string sCampaignID, bool fromDB)
+        {
+            DataTable dtJoblisting;
+            if (fromDB)
+            {
+                dtJoblisting = bd.GetJoblisting(user, CampaignID, "0", "0");
+                ViewState["JoblistingInfo"] = dtJoblisting;
+            }
+            else
+            {
+                dtJoblisting = (DataTable)ViewState["JoblistingInfo"];
+            }
+            if (dtJoblisting != null && dtJoblisting.Rows.Count > 0)
+            {
+                DataRow drJob = dtJoblisting.Rows[0];
+                // populate wage info
+                labJobListingInfoID.Text = drJob["JobListingID"].ToString();
+                cbActive.Checked = drJob["Active"].ToString() == "True";
+                txtWorkAddress1.Text = drJob["H_1_Address1"].ToString();
+                txtWorkAddress2.Text = drJob["H_1A_Address2"].ToString();
+                txtWorkCity.Text = drJob["H_2A_City"].ToString();
+                ddlWorkState.SelectedValue = drJob["H_2B_State"].ToString();
+                txtWorkPostalCode.Text = drJob["H_2C_Postalcode"].ToString();
+                txtI_6_StartDateForSWA.Text = (drJob["I_6_StartDateForSWA"].ToString() == "") ? "" : DateTime.Parse(drJob["I_6_StartDateForSWA"].ToString()).ToString("yyyy-MM-dd");
+                txtI_7_EndDateForSWA.Text = (drJob["I_7_EndDateForSWA"].ToString() == "") ? "" : DateTime.Parse(drJob["I_7_EndDateForSWA"].ToString()).ToString("yyyy-MM-dd");
+                txtFilingDatePosted.Text = (drJob["FilingDatePosted"].ToString() == "") ? "" : DateTime.Parse(drJob["FilingDatePosted"].ToString()).ToString("yyyy-MM-dd");
+                txtFilingDateRemoved.Text = (drJob["FilingDateRemoved"].ToString() == "") ? "" : DateTime.Parse(drJob["FilingDateRemoved"].ToString()).ToString("yyyy-MM-dd");
+                rblI_8_SundayNewspaper.SelectedValue = (drJob["I_8_SundayNewspaper"].ToString() == "True") ? "1" : "0";
+                txtI_9_NameOfNewspaper.Text = drJob["I_9_NameOfNewspaper"].ToString();
+                txtI_10_FirstAdvertisementDate.Text = (drJob["I_10_FirstAdvertisementDate"].ToString() == "") ? "" : DateTime.Parse(drJob["I_10_FirstAdvertisementDate"].ToString()).ToString("yyyy-MM-dd");
+                rblI_11_SecondAdvertisement.SelectedValue = (drJob["I_11_SecondAdvertisement"].ToString() == "True") ? "1" : "0";
+                txtI_12_DateOfSecondAdvertisement.Text = (drJob["I_12_DateOfSecondAdvertisement"].ToString() == "") ? "" : DateTime.Parse(drJob["I_12_DateOfSecondAdvertisement"].ToString()).ToString("yyyy-MM-dd");
+                txtI_27_NameOfSecondNewspaper.Text = drJob["I_27_NameOfSecondNewspaper"].ToString();
+                rblI_28_SaturdayNewspaper.SelectedValue = (drJob["I_28_SaturdayNewspaper"].ToString() == "True") ? "1" : "0";
+                txtI_29_NameOfSaturdayNewspaper.Text = drJob["I_29_NameOfSaturdayNewspaper"].ToString();
+                txtI_30_SaturdayAdvertisementDate.Text = (drJob["I_30_SaturdayAdvertisementDate"].ToString() == "") ? "" : DateTime.Parse(drJob["I_30_SaturdayAdvertisementDate"].ToString()).ToString("yyyy-MM-dd");
+                rblI_31_SecondSatAdvertisement.SelectedValue = (drJob["I_31_SecondSatAdvertisement"].ToString() == "True") ? "1" : "0";
+                txtI_33_NameOfSecondSatNewspaper.Text = (drJob["I_33_NameOfSecondSatNewspaper"].ToString());
+                txtI_32_DateOfSecondSatAdvertisement.Text = (drJob["I_32_DateOfSecondSatAdvertisement"].ToString() == "") ? "" : DateTime.Parse(drJob["I_32_DateOfSecondSatAdvertisement"].ToString()).ToString("yyyy-MM-dd");
+                cbkI_34_ListJob.Checked = drJob["I_34_ListJob"].ToString() == "True";
+
+            }
         }
     }
 }

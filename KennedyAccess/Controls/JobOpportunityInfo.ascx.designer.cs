@@ -24,6 +24,15 @@ namespace KennedyAccess.Controls
         protected global::System.Web.UI.WebControls.CheckBox cbkJobOpportunityInfoChanged;
 
         /// <summary>
+        /// cbkPostJobValue control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbkPostJobValue;
+
+        /// <summary>
         /// cbActive control.
         /// </summary>
         /// <remarks>
@@ -42,13 +51,13 @@ namespace KennedyAccess.Controls
         protected global::System.Web.UI.WebControls.Label labCampaignID;
 
         /// <summary>
-        /// lblJobListingInfoID control.
+        /// labJobListingInfoID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblJobListingInfoID;
+        protected global::System.Web.UI.WebControls.Label labJobListingInfoID;
 
         /// <summary>
         /// tabJobOpportunityInfo control.
@@ -67,6 +76,33 @@ namespace KennedyAccess.Controls
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::KennedyAccess.Controls.Toggle cbkI_34_ListJob;
+
+        /// <summary>
+        /// btnSaveJobOpportunity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSaveJobOpportunity;
+
+        /// <summary>
+        /// btnCancelJobOpportunity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancelJobOpportunity;
+
+        /// <summary>
+        /// btnEditJobOpportunity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnEditJobOpportunity;
 
         /// <summary>
         /// txtWorkAddress1 control.

@@ -302,7 +302,7 @@ namespace KennedyAccess
 
             try
             {
-                CheckBox cbkActive = (CheckBox)fRow.Cells[0].Controls[1];
+                Toggle cbkActive = (Toggle)fRow.Cells[0].Controls[1];
                 DropDownList ddlRole = (DropDownList)fRow.Cells[2].Controls[1];
                 TextBox txtValidFrom = (TextBox)fRow.Cells[4].Controls[1];
                 TextBox txtValidThru = (TextBox)fRow.Cells[5].Controls[1];

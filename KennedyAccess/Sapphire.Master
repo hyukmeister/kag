@@ -1,0 +1,86 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Sapphire.master.cs" Inherits="KennedyAccess.Sapphire" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - Kennedy Access Group</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/bootstrap-navbar.css" rel="stylesheet" />
+</head>
+<body>
+    <form id="form1" runat="server">
+
+        <div class="d-flex" id="wrapper">
+            <div class="bg-light border-light" id ="sidebar-wrapper">
+                <div class="sidebar-heading">Menu</div>
+                <div class="list-group list-group-flush">
+                    <asp:Menu ID="mainMenu" runat="server" Orientation="Vertical" Font-Size="11pt" Font-Bold="true" BackColor="Transparent"
+                        ForeColor="gray" StaticMenuStyle-Height="343" 
+                        DynamicMenuStyle-BackColor="#CCCCCC" DynamicMenuItemStyle-ForeColor="#000099" DynamicMenuStyle-BorderStyle="None" DynamicMenuItemStyle-HorizontalPadding="40px" DynamicHoverStyle-BackColor="#999999" 
+                        StaticMenuItemStyle-ItemSpacing="50px" StaticMenuItemStyle-BorderStyle="None" StaticHoverStyle-BorderStyle="None">
+                        <Items>
+                            <asp:MenuItem NavigateUrl="~/Home" Text="Home" Value="Home"></asp:MenuItem>
+                            <asp:MenuItem Text="Users"  >
+                                <asp:MenuItem NavigateUrl="~/Employers" Text="Employers" Value="Employers"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/Agents" Text="Agents" Value="Agents"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/Attorneys" Text="Attorneys" Value="Attorneys"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/PrevailingWages" Text="Prevailing<br>Wages" Value="PrevailingWages"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Applicants" Text="Applicants" Value="Applicants"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Campaigns" Text="Campaigns" Value="Campaigns"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/JobListings" Text="Job Listings" Value="JobListings"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Applications" Text="Applications" Value="Applications"></asp:MenuItem>
+                            <asp:MenuItem Text="Admin Menu" >
+                                <asp:MenuItem NavigateUrl="~/Admin/Users" Text="Users" Value="Users"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/Admin/Settings" Text="Settings" Value="Settings"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/Admin/Roles" Text="Roles" Value="Roles"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/Admin/RoleSets" Text="Role Sets" Value="RoleSets"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/Admin/Questionnaires" Text="Questionnaires" Value="Questionnaires"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="" ImageUrl="images/user.png" Value="Profile">
+                                <asp:MenuItem Text="Profile" Value="Profile"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Log Out" Value="logout"></asp:MenuItem>
+                            </asp:MenuItem>
+                        </Items> 
+                    </asp:Menu>
+                </div>
+            </div>
+
+            <div id="page-content-wrapper">
+                <div class="container-fluid">
+                    <div class="container body-content">
+                        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="vendor/jquery/jquery.min.js"></script>
+
+        <script>
+            $("#menu-toggle").click(function (e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+
+            });
+        </script>
+        <div class="container body-content">
+            <hr />
+            <footer>
+                <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application Simple Sidebar</p>
+            </footer>
+        </div>
+
+    </form>
+</body>
+</html>

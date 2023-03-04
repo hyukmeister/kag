@@ -6,7 +6,7 @@
         <asp:Table ID="Table1" runat="server" Height="16px" Class="table-responsive" Width="270px" BorderWidth="0px">
         <asp:TableRow>
             <asp:TableCell Width="100px">Password Reset Code</asp:TableCell>
-            <asp:TableCell><asp:TextBox ID="txtAuthentication" runat="server" class="input-sm" MaxLength="6" Width="160px"></asp:TextBox></asp:TableCell>
+            <asp:TableCell><asp:TextBox ID="txtAuthentication" runat="server" class="input-sm" MaxLength="6" Width="160px" TextMode="Number"></asp:TextBox></asp:TableCell>
         </asp:TableRow>
             
          <asp:TableRow>
