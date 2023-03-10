@@ -166,7 +166,7 @@
             <ContentTemplate>
                 <asp:GridView ID="gvRoleSets" runat="server" AutoGenerateColumns="False" class="table table-hover"  
                 GridLines="None" CellPadding="4" OnRowEditing="gvRoleSets_RowEditing" ShowFooter="True" Width="700px"
-                OnRowDeleting="gvRoleSets_RowDeleting" OnRowDeleted="gvRoleSets_RowDeleted" EmptyDataText="User Roles not found"
+                OnRowDeleting="gvRoleSets_RowDeleting" OnRowDeleted="gvRoleSets_RowDeleted" EmptyDataText="User Roles not found" 
                 OnRowCancelingEdit="gvRoleSets_RowCancelingEdit" OnRowUpdating="gvRoleSets_RowUpdating" >
                     <Columns>
                     <asp:TemplateField HeaderText="Active" >
@@ -226,7 +226,7 @@
                         </FooterTemplate>
                     </asp:TemplateField>
 
-                    <asp:CommandField ShowEditButton="True" ItemStyle-Width="80px" />
+                        <asp:CommandField ShowEditButton="True" ItemStyle-Width="80px" />
                 </Columns>
                 </asp:GridView>
             </ContentTemplate>

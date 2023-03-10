@@ -69,6 +69,33 @@ namespace KennedyAccess
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl accordionFlush;
 
         /// <summary>
+        /// CampaignInfo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::KennedyAccess.Controls.CampaignInfo CampaignInfo;
+
+        /// <summary>
+        /// JobOpportunityInfo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::KennedyAccess.Controls.JobOpportunityInfo JobOpportunityInfo;
+
+        /// <summary>
+        /// I140CheckList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::KennedyAccess.Controls.I140CheckList I140CheckList;
+
+        /// <summary>
         /// UpdatePanel1 control.
         /// </summary>
         /// <remarks>

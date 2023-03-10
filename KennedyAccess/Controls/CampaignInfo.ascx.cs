@@ -14,20 +14,21 @@ namespace KennedyAccess.Controls
     public partial class CampaignInfo : System.Web.UI.UserControl
     {
         private User user;
-        private int employerid = 0;
-        private string campaignid;
         BaseData bd = new BaseData();
+
+        private int employerid = 0;
+        public string CampaignID;
         public string sCampaignStartDate;
         protected void Page_Load(object sender, EventArgs e)
         {
             Page.MaintainScrollPositionOnPostBack = true;
 
             user = (User)Session["User"];
-            campaignid = Session["CampaignID"].ToString();
+            //campaignid = Session["CampaignID"].ToString();
 
             if (!Page.IsPostBack)
             {
-                if (campaignid == "-1")
+                if (CampaignID == "-1")
                 {
                     labTitle.Text = Page.Title = "New Campaign";
                     // new employer; enable edit
@@ -39,9 +40,9 @@ namespace KennedyAccess.Controls
                 }
                 else
                 {
-                    labCampaignID.Text = campaignid;
+                    labCampaignID.Text = CampaignID;
                     // load campaigns for employer
-                    LoadCampaignInfo(campaignid, true);  
+                    LoadCampaignInfo(CampaignID, true);  
 
                     SetEditVisibilityCampaignInfo(true);
                 }
@@ -146,7 +147,7 @@ namespace KennedyAccess.Controls
             }
             else
             {
-                LoadCampaignInfo(campaignid.ToString(), false);
+                LoadCampaignInfo(labCampaignID.Text, false);
                 SetEditVisibilityCampaignInfo(true);
             }
         }

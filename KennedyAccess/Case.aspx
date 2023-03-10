@@ -5,6 +5,9 @@
 <%@ Register Src="~/Controls/UserFiles.ascx" TagPrefix="uc3" TagName="UserFiles" %>
 <%@ Register Src="~/Controls/DS260.ascx" TagPrefix="uc4" TagName="DS260" %>
 <%@ Register Src="~/Controls/I485.ascx" TagPrefix="uc5" TagName="i485" %>
+<%@ Register Src="~/Controls/I140CheckList.ascx" TagPrefix="uc6" TagName="I140CheckList" %>
+<%@ Register Src="~/Controls/CampaignInfo.ascx" TagPrefix="uc7" TagName="CampaignInfo" %>
+<%@ Register Src="~/Controls/JobOpportunityInfo.ascx" TagPrefix="uc8" TagName="JobOpportunityInfo" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <asp:Label ID="labApplicantID" runat="server" Visible="false"></asp:Label>
@@ -21,7 +24,10 @@
                 </button>
             </h2>
             <div id="flush-collapseOne" class="accordion-collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlush">
-                <div class="accordion-body">Pending</div>
+                <div class="accordion-body">
+                    <uc7:CampaignInfo runat="server" ID="CampaignInfo" /><br />
+                    <uc8:JobOpportunityInfo runat="server" ID="JobOpportunityInfo" />
+                </div>
             </div>
         </div>
 
@@ -32,7 +38,9 @@
                 </button>
             </h2>
             <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlush">
-                <div class="accordion-body">Pending</div>
+                <div class="accordion-body">
+                    <uc6:I140CheckList runat="server" id="I140CheckList" />
+                </div>
             </div>
         </div>
 

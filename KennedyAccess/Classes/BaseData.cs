@@ -877,13 +877,14 @@ namespace KennedyAccess.Classes
         }
 
         public string InsertUpdateRoleSetRoleRel(User user, string RoleSetRoleRelID,
-            string RoleSetid, string RoleID, bool Active,
-            string ValidFrom, string ValidThru)
+                            string Status, string RoleSetid, string RoleID, bool Active,
+                            string ValidFrom, string ValidThru)
         {
             var obj = SqlHelperv2.ExecuteScalar(
                     Global.dbcnn, "InsertUpdateRoleSetRoleRel",
                     new SqlParameter("@FranchiseID", user.FranchiseID),
                     new SqlParameter("@UserID", user.UserID),
+                    new SqlParameter("@Status", Status),
                     new SqlParameter("@RoleSetRoleRelID", RoleSetRoleRelID),
                     new SqlParameter("@RoleSetID", RoleSetid),
                     new SqlParameter("@RoleID", RoleID),
@@ -1672,5 +1673,20 @@ namespace KennedyAccess.Classes
             return result;
         }
         #endregion
+
+        public void InsertUpdateCaseManagement(User user, string Status, bool Active, string CaseManagementID,
+            string ApplicantID, string JobListingID, string ApplicationID)
+        {
+            SqlHelper.ExecuteNonQuery(Global.dbcnn, "InsertUpdateCaseManagement",
+                new SqlParameter("@FranchiseID", user.FranchiseID),
+                new SqlParameter("@UserID", user.UserID),
+                new SqlParameter("@Status", Status),
+                new SqlParameter("@Active", Active),
+                new SqlParameter("@CaseManagementID", CaseManagementID),
+                new SqlParameter("@ApplicantID", ApplicantID),
+                new SqlParameter("@JobListingID", JobListingID),
+                new SqlParameter("@ApplicationID", ApplicationID)
+            );
+        }
     }
 }

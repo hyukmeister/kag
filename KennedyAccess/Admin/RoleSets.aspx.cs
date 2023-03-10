@@ -3,9 +3,11 @@ using KennedyAccess.Controls;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
+using System.Web.Services.Description;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -68,7 +70,7 @@ namespace KennedyAccess.Admin
             string sValidFrom = fTxtValidFrom.Text;
             string sValidThru = fTxtValidThru.Text;
 
-            bd.InsertUpdateRoleSetRoleRel(user, "0", sRoleSetID, sRoleID, true, sValidFrom, sValidThru);
+            bd.InsertUpdateRoleSetRoleRel(user, "u", "0", sRoleSetID, sRoleID, true, sValidFrom, sValidThru);
 
             //reload rolesetroles data
             LoadRoleSetRoles("", true);
@@ -99,12 +101,33 @@ namespace KennedyAccess.Admin
             CheckBox cbkActive = (CheckBox)gvRoleSets.Rows[gvRoleSets.EditIndex].Cells[0].Controls[3];
             TextBox txtValidFrom = (TextBox)gvRoleSets.Rows[gvRoleSets.EditIndex].Cells[4].Controls[1];
             TextBox txtValidThru = (TextBox)gvRoleSets.Rows[gvRoleSets.EditIndex].Cells[5].Controls[1];
-            sRoleSetRoleRelID = bd.InsertUpdateRoleSetRoleRel(user, sRoleSetRoleRelID,"0", "0",
+            sRoleSetRoleRelID = bd.InsertUpdateRoleSetRoleRel(user, "u", sRoleSetRoleRelID,"0", "0",
                 cbkActive.Checked, txtValidFrom.Text,txtValidThru.Text);
 
             //reload rolesetroles data
             LoadRoleSetRoles("", true);
             gvRoleSets.EditIndex = -1;
+        }
+
+        protected void gvRoleSets_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            GridViewRow row = (GridViewRow)gvRoleSets.Rows[e.RowIndex];
+            string sRoleSetRoleRelID = ((Label)(row.Cells[0].Controls[1])).Text;
+            CheckBox cbkActive = (CheckBox)gvRoleSets.Rows[gvRoleSets.EditIndex].Cells[0].Controls[3];
+            TextBox txtValidFrom = (TextBox)gvRoleSets.Rows[gvRoleSets.EditIndex].Cells[4].Controls[1];
+            TextBox txtValidThru = (TextBox)gvRoleSets.Rows[gvRoleSets.EditIndex].Cells[5].Controls[1];
+
+            // delete row (status='d')
+            sRoleSetRoleRelID = bd.InsertUpdateRoleSetRoleRel(user, "d", sRoleSetRoleRelID, "0", "0",
+                cbkActive.Checked, txtValidFrom.Text, txtValidThru.Text);
+
+            //reload rolesetroles data
+            LoadRoleSetRoles("", true);
+        }
+
+        protected void gvRoleSets_RowDeleted(object sender, GridViewDeletedEventArgs e)
+        {
+
         }
     }
 }

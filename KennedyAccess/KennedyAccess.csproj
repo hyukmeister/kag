@@ -208,6 +208,7 @@
     <Content Include="Controls\DropDownCheckBox.ascx" />
     <Content Include="Controls\DS260.ascx" />
     <Content Include="Controls\EmployerInfo.ascx" />
+    <Content Include="Controls\I140CheckList.ascx" />
     <Content Include="Controls\I485.ascx" />
     <Content Include="Controls\JobOpportunityInfo.ascx" />
     <Content Include="Controls\PrevWage.ascx" />
@@ -225,6 +226,7 @@
     <Content Include="Home.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="I140SubmissionCkList.aspx" />
     <Content Include="I485_ATRPR.aspx" />
     <Content Include="images\abs012.svg" />
     <Content Include="images\arr017.svg" />
@@ -617,6 +619,13 @@
     <Compile Include="Controls\EmployerInfo.ascx.designer.cs">
       <DependentUpon>EmployerInfo.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\I140CheckList.ascx.cs">
+      <DependentUpon>I140CheckList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\I140CheckList.ascx.designer.cs">
+      <DependentUpon>I140CheckList.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\I485.ascx.cs">
       <DependentUpon>I485.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -715,6 +724,13 @@
     </Compile>
     <Compile Include="Employer.aspx.designer.cs">
       <DependentUpon>Employer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="I140SubmissionCkList.aspx.cs">
+      <DependentUpon>I140SubmissionCkList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="I140SubmissionCkList.aspx.designer.cs">
+      <DependentUpon>I140SubmissionCkList.aspx</DependentUpon>
     </Compile>
     <Compile Include="I485_ATRPR.aspx.cs">
       <DependentUpon>I485_ATRPR.aspx</DependentUpon>

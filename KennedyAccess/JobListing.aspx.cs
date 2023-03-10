@@ -160,6 +160,9 @@ namespace KennedyAccess
             email.Subject = "Job Application Update";
             email.Body= emailText;
             email.SendEmail();
+
+            // insert a new case record here
+            bd.InsertUpdateCaseManagement(user,"n", true,"0", sApplicantID, lblJobListingID.Text, ApplicationID);
         }
 
         protected void btnAccept_Click(object sender, EventArgs e)
@@ -171,7 +174,6 @@ namespace KennedyAccess
 
             btnApply.Visible = btnOfferLetter.Visible = btnWithdraw.Visible = false;
 
-            // insert a new case record here
         }
 
         protected void btnWithdraw_Click(object sender, EventArgs e)

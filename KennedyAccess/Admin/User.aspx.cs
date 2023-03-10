@@ -319,15 +319,5 @@ namespace KennedyAccess
                 return;
             }
         }
-
-        protected void gvRoleSets_RowDeleting(object sender, GridViewDeleteEventArgs e)
-        {
-
-        }
-
-        protected void gvRoleSets_RowDeleted(object sender, GridViewDeletedEventArgs e)
-        {
-
-        }
     }
 }
