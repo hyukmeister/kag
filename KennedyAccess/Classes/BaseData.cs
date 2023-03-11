@@ -1688,5 +1688,14 @@ namespace KennedyAccess.Classes
                 new SqlParameter("@ApplicationID", ApplicationID)
             );
         }
+
+        public void UpdatePrevailiningWage(User user, string CampaignID, string PrevailingwageID)
+        {
+            SqlHelper.ExecuteNonQuery(Global.dbcnn, "UpdatePrevailingWage",
+                new SqlParameter("@FranchiseID", user.FranchiseID),
+                new SqlParameter("@UserID", user.UserID),
+                new SqlParameter("@CampaignID", CampaignID),
+                new SqlParameter("@PrevailingwageID", PrevailingwageID));
+        }
     }
 }

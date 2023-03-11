@@ -21,8 +21,8 @@
         <asp:Label ID="labTitle" runat="server" Text="Campaign & Job Information"></asp:Label></h2>--%>
     <div class="jumbotron" style="width: 900px;">
         <asp:Label ID="lblJobListingID" runat="server" Visible="false">0</asp:Label>
-        <asp:Label ID="labCampaignID" runat="server" Visible="false"></asp:Label>
-        <asp:Label ID="labEmployerID" runat="server" Visible="false"></asp:Label>
+        <asp:Label ID="labCampaignID" runat="server" Visible="false">0</asp:Label>
+        <asp:Label ID="labEmployerID" runat="server" Visible="false">0</asp:Label>
         <asp:Label ID="txtEmployerName" runat="server"></asp:Label>
 
         <asp:CheckBox ID="cbActive" runat="server" Visible="false" />

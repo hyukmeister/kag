@@ -19,10 +19,8 @@ namespace KennedyAccess
     public partial class Campaign : System.Web.UI.Page
     {
         private User user;
-        private int employerid=0;
-        private int campaignid;
         BaseData bd = new BaseData();
-        private string sCampaignID;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             Page.MaintainScrollPositionOnPostBack = true;
@@ -32,33 +30,32 @@ namespace KennedyAccess
                 Response.Redirect("Default.aspx");
 
             //employerid = (Session["EmployerID"] == null || Session["EmployerID"].ToString() == "-1") ? 0 : int.Parse(Session["EmployerID"].ToString());
-            campaignid = int.Parse(Session["CampaignID"].ToString());
+            labCampaignID.Text = Session["CampaignID"].ToString();
 
             if (!Page.IsPostBack)
-            {
-
-                if (campaignid == -1)
+            {              
+                if (labCampaignID.Text == "-1")
                 {
                     divOL.Visible = accordionFlushCampaign.Visible = false;
                 }
                 else
                 {
-                    labCampaignID.Text = campaignid.ToString();
                     // load campaigns for employer
-                    DataTable dtCampaign = bd.GetCampaign(user, employerid.ToString(), labCampaignID.Text, "");
+                    DataTable dtCampaign = bd.GetCampaign(user, labEmployerID.Text, labCampaignID.Text, "");
 
                     if (dtCampaign.Rows.Count == 1)
                     {
                         DataRow dr = dtCampaign.Rows[0];
-
+                        labEmployerID.Text = dr["EmployerID"].ToString();
                         txtOfferLetter.Text = dr["OfferLetter"].ToString();
 
                         PopulatePrevailingWageDDL(dr["PrevailingwageID"].ToString());
                         contPrevWage.PrevailingWageID = dr["PrevailingwageID"].ToString();
 
-                        JobOpportunityInfo.CampaignID = labCampaignID.Text;
+                        CampaignInfo.CampaignID = JobOpportunityInfo.CampaignID = labCampaignID.Text;
+                        CampaignInfo.sCampaignStartDate = dr["DateFrom"].ToString();
+                        divOL.Visible = accordionFlushCampaign.Visible = true;
                     }
-
                 }
 
                 // campaign level questionnaire
@@ -91,11 +88,11 @@ namespace KennedyAccess
            }
         }
 
-        protected void btnSaveCampaign_Click(object sender, EventArgs e)
+        public void btnSaveCampaign_Click(object sender, EventArgs e)
         {
-            Session["CampaignID"] = contAttachments.ReferenceID = labCampaignID.Text = sCampaignID;
-            Questionnaire.iCampaignID = int.Parse(sCampaignID);
-            ((Label)Questionnaire.FindControl("labCampaignID")).Text = sCampaignID;
+            Session["CampaignID"] = contAttachments.ReferenceID = labCampaignID.Text;
+            Questionnaire.iCampaignID = int.Parse(labCampaignID.Text);
+            ((Label)Questionnaire.FindControl("labCampaignID")).Text = labCampaignID.Text;
             Questionnaire.PopulateQuestionnaireGrid();
 
             //SetEditVisibilityCampaign(true);
@@ -133,16 +130,6 @@ namespace KennedyAccess
         protected void btnSaveOfferLetter_Click(object sender, EventArgs e)
         {
             bd.UpdateOfferLetter(user, labCampaignID.Text, txtOfferLetter.Text);
-
-            btnCancelOfferLetter_Click(sender, e);
-        }
-
-        protected void btnCancelOfferLetter_Click(object sender, EventArgs e)
-        {
-        }
-
-        protected void btnEditOfferLetter_Click(object sender, EventArgs e)
-        {
         }
 
         protected void btnApplications_Click(object sender, EventArgs e)
@@ -153,7 +140,9 @@ namespace KennedyAccess
 
         protected void btnSavePrevWage_Click(object sender, EventArgs e)
         {
-            CampaignInfo.btnSaveCampaign_Click(sender,e);
+            //CampaignInfo.btnSaveCampaign_Click(sender,e);
+            //update prev wage 
+            bd.UpdatePrevailiningWage(user, labCampaignID.Text, ddlPrevailingWages.SelectedValue);
             btnCancelPrevWage.Visible = btnSavePrevWage.Visible = false;
             btnEditPrevWage.Visible = true;
             ddlPrevailingWages.Enabled = false;

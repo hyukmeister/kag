@@ -16,7 +16,6 @@ namespace KennedyAccess.Controls
         private User user;
         BaseData bd = new BaseData();
 
-        private int employerid = 0;
         public string CampaignID;
         public string sCampaignStartDate;
         protected void Page_Load(object sender, EventArgs e)
@@ -67,31 +66,6 @@ namespace KennedyAccess.Controls
                 }
 
             }
-        }
-
-        public int SaveCampaignInfo()
-        {
-            int iCampaignInfoID = 0;
-            if (cbkCampaignInfoChanged.Checked)
-            {
-
-                int iCampaignID = (labCampaignID.Text == "") ? 0 : int.Parse(labCampaignID.Text);
-                int iRecordTypeID = bd.GetRecordTypeID((DataTable)Application["RecordType"], user.FranchiseID, "Object", "Campaign");
-
-                string sCampaignInfoID = bd.InsertUpdateCampaign(user,
-                        int.Parse(labEmployerID.Text), iCampaignID, -1, iRecordTypeID,
-                        bd.EmptyToNull(txtCampaignStartDate.Text), txtCampaignEndDate.Text,
-                        txtCampaignDesc.Text, //int.Parse(ddlPrevailingWages.SelectedValue),
-                        bd.StringToDouble(txtOfferWageFrom.Text), bd.StringToDouble(txtOfferWageTo.Text),
-                        rblOfferWagePeriod.SelectedValue
-                    );
-                iCampaignInfoID = int.Parse (sCampaignInfoID);
-                sCampaignStartDate = txtCampaignStartDate.Text;
-                cbkCampaignInfoChanged.Checked = false;
-            }
-            SetEditVisibilityCampaignInfo(true);
-
-            return iCampaignInfoID;
         }
 
         public void SetEditVisibilityCampaignInfo(bool bLock)
@@ -154,9 +128,28 @@ namespace KennedyAccess.Controls
 
         public void btnSaveCampaign_Click(object sender, EventArgs e)
         {
-            labCampaignID.Text = SaveCampaignInfo().ToString();
-            LoadCampaignInfo(labCampaignID.Text, true);
+
+            if (cbkCampaignInfoChanged.Checked)
+            {
+                int iRecordTypeID = bd.GetRecordTypeID((DataTable)Application["RecordType"], user.FranchiseID, "Object", "Campaign");
+
+                string sCampaingnID = bd.InsertUpdateCampaign(user,
+                        int.Parse(labEmployerID.Text), int.Parse(labCampaignID.Text), -1, iRecordTypeID,
+                        bd.EmptyToNull(txtCampaignStartDate.Text), txtCampaignEndDate.Text,
+                        txtCampaignDesc.Text, //int.Parse(ddlPrevailingWages.SelectedValue),
+                        bd.StringToDouble(txtOfferWageFrom.Text), bd.StringToDouble(txtOfferWageTo.Text),
+                        rblOfferWagePeriod.SelectedValue
+                    );
+                Session["CampaignID"] = labCampaignID.Text = sCampaingnID;
+                //((Label)Page.FindControl("labCampaignID")).Text = sCampaingnID;
+                ((Campaign)this.Page).btnSaveCampaign_Click(null, null);
+
+                cbkCampaignInfoChanged.Checked = false;
+            }
             
+            SetEditVisibilityCampaignInfo(true);
+
+            //LoadCampaignInfo(labCampaignID.Text, true);            
         }
 
         private void LoadCampaignInfo(string sCampaignID, bool fromDB)
