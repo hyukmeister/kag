@@ -87,11 +87,6 @@ namespace KennedyAccess
                         }
                     }
 
-                    // applicant family
-                    gvFamilyMembers.DataSource = bd.GetFamilyMember(user, labApplicantID.Text);
-                    gvFamilyMembers.DataBind();
-
-                    PopulateFooterRelationshipDDL();
 
                     // read only
                     SetEditVisibility(true);
@@ -174,14 +169,7 @@ namespace KennedyAccess
             contAttachments.RecordTypeID = bd.GetRecordTypeID((DataTable)Application["RecordType"], user.FranchiseID, "Contact", "Applicant").ToString();
             contAttachments.ReferenceID = labApplicantID.Text;
         }
-        private void PopulateFooterRelationshipDDL()
-        {
-            DropDownList fddlRelationship = (DropDownList)gvFamilyMembers.FooterRow.FindControl("fddlRelationship");
-            fddlRelationship.DataSource = (DataTable)Application["Relationship"];
-            fddlRelationship.DataTextField = "Relationship";
-            fddlRelationship.DataValueField = "RelationshipID";
-            fddlRelationship.DataBind();
-        }
+
         private void PopulatePaymentSchedule()
         {
             // populate payment schedule
@@ -385,57 +373,6 @@ namespace KennedyAccess
                     //lbPay.Visible = false;
                 }
             }
-        }
-
-        protected void gvFamilyMembers_RowEditing(object sender, GridViewEditEventArgs e)
-        {
-            gvFamilyMembers.EditIndex = e.NewEditIndex;
-            gvFamilyMembers.ShowFooter = false;
-            gvFamilyMembers.DataSource= bd.GetFamilyMember(user, labApplicantID.Text);
-            gvFamilyMembers.DataBind();
-        }
-
-        public DataTable GetRelationship()
-        {
-            return (DataTable)Application["Relationship"];
-        }
-
-        protected void gvFamilyMembers_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
-        {
-            gvFamilyMembers.EditIndex = -1;
-            gvFamilyMembers.DataSource = bd.GetFamilyMember(user, labApplicantID.Text);
-            gvFamilyMembers.ShowFooter = true;
-            gvFamilyMembers.DataBind();
-
-            PopulateFooterRelationshipDDL();
-        }
-
-        protected void btnNewMember_Click(object sender, ImageClickEventArgs e)
-        {
-            DropDownList ddlRelationship = (DropDownList)gvFamilyMembers.FooterRow.FindControl("fddlRelationship");
-            TextBox txtLName = (TextBox)gvFamilyMembers.FooterRow.FindControl("ftxtLName");
-            TextBox txtFName = (TextBox)gvFamilyMembers.FooterRow.FindControl("ftxtFName");
-            TextBox txtMI = (TextBox)gvFamilyMembers.FooterRow.FindControl("ftxtMI");
-
-            bd.InsertUpdateFamilyMember(user, labApplicantID.Text, "0", "n", true, ddlRelationship.SelectedValue, txtLName.Text, txtFName.Text, txtMI.Text);
-
-            // reload gvFamilyMembers
-            gvFamilyMembers.DataSource = bd.GetFamilyMember(user, labApplicantID.Text);
-            gvFamilyMembers.DataBind();
-        }
-
-        protected void gvFamilyMembers_RowUpdating(object sender, GridViewUpdateEventArgs e)
-        {
-            GridViewRow grv = gvFamilyMembers.Rows[e.RowIndex];
-            Label lblApplicantFamilyID = (Label)grv.FindControl("lblApplicantFamilyID");
-            DropDownList ddlRelationship = (DropDownList)grv.FindControl("ddlRelationship");
-            TextBox txtLName = (TextBox)grv.FindControl("txtLName");
-            TextBox txtFName = (TextBox)grv.FindControl("txtFName");
-            TextBox txtMI = (TextBox)grv.FindControl("txtMI");
-
-            bd.InsertUpdateFamilyMember(user, labApplicantID.Text, lblApplicantFamilyID.Text, "u", true, ddlRelationship.SelectedValue, txtLName.Text, txtFName.Text, txtMI.Text);
-
-            gvFamilyMembers_RowCancelingEdit(sender, null);
         }
     }
 }

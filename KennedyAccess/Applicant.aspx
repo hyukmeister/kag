@@ -84,75 +84,9 @@
                 <div class="accordion-body">
                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>
-                            <asp:GridView ID="gvFamilyMembers" runat="server" AutoGenerateColumns="False" Width="100%" GridLines="None" 
-                                OnRowEditing="gvFamilyMembers_RowEditing" OnRowCancelingEdit="gvFamilyMembers_RowCancelingEdit" 
-                                OnRowUpdating="gvFamilyMembers_RowUpdating" ShowFooter="true" class="table table-hover rounded-corners">
-                                <Columns>
-                                    <asp:TemplateField HeaderText="Relationship">
-                                        <ItemTemplate>
-                                            <asp:Label ID="lblRelationshipID" runat="server" Text='<%# Eval("RelationshipID") %>' Visible="false"></asp:Label>
-                                            <asp:Label ID="lblRelationship" runat="server" Text='<%# Eval("Relationship") %>'></asp:Label>
-                                        </ItemTemplate>
-                                        <EditItemTemplate>
-                                            <asp:Label ID="lblApplicantFamilyID" runat="server" Text='<%# Eval("ApplicantFamilyID") %>' Visible="false"></asp:Label>
-                                            <asp:DropDownList ID="ddlRelationship" runat="server" DataSource='<%# GetRelationship() %>' DataTextField="Relationship" DataValueField="RelationshipID" CssClass="btn btn-default"></asp:DropDownList>
-                                        </EditItemTemplate>
-                                        <FooterTemplate>
-                                            <asp:DropDownList ID="fddlRelationship" runat="server" CssClass="form-control btn-default btn-outline-default align-items-start text-start"></asp:DropDownList>
-                                        </FooterTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="First Name">
-                                        <ItemTemplate>
-                                            <asp:Label ID="lblFName" runat="server" Text='<%# Eval("FirstName") %>'></asp:Label>
-                                        </ItemTemplate>
-                                        <EditItemTemplate>
-                                            <asp:TextBox ID="txtFName" runat="server" Text='<%# Eval("FirstName") %>' CssClass="form-control"></asp:TextBox>
-                                        </EditItemTemplate>
-                                        <FooterTemplate>
-                                            <asp:TextBox ID="ftxtFName" runat="server" MaxLength="32" CssClass="form-control" Width="180px" ></asp:TextBox>
-                                        </FooterTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Last Name">
-                                        <ItemTemplate>
-                                            <asp:Label ID="lblLName" runat="server" Text='<%# Eval("LastName") %>'></asp:Label>
-                                        </ItemTemplate>
-                                        <EditItemTemplate>
-                                            <asp:TextBox ID="txtLName" runat="server" Text='<%# Eval("LastName") %>' CssClass="form-control"></asp:TextBox>
-                                        </EditItemTemplate>
-                                        <FooterTemplate>
-                                            <asp:TextBox ID="ftxtLName" runat="server" MaxLength="32" CssClass="form-control" Width="180px"></asp:TextBox>
-                                        </FooterTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Middle Initial" FooterStyle-Height="20px" HeaderStyle-Width="120px" FooterStyle-Wrap="false">
-                                        <ItemTemplate>
-                                            <asp:Label ID="lblMI" runat="server" Text='<%# Eval("MI") %>' Width="85px"></asp:Label>
-                                        </ItemTemplate>
-                                        <EditItemTemplate>
-                                            <asp:TextBox ID="txtMI" runat="server" Text='<%# Eval("MI") %>' CssClass="form-control" Width="75px"></asp:TextBox>
-                                        </EditItemTemplate>
-                                        <FooterTemplate>
-                                            <table>
-                                                <tr>
-                                                    <td><asp:TextBox ID="ftxtMI" runat="server" MaxLength="2" Width="30px" CssClass="form-control"></asp:TextBox></td>
-                                                    <td>&nbsp;<asp:ImageButton ID="btnNewMember" runat="server" class="position-sticky" OnClick="btnNewMember_Click" AlternateText="Save" Height="35px" ImageUrl="~/images/save_icon.png"/></td>
-                                                </tr>
-                                            </table>
-                                        </FooterTemplate>
-                                    </asp:TemplateField>
-                                    <asp:CommandField ShowEditButton="True" ItemStyle-Width="80px" />
-                                </Columns>
-                                <HeaderStyle BackColor="dimgray" ForeColor="White"/>
-                                <FooterStyle BackColor="dimgray"/>
-                            </asp:GridView>
+                            <uc5:ApplicantFamily runat="server" id="ApplicantFamily" />
                         </ContentTemplate>
                     </asp:UpdatePanel>
-
-
-                    <uc5:ApplicantFamily runat="server" id="ApplicantFamily" />
-
-
-
-
                 </div>
             </div>
         </div>
