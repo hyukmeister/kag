@@ -56,7 +56,7 @@
                 <asp:DropDownList ID="ddlCountry" runat="server" Enabled="true"></asp:DropDownList><br />
                 <asp:TextBox ID="txtMobilephone" runat="server" class="input-sm" TextMode="Phone"></asp:TextBox>*<br />
                 <asp:RequiredFieldValidator runat="server" ErrorMessage="Mobile Phone is required" ControlToValidate="txtEmail" ForeColor="Red"></asp:RequiredFieldValidator><br />
-                <asp:CheckBox runat="server" ID="cbkAgreeToTextMsg" Text=" By Checking this box, I agree to receive important text messages." />
+                <asp:CheckBox runat="server" ID="cbkAgreeToTextMsg" Text=" By Checking this box, I agree to receive important text messages." Checked="true" />
             </asp:TableCell>
         </asp:TableRow>
          <asp:TableRow>

@@ -1018,7 +1018,9 @@ namespace KennedyAccess.Classes
                 "ResetUserRoleSets",
                 new SqlParameter("@FranchiseID", user.FranchiseID),
                 new SqlParameter("@UserID", user.UserID),
-                new SqlParameter("@ManualUserID", ManualUserID)
+                new SqlParameter("@ManualUserID", ManualUserID),
+                new SqlParameter("@IncludeManual", 0),
+                new SqlParameter("@Delete", 0)
             );
             if (ds != null && ds.Tables.Count > 0)
             {
