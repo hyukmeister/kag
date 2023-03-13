@@ -208,6 +208,7 @@
     <Content Include="Controls\DropDownCheckBox.ascx" />
     <Content Include="Controls\DS260.ascx" />
     <Content Include="Controls\EmployerInfo.ascx" />
+    <Content Include="Controls\FIleAttachment.ascx" />
     <Content Include="Controls\I140CheckList.ascx" />
     <Content Include="Controls\I485.ascx" />
     <Content Include="Controls\JobOpportunityInfo.ascx" />
@@ -618,6 +619,13 @@
     </Compile>
     <Compile Include="Controls\EmployerInfo.ascx.designer.cs">
       <DependentUpon>EmployerInfo.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FIleAttachment.ascx.cs">
+      <DependentUpon>FIleAttachment.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\FIleAttachment.ascx.designer.cs">
+      <DependentUpon>FIleAttachment.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controls\I140CheckList.ascx.cs">
       <DependentUpon>I140CheckList.ascx</DependentUpon>

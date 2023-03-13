@@ -24,6 +24,15 @@ namespace KennedyAccess.Controls
         protected global::System.Web.UI.WebControls.HiddenField hidApplicantID;
 
         /// <summary>
+        /// cbkApplicantFamilyChanged control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbkApplicantFamilyChanged;
+
+        /// <summary>
         /// Table2 control.
         /// </summary>
         /// <remarks>
@@ -51,6 +60,33 @@ namespace KennedyAccess.Controls
         protected global::System.Web.UI.WebControls.Button btnNewFamilyMember;
 
         /// <summary>
+        /// btnEditMember control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnEditMember;
+
+        /// <summary>
+        /// btnSaveMember control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSaveMember;
+
+        /// <summary>
+        /// btnCancel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancel;
+
+        /// <summary>
         /// ddlRelationship control.
         /// </summary>
         /// <remarks>
@@ -69,6 +105,15 @@ namespace KennedyAccess.Controls
         protected global::System.Web.UI.WebControls.TextBox txtFirstName;
 
         /// <summary>
+        /// rfvtxttxtFirstName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvtxttxtFirstName;
+
+        /// <summary>
         /// txtLastName control.
         /// </summary>
         /// <remarks>
@@ -76,6 +121,15 @@ namespace KennedyAccess.Controls
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtLastName;
+
+        /// <summary>
+        /// rfvtxtLastName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvtxtLastName;
 
         /// <summary>
         /// txtMI control.
@@ -96,6 +150,15 @@ namespace KennedyAccess.Controls
         protected global::System.Web.UI.WebControls.RadioButtonList rblGender;
 
         /// <summary>
+        /// rfvrblGender control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvrblGender;
+
+        /// <summary>
         /// txtDateOfBirth control.
         /// </summary>
         /// <remarks>
@@ -105,40 +168,49 @@ namespace KennedyAccess.Controls
         protected global::System.Web.UI.WebControls.TextBox txtDateOfBirth;
 
         /// <summary>
-        /// ddlCitizenshipCountry control.
+        /// rfvtxtDateOfBirth control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCitizenshipCountry;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvtxtDateOfBirth;
 
         /// <summary>
-        /// rvddlCitizenshipCountry control.
+        /// rblApplyingWith control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RangeValidator rvddlCitizenshipCountry;
+        protected global::System.Web.UI.WebControls.RadioButtonList rblApplyingWith;
 
         /// <summary>
-        /// ddlBirthCountry control.
+        /// rfvrblApplyingWith control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlBirthCountry;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvrblApplyingWith;
 
         /// <summary>
-        /// RangeValidator1 control.
+        /// rblCurrentRegidence control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RangeValidator RangeValidator1;
+        protected global::System.Web.UI.WebControls.RadioButtonList rblCurrentRegidence;
+
+        /// <summary>
+        /// rfvCurrentRegidence control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCurrentRegidence;
 
         /// <summary>
         /// txtAddress1 control.
@@ -177,6 +249,15 @@ namespace KennedyAccess.Controls
         protected global::System.Web.UI.WebControls.TextBox txtStateProvince;
 
         /// <summary>
+        /// rfvtxtStateProvince control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvtxtStateProvince;
+
+        /// <summary>
         /// txtPostalCode control.
         /// </summary>
         /// <remarks>
@@ -184,6 +265,15 @@ namespace KennedyAccess.Controls
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPostalCode;
+
+        /// <summary>
+        /// rfvtxtPostalCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvtxtPostalCode;
 
         /// <summary>
         /// ddlCountry control.
@@ -195,22 +285,13 @@ namespace KennedyAccess.Controls
         protected global::System.Web.UI.WebControls.DropDownList ddlCountry;
 
         /// <summary>
-        /// rblApplyingWith control.
+        /// rvddlCountry control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rblApplyingWith;
-
-        /// <summary>
-        /// rblCurrentRegidence control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rblCurrentRegidence;
+        protected global::System.Web.UI.WebControls.RangeValidator rvddlCountry;
 
         /// <summary>
         /// txtForeignAddress1 control.
@@ -265,6 +346,42 @@ namespace KennedyAccess.Controls
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlForeignCountry;
+
+        /// <summary>
+        /// ddlCitizenshipCountry control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCitizenshipCountry;
+
+        /// <summary>
+        /// rvddlCitizenshipCountry control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator rvddlCitizenshipCountry;
+
+        /// <summary>
+        /// ddlBirthCountry control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlBirthCountry;
+
+        /// <summary>
+        /// rvddlBirthCountry control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator rvddlBirthCountry;
 
         /// <summary>
         /// txtPassportNumber control.

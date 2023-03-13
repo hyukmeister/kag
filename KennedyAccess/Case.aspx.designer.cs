@@ -69,6 +69,15 @@ namespace KennedyAccess
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl accordionFlush;
 
         /// <summary>
+        /// ApplicantFamily control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::KennedyAccess.Controls.ApplicantFamily ApplicantFamily;
+
+        /// <summary>
         /// CampaignInfo control.
         /// </summary>
         /// <remarks>

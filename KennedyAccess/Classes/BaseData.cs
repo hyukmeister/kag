@@ -1697,5 +1697,56 @@ namespace KennedyAccess.Classes
                 new SqlParameter("@CampaignID", CampaignID),
                 new SqlParameter("@PrevailingwageID", PrevailingwageID));
         }
+
+        public string InsertUpdateFamilyMember(User user, string ApplicantFamilyID, string RelationshipID, string Status,bool Active, string ApplicantID, 
+            string DateOfBirth , string FirstName,string LastName ,string MI, string Gender, string CitizenshipCountry, string BirthCountry,bool ApplyWith, bool CurrentRegidence,
+		    string CurrentAddress1, string CurrentAddress2, string CurrentCity, string CurrentState, string CurrentPostalCode, string CurrentCountry,
+		    string ForeignAddress1 , string ForeignAddress2, string ForeignCity , string ForeignState , string ForeignPostalCode, string ForeignCountry,
+		    string PassportNumber, string PassportCountry,string PassportIssuedDate, string PassportExireDate)
+        {
+            string sResult;
+            SqlDataReader dr = SqlHelper.ExecuteReader(
+                    Global.dbcnn, "InsertUpdateFamilyMember",
+                    new SqlParameter("@FranchiseID", user.FranchiseID),
+                    new SqlParameter("@UserID", user.UserID),
+                    new SqlParameter("@ApplicantFamilyID", ApplicantFamilyID),
+                    new SqlParameter("@RelationshipID", RelationshipID),
+                    new SqlParameter("@Status", Status),
+                    new SqlParameter("@Active", Active),
+                    new SqlParameter("@ApplicantID", ApplicantID),
+
+                    new SqlParameter("@DateOfBirth", DateOfBirth),
+                    new SqlParameter("@FirstName", FirstName),
+                    new SqlParameter("@LastName", LastName),
+                    new SqlParameter("@MI", MI),
+                    new SqlParameter("@Gender", Gender),
+                    new SqlParameter("@CitizenshipCountry", CitizenshipCountry),
+                    new SqlParameter("@BirthCountry", BirthCountry),
+                    new SqlParameter("@ApplyWith", ApplyWith),
+                    new SqlParameter("@CurrentRegidence", CurrentRegidence),
+                    new SqlParameter("@CurrentAddress1", CurrentAddress1),
+                    new SqlParameter("@CurrentAddress2", CurrentAddress2),
+                    new SqlParameter("@CurrentCity", CurrentCity),
+                    new SqlParameter("@CurrentState", CurrentState),
+                    new SqlParameter("@CurrentPostalCode", CurrentPostalCode),
+                    new SqlParameter("@CurrentCountry", CurrentCountry),
+                    new SqlParameter("@ForeignAddress1", ForeignAddress1),
+                    new SqlParameter("@ForeignAddress2", ForeignAddress2),
+                    new SqlParameter("@ForeignCity", ForeignCity),
+                    new SqlParameter("@ForeignState", ForeignState),
+                    new SqlParameter("@ForeignPostalCode", ForeignPostalCode),
+                    new SqlParameter("@ForeignCountry", ForeignCountry),
+                    new SqlParameter("@PassportNumber", PassportNumber),
+                    new SqlParameter("@PassportCountry", PassportCountry),
+                    new SqlParameter("@PassportIssuedDate", PassportIssuedDate),
+                    new SqlParameter("@PassportExireDate", PassportExireDate)
+                );
+
+            dr.Read();
+            sResult = dr[0].ToString();
+            dr.Close();
+
+            return sResult;
+        }
     }
 }
